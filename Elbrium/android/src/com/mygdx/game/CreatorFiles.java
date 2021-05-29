@@ -7,8 +7,8 @@ import java.io.PrintWriter;
 
 public class CreatorFiles {
     CreatorFiles(){}
-    File file4,file5,file6,file7,file8,file9,file10,file11,file12,file13,file14,file15,file16,file17,file18,file19;
-    PrintWriter printWriter4,printWriter5,printWriter6,printWriter7,printWriter8,printWriter9,printWriter11,printWriter12,printWriter13,printWriter14,printWriter15,printWriter16,printWriter17,printWriter18,printWriter19;
+    File file4,file5,file6,file7,file8,file9,file10,file11,file12,file13,file14,file15,file16,file17,file18,file19,file20,file21,file22,file23,file24,fileX1,fileX2,fileX3,fileX4,fileX5,fileX6,fileX7,fileX8,fileX9;
+    PrintWriter printWriter4,printWriter5,printWriter6,printWriter7,printWriter8,printWriter9,printWriter11,printWriter12,printWriter13,printWriter14,printWriter15,printWriter16,printWriter17,printWriter18,printWriter19,printWriter20,printWriter21,printWriter22,printWriter23,printWriter24,pX1,pX2,pX3,pX4,pX5,pX6,pX7,pX8,pX9;
     public void create(){
         file4 = new File("/data/data/com.mygdx.game/Health.txt");
         file5 = new File("/data/data/com.mygdx.game/Protection.txt");
@@ -26,6 +26,20 @@ public class CreatorFiles {
         file17 = new File("/data/data/com.mygdx.game/SoundMusic.txt");
         file18 = new File("/data/data/com.mygdx.game/Appearance.txt");
         file19 = new File("/data/data/com.mygdx.game/Leaders.txt");
+        file20 = new File("/data/data/com.mygdx.game/LevelBase.txt");
+        file21 = new File("/data/data/com.mygdx.game/NameBase.txt");
+        file22 = new File("/data/data/com.mygdx.game/HealthBase.txt");
+        file23 = new File("/data/data/com.mygdx.game/Villagers.txt");
+        file24 = new File("/data/data/com.mygdx.game/Happiness.txt");
+        fileX1 = new File("/data/data/com.mygdx.game/TownHall.txt");
+        fileX2 = new File("/data/data/com.mygdx.game/WorkShop.txt");
+        fileX3 = new File("/data/data/com.mygdx.game/Kitchen.txt");
+        fileX4 = new File("/data/data/com.mygdx.game/House.txt");
+        fileX5 = new File("/data/data/com.mygdx.game/School.txt");
+        fileX6 = new File("/data/data/com.mygdx.game/Factory.txt");
+        fileX7 = new File("/data/data/com.mygdx.game/Tower.txt");
+        fileX8 = new File("/data/data/com.mygdx.game/Park.txt");
+        fileX9 = new File("/data/data/com.mygdx.game/Mill.txt");
         try {
             file4.createNewFile();
             file5.createNewFile();
@@ -43,6 +57,20 @@ public class CreatorFiles {
             file17.createNewFile();
             file18.createNewFile();
             file19.createNewFile();
+            file20.createNewFile();
+            file21.createNewFile();
+            file22.createNewFile();
+            file23.createNewFile();
+            file24.createNewFile();
+            fileX1.createNewFile();
+            fileX2.createNewFile();
+            fileX3.createNewFile();
+            fileX4.createNewFile();
+            fileX5.createNewFile();
+            fileX6.createNewFile();
+            fileX7.createNewFile();
+            fileX8.createNewFile();
+            fileX9.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,6 +120,48 @@ public class CreatorFiles {
                 printWriter19 = new PrintWriter(file19);
                 printWriter19.write(String.valueOf(0));
                 printWriter19.close();
+                printWriter20 = new PrintWriter(file20);
+                printWriter20.write(0);
+                printWriter20.close();
+                printWriter21 = new PrintWriter(file21);
+                printWriter21.write("");
+                printWriter21.close();
+                printWriter22 = new PrintWriter(file22);
+                printWriter22.write(1);
+                printWriter22.close();
+                printWriter23 = new PrintWriter(file23);
+                printWriter23.write(3);
+                printWriter23.close();
+                printWriter24 = new PrintWriter(file24);
+                printWriter24.write(25);
+                printWriter24.close();
+                pX1 = new PrintWriter(fileX1);
+                pX1.write(1);
+                pX1.close();
+                pX2 = new PrintWriter(fileX2);
+                pX2.write(0);
+                pX2.close();
+                pX3 = new PrintWriter(fileX3);
+                pX3.write(0);
+                pX3.close();
+                pX4 = new PrintWriter(fileX4);
+                pX4.write(0);
+                pX4.close();
+                pX5 = new PrintWriter(fileX5);
+                pX5.write(0);
+                pX5.close();
+                pX6 = new PrintWriter(fileX6);
+                pX6.write(0);
+                pX6.close();
+                pX7 = new PrintWriter(fileX7);
+                pX7.write(0);
+                pX7.close();
+                pX8 = new PrintWriter(fileX8);
+                pX8.write(0);
+                pX8.close();
+                pX9 = new PrintWriter(fileX9);
+                pX9.write(0);
+                pX9.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
