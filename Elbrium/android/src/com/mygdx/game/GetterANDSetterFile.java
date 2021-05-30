@@ -937,7 +937,7 @@ public class GetterANDSetterFile {
             e.printStackTrace();
         }
     }
-    public void set_HealthBase(String r_healthBase){
+    public void set_HealthBase(int r_healthBase){
         file = new File("/data/data/com.mygdx.game/HealthBase.txt");
         try {
             printWriter = new PrintWriter(file);

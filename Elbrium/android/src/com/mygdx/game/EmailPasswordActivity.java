@@ -100,7 +100,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         number = getterANDSetterFile.get_Sign();
         mAuth = FirebaseAuth.getInstance();
-
+        getterANDSetterFile.set_BaseLevel(0);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

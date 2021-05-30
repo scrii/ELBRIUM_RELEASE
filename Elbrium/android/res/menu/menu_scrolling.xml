@@ -26,7 +26,7 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/base"
-        android:orderInCategory="350"
+        android:orderInCategory="500"
         android:title="@string/base"
         app:showAsAction="never"/>
 
