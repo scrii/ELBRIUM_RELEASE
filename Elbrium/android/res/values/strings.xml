@@ -73,4 +73,23 @@
     <string name="error">Если вы это видите, что-то пошло не так</string>
     <string name="table_leader">Таблица лидеров</string>
     <string name="table_leader_string">Таблица лидеров по добыче Elbrium</string>
+    <string name="base">База</string>
+    <string name="whataboutlevel">Желаете купить базу? Оплатите 150 монет</string>
+    <string name="newbase">Купить!</string>
+    <string name="infobase">Введите имя своей базы</string>
+    <string name="one">1</string>
+    <string name="villagers">Рабочая сила</string>
+    <string name="happiness">Счастье</string>
+    <string name="int_happiness">25</string>
+    <string name="TownHall">Ратуша</string>
+    <string name="WorkShop">Мастерская</string>
+    <string name="Kitchen">Столовая</string>
+    <string name="House">Жилой дом</string>
+    <string name="School">Школа</string>
+    <string name="Factory">Фабрика</string>
+    <string name="Tower">Вышка</string>
+    <string name="Park">Парк</string>
+    <string name="Mill">Завод</string>
+    <string name="zero">0</string>
+    <string name="three">3</string>
 </resources>

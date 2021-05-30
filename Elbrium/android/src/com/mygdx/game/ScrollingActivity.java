@@ -185,6 +185,7 @@ public class ScrollingActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
         int positionOfMenuItem = 0;
+
         MenuItem item = menu.getItem(positionOfMenuItem);
         SpannableString s = new SpannableString("Настройки");
         s.setSpan(new ForegroundColorSpan(Color.RED), 0, s.length(), 0);
@@ -200,10 +201,18 @@ public class ScrollingActivity extends AppCompatActivity{
         s3.setSpan(new ForegroundColorSpan(Color.RED), 0, s3.length(), 0);
         item4.setTitle(s3);
 
-        MenuItem item3 = menu.getItem(3);
+        MenuItem item5 = menu.getItem(3);
+        SpannableString s5 = new SpannableString("База");
+        s5.setSpan(new ForegroundColorSpan(Color.RED), 0, s5.length(), 0);
+        item5.setTitle(s5);
+
+        MenuItem item3 = menu.getItem(4);
         SpannableString s2 = new SpannableString("Выход");
         s2.setSpan(new ForegroundColorSpan(Color.RED), 0, s2.length(), 0);
         item3.setTitle(s2);
+
+
+
         return true;
     }
     @Override
@@ -219,6 +228,10 @@ public class ScrollingActivity extends AppCompatActivity{
         }
         if(id == R.id.about_us_menu){
             startActivity(new Intent(ScrollingActivity.this,About_us.class));
+            return true;
+        }
+        if (id == R.id.base){
+            startActivity(new Intent(ScrollingActivity.this,UserBase.class));
             return true;
         }
         if (id == R.id.exit) {
