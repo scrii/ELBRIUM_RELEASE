@@ -40,6 +40,8 @@ public class Main extends Game {
 	public static int BACKGROUND_WIDTH;
 	public static int BACKGROUND_HEIGHT;
 	public static Texture un_testButtonTX,p_testButtonTX;
+	public static Texture bLeft,bUp,bRight,bDown;
+	public static Texture bLeft_un,bUp_un,bRight_un,bDown_un;
 
 	public static GameSc gameSc;
 
@@ -164,11 +166,21 @@ public class Main extends Game {
 	}
 
 	private void loadButtonTextures(){
-		chat_button = new Texture("buttons/chatb.png");
-		chat_button_un=new Texture("buttons/chatbun.png");
+		chat_button = new Texture("buttons/chatb/chatb.png");
+		chat_button_un=new Texture("buttons/chatb/chatbun.png");
 
-		back_button=new Texture("buttons/backbutton.png");
-		back_button_un=new Texture("buttons/backbuttonun.png");
+		back_button=new Texture("buttons/backb/backbutton.png");
+		back_button_un=new Texture("buttons/backb/backbuttonun.png");
+
+		bLeft_un=new Texture("buttons/arrowsb/bleftun.png");
+		bUp_un=new Texture("buttons/arrowsb/bupun.png");
+		bRight_un=new Texture("buttons/arrowsb/brightun.png");
+		bDown_un=new Texture("buttons/arrowsb/bdownun.png");
+
+		bLeft=new Texture("buttons/arrowsb/bleft.png");
+		bUp=new Texture("buttons/arrowsb/bup.png");
+		bRight=new Texture("buttons/arrowsb/bright.png");
+		bDown=new Texture("buttons/arrowsb/bdown.png");
 	}
 
 	private void loadCometTextures(){
@@ -179,6 +191,10 @@ public class Main extends Game {
 
 	public static Texture getPlayer(){
 		GetterANDSetterFile getter_setter = new GetterANDSetterFile();
+
+		if(getter_setter.get_Appearance()<1||getter_setter.get_Appearance()>5)
+			getter_setter.set_Appearance(1);
+
 		switch (getter_setter.get_Appearance()){
 			case 1: return player1;
 			case 2: return player2;
@@ -186,10 +202,11 @@ public class Main extends Game {
 			case 4: return player4;
 			case 5: return player5;
 		}
-		return err;
+		return player1;
 	}
 
 	public static Texture getPlayer(String s){
+
 		switch (Integer.parseInt(s)){
 			case 1: return player1;
 			case 2: return player2;

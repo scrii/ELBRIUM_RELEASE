@@ -47,7 +47,7 @@ public class GameSc implements Screen {
 
     public static Array<Bullet> bullets;
     public static Array<Elbrium> ore;
-    private Spawner spawner;
+    private static Spawner spawner;
     private Gson gson;
     public static final float SIZE_COEF=1;
     private Multiplayer multiplayer;
@@ -56,6 +56,7 @@ public class GameSc implements Screen {
     private Animation cometAnimation;
     private float cometPosX=100;
     private float cometPosY=1000;
+    public static boolean playerIsSpawner;
 
     Buttons chat_button,back_button;
     BulletGenerator bullgen;
@@ -78,7 +79,7 @@ public class GameSc implements Screen {
     //<!!! --->
 
     String online_players;
-    GetterANDSetterFile getter_setter;
+    static GetterANDSetterFile getter_setter;
 
 /*    private static final float leftSide = ;
     private static final float rightSide;
@@ -277,9 +278,9 @@ public class GameSc implements Screen {
     }
 
     public void loadActors(){
-        chat_button=new Buttons(Main.chat_button_un,Main.chat_button,joySize*1.1f,joySize*1.1f/2,
+        chat_button=new Buttons(true,Main.chat_button_un,Main.chat_button,joySize*1.1f,joySize*1.1f/2,
                 Main.WIDTH-joySize*1.1f-joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
-        back_button = new Buttons(Main.back_button_un,Main.back_button,joySize*1.1f,joySize*1.1f/2,
+        back_button = new Buttons(true,Main.back_button_un,Main.back_button,joySize*1.1f,joySize*1.1f/2,
                 joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
 
 
@@ -292,7 +293,8 @@ public class GameSc implements Screen {
 
         joy2=new Joystick(Main.circle,Main.stickImg,new Point2D(Main.WIDTH-joyX,joyY),joySize,-1);
         bullets=new Array<>();
-        //if(!multiplayer.isSomeoneIN())
+        //if(!multiplayer.isSomeoneIN()
+
     }
 
     public void multitouch(float x,float y,boolean isDownTouch, int pointer){
@@ -412,6 +414,12 @@ public class GameSc implements Screen {
                 }
             });
         }
+    }
+
+    public static void startElbriumSpawner(){
+        spawner.start();
+        playerIsSpawner=true;
+        GdxFIRDatabase.inst().inReference("Spawner").setValue(getter_setter.get_Nickname());
     }
 
 }

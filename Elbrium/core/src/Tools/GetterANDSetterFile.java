@@ -659,4 +659,16 @@ public class GetterANDSetterFile {
         }
         return real_appearance;
     }
+
+    public void set_Appearance(int r_appearance){
+        file = new File("/data/data/com.mygdx.game/Appearance.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_appearance));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

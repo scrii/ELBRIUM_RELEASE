@@ -36,6 +36,7 @@ public class ScrollingActivity extends AppCompatActivity{
     Online online;
     int sec=10;
     String onl="";
+    int oreCount=-1;
     @Override
     protected void onStart(){
         if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
@@ -60,12 +61,29 @@ public class ScrollingActivity extends AppCompatActivity{
                 //Log.e("online",onl);
                 FirebaseDatabase.getInstance().getReference("online").onDisconnect().setValue(onl.replace(getterANDSetterFile.get_Nickname()+";",""));
 
+
+                Log.e("oreC",oreCount+"");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        FirebaseDatabase.getInstance().getReference("oreCount").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getValue()!=null)oreCount=Integer.parseInt(snapshot.getValue().toString());
+
+                Log.e("orecout",snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        for(int i=0;i<oreCount;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect().removeValue();
 
 
         // //

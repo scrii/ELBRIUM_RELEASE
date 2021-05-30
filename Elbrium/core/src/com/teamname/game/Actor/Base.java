@@ -2,6 +2,7 @@ package com.teamname.game.Actor;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.teamname.game.Screens.BaseLocationSc;
 
 import Tools.Point2D;
 
@@ -12,7 +13,7 @@ public class Base extends Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(img,position.getX(),position.getY());
+        batch.draw(img,position.getX(),position.getY(),R*2,R*2);
     }
 
     @Override

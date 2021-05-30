@@ -11,10 +11,14 @@ import com.teamname.game.Screens.GameSc;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Messages.ElbriumMessage;
+import Messages.Message;
 import Tools.Circle;
 import Tools.GetterANDSetterFile;
 import Tools.Point2D;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
+import pl.mk5.gdx.fireapp.database.ChildEventType;
+import pl.mk5.gdx.fireapp.functional.Consumer;
 
 public class Elbrium extends Actor {
     private int startHealth,health, score, rank;
@@ -30,6 +34,7 @@ public class Elbrium extends Actor {
     private TextureRegion damageRegion,region;
     private Animation animation;
     private int textureCase;
+    private ElbriumMessage message;
 
     public float getDamage() {
         return damage;
@@ -70,6 +75,8 @@ public class Elbrium extends Actor {
             //textureCase=0;
             GameSc.player.getter_setter.add_elbrium(score);
             //GameSc.ore.removeIndex(count);
+            GdxFIRDatabase.inst().inReference("ore"+count).removeValue();
+
             Gdx.app.log("Elbrium #"+count, "i died :(");
         }
 
@@ -78,7 +85,7 @@ public class Elbrium extends Actor {
     public Elbrium(Texture img, Point2D position, int rank) {
         super(img, position);
         counter=-1;
-
+        message=new ElbriumMessage(-1,-1,-1);
         textureCase=1;
         player_damage=GameSc.player.damage;
         //region=new TextureRegion(Main.elbrium,);
@@ -96,7 +103,8 @@ public class Elbrium extends Actor {
         startHealth=health;
         bounds = new Circle(position,R);
 
-
+        Gdx.app.log("ORECOUNT",GameSc.ore.size+1+"");
+        GdxFIRDatabase.inst().inReference("oreCount").setValue(GameSc.ore.size+1);
         setPosition();
         //timeCheck();
     }
@@ -126,6 +134,18 @@ public class Elbrium extends Actor {
         //GdxFIRDatabase.instance().inReference("Elbrium_"+count).setValue(position.toString());
         isOut = (position.getX()+R<0 || position.getY()-R>Main.BACKGROUND_HEIGHT
                 || position.getX()-R>Main.BACKGROUND_WIDTH || position.getY()+R<0);
+        message.x=position.getX();
+        message.y=position.getY();
+        message.hp=getHealth();
+        //if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore").push().setValue(message.toString());
+        if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
+        if(isOut)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).removeValue();
+       /* GdxFIRDatabase.promise().then(GdxFIRDatabase.inst().inReference("ore").onChildChange(String.class, ChildEventType.CHANGED).then(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+
+            }
+        }));*/
 
     }
 

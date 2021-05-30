@@ -84,6 +84,7 @@ public class Multiplayer {
         //Gdx.app.error("MP",meta_players.toString()+"");
         for(String ref : meta_players)createPlayers(ref);
         Gdx.app.log("MP",players.toString());}
+        else GameSc.startElbriumSpawner();
     }
 
     private void createPlayers(String ref){

@@ -15,7 +15,7 @@ import Tools.Point2D;
 public class Mesh {
     private Square modelSquare;
     private Point2D touch;
-    private ArrayList<Square> squares;
+    public ArrayList<Square> squares;
     private final Square square;
     Square tmp[][];
 
@@ -25,7 +25,7 @@ public class Mesh {
         tmp = new Square[Main.BACKGROUND_HEIGHT/square.a][Main.BACKGROUND_WIDTH/square.a];
         for(int i=0;i<Main.BACKGROUND_HEIGHT/square.a;i++)
             for(int j=0;j<Main.BACKGROUND_WIDTH/square.a;j++)
-                tmp[i][j]=new Square(square.a);
+                tmp[i][j]=new Square(square.a,25);
         setSquaresPoints();
     }
 
@@ -38,16 +38,7 @@ public class Mesh {
 
 
     public void update(float x, float y, boolean isDownTouch, int pointer) {
-        for (Square sq : squares) {
-            if (sq.isInside(new Point2D(x, y)) && isDownTouch)
-                if (sq.textureCount == 1) {
-                    sq.setImg(Main.square2);
-                    sq.textureCount = 2;
-                } else {
-                    sq.setImg(Main.square1);
-                    sq.textureCount = 1;
-                }
-        }
+
     }
 
     public void setSquaresPoints() {

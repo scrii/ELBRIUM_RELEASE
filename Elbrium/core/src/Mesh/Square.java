@@ -3,6 +3,9 @@ package Mesh;
 import com.badlogic.gdx.graphics.Texture;
 import com.teamname.game.Main;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import Tools.Point2D;
 
 public class Square {
@@ -10,15 +13,29 @@ public class Square {
     public int a;
     public Point2D pos;
     public int textureCount; // от 1 до 2 //
+    public int thickness;
+    private Timer timer;
+    private TimerTask task;
+    private int counter;
+    private boolean switched;
 
-    public Square(int a) {
+    public Square(int a, int coefficientStrokeThickness) {
         this.a = a;
         pos = new Point2D(0,0);
         img = Main.square1;
+        thickness=a/coefficientStrokeThickness;
     }
 
     public Point2D getCenter(){
         return new Point2D((float)a/2,(float)a/2);
+    }
+
+    public Point2D getRelativeCenter(){
+        return new Point2D(Main.BACKGROUND_WIDTH+(float)a/2,Main.BACKGROUND_HEIGHT+(float)a/2);
+    }
+
+    public Point2D getPos() {
+        return pos;
     }
 
     public void updateOX(){
@@ -44,7 +61,20 @@ public class Square {
         this.img = img;
     }
 
-    public void setPos(Point2D point){
-
+    public void imgSwitch(final int seconds, final Texture firstImg,final Texture secondImg){
+        timer=new Timer();
+        counter=seconds;
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                if(counter==0){
+                    if(switched){setImg(secondImg);switched=false;}
+                    else {setImg(firstImg);switched=true;}
+                    counter=seconds;
+                }
+                else counter--;
+            }
+        };
+        timer.scheduleAtFixedRate(task,0,(long)1000*seconds);
     }
 }
