@@ -11,6 +11,8 @@ import FirebaseHelper.DatabaseHelper;
 import FirebaseHelper.Multiplayer;
 import Tools.GetterANDSetterFile;
 import Tools.Spawner;
+
+import com.teamname.game.Screens.BaseLocationSc;
 import com.teamname.game.Screens.GameSc;
 import com.teamname.game.Screens.MenuSc;
 
@@ -20,7 +22,7 @@ import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
 
 public class Main extends Game {
-	public static SpriteBatch batch,frontBatch,playerBatch,hudBatch;
+	public static SpriteBatch batch,frontBatch,playerBatch,hudBatch,baseBatch,baseBatchBackground;
 	public Texture img;
 	public static int WIDTH,HEIGHT;
 	public static Texture circle,stickImg,background,actor,damaged_txr,deathSc,elbrium,elbriumCrash;
@@ -30,8 +32,9 @@ public class Main extends Game {
 	public static Texture player1, player2, player3, player4, player5;
 	public static Texture chat_button,chat_button_un;
 	public static Texture comet_fr1,comet_fr2,comet_fr3;
-	public static Texture bullet;
+	public static Texture bullet,base;
 	public static Texture back_button_un, back_button;
+	public static Texture square1,square2;
 
 
 	public static int BACKGROUND_WIDTH;
@@ -68,7 +71,14 @@ public class Main extends Game {
 		WIDTH= Gdx.graphics.getWidth();
 		HEIGHT=Gdx.graphics.getHeight();
 
+		baseBatch = new SpriteBatch();
+		baseBatchBackground = new SpriteBatch();
+
+		base = new Texture("base.png");
 		err=new Texture("error.png");
+
+		square1 = new Texture("square1.png");
+		square2 = new Texture("square2.png");
 
 		circle=new Texture("circle.png");
 		stickImg=new Texture("stick.png");

@@ -21,10 +21,10 @@ import com.teamname.game.Main;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import FirebaseHelper.BulletMessage;
+import Messages.BulletMessage;
 import FirebaseHelper.DatabaseHelper;
 //import Online.Getter;
-import FirebaseHelper.Message;
+import Messages.Message;
 import FirebaseHelper.Multiplayer;
 import Tools.BulletGenerator;
 import Tools.Buttons;
@@ -33,7 +33,6 @@ import Tools.GetterANDSetterFile;
 import Tools.Joystick;
 import Tools.Point2D;
 import Tools.Spawner;
-import de.tomgrill.gdxfirebase.core.GDXFirebase;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 import pl.mk5.gdx.fireapp.functional.Consumer;
 
@@ -293,7 +292,7 @@ public class GameSc implements Screen {
 
         joy2=new Joystick(Main.circle,Main.stickImg,new Point2D(Main.WIDTH-joyX,joyY),joySize,-1);
         bullets=new Array<>();
-        spawner.start();
+        //if(!multiplayer.isSomeoneIN())
     }
 
     public void multitouch(float x,float y,boolean isDownTouch, int pointer){

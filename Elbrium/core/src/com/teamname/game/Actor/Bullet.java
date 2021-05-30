@@ -6,8 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
-import FirebaseHelper.BulletMessage;
-import Tools.GetterANDSetterFile;
+import Messages.BulletMessage;
 import Tools.Point2D;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 

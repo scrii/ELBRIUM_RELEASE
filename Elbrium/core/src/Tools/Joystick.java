@@ -1,16 +1,11 @@
 package Tools;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.teamname.game.Actor.Player;
-import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 public class Joystick {
     Texture CircleImg, StickImg;
@@ -47,7 +42,7 @@ public class Joystick {
         direction = new Point2D(0, 0);
         CirclePos=new Point2D(point.getX(),point.getY());
         StickPos=new Point2D(point.getX(),point.getY());
-        Speed=GameSc.player.Speed;
+        Speed=GameSc.player!=null?GameSc.player.Speed:1;
         joyX=point.getX();
         joyY=point.getY();
         this.case_=case_;

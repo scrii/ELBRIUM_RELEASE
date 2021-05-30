@@ -14,7 +14,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.google.firebase.database.FirebaseDatabase;
 
-import FirebaseHelper.Message;
+import Messages.Message;
 import static com.mygdx.game.ScrollingActivity.mediaPlayer;
 
 public class ShopActivity extends AppCompatActivity {

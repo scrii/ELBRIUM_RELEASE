@@ -1,7 +1,9 @@
-package FirebaseHelper;
+package Messages;
 
 import com.badlogic.gdx.Gdx;
 import com.google.gson.Gson;
+
+import FirebaseHelper.DatabaseHelper;
 
 
 public class Message {

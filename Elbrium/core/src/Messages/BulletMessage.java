@@ -1,4 +1,4 @@
-package FirebaseHelper;
+package Messages;
 
 public class BulletMessage {
     public float damage;

@@ -1,16 +1,15 @@
 package FirebaseHelper;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.gson.Gson;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Messages.Message;
 import Tools.Circle;
 import Tools.GetterANDSetterFile;
 import Tools.Point2D;
@@ -84,7 +83,7 @@ public class Multiplayer {
         meta_players.remove(gs.get_Nickname());
         //Gdx.app.error("MP",meta_players.toString()+"");
         for(String ref : meta_players)createPlayers(ref);
-        Gdx.app.error("MP",players.toString());}
+        Gdx.app.log("MP",players.toString());}
     }
 
     private void createPlayers(String ref){
@@ -109,7 +108,7 @@ public class Multiplayer {
         }
         if(!flag)players.add(gson.fromJson("{"+s,Message.class));
 
-        Gdx.app.error("MP",ref);
+        Gdx.app.log("MP",ref);
     }
 
 

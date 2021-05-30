@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 import FirebaseHelper.DatabaseHelper;
 //import Online.DatabaseHelper;
-import FirebaseHelper.Message;
+import Messages.Message;
 import FirebaseHelper.PlayerDataCollect;
 import FirebaseHelper.PlayerDataCreator;
 import Tools.GetterANDSetterFile;
