@@ -413,9 +413,13 @@ public GetterANDSetterFile getterANDSetterFile;
                 Insurrection();
                 if(getterANDSetterFile.get_TownHall()>=6){
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Mill()*150+150))){
-                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Mill()*150+150)));
-                        getterANDSetterFile.set_Mill(getterANDSetterFile.get_Mill()+1);
-                        getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-15);
+                        if(getterANDSetterFile.get_Villagers()>0){
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Mill()*150+150)));
+                            getterANDSetterFile.set_Mill(getterANDSetterFile.get_Mill()+1);
+                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-15);
+                            getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
+                        }
+                        else Toast.makeText(getApplicationContext(),"Недостаточно людей, постройте дома",Toast.LENGTH_SHORT).show();
                     }
                     else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
                 }
@@ -450,6 +454,7 @@ public GetterANDSetterFile getterANDSetterFile;
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Tower()*75+75))){
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Tower()*75+75)));
                         getterANDSetterFile.set_HealthBase(getterANDSetterFile.get_HealthBase()+3);
+                        getterANDSetterFile.set_Tower(getterANDSetterFile.get_Tower()+1);
                         int c;
                         c = (int)(Math.random()*100000)%100;
                         if(c<=20)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
@@ -469,9 +474,14 @@ public GetterANDSetterFile getterANDSetterFile;
                 Insurrection();
                 if(getterANDSetterFile.get_Factory()<=7){
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Factory()*150+150))){
-                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Factory()*150+150)));
-                        getterANDSetterFile.set_Factory(getterANDSetterFile.get_Factory()+1);
-                        getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-10);
+                        if(getterANDSetterFile.get_Villagers()>0){
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Factory()*150+150)));
+                            getterANDSetterFile.set_Factory(getterANDSetterFile.get_Factory()+1);
+                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-10);
+                            getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
+                        }
+                        else Toast.makeText(getApplicationContext(),"Недостаточно людей, постройте дома",Toast.LENGTH_SHORT).show();
+
                     }
                     else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
                 }
@@ -558,6 +568,7 @@ public GetterANDSetterFile getterANDSetterFile;
                 if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_School()*75+75))){
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_School()*75+75)));
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
+                    getterANDSetterFile.set_School(getterANDSetterFile.get_School()+1);
                 }
                 else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
             }
