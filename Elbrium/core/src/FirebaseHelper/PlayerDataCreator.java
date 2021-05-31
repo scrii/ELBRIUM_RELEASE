@@ -1,6 +1,7 @@
 package FirebaseHelper;
 
 
+import Messages.Message;
 import Tools.GetterANDSetterFile;
 import Tools.Point2D;
 

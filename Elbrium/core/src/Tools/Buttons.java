@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.GraphicsObj.GraphicsObj;
 import com.teamname.game.Main;
+import com.teamname.game.Screens.BaseLocationSc;
 import com.teamname.game.Screens.GameSc;
 
 public class Buttons {
@@ -12,6 +13,8 @@ public class Buttons {
     Texture pressed;
     Texture texture;
     private int pointer=-1;
+    private boolean withJoy;
+    private int otherPointer=0;
 
     public boolean isTouch() {
         return isTouch;
@@ -27,10 +30,11 @@ public class Buttons {
     float endX;
     float endY;
 
-    public Buttons(Texture unPressed, Texture pressed, float width, float height, float startX, float startY) {
+    public Buttons(boolean withJoy,Texture unPressed, Texture pressed, float width, float height, float startX, float startY) {
         this.unPressed = unPressed;
         this.pressed = pressed;
         texture=unPressed;
+        this.withJoy=withJoy;
         this.width = width;
         this.height = height;
         this.startX=startX;
@@ -38,6 +42,7 @@ public class Buttons {
         endX=startX+width;
         endY=startY+height;
     }
+
 
     public boolean isButtonTouch(float clickX, float clickY){
         // нужно инвертировать координаты
@@ -52,7 +57,8 @@ public class Buttons {
 
     public void action(float x, float y, boolean isDownTouch, int pointer){
         if(isDownTouch&&isButtonTouch(x,y)&&this.pointer==-1)this.pointer=pointer;
-        if(isDownTouch&&this.pointer==pointer&& GameSc.joy.getPointer()==-1&&GameSc.joy2.getPointer()==-1){isTouch=true;texture=pressed;}
+        if(withJoy&&isDownTouch&&this.pointer==pointer&& GameSc.joy.getPointer()==-1&&GameSc.joy2.getPointer()==-1){isTouch=true;texture=pressed;}
+        else if(!withJoy&&!BaseLocationSc.onesTouched&&isDownTouch&&this.pointer==pointer){isTouch=true;texture=pressed;}
         if(!isDownTouch&&this.pointer==pointer)unPressed();
     }
 
@@ -65,5 +71,7 @@ public class Buttons {
     public void setTexture(Texture texture){
         this.texture=texture;
     }
+
+
 
 }

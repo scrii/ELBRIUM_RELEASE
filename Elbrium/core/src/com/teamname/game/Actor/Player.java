@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 import FirebaseHelper.DatabaseHelper;
 //import Online.DatabaseHelper;
-import FirebaseHelper.Message;
+import Messages.Message;
 import FirebaseHelper.PlayerDataCollect;
 import FirebaseHelper.PlayerDataCreator;
 import Tools.GetterANDSetterFile;
@@ -81,6 +81,7 @@ public class Player extends Actor {
 
     @Override
     public void update() {
+        realSpeed=Float.parseFloat(String.format("%.1f",realSpeed).replace(",","."));
         X=direction.getX()*realSpeed;
         Y=direction.getY()*realSpeed;
         position.add(X,Y);
@@ -93,6 +94,7 @@ public class Player extends Actor {
             player_data.x=send_in_ONLINE.getX();
             player_data.y=send_in_ONLINE.getY();
             databaseHelper.sendToFirebase(getter_setter.get_Nickname(),player_data.toString());
+            Gdx.app.log("pos",send_in_ONLINE.getX()+"");
         }
 
     }

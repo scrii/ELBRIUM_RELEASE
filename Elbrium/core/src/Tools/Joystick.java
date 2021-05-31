@@ -1,16 +1,11 @@
 package Tools;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.teamname.game.Actor.Player;
-import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 
 public class Joystick {
     Texture CircleImg, StickImg;
@@ -47,7 +42,7 @@ public class Joystick {
         direction = new Point2D(0, 0);
         CirclePos=new Point2D(point.getX(),point.getY());
         StickPos=new Point2D(point.getX(),point.getY());
-        Speed=GameSc.player.Speed;
+        Speed=GameSc.player!=null?GameSc.player.Speed:1;
         joyX=point.getX();
         joyY=point.getY();
         this.case_=case_;
@@ -158,7 +153,7 @@ public class Joystick {
                     GameSc.player.changeSpeed(-0.5f);
                 else if(!isDownTouch&&GameSc.player.getRealSpeed()<=0.7f)
                     GameSc.player.setRealSpeed(0);
-                Gdx.app.error("Joystick","realSpeed: "+GameSc.player.getRealSpeed());
+               // Gdx.app.error("Joystick","realSpeed: "+GameSc.player.getRealSpeed());
             }
         };
         timer.scheduleAtFixedRate(task,0,100);
@@ -167,8 +162,9 @@ public class Joystick {
     private void forMoving(){
         float coef = (float)Math.sqrt(Math.pow(StickBounds.pos.getX()-CircleBounds.pos.getX(),2)+Math.pow(StickBounds.pos.getY()-CircleBounds.pos.getY(),2));
         if(case_!=1&&(GameSc.player.Speed * coef) / Rcircle<=GameSc.player.Speed) {
-             GameSc.player.setRealSpeed((GameSc.player.Speed * coef) / Rcircle);
-             Gdx.app.error("realSPeed",GameSc.player.getRealSpeed()+"");}
+            GameSc.player.setRealSpeed((GameSc.player.Speed * coef) / Rcircle);
+            // Gdx.app.error("realSPeed",GameSc.player.getRealSpeed()+"");}
+        }
             }
 
 

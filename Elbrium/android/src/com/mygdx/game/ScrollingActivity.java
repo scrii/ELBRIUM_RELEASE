@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.OnDisconnect;
 import com.google.firebase.database.ValueEventListener;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +23,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import FirebaseHelper.Message;
+import Messages.Message;
 import FirebaseHelper.Online;
 public class ScrollingActivity extends AppCompatActivity{
     double money,plus_health,plus_attack,real_money;
@@ -37,6 +36,7 @@ public class ScrollingActivity extends AppCompatActivity{
     Online online;
     int sec=10;
     String onl="";
+    int oreCount=-1;
     @Override
     protected void onStart(){
         if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
@@ -52,8 +52,7 @@ public class ScrollingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         online(0);
         getterANDSetterFile = new GetterANDSetterFile();
-//        UserBase userBase = new UserBase();
-//        userBase.Ruin();
+
         // //
         FirebaseDatabase.getInstance().getReference("online").addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,13 +61,33 @@ public class ScrollingActivity extends AppCompatActivity{
                 //Log.e("online",onl);
                 FirebaseDatabase.getInstance().getReference("online").onDisconnect().setValue(onl.replace(getterANDSetterFile.get_Nickname()+";",""));
 
+
+                Log.e("oreC",oreCount+"");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        FirebaseDatabase.getInstance().getReference("oreCount").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.getValue()!=null)oreCount=Integer.parseInt(snapshot.getValue().toString());
+
+                Log.e("orecout",snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        for(int i=0;i<oreCount;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect().removeValue();
+
+
         // //
+
         if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
         if(getterANDSetterFile.get_Sign()==0){
             try {
@@ -115,7 +134,6 @@ public class ScrollingActivity extends AppCompatActivity{
                 if(getterANDSetterFile.get_StartChat()==1){
                     getterANDSetterFile.set_StartChat(0);
                     if(getterANDSetterFile.get_StartChat()==0)startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    getterANDSetterFile.set_StartChat(0);
                 }
             }
 
