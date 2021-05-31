@@ -74,11 +74,11 @@ public GetterANDSetterFile getterANDSetterFile;
         confirm = findViewById(R.id.infobasebutton);
         newBase = findViewById(R.id.newbase);
         whatAboutLevel = findViewById(R.id.whataboutlevel);
+        namebase.setText(getterANDSetterFile.get_NameBase()+"");
         updateValues();
         //classUserBase.colors();
         chance_Kitchen();
         chance_WorkShop();
-
         if(getterANDSetterFile.get_BaseLevel()==0){
             newBase.setVisibility(View.VISIBLE);
             whatAboutLevel.setVisibility(View.VISIBLE);
@@ -159,34 +159,22 @@ public GetterANDSetterFile getterANDSetterFile;
             int_Mill.setVisibility(View.VISIBLE);
             TownHall.setVisibility(View.VISIBLE);
         }
+        Insurrection();
         countDownTimer = new CountDownTimer(seconds*100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 seconds--;
                 updateValues();
-                r_Confirm();
-                r_newBase();
-                r_TownHall();
-                r_Kitchen();
-                r_WorkShop();
-                r_House();
-                r_School();
-                Insurrection();
-                chance_Factory();
-                r_Factory();
-                r_Tower();
-                r_Park();
-                r_Mill();
-                chance_Mill();
-                TownHall.setText(R.string.TownHall + " " + getterANDSetterFile.get_TownHall()*150.0);
-                WorkShop.setText(R.string.WorkShop + " " + (getterANDSetterFile.get_WorkShop()*150+150));
-                Kitchen.setText(R.string.Kitchen + " " + (getterANDSetterFile.get_Kitchen()*150+150));
-                House.setText(R.string.House + " " + (getterANDSetterFile.get_House()*75+75));
-                School.setText(R.string.School + " " + (getterANDSetterFile.get_School()*75+75));
-                Factory.setText(R.string.Factory + " " + (getterANDSetterFile.get_Factory()*150+150));
-                Tower.setText(R.string.Tower + " " + (getterANDSetterFile.get_Tower()*75+75));
-                Park.setText(R.string.Park + " " + (getterANDSetterFile.get_Park()*75+75));
-                Mill.setText(R.string.Mill + " " + (getterANDSetterFile.get_Mill()*150+150));
+                void_Insurrection();
+                TownHall.setText("Ратуша" + " " + getterANDSetterFile.get_TownHall()*150);
+                WorkShop.setText("Мастерская " + (getterANDSetterFile.get_WorkShop()*150+150));
+                Kitchen.setText("Столовая " + (getterANDSetterFile.get_Kitchen()*150+150));
+                House.setText("Жилой дом " + (getterANDSetterFile.get_House()*75+75));
+                School.setText("Школа " + (getterANDSetterFile.get_School()*75+75));
+                Factory.setText("Фабрика " + (getterANDSetterFile.get_Factory()*150+150));
+                Tower.setText("Вышка " + (getterANDSetterFile.get_Tower()*75+75));
+                Park.setText("Парк " + (getterANDSetterFile.get_Park()*75+75));
+                Mill.setText("Завод " + (getterANDSetterFile.get_Mill()*150+150));
             }
             @Override
             public void onFinish() {
@@ -200,9 +188,20 @@ public GetterANDSetterFile getterANDSetterFile;
             seconds = 1;
             countDownTimer.start();
         }
-
-
-
+        r_Confirm();
+        r_newBase();
+        r_TownHall();
+        r_Kitchen();
+        r_WorkShop();
+        r_House();
+        r_School();
+        Insurrection();
+        chance_Factory();
+        r_Factory();
+        r_Tower();
+        r_Park();
+        r_Mill();
+        chance_Mill();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
@@ -283,7 +282,7 @@ public GetterANDSetterFile getterANDSetterFile;
         confirm = findViewById(R.id.infobasebutton);
         newBase = findViewById(R.id.newbase);
         whatAboutLevel = findViewById(R.id.whataboutlevel);
-        namebase.setText(getterANDSetterFile.get_NameBase()+"");
+
         realhealth.setText(getterANDSetterFile.get_HealthBase()+"");
         int_villagers.setText(getterANDSetterFile.get_Villagers()+"");
         int_happiness.setText(getterANDSetterFile.get_Happiness()+"");
@@ -346,6 +345,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Mill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_TownHall()>=6){
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Mill()*150+150))){
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Mill()*150+150)));
@@ -354,7 +354,7 @@ public GetterANDSetterFile getterANDSetterFile;
                     }
                     else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
                 }
-                else Toast.makeText(getApplicationContext(),"Уровень "+R.string.TownHall + " слишком низок",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),"Уровень "+"Ратуши" + " слишком низок",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -363,6 +363,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Park.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Park()*75+75))){
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Park()*75+75)));
                     getterANDSetterFile.set_Park(getterANDSetterFile.get_Park()+1);
@@ -377,6 +378,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Tower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_TownHall()>=3){
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Tower()*75+75))){
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Tower()*75+75)));
@@ -387,7 +389,7 @@ public GetterANDSetterFile getterANDSetterFile;
                     }
                     else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
                 }
-                else Toast.makeText(getApplicationContext(),"Уровень "+R.string.TownHall + " слишком низок",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),"Уровень "+"Ратуши" + " слишком низок",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -396,6 +398,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Factory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_Factory()<=7){
                     if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_Factory()*150+150))){
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_Factory()*150+150)));
@@ -454,6 +457,86 @@ public GetterANDSetterFile getterANDSetterFile;
         getterANDSetterFile.set_Tower(0);
         getterANDSetterFile.set_Park(0);
         getterANDSetterFile.set_Mill(0);
+        if(getterANDSetterFile.get_BaseLevel()==0){
+            newBase.setVisibility(View.VISIBLE);
+            whatAboutLevel.setVisibility(View.VISIBLE);
+            //===============================
+            namebase.setVisibility(View.INVISIBLE);
+            confirm.setVisibility(View.INVISIBLE);
+            infohealth.setVisibility(View.INVISIBLE);
+            realhealth.setVisibility(View.INVISIBLE);
+            villagers.setVisibility(View.INVISIBLE);
+            int_villagers.setVisibility(View.INVISIBLE);
+            int_happiness.setVisibility(View.INVISIBLE);
+            happiness.setVisibility(View.INVISIBLE);
+            but_TownHall.setVisibility(View.INVISIBLE);
+            but_Tower.setVisibility(View.INVISIBLE);
+            but_Park.setVisibility(View.INVISIBLE);
+            but_Mill.setVisibility(View.INVISIBLE);
+            but_Factory.setVisibility(View.INVISIBLE);
+            but_School.setVisibility(View.INVISIBLE);
+            but_House.setVisibility(View.INVISIBLE);
+            but_WorkShop.setVisibility(View.INVISIBLE);
+            but_Kitchen.setVisibility(View.INVISIBLE);
+            int_TownHall.setVisibility(View.INVISIBLE);
+            WorkShop.setVisibility(View.INVISIBLE);
+            int_WorkShop.setVisibility(View.INVISIBLE);
+            Kitchen.setVisibility(View.INVISIBLE);
+            int_Kitchen.setVisibility(View.INVISIBLE);
+            House.setVisibility(View.INVISIBLE);
+            int_House.setVisibility(View.INVISIBLE);
+            School.setVisibility(View.INVISIBLE);
+            int_School.setVisibility(View.INVISIBLE);
+            Factory.setVisibility(View.INVISIBLE);
+            int_Factory.setVisibility(View.INVISIBLE);
+            Tower.setVisibility(View.INVISIBLE);
+            int_Tower.setVisibility(View.INVISIBLE);
+            Park.setVisibility(View.INVISIBLE);
+            int_Park.setVisibility(View.INVISIBLE);
+            Mill.setVisibility(View.INVISIBLE);
+            int_Mill.setVisibility(View.INVISIBLE);
+            TownHall.setVisibility(View.INVISIBLE);
+        }
+        else {
+            newBase.setVisibility(View.INVISIBLE);
+            whatAboutLevel.setVisibility(View.INVISIBLE);
+            //====================================
+            namebase.setVisibility(View.VISIBLE);
+            confirm.setVisibility(View.VISIBLE);
+            infohealth.setVisibility(View.VISIBLE);
+            realhealth.setVisibility(View.VISIBLE);
+            villagers.setVisibility(View.VISIBLE);
+            int_villagers.setVisibility(View.VISIBLE);
+            int_happiness.setVisibility(View.VISIBLE);
+            happiness.setVisibility(View.VISIBLE);
+            but_TownHall.setVisibility(View.VISIBLE);
+            but_Tower.setVisibility(View.VISIBLE);
+            but_Park.setVisibility(View.VISIBLE);
+            but_Mill.setVisibility(View.VISIBLE);
+            but_Factory.setVisibility(View.VISIBLE);
+            but_School.setVisibility(View.VISIBLE);
+            but_House.setVisibility(View.VISIBLE);
+            but_WorkShop.setVisibility(View.VISIBLE);
+            but_Kitchen.setVisibility(View.VISIBLE);
+            int_TownHall.setVisibility(View.VISIBLE);
+            WorkShop.setVisibility(View.VISIBLE);
+            int_WorkShop.setVisibility(View.VISIBLE);
+            Kitchen.setVisibility(View.VISIBLE);
+            int_Kitchen.setVisibility(View.VISIBLE);
+            House.setVisibility(View.VISIBLE);
+            int_House.setVisibility(View.VISIBLE);
+            School.setVisibility(View.VISIBLE);
+            int_School.setVisibility(View.VISIBLE);
+            Factory.setVisibility(View.VISIBLE);
+            int_Factory.setVisibility(View.VISIBLE);
+            Tower.setVisibility(View.VISIBLE);
+            int_Tower.setVisibility(View.VISIBLE);
+            Park.setVisibility(View.VISIBLE);
+            int_Park.setVisibility(View.VISIBLE);
+            Mill.setVisibility(View.VISIBLE);
+            int_Mill.setVisibility(View.VISIBLE);
+            TownHall.setVisibility(View.VISIBLE);
+        }
     }
     public void Insurrection(){
         getterANDSetterFile = new GetterANDSetterFile();
@@ -467,11 +550,17 @@ public GetterANDSetterFile getterANDSetterFile;
             Toast.makeText(getApplicationContext(),"Уровень счастья на хорошем уровне. Люди считают, что вы им ненужны. Вы потеряли всё",Toast.LENGTH_SHORT).show();
         }
     }
+    public void void_Insurrection(){
+        getterANDSetterFile = new GetterANDSetterFile();
+        if(getterANDSetterFile.get_Happiness()<10)Ruin();
+        if(getterANDSetterFile.get_Happiness()>55)Ruin();
+    }
     public void r_School(){
         getterANDSetterFile = new GetterANDSetterFile();
         but_School.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_School()*75+75))){
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_School()*75+75)));
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
@@ -485,6 +574,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_House.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_Guardian_Money()>=((double)(getterANDSetterFile.get_House()*75+75))){
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_House()*75+75)));
                     getterANDSetterFile.set_House(getterANDSetterFile.get_House()+1);
@@ -502,6 +592,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Factory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_WorkShop()<=7){
                     if(getterANDSetterFile.get_TownHall()>=5){
                         if(getterANDSetterFile.get_Villagers()>0){
@@ -514,7 +605,7 @@ public GetterANDSetterFile getterANDSetterFile;
                         }
                         else Toast.makeText(getApplicationContext(),"Недостаточно людей, постройте дома",Toast.LENGTH_SHORT).show();
                     }
-                    else Toast.makeText(getApplicationContext(),"Уровень "+R.string.TownHall + " слишком низок",Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(getApplicationContext(),"Уровень "+"Ратуши" + " слишком низок",Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(getApplicationContext(),"Вы достигли максимального уровня",Toast.LENGTH_SHORT).show();
             }
@@ -531,6 +622,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_Kitchen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_Kitchen()<=7){
                     if(getterANDSetterFile.get_TownHall()>=4){
                         if(getterANDSetterFile.get_Villagers()>0){
@@ -542,7 +634,7 @@ public GetterANDSetterFile getterANDSetterFile;
                         }
                         else Toast.makeText(getApplicationContext(),"Недостаточно людей, постройте дома",Toast.LENGTH_SHORT).show();
                     }
-                    else Toast.makeText(getApplicationContext(),"Уровень "+R.string.TownHall + " слишком низок",Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(getApplicationContext(),"Уровень "+"Ратуши" + " слишком низок",Toast.LENGTH_SHORT).show();
                 }
                 else Toast.makeText(getApplicationContext(),"Вы достигли максимального уровня",Toast.LENGTH_SHORT).show();
             }
@@ -559,6 +651,7 @@ public GetterANDSetterFile getterANDSetterFile;
         but_TownHall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Insurrection();
                 if(getterANDSetterFile.get_TownHall()<=7){
                     if(getterANDSetterFile.get_Guardian_Money() >= (150.0*getterANDSetterFile.get_TownHall())){
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(150.0*getterANDSetterFile.get_TownHall()));
@@ -581,7 +674,87 @@ public GetterANDSetterFile getterANDSetterFile;
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
                     getterANDSetterFile.set_BaseLevel(1);
                     getterANDSetterFile.set_TownHall(1);
-
+                    updateValues();
+                    if(getterANDSetterFile.get_BaseLevel()==0){
+                        newBase.setVisibility(View.VISIBLE);
+                        whatAboutLevel.setVisibility(View.VISIBLE);
+                        //===============================
+                        namebase.setVisibility(View.INVISIBLE);
+                        confirm.setVisibility(View.INVISIBLE);
+                        infohealth.setVisibility(View.INVISIBLE);
+                        realhealth.setVisibility(View.INVISIBLE);
+                        villagers.setVisibility(View.INVISIBLE);
+                        int_villagers.setVisibility(View.INVISIBLE);
+                        int_happiness.setVisibility(View.INVISIBLE);
+                        happiness.setVisibility(View.INVISIBLE);
+                        but_TownHall.setVisibility(View.INVISIBLE);
+                        but_Tower.setVisibility(View.INVISIBLE);
+                        but_Park.setVisibility(View.INVISIBLE);
+                        but_Mill.setVisibility(View.INVISIBLE);
+                        but_Factory.setVisibility(View.INVISIBLE);
+                        but_School.setVisibility(View.INVISIBLE);
+                        but_House.setVisibility(View.INVISIBLE);
+                        but_WorkShop.setVisibility(View.INVISIBLE);
+                        but_Kitchen.setVisibility(View.INVISIBLE);
+                        int_TownHall.setVisibility(View.INVISIBLE);
+                        WorkShop.setVisibility(View.INVISIBLE);
+                        int_WorkShop.setVisibility(View.INVISIBLE);
+                        Kitchen.setVisibility(View.INVISIBLE);
+                        int_Kitchen.setVisibility(View.INVISIBLE);
+                        House.setVisibility(View.INVISIBLE);
+                        int_House.setVisibility(View.INVISIBLE);
+                        School.setVisibility(View.INVISIBLE);
+                        int_School.setVisibility(View.INVISIBLE);
+                        Factory.setVisibility(View.INVISIBLE);
+                        int_Factory.setVisibility(View.INVISIBLE);
+                        Tower.setVisibility(View.INVISIBLE);
+                        int_Tower.setVisibility(View.INVISIBLE);
+                        Park.setVisibility(View.INVISIBLE);
+                        int_Park.setVisibility(View.INVISIBLE);
+                        Mill.setVisibility(View.INVISIBLE);
+                        int_Mill.setVisibility(View.INVISIBLE);
+                        TownHall.setVisibility(View.INVISIBLE);
+                    }
+                    else {
+                        newBase.setVisibility(View.INVISIBLE);
+                        whatAboutLevel.setVisibility(View.INVISIBLE);
+                        //====================================
+                        namebase.setVisibility(View.VISIBLE);
+                        confirm.setVisibility(View.VISIBLE);
+                        infohealth.setVisibility(View.VISIBLE);
+                        realhealth.setVisibility(View.VISIBLE);
+                        villagers.setVisibility(View.VISIBLE);
+                        int_villagers.setVisibility(View.VISIBLE);
+                        int_happiness.setVisibility(View.VISIBLE);
+                        happiness.setVisibility(View.VISIBLE);
+                        but_TownHall.setVisibility(View.VISIBLE);
+                        but_Tower.setVisibility(View.VISIBLE);
+                        but_Park.setVisibility(View.VISIBLE);
+                        but_Mill.setVisibility(View.VISIBLE);
+                        but_Factory.setVisibility(View.VISIBLE);
+                        but_School.setVisibility(View.VISIBLE);
+                        but_House.setVisibility(View.VISIBLE);
+                        but_WorkShop.setVisibility(View.VISIBLE);
+                        but_Kitchen.setVisibility(View.VISIBLE);
+                        int_TownHall.setVisibility(View.VISIBLE);
+                        WorkShop.setVisibility(View.VISIBLE);
+                        int_WorkShop.setVisibility(View.VISIBLE);
+                        Kitchen.setVisibility(View.VISIBLE);
+                        int_Kitchen.setVisibility(View.VISIBLE);
+                        House.setVisibility(View.VISIBLE);
+                        int_House.setVisibility(View.VISIBLE);
+                        School.setVisibility(View.VISIBLE);
+                        int_School.setVisibility(View.VISIBLE);
+                        Factory.setVisibility(View.VISIBLE);
+                        int_Factory.setVisibility(View.VISIBLE);
+                        Tower.setVisibility(View.VISIBLE);
+                        int_Tower.setVisibility(View.VISIBLE);
+                        Park.setVisibility(View.VISIBLE);
+                        int_Park.setVisibility(View.VISIBLE);
+                        Mill.setVisibility(View.VISIBLE);
+                        int_Mill.setVisibility(View.VISIBLE);
+                        TownHall.setVisibility(View.VISIBLE);
+                    }
                 }
                 else Toast.makeText(getApplicationContext(),"Недостаточно средств",Toast.LENGTH_SHORT).show();
             }
@@ -596,5 +769,4 @@ public GetterANDSetterFile getterANDSetterFile;
             }
         });
     }
-
 }

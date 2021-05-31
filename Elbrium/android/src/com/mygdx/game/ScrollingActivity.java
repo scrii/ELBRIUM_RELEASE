@@ -52,7 +52,8 @@ public class ScrollingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         online(0);
         getterANDSetterFile = new GetterANDSetterFile();
-
+//        UserBase userBase = new UserBase();
+//        userBase.Ruin();
         // //
         FirebaseDatabase.getInstance().getReference("online").addValueEventListener(new ValueEventListener() {
             @Override
@@ -67,10 +68,7 @@ public class ScrollingActivity extends AppCompatActivity{
 
             }
         });
-
-
         // //
-
         if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
         if(getterANDSetterFile.get_Sign()==0){
             try {
@@ -117,6 +115,7 @@ public class ScrollingActivity extends AppCompatActivity{
                 if(getterANDSetterFile.get_StartChat()==1){
                     getterANDSetterFile.set_StartChat(0);
                     if(getterANDSetterFile.get_StartChat()==0)startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    getterANDSetterFile.set_StartChat(0);
                 }
             }
 
