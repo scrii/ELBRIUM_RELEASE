@@ -1,8 +1,11 @@
 package com.mygdx.game;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.icu.util.VersionInfo;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,7 +55,6 @@ public class ScrollingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         online(0);
         getterANDSetterFile = new GetterANDSetterFile();
-
         // //
         FirebaseDatabase.getInstance().getReference("online").addValueEventListener(new ValueEventListener() {
             @Override
