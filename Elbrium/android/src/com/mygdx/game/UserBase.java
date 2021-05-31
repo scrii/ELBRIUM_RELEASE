@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -120,7 +121,15 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.userbase, menu);
+        return true;
+    }
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.quest)Log.d("Quest","TRUE");
+        if(id==R.id.map)Log.d("Map","TRUE");
         switch (item.getItemId()) {
             case android.R.id.home:
                 this.finish();
@@ -359,7 +368,7 @@ public GetterANDSetterFile getterANDSetterFile;
         try {
             if(Build.VERSION_CODES.P>=28){
                 if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)==Configuration.UI_MODE_NIGHT_YES){
-                    textView.setBackgroundColor(Color.parseColor("121212"));
+                    textView.setBackgroundColor(getResources().getColor(R.color.base));
                 }
                 else textView.setBackgroundColor(Color.WHITE);
             }

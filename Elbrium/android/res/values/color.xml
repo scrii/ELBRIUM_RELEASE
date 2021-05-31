@@ -45,4 +45,5 @@
     <color name="seventy_ninety">#baa845</color>
     <color name="ninety_one_hundred">#b1a14e</color>
     <color name="other">#cfd9ff</color>
+    <color name="base">#121212</color>
 </resources>
