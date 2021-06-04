@@ -94,5 +94,6 @@
     <string name="three">3</string>
     <string name="accept">Применить</string>
     <string name="missions">Миссии</string>
-    |<string name="map">Карта</string>
+    <string name="next">Продолжить</string>
+    <string name="map">Карта</string>
 </resources>

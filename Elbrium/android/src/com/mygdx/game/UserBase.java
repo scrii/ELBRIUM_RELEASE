@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
@@ -128,7 +129,7 @@ public GetterANDSetterFile getterANDSetterFile;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id==R.id.quest)Log.d("Quest","TRUE");
+        if(id==R.id.quest)startActivity(new Intent(UserBase.this,Quest.class));
         if(id==R.id.map)Log.d("Map","TRUE");
         switch (item.getItemId()) {
             case android.R.id.home:

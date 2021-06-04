@@ -14,8 +14,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".UserBase"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".Quest"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".UserBase"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TableLeader"
             android:screenOrientation="portrait" />
