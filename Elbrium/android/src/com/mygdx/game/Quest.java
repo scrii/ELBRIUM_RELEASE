@@ -23,6 +23,7 @@ public class Quest extends AppCompatActivity {
     public boolean parametr=true;
     public int pro_result=0;
     TextView npc_tv,description;
+    String res="";
     Button btn_next,btn_exit,first,second,third;
     EditText input;
     ImageView img;
@@ -32,7 +33,9 @@ public class Quest extends AppCompatActivity {
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if(!parametr){
             if(pro_result==1)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
-            //if(pro_result==2)
+            if(pro_result==2)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+            if(pro_result==3)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+
         }
         super.onPause();
     }
@@ -64,6 +67,141 @@ public class Quest extends AppCompatActivity {
                 startActivity(new Intent(Quest.this,ScrollingActivity.class));
             }
         });
+    }
+    public void one(){
+        ID();
+        o_button();
+        o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_ONE theme_one = new THEME_ONE();
+        ra1 = 1 + (int) (Math.random() * 10);
+        if(ra1==1 && getterANDSetterFile.get_Guardian_Money()>=50){
+            pro_result=1;
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(theme_one.q1);
+            second.setText("Да");
+            third.setText("Нет");
+            if(button(second)=="Да"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
+                start_plus();
+            }
+            if(button(third)=="Нет"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+                start_plus();
+            }
+            exit(true);
+        }
+        else random();
+        if(ra1==2 && getterANDSetterFile.get_Guardian_Money()>=100.0){
+            pro_result=2;
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(theme_one.q2);
+            second.setText("Оставить всё как есть");
+            third.setText("Уничтожить");
+            if(button(second)=="Оставить всё как есть"){
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-100.0);
+                start_plus();
+            }
+            if(button(third)=="Уничтожить"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+                start_plus();
+            }
+            exit(true);
+        }
+        else random();
+        if(ra1==3){
+            pro_result=3;
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(theme_one.q3);
+            second.setText("Выдать");
+            third.setText("Отказать");
+            d_input();
+            if(button(second)=="Выдать"){
+                if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText("Но я не просил столько!");
+                if(Integer.parseInt(input.getText().toString())>50 || Integer.parseInt(input.getText().toString())<300){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-Integer.parseInt(input.getText().toString()));
+                    start_plus();
+                }
+            }
+            if(button(third)=="Отказать"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+                start_plus();
+            }
+            exit(true);
+        }
+        if(ra1==4 && getterANDSetterFile.get_Band()!=1){
+            pro_result=4;
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(theme_one.q4_1);
+            second.setText("Уничтожить");
+            third.setText("Оставить");
+            if(button(second)=="Уничтожить"){
+                img.setImageResource(R.mipmap.bandit);
+                npc_tv.setText(theme_one.q4_2);
+                second.setText("Оставить");
+                third.setText("Убирайтесь");
+                if(button(second)=="Оставить"){
+                    int a = 1 + (int) (Math.random() * 100);
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
+                    description.setText(theme_one.q4_12_c);
+                    getterANDSetterFile.set_Band(1);
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+                }
+                if(button(third)=="Убирайтесь"){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
+                }
+            }
+            if(button(third)=="Оставить"){
+                int a = 1 + (int) (Math.random() * 100);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
+                description.setText(theme_one.q4_12_c);
+                getterANDSetterFile.set_Band(1);
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+            }
+        }
+        else random();
+        if(ra1==5 && getterANDSetterFile.get_Guardian_Money()>=5){
+
+        }
+        else random();
+    }
+    public void two(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void three(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void four(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void five(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void six(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void seven(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void eight(){
+        ID();
+        o_button();
+        o_input();
     }
     public void exit(boolean tf){
         parametr = tf;
@@ -148,70 +286,13 @@ public class Quest extends AppCompatActivity {
         input.setVisibility(View.INVISIBLE);
     }
     public String button(Button b){
-        String res;
-        res = b.getText().toString();
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                res = b.getText().toString();
+            }
+        });
         return res;
-    }
-
-    public void one(){
-        ID();
-        o_button();
-        o_input();
-        start();
-        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        THEME_ONE theme_one = new THEME_ONE();
-        ra1 = 1 + (int) (Math.random() * 10);
-        if(ra1==1 && getterANDSetterFile.get_Guardian_Money()>=50){
-            pro_result=1;
-            img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q1);
-            second.setText("Да");
-            third.setText("Нет");
-            if(button(second)=="Да"){
-                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
-                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
-                start_plus();
-            }
-            if(button(third)=="Нет"){
-                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
-                start_plus();
-            }
-        }
-    }
-    public void two(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void three(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void four(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void five(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void six(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void seven(){
-        ID();
-        o_button();
-        o_input();
-    }
-    public void eight(){
-        ID();
-        o_button();
-        o_input();
     }
     public void comments(String s, TextView textMessage){
         String comment = textMessage.getText().toString();
