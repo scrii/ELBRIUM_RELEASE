@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 
 public class GetterANDSetterFile {
     double real_attack=0,real_health=0,real_protection=0,real_speed=0,real_money=0,real_ore_elbrium=0,real_maneuverability=0;
-    int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0,real_startChat=0,TrueOrFalse=0,real_music=0,real_appearance=0,real_base_level=0,real_healthBase=0,real_villagers=0,real_happiness=0;
+    int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0,real_startChat=0,TrueOrFalse=0,real_music=0,real_appearance=0,real_base_level=0,real_healthBase=0,real_villagers=0,real_happiness=0,real_band=0,real_church=0,real_devil=0,real_block=0,real_dungeon=0;
     String real_message="",real_nickname="",myData = "",strLine,real_leaders="",nameBase="";
     int x1=0,x2=0,x3=0,x4=0,x5=0,x6=0,x7=0,x8=0,x9=0;
     File myExternalFile;
@@ -21,6 +21,151 @@ public class GetterANDSetterFile {
     File file;
     PrintWriter printWriter;
     public GetterANDSetterFile(){}
+    public int get_Dungeon(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/Dungeon.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_dungeon = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_dungeon;
+    }
+    public void set_Dungeon(int r_dungeon){
+        file = new File("/data/data/com.mygdx.game/Dungeon.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_dungeon));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public int get_Block(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/Block.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_block = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_block;
+    }
+    public void set_Block(int r_block){
+        file = new File("/data/data/com.mygdx.game/Block.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_block));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public int get_Devil(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/Devil.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_devil = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_devil;
+    }
+    public void set_Devil(int r_devil){
+        file = new File("/data/data/com.mygdx.game/Devil.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_devil));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public int get_Church(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/Church.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_church = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_church;
+    }
+    public void set_Church(int r_church){
+        file = new File("/data/data/com.mygdx.game/Church.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_church));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public int get_Band(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/Band.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_band = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_band;
+    }
+    public void set_Band(int r_band){
+        file = new File("/data/data/com.mygdx.game/Band.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_band));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public int get_TownHall(){
         myData = "";
         myExternalFile = new File("/data/data/com.mygdx.game/TownHall.txt");

@@ -2,25 +2,216 @@ package com.mygdx.game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.teamname.game.Main;
 
 public class Quest extends AppCompatActivity {
-    int kolvo_symbols = 0,k1,k2;
+    int kolvo_symbols = 0,k1,k2,m=0,ra1;
+    public boolean parametr=true;
+    public int pro_result=0;
+    TextView npc_tv,description;
+    Button btn_next,btn_exit,first,second,third;
+    EditText input;
+    ImageView img;
+    @Override
+    protected void onPause(){
+        exit(false);
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        if(!parametr){
+            if(pro_result==1)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+            //if(pro_result==2)
+        }
+        super.onPause();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quest);
         getSupportActionBar().hide();
-        THEME_ONE t1 = new THEME_ONE();
+        start();
+        exit(true);
+        THEME_ONE theme_one = new THEME_ONE();
+        THEME_TWO theme_two = new THEME_TWO();
+        THEME_THREE theme_three = new THEME_THREE(); //band
+        THEME_FOUR theme_four = new THEME_FOUR(); //church
+        THEME_FIVE theme_five = new THEME_FIVE(); //devil
+        THEME_SIX theme_six = new THEME_SIX();
+        THEME_SEVEN theme_seven = new THEME_SEVEN(); //dungeon
+        THEME_EIGHT theme_eight = new THEME_EIGHT();
+        random();
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                random();
+            }
+        });
+        btn_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Quest.this,ScrollingActivity.class));
+            }
+        });
+    }
+    public void exit(boolean tf){
+        parametr = tf;
+    }
 
+    private void ID(){
+        npc_tv = findViewById(R.id.nps_tv);
+        description = findViewById(R.id.description);
+        btn_next = findViewById(R.id.btn_next);
+        btn_exit = findViewById(R.id.btn_exit);
+        first = findViewById(R.id.first);
+        second = findViewById(R.id.second);
+        third = findViewById(R.id.third);
+        input = findViewById(R.id.input);
+        img = findViewById(R.id.nps_img);
+    }
+    public void random(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        m = 1 + (int) (Math.random() * 8);
+        if(m==1)one();
+        if(m==2)two();
+        if(m==3 && getterANDSetterFile.get_Band()==1)three();
+        else random();
+        if(m==4 && getterANDSetterFile.get_Church()!=0)four();
+        else random();
+        if(m==5 && getterANDSetterFile.get_Devil()!=0)five();
+        else random();
+        if(m==6)six();
+        if(m==7 && getterANDSetterFile.get_Dungeon()==1)seven();
+        else random();
+        if(m==8)eight();
+    }
+    public void start(){
+        ID();
+        npc_tv.setVisibility(View.VISIBLE);
+        description.setVisibility(View.VISIBLE);
+        first.setVisibility(View.VISIBLE);
+        second.setVisibility(View.VISIBLE);
+        third.setVisibility(View.VISIBLE);
+        input.setVisibility(View.VISIBLE);
+        img.setVisibility(View.VISIBLE);
+        btn_next.setVisibility(View.INVISIBLE);
+        btn_exit.setVisibility(View.INVISIBLE);
+    }
+    public void start_plus(){
+        npc_tv.setVisibility(View.VISIBLE);
+        description.setVisibility(View.VISIBLE);
+        first.setVisibility(View.VISIBLE);
+        second.setVisibility(View.VISIBLE);
+        third.setVisibility(View.VISIBLE);
+        input.setVisibility(View.VISIBLE);
+        img.setVisibility(View.VISIBLE);
+        btn_next.setVisibility(View.VISIBLE);
+        btn_exit.setVisibility(View.VISIBLE);
+    }
+    public void hide(){
+        ID();
+        npc_tv.setVisibility(View.INVISIBLE);
+        description.setVisibility(View.INVISIBLE);
+        first.setVisibility(View.INVISIBLE);
+        second.setVisibility(View.INVISIBLE);
+        third.setVisibility(View.INVISIBLE);
+        input.setVisibility(View.INVISIBLE);
+        img.setVisibility(View.INVISIBLE);
+        btn_next.setVisibility(View.VISIBLE);
+        btn_exit.setVisibility(View.VISIBLE);
+    }
+    public void d_button(){
+        ID();
+        first.setVisibility(View.VISIBLE);
+    }
+    public void d_input(){
+        ID();
+        input.setVisibility(View.VISIBLE);
+    }
+    public void o_button(){
+        ID();
+        first.setVisibility(View.INVISIBLE);
+    }
+    public void o_input(){
+        ID();
+        input.setVisibility(View.INVISIBLE);
+    }
+    public String button(Button b){
+        String res;
+        res = b.getText().toString();
+        return res;
+    }
+
+    public void one(){
+        ID();
+        o_button();
+        o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_ONE theme_one = new THEME_ONE();
+        ra1 = 1 + (int) (Math.random() * 10);
+        if(ra1==1 && getterANDSetterFile.get_Guardian_Money()>=50){
+            pro_result=1;
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(theme_one.q1);
+            second.setText("Да");
+            third.setText("Нет");
+            if(button(second)=="Да"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
+                start_plus();
+            }
+            if(button(third)=="Нет"){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+                start_plus();
+            }
+        }
+    }
+    public void two(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void three(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void four(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void five(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void six(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void seven(){
+        ID();
+        o_button();
+        o_input();
+    }
+    public void eight(){
+        ID();
+        o_button();
+        o_input();
     }
     public void comments(String s, TextView textMessage){
         String comment = textMessage.getText().toString();
