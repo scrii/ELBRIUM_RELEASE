@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Quest extends AppCompatActivity {
-    int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,sec=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0;
+    int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0;
     int[]k = new int[70];
     CountDownTimer countDownTimer;
     public boolean parametr=true;
@@ -68,22 +68,24 @@ public class Quest extends AppCompatActivity {
         for (int i = 0; i < 70; i++) {
             k[i] = 0;
         }
-        countDownTimer = new CountDownTimer(sec*100,1000) {
+        countDownTimer = new CountDownTimer(c*100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                sec--;
+                c--;
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
+                comments(npc_tv);
+                comments(description);
             }
             @Override
             public void onFinish() {
                 if (countDownTimer != null){
-                    sec = 1;
+                    c = 1;
                     countDownTimer.start();
                 }
             }
         };
         if (countDownTimer != null){
-            sec = 1;
+            c = 1;
             countDownTimer.start();
         }
         random();
@@ -111,7 +113,7 @@ public class Quest extends AppCompatActivity {
         if(ra1==1 && getterANDSetterFile.get_Guardian_Money()>=50){
             pro_result=1;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q1);
             second.setText("Да");
             third.setText("Нет");
             if(button(second)){
@@ -129,7 +131,7 @@ public class Quest extends AppCompatActivity {
         if(ra1==2 && getterANDSetterFile.get_Guardian_Money()>=100.0){
             pro_result=2;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q2);
             second.setText("Оставить всё как есть");
             third.setText("Уничтожить");
             if(button(second)){
@@ -146,12 +148,12 @@ public class Quest extends AppCompatActivity {
         if(ra1==3){
             pro_result=3;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q3);
             second.setText("Выдать");
             third.setText("Отказать");
             d_input();
             if(button(second)){
-                if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText("Но я не просил столько!");
+                if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText(npc_tv.getText().toString() + "\n" + "Но я не просил столько!");
                 if(Integer.parseInt(input.getText().toString())>50 || Integer.parseInt(input.getText().toString())<300){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-Integer.parseInt(input.getText().toString()));
@@ -167,18 +169,18 @@ public class Quest extends AppCompatActivity {
         if(ra1==4 && getterANDSetterFile.get_Band()!=1){
             pro_result=4;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q4_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q4_1);
             second.setText("Уничтожить");
             third.setText("Оставить");
             if(button(second)){
                 img.setImageResource(R.mipmap.bandit);
-                npc_tv.setText(theme_one.q4_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q4_2);
                 second.setText("Оставить");
                 third.setText("Убирайтесь");
                 if(button(second)){
                     int a = 1 + (int) (Math.random() * 100);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
-                    description.setText(theme_one.q4_12_c);
+                    description.setText(description.getText().toString() + "\n" + theme_one.q4_12_c);
                     getterANDSetterFile.set_Band(1);
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                     start_plus();
@@ -191,7 +193,7 @@ public class Quest extends AppCompatActivity {
             if(button(third)){
                 int a = 1 + (int) (Math.random() * 100);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
-                description.setText(theme_one.q4_12_c);
+                description.setText(description.getText().toString() + "\n" +theme_one.q4_12_c);
                 getterANDSetterFile.set_Band(1);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                 start_plus();
@@ -202,16 +204,16 @@ public class Quest extends AppCompatActivity {
             pro_result=5;
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Да");
-            npc_tv.setText(theme_one.q5_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_1);
             third.setText("Нет");
             if(button(second)){
                 d_button();
-                npc_tv.setText(theme_one.q5_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_2);
                 first.setText("Отругать");
                 second.setText("Будь осторожнее *дать 5 монет*");
                 third.setText("Забудь");
                 if(button(first)){
-                    npc_tv.setText(theme_one.q5_3);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_3);
                     o_button();
                     second.setText("Промолчать");
                     third.setText("Накричать");
@@ -238,19 +240,19 @@ public class Quest extends AppCompatActivity {
         if(ra1==6 && getterANDSetterFile.get_Church()==0){
             pro_result=6;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q6);
             second.setText("Прогнать");
             third.setText("Радушно встретить");
             if(button(second)){
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-4);
                 getterANDSetterFile.set_Church(-1);
-                description.setText(theme_one.q6_c);
+                description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
                 start_plus();
             }
             if(button(third)){
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+4);
                 getterANDSetterFile.set_Church(1);
-                description.setText(theme_one.q6_c);
+                description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
                 start_plus();
             }
         }
@@ -258,7 +260,7 @@ public class Quest extends AppCompatActivity {
         if(ra1==7 && getterANDSetterFile.get_Guardian_Money()>=50.0){
             pro_result=7;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q7);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q7);
             second.setText("Можно");
             third.setText("Нет");
             if(button(second)){
@@ -275,13 +277,13 @@ public class Quest extends AppCompatActivity {
         if(ra1==8 && getterANDSetterFile.get_Guardian_Money()>=(double)(getterANDSetterFile.get_School()*75+75)){
             pro_result=8;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_one.q8);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q8);
             d_button();
             first.setText("Вообще-то их достаточно");
             second.setText("Нет");
             third.setText("Так постройте больше школ!");
             if(button(first)){
-                if(getterANDSetterFile.get_Villagers()<getterANDSetterFile.get_School())description.setText(theme_one.q8_c);
+                if(getterANDSetterFile.get_Villagers()<getterANDSetterFile.get_School())description.setText(description.getText().toString() + "\n" +theme_one.q8_c);
                 else getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 start_plus();
             }
@@ -300,13 +302,13 @@ public class Quest extends AppCompatActivity {
             pro_result=9;
             img.setImageResource(R.mipmap.base_avatar_1);
             d_button();
-            npc_tv.setText(theme_one.q9);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q9);
             first.setText("Но я только в прошлом месяце построил новый!");
             second.setText("Нет");
             third.setText("Так постройте больше парков!");
             if (button(first)){
                 if (getterANDSetterFile.get_Park()>getterANDSetterFile.get_Villagers()){
-                    description.setText(theme_one.q9_c);
+                    description.setText(description.getText().toString() + "\n" + theme_one.q9_c);
                     start_plus();
                 }
                 else getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
@@ -324,12 +326,12 @@ public class Quest extends AppCompatActivity {
         else random();
         if(ra1==10){
             pro_result=10;
-            npc_tv.setText(theme_one.q10_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q10_1);
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Давай");
             third.setText("Нет");
             if (button(second)){
-                npc_tv.setText(theme_one.q10_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q10_2);
                 second.setText("Шедевр, можешь не продолжать");
                 third.setText("Ты что пьян?");
                 if (button(second)){
@@ -357,7 +359,7 @@ public class Quest extends AppCompatActivity {
         ra2 = 1 + (int) (Math.random() * 10);
         if (ra2==1 && getterANDSetterFile.get_Guardian_Money()>=10){
             pro_result=11;
-            npc_tv.setText(theme_two.m1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m1);
             img.setImageResource(R.mipmap.base_avatar_1);
             d_button();
             first.setText("Дать ограбленные деньги");
@@ -368,7 +370,7 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(second)){
-                description.setText(theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
                 start_plus();
             }
             if (button(third)){
@@ -378,13 +380,13 @@ public class Quest extends AppCompatActivity {
         }
         else random();
         if (ra2==2 && getterANDSetterFile.get_Guardian_Money()>=150.0){
-            npc_tv.setText(theme_two.m2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m2);
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Конечно!");
             third.setText("Проваливай");
             if (button(second)){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
-                description.setText(theme_two.m2_c);
+                description.setText(description.getText().toString() + "\n" +theme_two.m2_c);
                 start_plus();
             }
             if (button(third)){
@@ -393,12 +395,12 @@ public class Quest extends AppCompatActivity {
         }
         else random();
         if (ra2==3 && getterANDSetterFile.get_Guardian_Money()>=500.0){
-            npc_tv.setText(theme_two.m3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m3);
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Хорошо");
             third.setText("Проваливай");
             if (button(second)){
-                description.setText(theme_two.m3_c);
+                description.setText(description.getText().toString() + "\n" +theme_two.m3_c);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+150.0);
                 start_plus();
             }
@@ -408,7 +410,7 @@ public class Quest extends AppCompatActivity {
         }
         else random();
         if (ra2==4 && getterANDSetterFile.get_Guardian_Money()>=1000.0 && getterANDSetterFile.get_Band()==1){
-            npc_tv.setText(theme_two.m4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m4);
             img.setImageResource(R.mipmap.bandit);
             second.setText("Купить");
             third.setText("Отказаться");
@@ -416,12 +418,12 @@ public class Quest extends AppCompatActivity {
             if (button(second)){
                 if(ran<5) {
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 200.0);
-                    description.setText(theme_two.m4_c_1);
+                    description.setText(description.getText().toString() + "\n" +theme_two.m4_c_1);
                     start_plus();
                 }
                 else{
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-1000.0);
-                    description.setText(theme_two.m4_c_2);
+                    description.setText(description.getText().toString() + "\n" +theme_two.m4_c_2);
                     start_plus();
                     }
             }
@@ -432,7 +434,7 @@ public class Quest extends AppCompatActivity {
         else random();
         if (ra2==5 && getterANDSetterFile.get_Band()!=1){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_two.m5);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m5);
             second.setText("Хорошо");
             third.setText("Кто его впустил?");
             if (button(second)){
@@ -440,14 +442,14 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_two.m5_c);
+                description.setText(description.getText().toString() + "\n" +theme_two.m5_c);
                 start_plus();
             }
         }
         else random();
         if (ra2==6 && getterANDSetterFile.get_Guardian_Money()>=(double)(getterANDSetterFile.get_Tower()*75+75) && getterANDSetterFile.get_Villagers()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_two.m6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m6);
             second.setText("Постройте вышку");
             third.setText("Ничего страшного, с нами марсианский бог, выживем");
             if (button(second)){
@@ -468,38 +470,38 @@ public class Quest extends AppCompatActivity {
         else random();
         if (ra2==7 && getterANDSetterFile.get_Guardian_Money()>0.0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_two.m7);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
             second.setText("Хорошо");
             third.setText("Звучит сомнительно, нет");
             if (button(second)){
                 d_input();
                 try {
                     if (Integer.parseInt(input.getText().toString())>=0){
-                        if (Integer.parseInt(input.getText().toString())==0)description.setText("Но вы же ничего мне не дали!");
+                        if (Integer.parseInt(input.getText().toString())==0)description.setText(description.getText().toString() + "\n" +"Но вы же ничего мне не дали!");
                         if (Integer.parseInt(input.getText().toString())<=10 && Integer.parseInt(input.getText().toString())>0){
-                            description.setText(theme_two.m7_c_2);
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_2);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             start_plus();
                         }
                         if (Integer.parseInt(input.getText().toString())>10 && Integer.parseInt(input.getText().toString())<=50){
-                            description.setText(theme_two.m7_c_3);
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_3);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+2);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             start_plus();
                         }
                         if (Integer.parseInt(input.getText().toString())>50 && Integer.parseInt(input.getText().toString())<=200){
-                            description.setText(theme_two.m7_c_4);
+                            description.setText(description.getText().toString() + "\n" + theme_two.m7_c_4);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             start_plus();
                         }
                         if (Integer.parseInt(input.getText().toString())>200 && Integer.parseInt(input.getText().toString())!=666){
-                            description.setText(theme_two.m7_c_5);
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_5);
                             start_plus();
                         }
                         if (Integer.parseInt(input.getText().toString())==666){
-                            description.setText(theme_two.m7_c_6);
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_6);
                             getterANDSetterFile.set_Devil(1);
                             getterANDSetterFile.set_Church(-666);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
@@ -515,22 +517,22 @@ public class Quest extends AppCompatActivity {
                 }
             }
             if (button(third)){
-                description.setText(theme_two.m7_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_two.m7_c_1);
             }
         }
         else random();
         if (ra2==8 && getterANDSetterFile.get_Villagers()>0 && getterANDSetterFile.get_Guardian_Money()>=50.0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_two.m8);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m8);
             second.setText("Проверить");
             third.setText("Нет, она надежно защищена");
             if (button(second)){
-                description.setText(theme_two.m8_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_two.m8_c_1);
                 getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_two.m8_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_two.m8_c_2);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
                 start_plus();
             }
@@ -538,30 +540,30 @@ public class Quest extends AppCompatActivity {
         else random();
         if (ra2==9 && getterANDSetterFile.get_Guardian_Money()>=100){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_two.m9);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
             second.setText("Купить");
             third.setText("Отказаться");
             if (button(second)){
-                description.setText(theme_two.m9_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_two.m9_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_2);
                 start_plus();
             }
         }
         else random();
         if (ra2==10 && getterANDSetterFile.get_Guardian_Money()==666.0){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(theme_two.m10);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
             second.setText("Согласиться");
             third.setText("Отказаться");
             if (button(second)){
-                description.setText(theme_two.m10_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_two.m10_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_2);
                 start_plus();
             }
         }
@@ -579,35 +581,35 @@ public class Quest extends AppCompatActivity {
         if (ra3==10)random();
         if (ra3==1){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v1);
             second.setText("Согласиться");
             third.setText("Отказаться");
             if (button(second)){
                 double ran = 1 + (double) (Math.random() * 10);
                 if (ran<2.25){
-                    description.setText(theme_three.v1_c_1 + " " + theme_three.v1_c_2);
+                    description.setText(description.getText().toString() + "\n" +theme_three.v1_c_1 + " " + theme_three.v1_c_2);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 25.0);
                 }
                 else{
-                    description.setText(theme_three.v1_c_1 + " " + theme_three.v1_c_3);
+                    description.setText(description.getText().toString() + "\n" +theme_three.v1_c_1 + " " + theme_three.v1_c_3);
                 }
             }
             if (button(third)){
-                description.setText(theme_three.v1_c_4);
+                description.setText(description.getText().toString() + "\n" +theme_three.v1_c_4);
             }
         }
         if (ra3==2){
             pro_result=32;
             img.setImageResource(R.mipmap.chur);
-            npc_tv.setText(theme_three.v2_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_1);
             second.setText("Согласиться со священником");
             third.setText("Отказаться");
             if (button(second)){
-                npc_tv.setText(theme_three.v2_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_2);
                 second.setText("Да, не желаю вас больше видеть");
                 third.setText("Это ложь");
                 if (button(second)){
-                    description.setText(theme_three.v2_2_c);
+                    description.setText(description.getText().toString() + "\n" +theme_three.v2_2_c);
                     getterANDSetterFile.set_Band(0);
                     start_plus();
                 }
@@ -618,7 +620,7 @@ public class Quest extends AppCompatActivity {
             }
             if (button(third)){
                 img.setImageResource(R.mipmap.bandit);
-                npc_tv.setText(theme_three.v2_3);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_3);
                 second.setText("Согласиться");
                 third.setText("Не стоит");
                 if (button(second)){
@@ -633,11 +635,11 @@ public class Quest extends AppCompatActivity {
         }
         if (ra3==3 && getterANDSetterFile.get_Guardian_Money()>=25.0 && getterANDSetterFile.get_Villagers()>=1 && getterANDSetterFile.get_Church()!=0){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v3);
             second.setText("Помочь");
             third.setText("Конкуренция – это хорошо");
             if (button(second)){
-                description.setText(theme_three.v3_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_three.v3_c_1);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-25.0);
@@ -645,83 +647,83 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_three.v3_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v3_c_2);
                 start_plus();
             }
         }
         else random();
         if (ra3==4 && getterANDSetterFile.get_Guardian_Money()>=150.0){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v4_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v4_1);
             d_button();
             first.setText("Подписать");
             second.setText("Прочитать");
             third.setText("Разорвать");
             if (button(first)){
-                description.setText(theme_three.v4_1_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_1_c_1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
                 start_plus();
             }
             if (button(second)){
-                description.setText(theme_three.v4_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_2);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_three.v4_1_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_1_c_2);
                 start_plus();
             }
         }
         else random();
         if (ra3==5 && getterANDSetterFile.get_Guardian_Money()>=400){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v5);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v5);
             second.setText("Дать 200 монет");
             third.setText("Бредовая идея");
             if (button(second)){
-                description.setText(theme_three.v5_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_three.v5_c_1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-400.0);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_three.v5_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v5_c_2);
                 start_plus();
             }
         }
         else random();
         if (ra3==6){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v6);
             second.setText("Взять");
             third.setText("Отказаться");
             if (button(second)){
-                description.setText(theme_three.v6_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_three.v6_c_1);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+100.0);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_three.v6_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v6_c_2);
                 start_plus();
             }
         }
         if (ra3==7){
             d_button();
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(theme_three.v7);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v7);
             first.setText("И сколько вам нужно?");
             second.setText("И кто тот несчастный, чью базу вы хотите продать?");
             third.setText("Ну уж нет, звучит глупо");
             if (button(first)){
-                description.setText(theme_three.v7_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_1);
                 start_plus();
             }
             if (button(second)){
-                description.setText(theme_three.v7_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_2);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_three.v7_c_3);
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_3);
                 start_plus();
             }
         }
@@ -737,7 +739,7 @@ public class Quest extends AppCompatActivity {
         if (ra4==1 && getterANDSetterFile.get_Guardian_Money()>=(double)(75 + (getterANDSetterFile.get_House()*75+75)) && getterANDSetterFile.get_Church()>0){
             pro_result=41;
             img.setImageResource(R.mipmap.chur);
-            npc_tv.setText(theme_four.d1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d1);
             second.setText("Раз счастливыми, то можно");
             third.setText("Нет, слишком дорого");
             if (button(second)){
@@ -756,16 +758,16 @@ public class Quest extends AppCompatActivity {
         if (ra4==2 && getterANDSetterFile.get_Guardian_Money()>=400.0 && getterANDSetterFile.get_Church()>0){
             img.setImageResource(R.mipmap.chur);
             pro_result=42;
-            npc_tv.setText(theme_four.d2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d2);
             second.setText("Да, вы правы");
             third.setText("Обойдётся");
             if (button(second)){
-                description.setText(theme_four.d2_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d2_c_1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-400.0);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d2_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d2_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-4);
                 start_plus();
             }
@@ -773,62 +775,62 @@ public class Quest extends AppCompatActivity {
         else random();
         if (ra4==3 && getterANDSetterFile.get_Church()<-10 && getterANDSetterFile.get_Church()>-1000){
             d_button();
-            npc_tv.setText(theme_four.d3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d3);
             img.setImageResource(R.mipmap.chur);
             first.setText("Поздороваться");
             second.setText("Помолиться");
             third.setText("Забаррикадироваться");
             if (button(first)){
-                description.setText(theme_four.d3_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_1);
                 start_plus();
             }
             if (button(second)){
-                description.setText(theme_four.d3_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d3_c_3);
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_3);
                 start_plus();
             }
         }
         else random();
         if (ra4==4 && getterANDSetterFile.get_Church()>=10){
-            npc_tv.setText(theme_four.d4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d4);
             img.setImageResource(R.mipmap.chur);
             second.setText("Встретить");
             third.setText("*Закатить глаза*");
             if (button(second)){
-                description.setText(theme_four.d4_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d4_c_1);
                 getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d4_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d4_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
                 start_plus();
             }
         }
         else random();
         if (ra4==5 && getterANDSetterFile.get_Church()>=25 && getterANDSetterFile.get_Dungeon()!=1){
-            npc_tv.setText(theme_four.d5);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d5);
             img.setImageResource(R.mipmap.chur);
             second.setText("Взять");
             third.setText("И куда мне её поставить?");
             if (button(second)){
-                description.setText(theme_four.d5_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d5_c_1);
                 getterANDSetterFile.set_Dungeon(1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d5_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d5_c_2);
                 start_plus();
             }
         }
         else random();
         if (ra4==6 && getterANDSetterFile.get_Guardian_Money()>0){
-            npc_tv.setText(theme_four.d6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d6);
             img.setImageResource(R.mipmap.chur);
             pro_result=46;
             d_input();
@@ -838,19 +840,19 @@ public class Quest extends AppCompatActivity {
                 try {
                     if (Integer.parseInt(input.getText().toString())>0){
                         if (Integer.parseInt(input.getText().toString())<100 && getterANDSetterFile.get_Guardian_Money()>=Integer.parseInt(input.getText().toString())){
-                            description.setText(theme_four.d6_c_1);
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_1);
                             getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(Integer.parseInt(input.getText().toString())));
                             start_plus();
                     }
                         if (Integer.parseInt(input.getText().toString())>=100 && Integer.parseInt(input.getText().toString())!=666){
-                            description.setText(theme_four.d6_c_2);
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_2);
                             getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+3);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(Integer.parseInt(input.getText().toString())));
                             start_plus();
                         }
                         if (Integer.parseInt(input.getText().toString())==666){
-                            description.setText(theme_four.d6_c_3);
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_3);
                             start_plus();
                         }
                 }
@@ -870,40 +872,40 @@ public class Quest extends AppCompatActivity {
         else random();
         if(ra4==7 && getterANDSetterFile.get_Church()>0){
             pro_result=47;
-            npc_tv.setText(theme_four.d7);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d7);
             img.setImageResource(R.mipmap.chur);
             second.setText("Почему нет?");
             third.setText("Нет, у меня есть дела");
             if (button(second)){
-                description.setText(theme_four.d7_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d7_c_1);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d7_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d7_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
                 start_plus();
             }
         }
         else random();
         if(ra4==8 && getterANDSetterFile.get_Church()<-1000){
-            npc_tv.setText(theme_four.d8);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d8);
             img.setImageResource(R.mipmap.chur);
             second.setText("Рассмеяться");
             third.setText("Промолчать");
             if (button(second)){
-                description.setText(theme_four.d8_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d8_c_1);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-100);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d8_c_2);
+                description.setText(description.getText().toString() + "\n" +theme_four.d8_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-50);
                 start_plus();
             }
         }
         else random();
         if (ra4==9 && getterANDSetterFile.get_Church()<-1100){
-            npc_tv.setText(theme_four.d9);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d9);
             img.setImageResource(R.mipmap.chur);
             second.setText("Non");
             third.setText("Abnegant");
@@ -919,7 +921,7 @@ public class Quest extends AppCompatActivity {
         }
         else random();
         if (ra4==10 && getterANDSetterFile.get_Church()>0){
-            npc_tv.setText(theme_four.d10_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d10_1);
             img.setImageResource(R.mipmap.chur);
             d_button();
             first.setText("Да");
@@ -927,30 +929,30 @@ public class Quest extends AppCompatActivity {
             third.setText("Не умею читать");
             if (button(first)){
                 d_input();
-                description.setText(theme_four.d10_1_c_1);
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_1);
                 if(input.getText().toString().contains("Дьявол")||input.getText().toString().contains("дьявол")||input.getText().toString().contains("devil")||input.getText().toString().contains("Devil")||input.getText().toString().contains("diabolus")||input.getText().toString().contains("Diabolus")){
-                    description.setText(theme_four.d10_2_c_1);
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_1);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-6);
                     start_plus();
                 }
                 else if(input.getText().toString().contains("Бог")||input.getText().toString().contains("бог")||input.getText().toString().contains("God")||input.getText().toString().contains("god")||input.getText().toString().contains("Deus")||input.getText().toString().contains("deus")){
-                    description.setText(theme_four.d10_2_c_2);
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+5);
                     start_plus();
                 }
                 else{
-                    description.setText(theme_four.d10_2_c_3);
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_3);
                     start_plus();
                 }
             }
             if (button(second)){
-                description.setText(theme_four.d10_1_c_2);
-                description.setText(description.getText()+"\n"+theme_four.d10_3);
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_2);
+                description.setText(description.getText().toString()+"\n"+theme_four.d10_3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_four.d10_1_c_3);
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_3);
                 start_plus();
             }
         }
@@ -968,7 +970,7 @@ public class Quest extends AppCompatActivity {
         if(ra5==1 && getterANDSetterFile.get_Guardian_Money()>0){
             img.setImageResource(R.mipmap.devil);
             pro_result=51;
-            npc_tv.setText(theme_five.r1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r1);
             second.setText("Отдать долг");
             third.setText("Священник!");
             if (button(second)){
@@ -979,14 +981,14 @@ public class Quest extends AppCompatActivity {
             if (button(third)){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                 getterANDSetterFile.set_Guardian_Money(0.0);
-                description.setText(theme_five.r1_c);
+                description.setText(description.getText().toString() + "\n" +theme_five.r1_c);
                 start_plus();
             }
         }
         else random();
         if(ra5==2 && getterANDSetterFile.get_Villagers()<=3){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(theme_five.r2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r2);
             second.setText("Взять");
             third.setText("Отказаться");
             if (button(second)){
@@ -996,14 +998,14 @@ public class Quest extends AppCompatActivity {
             }
             if (button(third)){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
-                description.setText(theme_five.r2_c);
+                description.setText(description.getText().toString() + "\n" +theme_five.r2_c);
                 start_plus();
             }
         }
         else random();
         if (ra5==3){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(theme_five.r3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r3);
             second.setText("Забирай");
             third.setText("Нет, только не моя душа!");
             if (button(second)){
@@ -1011,13 +1013,13 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_five.r3_c);
+                description.setText(description.getText().toString() + "\n" +theme_five.r3_c);
                 start_plus();
             }
         }
         if (ra5==4 && getterANDSetterFile.get_Dungeon()==1){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(theme_five.r4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r4);
             second.setText("Отдать");
             third.setText("Оставить себе");
             if (button(second)){
@@ -1026,14 +1028,14 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(third)){
-                description.setText(theme_five.r4);
+                description.setText(description.getText().toString() + "\n" +theme_five.r4);
                 start_plus();
             }
         }
         else random();
         if(ra5==5 && getterANDSetterFile.get_Block()!=1){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(theme_five.r5_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_1);
             second.setText("Согласиться");
             third.setText("Отказаться");
             if (button(second)){
@@ -1043,7 +1045,7 @@ public class Quest extends AppCompatActivity {
                 start_plus();
             }
             if (button(third)){
-                npc_tv.setText(theme_five.r5_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_2);
                 second.setText("Согласиться");
                 third.setText("Отказаться");
                 if (button(second)){
@@ -1069,11 +1071,11 @@ public class Quest extends AppCompatActivity {
         ra6 = 1 + (int) (Math.random() * 10);
         if (ra6<5 && getterANDSetterFile.get_Guardian_Money()>0.0 && getterANDSetterFile.get_Ore_Elbrium()>0.0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_six.w1_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_1);
             second.setText("Хочу");
             third.setText("Не интересует");
             if (button(second)){
-                npc_tv.setText(theme_six.w1_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_2);
                 d_button();
                 first.setText("Монеты");
                 second.setText("elbrium");
@@ -1085,7 +1087,7 @@ public class Quest extends AppCompatActivity {
                     v=2;
                 }
                 if ((button(first) || button(second)) && v!=0){
-                    npc_tv.setText(theme_six.w1_3);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
                     d_input();
                     o_button();
                     second.setText("*Отдать крупье*");
@@ -1112,11 +1114,11 @@ public class Quest extends AppCompatActivity {
         }
         else if(getterANDSetterFile.get_Guardian_Money()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(theme_six.w2_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_1);
             second.setText("Да");
             third.setText("Нет");
             if (button(second)){
-                npc_tv.setText(theme_six.w2_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_2);
                 d_input();
                 second.setText("Ввод");
                 third.setText("Я передумал");
@@ -1180,13 +1182,13 @@ public class Quest extends AppCompatActivity {
         if (Integer.parseInt(input.getText().toString())>0 && (getterANDSetterFile.get_Guardian_Money()-(double)Integer.parseInt(input.getText().toString()))>0.0){
             st = st + Integer.parseInt(input.getText().toString());
             k[n] = k_random();
-            crossbar.setText(k[n] + " ");
+            crossbar.setText(crossbar.getText().toString() + k[n] + " ");
             n++;
             k[n] = k_random();
             crossbar.setText(crossbar.getText().toString() + k[n] + " ");
             n++;
             crossbar.setText(crossbar.getText().toString() + "sum: " + (k[n]+k[n]) +"");
-            description.setText(theme_six.w1_4);
+            description.setText(description.getText().toString() + "\n" +theme_six.w1_4);
             d_button();
             first.setText("Повысить ставку и попросить ещё одну карту");
             second.setText("Повысить ставку");
@@ -1267,7 +1269,187 @@ public class Quest extends AppCompatActivity {
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_SEVEN theme_seven = new THEME_SEVEN();
-
+        if (getterANDSetterFile.get_Dungeon()==1 && getterANDSetterFile.get_Church()>0){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s1);
+            img.setImageResource(R.color.black);
+            second.setText("Открыть");
+            third.setText("Уйти");
+            if (button(second)){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
+                second.setText("Прислушаться");
+                third.setText("Игнорировать");
+                if (button(second)){
+                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
+                    second.setText("Ускорить шаг");
+                    third.setText("Подняться наверх и вызвать стражу");
+                    if (button(second)){
+                        d_button();
+                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s5);
+                        first.setText("Представиться" + getterANDSetterFile.get_Nickname());
+                        second.setText("Представиться священником");
+                        third.setText("Представиться главарём банды");
+                        if (button(first)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
+                            second.setText("Отдать ключ");
+                            third.setText("Броситься наверх");
+                            if (button(second)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
+                                second.setText("Толкнуть");
+                                third.setText("Побежать наверх");
+                                if (button(second)){
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                    getterANDSetterFile.set_Dungeon(0);
+                                    start_plus();
+                                }
+                                if (button(third)){
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                    getterANDSetterFile.set_Dungeon(0);
+                                    start_plus();
+                                }
+                            }
+                            if (button(third)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                getterANDSetterFile.set_Dungeon(0);
+                                start_plus();
+                            }
+                        }
+                        if (button(second)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
+                            second.setText("Благословить");
+                            third.setText("Проклясть");
+                            if (button(second)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
+                                second.setText("Отдать ключ");
+                                third.setText("Броситься наверх");
+                                if (button(second)){
+                                    second.setText("Толкнуть");
+                                    third.setText("Побежать наверх");
+                                    if (button(second)){
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                        getterANDSetterFile.set_Dungeon(0);
+                                        start_plus();
+                                    }
+                                    if (button(third)){
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                        getterANDSetterFile.set_Dungeon(0);
+                                        start_plus();
+                                    }
+                                }
+                                if (button(third)){
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                    getterANDSetterFile.set_Dungeon(0);
+                                    start_plus();
+                                }
+                            }
+                            if (button(third)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
+                                getterANDSetterFile.set_Dungeon(0);
+                                start_plus();
+                            }
+                        }
+                        if (button(third)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
+                            second.setText(getterANDSetterFile.get_Nickname());
+                            third.setText("Г.Б.");
+                            if (button(second)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
+                                getterANDSetterFile.set_Dungeon(0);
+                                start_plus();
+                            }
+                            if (button(third)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
+                                second.setText("Пойти дальше");
+                                third.setText("Вернуться назад");
+                                if (button(second)){
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                                    second.setText("Продолжить спуск");
+                                    third.setText("Вернуться назад");
+                                    if (button(second)){
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                        getterANDSetterFile.set_Dungeon(0);
+                                        start_plus();
+                                    }
+                                    if (button(third)){
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                        getterANDSetterFile.set_Dungeon(0);
+                                        start_plus();
+                                    }
+                                }
+                                if (button(third)){
+                                    description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
+                                    getterANDSetterFile.set_Dungeon(0);
+                                    start_plus();
+                                }
+                            }
+                        }
+                    }
+                    if (button(third)){
+                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
+                        getterANDSetterFile.set_Dungeon(0);
+                        start_plus();
+                    }
+                }
+                if (button(third)){
+                    d_button();
+                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s4);
+                    first.setText("Продолжить спуск");
+                    second.setText("Спросить кто умер");
+                    third.setText("Вернуться назад");
+                    if (button(first)){
+                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
+                        o_button();
+                        second.setText("Продолжить путь");
+                        third.setText("Повернуть назад");
+                        if (button(second)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                            second.setText("Продолжить спуск");
+                            third.setText("Вернуться назад");
+                            if (button(second)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                getterANDSetterFile.set_Dungeon(0);
+                                start_plus();
+                            }
+                            if (button(third)){
+                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                getterANDSetterFile.set_Dungeon(0);
+                                start_plus();
+                            }
+                        }
+                        if (button(third)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
+                            getterANDSetterFile.set_Dungeon(0);
+                            start_plus();
+                        }
+                    }
+                    if (button(second)){
+                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
+                        second.setText("2021");
+                        third.setText("Молча продолжить спуск вниз");
+                        if (button(second)){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
+                            getterANDSetterFile.set_Dungeon(0);
+                            start_plus();
+                        }
+                        if (button(third)){
+                            description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
+                            getterANDSetterFile.set_Dungeon(0);
+                            start_plus();
+                        }
+                    }
+                    if (button(third)){
+                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
+                        getterANDSetterFile.set_Dungeon(0);
+                        start_plus();
+                    }
+                }
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
+                start_plus();
+            }
+        }
+        else random();
     }
     public void eight(){
         ID();
@@ -1368,7 +1550,8 @@ public class Quest extends AppCompatActivity {
         });
         return u;
     }
-    public void comments(String s, TextView textMessage){
+    public void comments(TextView textMessage){
+        String s = textMessage.getText().toString();
         String comment = textMessage.getText().toString();
         if(s.contains("*") && textMessage.getText().toString().contains("*") && !s.contains("#")) {
             for (int i = 0; i < s.length(); i++) {
@@ -1526,11 +1709,8 @@ class THEME_SIX{
     public String w1_2 = "Желаете поставить монеты или elbrium?";
     public String w1_3 = "Хорошо, делайте свою первоначальную ставку.";
     public String w1_4 = "*Крупье даёт вам 2 карты с числами, на них: ";                          //WARNING
-    public String w1_5_c_1 = "Ваш выигрыш: составляет";                                           //WARNING
-    public String w1_5_c_2 = "Желаете ещё?";
     public String w2_1 = "Хотите ли вы сыграть в кости?";
     public String w2_2 = "Сколько желаете поставить? Учтите максимальная ставка - 10 монет.";
-    public String w2_3_c = "Желаете продолжить?";
 }
 class THEME_SEVEN{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
