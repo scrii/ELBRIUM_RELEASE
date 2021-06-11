@@ -1494,6 +1494,7 @@ public class Quest extends AppCompatActivity {
         if (ra8>4)random();
         else{
             if (ra8==1){
+                img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" +  theme_eight.e1);
                 second.setText("Посмотреть");
                 third.setText("Игнорировать");
@@ -1507,6 +1508,7 @@ public class Quest extends AppCompatActivity {
                 }
             }
             if (ra8==2){
+                img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e2);
                 second.setText("Проводите");
                 third.setText("Нет");
@@ -1520,6 +1522,7 @@ public class Quest extends AppCompatActivity {
                 }
             }
             if (ra8==3 && getterANDSetterFile.get_Guardian_Money()>=10.0){
+                img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e3);
                 second.setText("Стройте");
                 third.setText("Нет");
@@ -1534,6 +1537,7 @@ public class Quest extends AppCompatActivity {
             }
             else random();
             if (ra8==4 && getterANDSetterFile.get_Guardian_Money()>=25.0){
+                img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e4);
                 second.setText("Да");
                 third.setText("Нет");
