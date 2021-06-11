@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import static com.mygdx.game.UserBase.bm;
 
 public class Quest extends AppCompatActivity {
     int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
@@ -28,7 +29,14 @@ public class Quest extends AppCompatActivity {
     ImageView img;
     boolean u;
     @Override
+    protected void onStart(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        if(getterANDSetterFile.get_SoundMusic()==1)bm.start();
+        super.onStart();
+    }
+    @Override
     protected void onPause(){
+        if (bm.isPlaying())bm.pause();
         exit(false);
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if(!parametr){

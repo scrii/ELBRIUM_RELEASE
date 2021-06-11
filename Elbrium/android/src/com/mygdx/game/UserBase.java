@@ -7,6 +7,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,9 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.teamname.game.Actor.Base;
-
 import static com.mygdx.game.ScrollingActivity.mediaPlayer;
 
 public class UserBase extends AppCompatActivity {
@@ -31,6 +29,7 @@ public EditText namebase;
 public ImageButton but_TownHall,but_Kitchen,but_WorkShop,but_House,but_School,but_Factory,but_Tower,but_Park,but_Mill;
 public CountDownTimer countDownTimer;
 public int seconds=1;
+public static MediaPlayer bm;
 
 int time=0,time1=0;
 CountDownTimer countDownTimerQ,countDownTimerX;
@@ -41,6 +40,13 @@ public GetterANDSetterFile getterANDSetterFile;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_base);
         getterANDSetterFile = new GetterANDSetterFile();
+        bm = MediaPlayer.create(this,R.raw.basemusic);
+        bm.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if(getterANDSetterFile.get_SoundMusic()==1)bm.start();
+            }
+        });
         ID();
         namebase.setText(getterANDSetterFile.get_NameBase()+"");
         updateValues();
@@ -107,12 +113,13 @@ public GetterANDSetterFile getterANDSetterFile;
     @Override
     protected void onStart(){
         getterANDSetterFile = new GetterANDSetterFile();
-        if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
+        if (mediaPlayer.isPlaying())mediaPlayer.pause();
+        if (getterANDSetterFile.get_SoundMusic()==1)bm.start();
         super.onStart();
     }
     @Override
     protected void onPause(){
-        if(mediaPlayer.isPlaying())mediaPlayer.pause();
+        if(bm.isPlaying())bm.pause();
         super.onPause();
     }
     public static class SettingsFragment extends PreferenceFragmentCompat {
