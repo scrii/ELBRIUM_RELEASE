@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Quest extends AppCompatActivity {
-    int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0;
+    int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
     int[]k = new int[70];
     CountDownTimer countDownTimer;
     public boolean parametr=true;
@@ -1275,10 +1275,12 @@ public class Quest extends AppCompatActivity {
             second.setText("Открыть");
             third.setText("Уйти");
             if (button(second)){
+                o_button();
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
                 second.setText("Прислушаться");
                 third.setText("Игнорировать");
                 if (button(second)){
+                    o_button();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
                     second.setText("Ускорить шаг");
                     third.setText("Подняться наверх и вызвать стражу");
@@ -1289,93 +1291,112 @@ public class Quest extends AppCompatActivity {
                         second.setText("Представиться священником");
                         third.setText("Представиться главарём банды");
                         if (button(first)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
                             second.setText("Отдать ключ");
                             third.setText("Броситься наверх");
                             if (button(second)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
                                 second.setText("Толкнуть");
                                 third.setText("Побежать наверх");
                                 if (button(second)){
+                                    o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
                                 if (button(third)){
+                                    o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
                             }
                             if (button(third)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
                         if (button(second)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
                             second.setText("Благословить");
                             third.setText("Проклясть");
                             if (button(second)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
                                 second.setText("Отдать ключ");
                                 third.setText("Броситься наверх");
                                 if (button(second)){
+                                    o_button();
                                     second.setText("Толкнуть");
                                     third.setText("Побежать наверх");
                                     if (button(second)){
+                                        o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                     if (button(third)){
+                                        o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                 }
                                 if (button(third)){
+                                    o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
                             }
                             if (button(third)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
                         if (button(third)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
                             second.setText(getterANDSetterFile.get_Nickname());
                             third.setText("Г.Б.");
                             if (button(second)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                             if (button(third)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
                                 second.setText("Пойти дальше");
                                 third.setText("Вернуться назад");
                                 if (button(second)){
+                                    o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
                                     second.setText("Продолжить спуск");
                                     third.setText("Вернуться назад");
                                     if (button(second)){
+                                        o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                     if (button(third)){
+                                        o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                 }
                                 if (button(third)){
+                                    o_button();
                                     description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
@@ -1384,6 +1405,7 @@ public class Quest extends AppCompatActivity {
                         }
                     }
                     if (button(third)){
+                        o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
                         getterANDSetterFile.set_Dungeon(0);
                         start_plus();
@@ -1396,41 +1418,49 @@ public class Quest extends AppCompatActivity {
                     second.setText("Спросить кто умер");
                     third.setText("Вернуться назад");
                     if (button(first)){
+                        o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
                         o_button();
                         second.setText("Продолжить путь");
                         third.setText("Повернуть назад");
                         if (button(second)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
                             second.setText("Продолжить спуск");
                             third.setText("Вернуться назад");
                             if (button(second)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                             if (button(third)){
+                                o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
                         if (button(third)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
                             getterANDSetterFile.set_Dungeon(0);
                             start_plus();
                         }
                     }
                     if (button(second)){
+                        o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
                         second.setText("2021");
                         third.setText("Молча продолжить спуск вниз");
                         if (button(second)){
+                            o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
                             getterANDSetterFile.set_Dungeon(0);
                             start_plus();
                         }
                         if (button(third)){
+                            o_button();
                             description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
                             getterANDSetterFile.set_Dungeon(0);
@@ -1438,6 +1468,7 @@ public class Quest extends AppCompatActivity {
                         }
                     }
                     if (button(third)){
+                        o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
                         getterANDSetterFile.set_Dungeon(0);
                         start_plus();
@@ -1445,6 +1476,7 @@ public class Quest extends AppCompatActivity {
                 }
             }
             if (button(third)){
+                o_button();
                 description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
                 start_plus();
             }
@@ -1455,11 +1487,72 @@ public class Quest extends AppCompatActivity {
         ID();
         o_button();
         o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_EIGHT theme_eight = new THEME_EIGHT();
+        ra8 = 1 + (int) (Math.random() * 10);
+        if (ra8>4)random();
+        else{
+            if (ra8==1){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" +  theme_eight.e1);
+                second.setText("Посмотреть");
+                third.setText("Игнорировать");
+                if (button(second)){
+                    description.setText(description.getText().toString() + "\n" + theme_eight.e1_c_1);
+                    start_plus();
+                }
+                if (button(third)){
+                    description.setText(description.getText().toString() +"\n"+ theme_eight.e1_c_2);
+                    start_plus();
+                }
+            }
+            if (ra8==2){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e2);
+                second.setText("Проводите");
+                third.setText("Нет");
+                if (button(second)){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                    start_plus();
+                }
+                if (button(third)){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
+                    start_plus();
+                }
+            }
+            if (ra8==3 && getterANDSetterFile.get_Guardian_Money()>=10.0){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e3);
+                second.setText("Стройте");
+                third.setText("Нет");
+                if (button(second)){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                    start_plus();
+                }
+                if (button(third)){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
+                    start_plus();
+                }
+            }
+            else random();
+            if (ra8==4 && getterANDSetterFile.get_Guardian_Money()>=25.0){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e4);
+                second.setText("Да");
+                third.setText("Нет");
+                if (button(second)){
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-25.0);
+                    getterANDSetterFile.set_HealthBase(getterANDSetterFile.get_HealthBase()+1);
+                    start_plus();
+                }
+                if (button(third)){
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-2);
+                    start_plus();
+                }
+            }
+            else random();
+        }
     }
     public void exit(boolean tf){
         parametr = tf;
     }
-
     private void ID(){
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
