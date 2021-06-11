@@ -56,7 +56,10 @@ public class PersonActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     s = name_person.getText().toString();
                     if(!s.equals("")){
-                        if(!s.contains(" "))getterANDSetterFile.set_Nickname(s);
+                        if(!s.contains(" ")){
+                            if(getterANDSetterFile.get_Block()!=1)getterANDSetterFile.set_Nickname(s);
+                            else Toast.makeText(getApplicationContext(),"Вы отмечены меткой дьявола, её не смыть",Toast.LENGTH_SHORT).show();
+                        }
                         else Toast.makeText(getApplicationContext(),"Никнейм не может содержать пробел",Toast.LENGTH_SHORT).show();
                     }
                     else Toast.makeText(getApplicationContext(),"Никнейм не может быть пустым",Toast.LENGTH_SHORT).show();
@@ -65,7 +68,10 @@ public class PersonActivity extends AppCompatActivity {
         }
         else confirm.setVisibility(View.INVISIBLE);
         if(!s.equals("")){
-            if(!s.contains(" "))getterANDSetterFile.set_Nickname(s);
+            if(!s.contains(" ")){
+                if(getterANDSetterFile.get_Block()!=1)getterANDSetterFile.set_Nickname(s);
+                else Toast.makeText(getApplicationContext(),"Вы отмечены меткой дьявола, её не смыть",Toast.LENGTH_SHORT).show();
+            }
             else Toast.makeText(getApplicationContext(),"Никнейм не может содержать пробел",Toast.LENGTH_SHORT).show();
         }
         //else Toast.makeText(getApplicationContext(),"Никнейм не может быть пустым",Toast.LENGTH_SHORT).show();
