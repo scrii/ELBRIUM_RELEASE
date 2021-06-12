@@ -47,7 +47,7 @@ public GetterANDSetterFile getterANDSetterFile;
                 if(getterANDSetterFile.get_SoundMusic()==1)bm.start();
             }
         });
-        ID();
+        ID1();
         namebase.setText(getterANDSetterFile.get_NameBase()+"");
         updateValues();
         chance_Kitchen();
@@ -60,7 +60,7 @@ public GetterANDSetterFile getterANDSetterFile;
                 seconds--;
                 updateValues();
                 void_Insurrection();
-                ID();
+                ID1();
                 colors();
                 TownHall.setText("Ратуша" + " " + getterANDSetterFile.get_TownHall()*150);
                 WorkShop.setText("Мастерская " + (getterANDSetterFile.get_WorkShop()*150+150));
@@ -147,7 +147,7 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     public void visible(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_BaseLevel()==0){
             newBase.setVisibility(View.VISIBLE);
@@ -230,7 +230,7 @@ public GetterANDSetterFile getterANDSetterFile;
             TownHall.setVisibility(View.VISIBLE);
         }
     }
-    public void ID(){
+    public void ID1(){
         TownHall     = findViewById(R.id.TownHall);
         int_TownHall = findViewById(R.id.int_TownHall);
         WorkShop     = findViewById(R.id.WorkShop);
@@ -271,7 +271,7 @@ public GetterANDSetterFile getterANDSetterFile;
     }
     public void updateValues(){
         getterANDSetterFile = new GetterANDSetterFile();
-        ID();
+        ID1();
         realhealth.setText(getterANDSetterFile.get_HealthBase()+"");
         int_villagers.setText(getterANDSetterFile.get_Villagers()+"");
         int_happiness.setText(getterANDSetterFile.get_Happiness()+"");
@@ -286,7 +286,7 @@ public GetterANDSetterFile getterANDSetterFile;
         int_Tower.setText(getterANDSetterFile.get_Tower()+"");
     }
     public void colors(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Guardian_Money()<=(150.0*getterANDSetterFile.get_TownHall())){
             RedColor(TownHall);
@@ -387,7 +387,7 @@ public GetterANDSetterFile getterANDSetterFile;
     }
 
     public void chance_Mill(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         time1 = (15*60);
         if(getterANDSetterFile.get_Mill()>0){
@@ -413,7 +413,7 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     public void r_Mill(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Mill.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -436,7 +436,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_Park(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Park.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -452,7 +452,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_Tower(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Tower.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -474,7 +474,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_Factory(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Factory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -498,7 +498,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void chance_Factory(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Factory()==1)time=(11*60);
         if(getterANDSetterFile.get_Factory()==2)time=(10*60);
@@ -530,7 +530,7 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     public void Ruin(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         getterANDSetterFile.set_BaseLevel(0);
         getterANDSetterFile.set_House(0);
@@ -548,7 +548,7 @@ public GetterANDSetterFile getterANDSetterFile;
         visible();
     }
     public void Insurrection(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Happiness()<10){
             Ruin();
@@ -561,13 +561,13 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     public void void_Insurrection(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Happiness()<10)Ruin();
         if(getterANDSetterFile.get_Happiness()>55)Ruin();
     }
     public void r_School(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_School.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -583,7 +583,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_House(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_House.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -602,7 +602,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_WorkShop(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Factory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -627,14 +627,14 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void chance_WorkShop(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         int chance;
         chance = (int)(Math.random()*100000)%100;
         if(chance<=getterANDSetterFile.get_WorkShop())getterANDSetterFile.set_Speed(getterANDSetterFile.get_Speed()+0.1);
     }
     public void r_Kitchen(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_Kitchen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -658,14 +658,14 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void chance_Kitchen(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         int change;
         change = (int)(Math.random()*100000)%100;
         if(change<=getterANDSetterFile.get_Kitchen())getterANDSetterFile.set_Health(getterANDSetterFile.get_Health()+0.1);
     }
     public void r_TownHall(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         but_TownHall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -685,7 +685,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_newBase(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         newBase.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -702,7 +702,7 @@ public GetterANDSetterFile getterANDSetterFile;
         });
     }
     public void r_Confirm(){
-        ID();
+        ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
