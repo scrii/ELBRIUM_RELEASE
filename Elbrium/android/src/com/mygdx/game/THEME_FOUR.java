@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import android.widget.Toast;
+import static com.mygdx.game.Quest.vip;
 
 public class THEME_FOUR extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -39,6 +40,236 @@ public class THEME_FOUR extends Quest{
     public String d10_2_c_3 = "Этого нет в библии!";
     public String d10_3 = "*Не дожидаясь вашего ответа он начинает читать: о сьцмулкуй пцм фкш щбшотцуу, эвщсюпйэю тжйигщ, 666 ючнтд по «марсианская церковь» года ROT0. Ничего не поняв, вы одобрительно киваете*";
 
-
+    public void four(){
+        vip++;
+        ID2();
+        o_button();
+        o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_FOUR theme_four = new THEME_FOUR();
+        ra4 = 1 + (int) (Math.random() * 10);
+        if (ra4==1 && getterANDSetterFile.get_Guardian_Money()>=(double)(75 + (getterANDSetterFile.get_House()*75+75)) && getterANDSetterFile.get_Church()>0){
+            pro_result=41;
+            img.setImageResource(R.mipmap.chur);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d1);
+            second.setText("Раз счастливыми, то можно");
+            third.setText("Нет, слишком дорого");
+            if (button(second)){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(75 + (getterANDSetterFile.get_House()*75+75)));
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
+                getterANDSetterFile.set_House(getterANDSetterFile.get_House()+1);
+                start_plus();
+            }
+            if (button(third)){
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-2);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==2 && getterANDSetterFile.get_Guardian_Money()>=400.0 && getterANDSetterFile.get_Church()>0){
+            img.setImageResource(R.mipmap.chur);
+            pro_result=42;
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d2);
+            second.setText("Да, вы правы");
+            third.setText("Обойдётся");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d2_c_1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-400.0);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d2_c_2);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-4);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==3 && getterANDSetterFile.get_Church()<-10 && getterANDSetterFile.get_Church()>-1000){
+            d_button();
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d3);
+            img.setImageResource(R.mipmap.chur);
+            first.setText("Поздороваться");
+            second.setText("Помолиться");
+            third.setText("Забаррикадироваться");
+            if (button(first)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_1);
+                start_plus();
+            }
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_2);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d3_c_3);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==4 && getterANDSetterFile.get_Church()>=10){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d4);
+            img.setImageResource(R.mipmap.chur);
+            second.setText("Встретить");
+            third.setText("*Закатить глаза*");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d4_c_1);
+                getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d4_c_2);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==5 && getterANDSetterFile.get_Church()>=25 && getterANDSetterFile.get_Dungeon()!=1){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d5);
+            img.setImageResource(R.mipmap.chur);
+            second.setText("Взять");
+            third.setText("И куда мне её поставить?");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d5_c_1);
+                getterANDSetterFile.set_Dungeon(1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d5_c_2);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==6 && getterANDSetterFile.get_Guardian_Money()>0){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d6);
+            img.setImageResource(R.mipmap.chur);
+            pro_result=46;
+            d_input();
+            second.setText("Конечно");
+            third.setText("Конечно, нет");
+            if (button(second)){
+                try {
+                    if (Integer.parseInt(input.getText().toString())>0){
+                        if (Integer.parseInt(input.getText().toString())<100 && getterANDSetterFile.get_Guardian_Money()>=Integer.parseInt(input.getText().toString())){
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_1);
+                            getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())>=100 && Integer.parseInt(input.getText().toString())!=666){
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_2);
+                            getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+3);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())==666){
+                            description.setText(description.getText().toString() + "\n" +theme_four.d6_c_3);
+                            start_plus();
+                        }
+                    }
+                    else Toast.makeText(getApplicationContext(),"Деньги не могут быть отрицательными",Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    start_plus();
+                    Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+            if (button(third)){
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-7);
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+                start_plus();
+            }
+        }
+        else random();
+        if(ra4==7 && getterANDSetterFile.get_Church()>0){
+            pro_result=47;
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d7);
+            img.setImageResource(R.mipmap.chur);
+            second.setText("Почему нет?");
+            third.setText("Нет, у меня есть дела");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d7_c_1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d7_c_2);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
+                start_plus();
+            }
+        }
+        else random();
+        if(ra4==8 && getterANDSetterFile.get_Church()<-1000){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d8);
+            img.setImageResource(R.mipmap.chur);
+            second.setText("Рассмеяться");
+            third.setText("Промолчать");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d8_c_1);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-100);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d8_c_2);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-50);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==9 && getterANDSetterFile.get_Church()<-1100){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d9);
+            img.setImageResource(R.mipmap.chur);
+            second.setText("Non");
+            third.setText("Abnegant");
+            if (button(second)){
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
+                start_plus();
+            }
+            if (button(third)){
+                getterANDSetterFile.set_Church(1);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra4==10 && getterANDSetterFile.get_Church()>0){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d10_1);
+            img.setImageResource(R.mipmap.chur);
+            d_button();
+            first.setText("Да");
+            second.setText("Не приходилось");
+            third.setText("Не умею читать");
+            if (button(first)){
+                d_input();
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_1);
+                if(input.getText().toString().contains("Дьявол")||input.getText().toString().contains("дьявол")||input.getText().toString().contains("devil")||input.getText().toString().contains("Devil")||input.getText().toString().contains("diabolus")||input.getText().toString().contains("Diabolus")){
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_1);
+                    getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-6);
+                    start_plus();
+                }
+                else if(input.getText().toString().contains("Бог")||input.getText().toString().contains("бог")||input.getText().toString().contains("God")||input.getText().toString().contains("god")||input.getText().toString().contains("Deus")||input.getText().toString().contains("deus")){
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_2);
+                    getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+5);
+                    start_plus();
+                }
+                else{
+                    description.setText(description.getText().toString() + "\n" +theme_four.d10_2_c_3);
+                    start_plus();
+                }
+            }
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_2);
+                description.setText(description.getText().toString()+"\n"+theme_four.d10_3);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_3);
+                start_plus();
+            }
+        }
+        else random();
+    }
 
 }

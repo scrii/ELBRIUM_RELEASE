@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import static com.mygdx.game.Quest.vip;
 
 public class THEME_TWO extends Quest{
     public String m1 = "Меня ограбили! Сделайте же что-нибудь!";
@@ -38,6 +39,225 @@ public class THEME_TWO extends Quest{
     public String m10_c_1 = "*Вы чувствуйте лёгкий холодок, так будто бы в комнате с вами находится кто-то ещё*";
     public String m10_c_2 = "Ложь, – доносится до вас";
 
-
+    public void two(){
+        vip++;
+        ID2();
+        o_button();
+        o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_TWO theme_two = new THEME_TWO();
+        ra2 = 1 + (int) (Math.random() * 10);
+        if (ra2==1 && getterANDSetterFile.get_Guardian_Money()>=10){
+            pro_result=11;
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m1);
+            img.setImageResource(R.mipmap.base_avatar_1);
+            d_button();
+            first.setText("Дать ограбленные деньги");
+            second.setText("Заставить стражу расследовать это дело");
+            third.setText("Что например?");
+            if (button(first)){
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-5);
+                start_plus();
+            }
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
+                start_plus();
+            }
+            if (button(third)){
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==2 && getterANDSetterFile.get_Guardian_Money()>=150.0){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m2);
+            img.setImageResource(R.mipmap.base_avatar_1);
+            second.setText("Конечно!");
+            third.setText("Проваливай");
+            if (button(second)){
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
+                description.setText(description.getText().toString() + "\n" +theme_two.m2_c);
+                start_plus();
+            }
+            if (button(third)){
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==3 && getterANDSetterFile.get_Guardian_Money()>=500.0){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m3);
+            img.setImageResource(R.mipmap.base_avatar_1);
+            second.setText("Хорошо");
+            third.setText("Проваливай");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m3_c);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+150.0);
+                start_plus();
+            }
+            if (button(third)){
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==4 && getterANDSetterFile.get_Guardian_Money()>=1000.0 && getterANDSetterFile.get_Band()==1){
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m4);
+            img.setImageResource(R.mipmap.bandit);
+            second.setText("Купить");
+            third.setText("Отказаться");
+            int ran = 1 + (int)(Math.random()*10);
+            if (button(second)){
+                if(ran<5) {
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 200.0);
+                    description.setText(description.getText().toString() + "\n" +theme_two.m4_c_1);
+                    start_plus();
+                }
+                else{
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-1000.0);
+                    description.setText(description.getText().toString() + "\n" +theme_two.m4_c_2);
+                    start_plus();
+                }
+            }
+            if (button(third)){
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==5 && getterANDSetterFile.get_Band()!=1){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m5);
+            second.setText("Хорошо");
+            third.setText("Кто его впустил?");
+            if (button(second)){
+                getterANDSetterFile.set_Band(1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m5_c);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==6 && getterANDSetterFile.get_Guardian_Money()>=(double)(getterANDSetterFile.get_Tower()*75+75) && getterANDSetterFile.get_Villagers()>0){
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m6);
+            second.setText("Постройте вышку");
+            third.setText("Ничего страшного, с нами марсианский бог, выживем");
+            if (button(second)){
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(getterANDSetterFile.get_Tower()*75+75));
+                getterANDSetterFile.set_Tower(getterANDSetterFile.get_Tower()+1);
+                start_plus();
+            }
+            if (button(third)){
+                int ran = 1 + (int)(Math.random()*10);
+                if (ran<5){
+                    getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-2);
+                }
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==7 && getterANDSetterFile.get_Guardian_Money()>0.0){
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
+            second.setText("Хорошо");
+            third.setText("Звучит сомнительно, нет");
+            if (button(second)){
+                d_input();
+                try {
+                    if (Integer.parseInt(input.getText().toString())>=0){
+                        if (Integer.parseInt(input.getText().toString())==0)description.setText(description.getText().toString() + "\n" +"Но вы же ничего мне не дали!");
+                        if (Integer.parseInt(input.getText().toString())<=10 && Integer.parseInt(input.getText().toString())>0){
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_2);
+                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())>10 && Integer.parseInt(input.getText().toString())<=50){
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_3);
+                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+2);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())>50 && Integer.parseInt(input.getText().toString())<=200){
+                            description.setText(description.getText().toString() + "\n" + theme_two.m7_c_4);
+                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())>200 && Integer.parseInt(input.getText().toString())!=666){
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_5);
+                            start_plus();
+                        }
+                        if (Integer.parseInt(input.getText().toString())==666){
+                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_6);
+                            getterANDSetterFile.set_Devil(1);
+                            getterANDSetterFile.set_Church(-666);
+                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
+                            start_plus();
+                        }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"Сумма не может быть отрицательной!",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m7_c_1);
+            }
+        }
+        else random();
+        if (ra2==8 && getterANDSetterFile.get_Villagers()>0 && getterANDSetterFile.get_Guardian_Money()>=50.0){
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m8);
+            second.setText("Проверить");
+            third.setText("Нет, она надежно защищена");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m8_c_1);
+                getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m8_c_2);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==9 && getterANDSetterFile.get_Guardian_Money()>=100){
+            img.setImageResource(R.mipmap.base_avatar_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
+            second.setText("Купить");
+            third.setText("Отказаться");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_2);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra2==10 && getterANDSetterFile.get_Guardian_Money()==666.0){
+            img.setImageResource(R.mipmap.devil);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
+            second.setText("Согласиться");
+            third.setText("Отказаться");
+            if (button(second)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_1);
+                start_plus();
+            }
+            if (button(third)){
+                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_2);
+                start_plus();
+            }
+        }
+    }
 
 }
