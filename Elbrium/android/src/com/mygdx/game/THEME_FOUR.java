@@ -41,14 +41,14 @@ public class THEME_FOUR extends Quest{
 
     public void four(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_FOUR theme_four = new THEME_FOUR();
         ra4 = 1 + (int) (Math.random() * 10);
-        if (ra4==1 && getterANDSetterFile.get_Guardian_Money()>=(double)(75 + (getterANDSetterFile.get_House()*75+75)) && getterANDSetterFile.get_Church()>0){
+        if (ra4==1 && getterANDSetterFile.get_Church()>0){
             pro_result=41;
             img.setImageResource(R.mipmap.chur);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d1);
@@ -67,7 +67,7 @@ public class THEME_FOUR extends Quest{
             }
         }
         else random();
-        if (ra4==2 && getterANDSetterFile.get_Guardian_Money()>=400.0 && getterANDSetterFile.get_Church()>0){
+        if (ra4==2 && getterANDSetterFile.get_Church()>0){
             img.setImageResource(R.mipmap.chur);
             pro_result=42;
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d2);
@@ -141,7 +141,7 @@ public class THEME_FOUR extends Quest{
             }
         }
         else random();
-        if (ra4==6 && getterANDSetterFile.get_Guardian_Money()>0){
+        if (ra4==6){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d6);
             img.setImageResource(R.mipmap.chur);
             pro_result=46;
@@ -181,7 +181,6 @@ public class THEME_FOUR extends Quest{
                 start_plus();
             }
         }
-        else random();
         if(ra4==7 && getterANDSetterFile.get_Church()>0){
             pro_result=47;
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d7);

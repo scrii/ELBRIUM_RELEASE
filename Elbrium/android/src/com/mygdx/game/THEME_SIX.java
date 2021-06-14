@@ -12,14 +12,14 @@ public class THEME_SIX extends Quest{
 
     public void six(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_SIX theme_six = new THEME_SIX();
         ra6 = 1 + (int) (Math.random() * 10);
-        if (ra6<5 && getterANDSetterFile.get_Guardian_Money()>0.0 && getterANDSetterFile.get_Ore_Elbrium()>0.0){
+        if (ra6<5){
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_1);
             second.setText("Хочу");
@@ -62,7 +62,7 @@ public class THEME_SIX extends Quest{
                 start_plus();
             }
         }
-        else if(getterANDSetterFile.get_Guardian_Money()>0){
+        else{
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_1);
             second.setText("Да");
@@ -113,7 +113,7 @@ public class THEME_SIX extends Quest{
         }
     }
     public void stav(){
-        ID2();
+        //ID2();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_SIX theme_six = new THEME_SIX();
         if (Integer.parseInt(input.getText().toString())<=0)Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();

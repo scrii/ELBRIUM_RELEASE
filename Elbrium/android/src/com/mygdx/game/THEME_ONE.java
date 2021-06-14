@@ -1,10 +1,5 @@
 package com.mygdx.game;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class THEME_ONE extends Quest {
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -29,14 +24,14 @@ public class THEME_ONE extends Quest {
 
     public void one(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
         ra1 = 1 + (int) (Math.random() * 10);
-        if(ra1==1 && getterANDSetterFile.get_Guardian_Money()>=50){
+        if(ra1==1){
             pro_result=1;
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q1);
@@ -53,8 +48,7 @@ public class THEME_ONE extends Quest {
             }
             exit(true);
         }
-        else random();
-        if(ra1==2 && getterANDSetterFile.get_Guardian_Money()>=100.0){
+        if(ra1==2){
             pro_result=2;
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q2);
@@ -70,7 +64,6 @@ public class THEME_ONE extends Quest {
             }
             exit(true);
         }
-        else random();
         if(ra1==3){
             pro_result=3;
             img.setImageResource(R.mipmap.base_avatar_1);
@@ -126,7 +119,7 @@ public class THEME_ONE extends Quest {
             }
         }
         else random();
-        if(ra1==5 && getterANDSetterFile.get_Guardian_Money()>=5){
+        if(ra1==5){
             pro_result=5;
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Да");
@@ -162,7 +155,6 @@ public class THEME_ONE extends Quest {
                 start_plus();
             }
         }
-        else random();
         if(ra1==6 && getterANDSetterFile.get_Church()==0){
             pro_result=6;
             img.setImageResource(R.mipmap.base_avatar_1);
@@ -183,7 +175,7 @@ public class THEME_ONE extends Quest {
             }
         }
         else random();
-        if(ra1==7 && getterANDSetterFile.get_Guardian_Money()>=50.0){
+        if(ra1==7){
             pro_result=7;
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q7);
@@ -199,8 +191,7 @@ public class THEME_ONE extends Quest {
                 start_plus();
             }
         }
-        else random();
-        if(ra1==8 && getterANDSetterFile.get_Guardian_Money()>=(double)(getterANDSetterFile.get_School()*75+75)){
+        if(ra1==8){
             pro_result=8;
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q8);
@@ -223,8 +214,7 @@ public class THEME_ONE extends Quest {
                 start_plus();
             }
         }
-        else random();
-        if(ra1==9 && getterANDSetterFile.get_Guardian_Money()>=(double)((getterANDSetterFile.get_Park()*75+75))){
+        if(ra1==9){
             pro_result=9;
             img.setImageResource(R.mipmap.base_avatar_1);
             d_button();
@@ -249,7 +239,6 @@ public class THEME_ONE extends Quest {
                 start_plus();
             }
         }
-        else random();
         if(ra1==10){
             pro_result=10;
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q10_1);
@@ -276,4 +265,3 @@ public class THEME_ONE extends Quest {
         }
     }
 }
-

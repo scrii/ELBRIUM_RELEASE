@@ -1,11 +1,6 @@
 package com.mygdx.game;
 
 import android.widget.Toast;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class THEME_TWO extends Quest{
     public String m1 = "Меня ограбили! Сделайте же что-нибудь!";
@@ -40,14 +35,14 @@ public class THEME_TWO extends Quest{
 
     public void two(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         ra2 = 1 + (int) (Math.random() * 10);
-        if (ra2==1 && getterANDSetterFile.get_Guardian_Money()>=10){
+        if (ra2==1){
             pro_result=11;
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m1);
             img.setImageResource(R.mipmap.base_avatar_1);
@@ -68,8 +63,7 @@ public class THEME_TWO extends Quest{
                 start_plus();
             }
         }
-        else random();
-        if (ra2==2 && getterANDSetterFile.get_Guardian_Money()>=150.0){
+        if (ra2==2){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m2);
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Конечно!");
@@ -83,8 +77,7 @@ public class THEME_TWO extends Quest{
                 start_plus();
             }
         }
-        else random();
-        if (ra2==3 && getterANDSetterFile.get_Guardian_Money()>=500.0){
+        if (ra2==3){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m3);
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Хорошо");
@@ -98,8 +91,7 @@ public class THEME_TWO extends Quest{
                 start_plus();
             }
         }
-        else random();
-        if (ra2==4 && getterANDSetterFile.get_Guardian_Money()>=1000.0 && getterANDSetterFile.get_Band()==1){
+        if (ra2==4 && getterANDSetterFile.get_Band()==1){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m4);
             img.setImageResource(R.mipmap.bandit);
             second.setText("Купить");
@@ -137,7 +129,7 @@ public class THEME_TWO extends Quest{
             }
         }
         else random();
-        if (ra2==6 && getterANDSetterFile.get_Guardian_Money()>=(double)(getterANDSetterFile.get_Tower()*75+75) && getterANDSetterFile.get_Villagers()>0){
+        if (ra2==6 && getterANDSetterFile.get_Villagers()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m6);
             second.setText("Постройте вышку");
@@ -158,7 +150,7 @@ public class THEME_TWO extends Quest{
             }
         }
         else random();
-        if (ra2==7 && getterANDSetterFile.get_Guardian_Money()>0.0){
+        if (ra2==7){
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
             second.setText("Хорошо");
@@ -210,8 +202,7 @@ public class THEME_TWO extends Quest{
                 description.setText(description.getText().toString() + "\n" +theme_two.m7_c_1);
             }
         }
-        else random();
-        if (ra2==8 && getterANDSetterFile.get_Villagers()>0 && getterANDSetterFile.get_Guardian_Money()>=50.0){
+        if (ra2==8 && getterANDSetterFile.get_Villagers()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m8);
             second.setText("Проверить");
@@ -228,7 +219,7 @@ public class THEME_TWO extends Quest{
             }
         }
         else random();
-        if (ra2==9 && getterANDSetterFile.get_Guardian_Money()>=100){
+        if (ra2==9){
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
             second.setText("Купить");
@@ -242,8 +233,7 @@ public class THEME_TWO extends Quest{
                 start_plus();
             }
         }
-        else random();
-        if (ra2==10 && getterANDSetterFile.get_Guardian_Money()==666.0){
+        if (ra2==10){
             img.setImageResource(R.mipmap.devil);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
             second.setText("Согласиться");

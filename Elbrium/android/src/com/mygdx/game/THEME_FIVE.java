@@ -14,14 +14,14 @@ public class THEME_FIVE extends Quest{
 
     public void five(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_FIVE theme_five = new THEME_FIVE();
         ra5 = 1 + (int) (Math.random() * 5);
-        if(ra5==1 && getterANDSetterFile.get_Guardian_Money()>0){
+        if(ra5==1){
             img.setImageResource(R.mipmap.devil);
             pro_result=51;
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r1);
@@ -39,7 +39,6 @@ public class THEME_FIVE extends Quest{
                 start_plus();
             }
         }
-        else random();
         if(ra5==2 && getterANDSetterFile.get_Villagers()<=3){
             img.setImageResource(R.mipmap.devil);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r2);

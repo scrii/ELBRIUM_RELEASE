@@ -1,11 +1,5 @@
 package com.mygdx.game;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class THEME_EIGHT extends Quest{
     public String e1 = "К нам прилетели пришельцы!";
     public String e1_c_1 = "*Вы бежите смотреть «пришельцев», но это оказываются обычные грузчики с другой планеты. Вы здороваетесь с ними и делаете вид, что шли не к ним. Сделав большой крюк, вы вернулись*";
@@ -16,7 +10,7 @@ public class THEME_EIGHT extends Quest{
 
     public void eight(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
@@ -51,7 +45,7 @@ public class THEME_EIGHT extends Quest{
                     start_plus();
                 }
             }
-            if (ra8==3 && getterANDSetterFile.get_Guardian_Money()>=10.0){
+            if (ra8==3){
                 img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e3);
                 second.setText("Стройте");
@@ -65,8 +59,7 @@ public class THEME_EIGHT extends Quest{
                     start_plus();
                 }
             }
-            else random();
-            if (ra8==4 && getterANDSetterFile.get_Guardian_Money()>=25.0){
+            if (ra8==4){
                 img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e4);
                 second.setText("Да");
@@ -81,6 +74,5 @@ public class THEME_EIGHT extends Quest{
                     start_plus();
                 }
             }
-            else random();
     }
 }

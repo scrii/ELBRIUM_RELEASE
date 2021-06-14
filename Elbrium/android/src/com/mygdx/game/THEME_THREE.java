@@ -30,7 +30,7 @@ public class THEME_THREE extends Quest{
 
     public void three(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
@@ -91,7 +91,7 @@ public class THEME_THREE extends Quest{
                 }
             }
         }
-        if (ra3==3 && getterANDSetterFile.get_Guardian_Money()>=25.0 && getterANDSetterFile.get_Villagers()>=1 && getterANDSetterFile.get_Church()!=0){
+        if (ra3==3 && getterANDSetterFile.get_Villagers()>=1 && getterANDSetterFile.get_Church()!=0){
             img.setImageResource(R.mipmap.bandit);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v3);
             second.setText("Помочь");
@@ -110,7 +110,7 @@ public class THEME_THREE extends Quest{
             }
         }
         else random();
-        if (ra3==4 && getterANDSetterFile.get_Guardian_Money()>=150.0){
+        if (ra3==4){
             img.setImageResource(R.mipmap.bandit);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v4_1);
             d_button();
@@ -131,8 +131,7 @@ public class THEME_THREE extends Quest{
                 start_plus();
             }
         }
-        else random();
-        if (ra3==5 && getterANDSetterFile.get_Guardian_Money()>=400){
+        if (ra3==5){
             img.setImageResource(R.mipmap.bandit);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v5);
             second.setText("Дать 200 монет");
@@ -148,7 +147,6 @@ public class THEME_THREE extends Quest{
                 start_plus();
             }
         }
-        else random();
         if (ra3==6){
             img.setImageResource(R.mipmap.bandit);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v6);

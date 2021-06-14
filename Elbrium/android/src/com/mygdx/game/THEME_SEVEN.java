@@ -33,7 +33,7 @@ public class THEME_SEVEN extends Quest{
 
     public void seven(){
         vip++;
-        ID2();
+        //ID2();
         o_button();
         o_input();
         start();
