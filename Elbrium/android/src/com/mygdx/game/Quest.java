@@ -185,16 +185,16 @@ public class Quest extends AppCompatActivity{
         THEME_SIX theme_six = new THEME_SIX();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         THEME_SEVEN theme_seven = new THEME_SEVEN();
-        if(vip%4==0 && getterANDSetterFile.get_Band()==1)theme_three.three();
+        if(vip%4.5==0 && getterANDSetterFile.get_Band()==1)theme_three.three();
         else random();
         if(vip%5==0 && getterANDSetterFile.get_Church()!=0)theme_four.four();
         else random();
         if(vip%6==0 && getterANDSetterFile.get_Devil()!=0)theme_five.five();
         else random();
         if(vip%7==0)theme_six.six();
-        if(vip%8==0 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
+        if(vip%8.5==0 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
         else random();
-        if(vip%9==0)theme_eight.eight();
+        if(vip%9.5==0)theme_eight.eight();
         if(vip%2==0)theme_one.one();
         if(vip%3==0)theme_two.two();
     }
