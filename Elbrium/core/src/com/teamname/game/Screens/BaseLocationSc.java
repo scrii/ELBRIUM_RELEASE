@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import Mesh.Mesh;
 import Mesh.Square;
 import Tools.Buttons;
-import Tools.Joystick;
+import Tools.Joysticks.Joystick;
 import Tools.Point2D;
 
 public class BaseLocationSc implements Screen {
@@ -34,7 +34,7 @@ public class BaseLocationSc implements Screen {
     private float baseX=Main.BACKGROUND_WIDTH/2f;
     private float baseY=Main.BACKGROUND_HEIGHT/2f;
     private Buttons bLeft,bUp,bRight,bDown,bAccept;
-    private Square square;
+    private Square square, cameraSquare;
     public static boolean onesTouched;
 
 
@@ -47,14 +47,11 @@ public class BaseLocationSc implements Screen {
         cameraPos = new Point2D(Main.BACKGROUND_WIDTH/2f,Main.BACKGROUND_HEIGHT/2f);
         mesh = new Mesh(new Square(Main.BACKGROUND_HEIGHT/11,25));
         square=new Square(Main.BACKGROUND_HEIGHT/11,25);
+        cameraSquare=new Square(Main.WIDTH/11,25);
 
-        float xCenterButton;
         float a = square.a/2.5f;
         float indent = square.thickness;
         float oy3=square.thickness*3+a+indent;
-
-
-
 
         bLeft=new Buttons(false,Main.bLeft_un,Main.bLeft,a,a,
                 Main.WIDTH-a-square.thickness*3-a-indent-a-indent, oy3);
@@ -67,10 +64,13 @@ public class BaseLocationSc implements Screen {
         bAccept=new Buttons(false,Main.bDown_un,Main.bDown,a,a,
                 Main.WIDTH-a-square.thickness*3-a-indent,oy3);
 
+        Point2D baseLocation = mesh.squares.get(mesh.squares.size()/2).pos.clone();
+        baseLocation.add(square.thickness,square.thickness);
         //joy = new Joystick(Main.circle,Main.stickImg,new Point2D(joyX,joyY),joySize,0);
-        base = new Base(Main.base,new Point2D(Main.WIDTH/2f,Main.HEIGHT/2f),0,(mesh.squares.get(0).a-2*mesh.squares.get(0).thickness)/2f);
+        base = new Base(Main.base,baseLocation,0,(mesh.squares.get(0).a-2*mesh.squares.get(0).thickness)/2f);
+        base.bounds.pos.setPoint(Main.WIDTH/2f-cameraSquare.a/2f+ cameraSquare.thickness,Main.HEIGHT/2f-cameraSquare.a/2f+ cameraSquare.thickness);
         camera=new OrthographicCamera(Main.BACKGROUND_WIDTH,Main.BACKGROUND_HEIGHT/2f);
-
+        camera.position.set(cameraPos.getX(),cameraPos.getY(),0);
     }
 
 
@@ -83,7 +83,7 @@ public class BaseLocationSc implements Screen {
         cameraCheck();
         Main.baseBatchBackground.setProjectionMatrix(camera.combined);
         camera.update();
-        camera.position.set(cameraPos.getX(),cameraPos.getY(),0);
+
 
 
 
@@ -155,15 +155,69 @@ public class BaseLocationSc implements Screen {
     }
 
     private void buttonsLogic(SpriteBatch batch){
+       // if(cameraBound(2))camera.position.add(0,cameraSquare.a,0);
+
         bLeft.draw(batch);
-        if(bLeft.isTouch())base.position.add(-mesh.squares.get(0).a,0);
-        bRight.draw(batch);
+        if(!baseBound(1)&&bLeft.isTouch()&&!bLeft.isActionDone()){
+            base.position.add(-square.a,0);bLeft.setActionDone(true);
+            base.bounds.pos.add(-cameraSquare.a, 0);
+        }
+        if(!bLeft.isTouch())bLeft.setActionDone(false);
 
         bUp.draw(batch);
+        if(!baseBound(2)&&bUp.isTouch()&&!bUp.isActionDone()){
+            base.position.add(0,square.a);bUp.setActionDone(true);
+            base.bounds.pos.add(0,cameraSquare.a);
+            Gdx.app.error("basebounds",base.bounds.pos.getX()+" : "+base.bounds.pos.getY());
+
+
+        }
+        if(!bUp.isTouch())bUp.setActionDone(false);
+
+        bRight.draw(batch);
+        if(!baseBound(3)&&bRight.isTouch()&&!bRight.isActionDone()) {
+            base.position.add(square.a, 0);
+            bRight.setActionDone(true);
+            base.bounds.pos.add(cameraSquare.a,0);
+        }
+
+        if(!bRight.isTouch())bRight.setActionDone(false);
+
         bDown.draw(batch);
+        if(!baseBound(4)&&bDown.isTouch()&&!bDown.isActionDone()){
+            base.position.add(0,-square.a);bDown.setActionDone(true);
+            base.bounds.pos.add(0,-cameraSquare.a);
+        }
+        if(!bDown.isTouch())bDown.setActionDone(false);
+
         bAccept.draw(batch);
+        if(bAccept.isTouch()&&!bAccept.isActionDone()){;bAccept.setActionDone(true);}
+        if(!bAccept.isTouch())bAccept.setActionDone(false);
     }
 
+    private boolean baseBound(int case_){
+        // 1 - left
+        // 2 - up
+        // 3 - right
+        // 4 - down
+
+        switch (case_){
+            case 1:return base.position.getX()-square.a<0;
+            case 2:return base.position.getY()+square.a>Main.BACKGROUND_HEIGHT;
+            case 3:return base.position.getX()+square.a>Main.BACKGROUND_WIDTH;
+            case 4:return base.position.getY()-square.a<0;
+        }
+        return false;
+    }
+
+    private boolean cameraBound(int case_){
+        // 2 - up
+        // 4 - down
+        switch (case_){
+            case 2:return base.bounds.pos.getY()+cameraSquare.thickness+cameraSquare.a>Main.HEIGHT;
+        }
+        return false;
+    }
 
 
     @Override

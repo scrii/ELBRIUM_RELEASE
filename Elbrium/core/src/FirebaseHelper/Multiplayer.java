@@ -3,6 +3,7 @@ package FirebaseHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.gson.Gson;
+import com.teamname.game.Actor.Player;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
@@ -22,11 +23,13 @@ public class Multiplayer {
     String valueOf_online;
     GetterANDSetterFile gs;
     public ArrayList<String> meta_players;
+    public static ArrayList<Player> real_players;
     public Circle bounds;
     Gson gson;
 
     public Multiplayer(){
         meta_players=new ArrayList<>();
+        real_players=new ArrayList<>();
         databaseHelper=new DatabaseHelper();
         players=new ArrayList<>();
         gs=new GetterANDSetterFile();
@@ -52,12 +55,24 @@ public class Multiplayer {
         return bounds;
     }
 
+    public void update(){
+
+    }
+
     public void draw(SpriteBatch batch){
         for(Message m : players){
             //Gdx.app.log("MP",m.x+"");
 
-            bounds.pos.setPoint(m.x,m.y);
-            batch.draw(Main.getPlayer(m.texture),m.x,m.y, GameSc.player.R*2,2*GameSc.player.R);
+            bounds.pos.setPoint(m.x-GameSc.player.R,m.y-GameSc.player.R);
+            batch.draw(Main.getPlayer(m.texture),m.x-GameSc.player.R*2,m.y-GameSc.player.R*2, GameSc.player.R*2,2*GameSc.player.R);
+            bounds.debug(batch,GameSc.player.R);
+            if(GameSc.player.bounds.Overlaps(bounds)){
+                float dx = GameSc.player.send_in_ONLINE.getX()-bounds.pos.getX()-2*GameSc.player.R;
+                float dy = GameSc.player.send_in_ONLINE.getY()-bounds.pos.getY()-2*GameSc.player.R;
+                float length=(float)Math.sqrt(dx*dx+dy*dy);
+                GameSc.player.send_in_ONLINE.setPoint(GameSc.player.R/length*dx+bounds.pos.getX(),GameSc.player.R/length*dy+bounds.pos.getY());
+                //GameSc.player.send_in_ONLINE.setPoint(GameSc.player.send_in_ONLINE.getX()-dx,GameSc.player.send_in_ONLINE.getY()-dy);
+            }
         }
     }
 
@@ -109,8 +124,10 @@ public class Multiplayer {
         }
         if(!flag)players.add(gson.fromJson("{"+s,Message.class));
 
+
         Gdx.app.log("MP",ref);
     }
+
 
 
 

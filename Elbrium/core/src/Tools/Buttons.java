@@ -15,6 +15,7 @@ public class Buttons {
     private int pointer=-1;
     private boolean withJoy;
     private int otherPointer=0;
+    private boolean actionDone;
 
     public boolean isTouch() {
         return isTouch;
@@ -57,7 +58,7 @@ public class Buttons {
 
     public void action(float x, float y, boolean isDownTouch, int pointer){
         if(isDownTouch&&isButtonTouch(x,y)&&this.pointer==-1)this.pointer=pointer;
-        if(withJoy&&isDownTouch&&this.pointer==pointer&& GameSc.joy.getPointer()==-1&&GameSc.joy2.getPointer()==-1){isTouch=true;texture=pressed;}
+        if(withJoy&&isDownTouch&&this.pointer==pointer&& GameSc.joy.getPointer()==-1&&GameSc.fireJoy.getPointer()==-1){isTouch=true;texture=pressed;}
         else if(!withJoy&&!BaseLocationSc.onesTouched&&isDownTouch&&this.pointer==pointer){isTouch=true;texture=pressed;}
         if(!isDownTouch&&this.pointer==pointer)unPressed();
     }
@@ -72,6 +73,12 @@ public class Buttons {
         this.texture=texture;
     }
 
+    public void setActionDone(boolean bool){actionDone=bool;}
 
+    public boolean isActionDone(){return actionDone;}
+
+    public Point2D getPos(){
+        return new Point2D(startX,startY);
+    }
 
 }
