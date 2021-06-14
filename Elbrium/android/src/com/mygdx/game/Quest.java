@@ -28,7 +28,7 @@ public class Quest extends AppCompatActivity{
     public EditText input;
     public ImageView img;
     public boolean u;
-    public int vip=1;
+    public double vip=2;
 
     @Override
     protected void onStart(){
@@ -174,7 +174,7 @@ public class Quest extends AppCompatActivity{
     }
 
     public void random(){
-        vip = 2+(int)(Math.random()*9);
+        vip = 2+(Math.random()*9);
         Log.d("VIP",vip+"");
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
