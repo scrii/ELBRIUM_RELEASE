@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import static com.mygdx.game.Quest.vip;
 
 public class THEME_EIGHT extends Quest{
     public String e1 = "К нам прилетели пришельцы!";
@@ -23,9 +22,7 @@ public class THEME_EIGHT extends Quest{
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
-        ra8 = 1 + (int) (Math.random() * 10);
-        if (ra8>4)random();
-        else{
+        ra8 = 1 + (int) (Math.random() * 4);
             if (ra8==1){
                 img.setImageResource(R.mipmap.base_avatar_1);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" +  theme_eight.e1);
@@ -85,7 +82,5 @@ public class THEME_EIGHT extends Quest{
                 }
             }
             else random();
-        }
     }
-
 }

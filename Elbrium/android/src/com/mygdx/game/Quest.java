@@ -28,7 +28,7 @@ public class Quest extends AppCompatActivity{
     public EditText input;
     public ImageView img;
     public boolean u;
-    public static int vip=1;
+    public int vip=1;
 
     @Override
     protected void onStart(){
@@ -109,7 +109,7 @@ public class Quest extends AppCompatActivity{
             c = 1;
             countDownTimer.start();
         }
-        //random();
+        random();
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +174,8 @@ public class Quest extends AppCompatActivity{
     }
 
     public void random(){
-        vip++;
+        vip = 2+(int)(Math.random()*9);
+        Log.d("VIP",vip+"");
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
         THEME_TWO theme_two = new THEME_TWO();
@@ -201,10 +202,10 @@ public class Quest extends AppCompatActivity{
         ID2();
         npc_tv.setVisibility(View.VISIBLE);
         description.setVisibility(View.VISIBLE);
-        first.setVisibility(View.VISIBLE);
+        first.setVisibility(View.INVISIBLE);
         second.setVisibility(View.VISIBLE);
         third.setVisibility(View.VISIBLE);
-        input.setVisibility(View.VISIBLE);
+        input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
         btn_next.setVisibility(View.INVISIBLE);
         btn_exit.setVisibility(View.INVISIBLE);
@@ -216,23 +217,23 @@ public class Quest extends AppCompatActivity{
         first.setVisibility(View.INVISIBLE);
         second.setVisibility(View.INVISIBLE);
         third.setVisibility(View.INVISIBLE);
-        input.setVisibility(View.VISIBLE);
+        input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
         btn_next.setVisibility(View.VISIBLE);
         btn_exit.setVisibility(View.VISIBLE);
     }
-    public void hide(){
-        ID2();
-        npc_tv.setVisibility(View.INVISIBLE);
-        description.setVisibility(View.INVISIBLE);
-        first.setVisibility(View.INVISIBLE);
-        second.setVisibility(View.INVISIBLE);
-        third.setVisibility(View.INVISIBLE);
-        input.setVisibility(View.INVISIBLE);
-        img.setVisibility(View.INVISIBLE);
-        btn_next.setVisibility(View.VISIBLE);
-        btn_exit.setVisibility(View.VISIBLE);
-    }
+//    public void hide(){
+//        ID2();
+//        npc_tv.setVisibility(View.INVISIBLE);
+//        description.setVisibility(View.INVISIBLE);
+//        first.setVisibility(View.INVISIBLE);
+//        second.setVisibility(View.INVISIBLE);
+//        third.setVisibility(View.INVISIBLE);
+//        input.setVisibility(View.INVISIBLE);
+//        img.setVisibility(View.INVISIBLE);
+//        btn_next.setVisibility(View.VISIBLE);
+//        btn_exit.setVisibility(View.VISIBLE);
+//    }
     public void d_button(){
         ID2();
         first.setVisibility(View.VISIBLE);

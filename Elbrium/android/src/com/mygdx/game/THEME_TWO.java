@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import static com.mygdx.game.Quest.vip;
 
 public class THEME_TWO extends Quest{
     public String m1 = "Меня ограбили! Сделайте же что-нибудь!";
@@ -259,5 +258,4 @@ public class THEME_TWO extends Quest{
             }
         }
     }
-
 }

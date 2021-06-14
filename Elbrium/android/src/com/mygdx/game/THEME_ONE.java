@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import static com.mygdx.game.Quest.vip;
 
 public class THEME_ONE extends Quest {
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -276,7 +275,5 @@ public class THEME_ONE extends Quest {
             }
         }
     }
-
-
 }
 

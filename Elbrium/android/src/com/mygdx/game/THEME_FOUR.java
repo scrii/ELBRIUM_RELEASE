@@ -1,7 +1,6 @@
 package com.mygdx.game;
 
 import android.widget.Toast;
-import static com.mygdx.game.Quest.vip;
 
 public class THEME_FOUR extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -271,5 +270,4 @@ public class THEME_FOUR extends Quest{
         }
         else random();
     }
-
 }

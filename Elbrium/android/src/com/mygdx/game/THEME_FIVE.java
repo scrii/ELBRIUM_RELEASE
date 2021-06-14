@@ -1,5 +1,5 @@
 package com.mygdx.game;
-import static com.mygdx.game.Quest.vip;
+
 public class THEME_FIVE extends Quest{
     public String r1 = "Пора платить по счетам. *Все ваши монеты куда-то исчезают, внутри себя чуть выше желудка вы чувствуете пустоту*";
     public String r1_c = "Он тебе не поможет, потому что тоже в моей власти";
@@ -20,8 +20,7 @@ public class THEME_FIVE extends Quest{
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_FIVE theme_five = new THEME_FIVE();
-        ra5 = 1 + (int) (Math.random() * 10);
-        if(ra5>5)random();
+        ra5 = 1 + (int) (Math.random() * 5);
         if(ra5==1 && getterANDSetterFile.get_Guardian_Money()>0){
             img.setImageResource(R.mipmap.devil);
             pro_result=51;
@@ -116,5 +115,4 @@ public class THEME_FIVE extends Quest{
         }
         else random();
     }
-
 }

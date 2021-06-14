@@ -1,5 +1,4 @@
 package com.mygdx.game;
-import static com.mygdx.game.Quest.vip;
 public class THEME_THREE extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String v1 = "@" + getterANDSetterFile.get_Nickname() + "! Мы узнали, что на месте, где стоит ваша база зарыт клад! Но по нашим данным он находится прямо под местом, где вы сейчас сидите. Если хотите, то мы прямо сейчас начнём здесь копать.";
@@ -37,10 +36,7 @@ public class THEME_THREE extends Quest{
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
-        ra3 = 1 + (int) (Math.random() * 10);
-        if (ra3==8)random();
-        if (ra3==9)random();
-        if (ra3==10)random();
+        ra3 = 1 + (int) (Math.random() * 7);
         if (ra3==1){
             img.setImageResource(R.mipmap.bandit);
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v1);
@@ -190,5 +186,4 @@ public class THEME_THREE extends Quest{
             }
         }
     }
-
 }

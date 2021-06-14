@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 import android.widget.Toast;
-import static com.mygdx.game.Quest.vip;
+
 public class THEME_SIX extends Quest{
     public String w1_1 = "Не желаете ли вы сыграть в 21?";
     public String w1_2 = "Желаете поставить монеты или elbrium?";

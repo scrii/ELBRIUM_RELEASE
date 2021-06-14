@@ -1,5 +1,5 @@
 package com.mygdx.game;
-import static com.mygdx.game.Quest.vip;
+
 public class THEME_SEVEN extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String s1 = "*В один из дней вы вспоминаете про ключ, который был передан священником. Покопавшись в груде вещей, вы находите заветную вещь и радостный спускаетесь по ступенькам вниз, веля охране не следовать за собой. Через некоторое время, спускаясь всё глубже и глубже, вы натыкаетесь на старую дубовую дверь, в руках у вас лежит ключ от неё, а в голове мысль: открыть или всё же…*";
