@@ -44,128 +44,128 @@ public class THEME_SEVEN extends Quest{
             img.setImageResource(R.color.black);
             second.setText("Открыть");
             third.setText("Уйти");
-            if (button(second)){
+            if (button(second)==2){
                 o_button();
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
                 second.setText("Прислушаться");
                 third.setText("Игнорировать");
-                if (button(second)){
+                if (button(second)==2){
                     o_button();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
                     second.setText("Ускорить шаг");
                     third.setText("Подняться наверх и вызвать стражу");
-                    if (button(second)){
+                    if (button(second)==2){
                         d_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s5);
                         first.setText("Представиться" + getterANDSetterFile.get_Nickname());
                         second.setText("Представиться священником");
                         third.setText("Представиться главарём банды");
-                        if (button(first)){
+                        if (button(first)==1){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
                             second.setText("Отдать ключ");
                             third.setText("Броситься наверх");
-                            if (button(second)){
+                            if (button(second)==2){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
                                 second.setText("Толкнуть");
                                 third.setText("Побежать наверх");
-                                if (button(second)){
+                                if (button(second)==2){
                                     o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
-                                if (button(third)){
+                                if (button(third)==3){
                                     o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
                             }
-                            if (button(third)){
+                            if (button(third)==3){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
-                        if (button(second)){
+                        if (button(second)==2){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
                             second.setText("Благословить");
                             third.setText("Проклясть");
-                            if (button(second)){
+                            if (button(second)==2){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
                                 second.setText("Отдать ключ");
                                 third.setText("Броситься наверх");
-                                if (button(second)){
+                                if (button(second)==2){
                                     o_button();
                                     second.setText("Толкнуть");
                                     third.setText("Побежать наверх");
-                                    if (button(second)){
+                                    if (button(second)==2){
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
-                                    if (button(third)){
+                                    if (button(third)==3){
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                 }
-                                if (button(third)){
+                                if (button(third)==3){
                                     o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
                             }
-                            if (button(third)){
+                            if (button(third)==3){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
-                        if (button(third)){
+                        if (button(third)==3){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
                             second.setText(getterANDSetterFile.get_Nickname());
                             third.setText("Г.Б.");
-                            if (button(second)){
+                            if (button(second)==2){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
-                            if (button(third)){
+                            if (button(third)==3){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
                                 second.setText("Пойти дальше");
                                 third.setText("Вернуться назад");
-                                if (button(second)){
+                                if (button(second)==2){
                                     o_button();
                                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
                                     second.setText("Продолжить спуск");
                                     third.setText("Вернуться назад");
-                                    if (button(second)){
+                                    if (button(second)==2){
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
-                                    if (button(third)){
+                                    if (button(third)==3){
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                         getterANDSetterFile.set_Dungeon(0);
                                         start_plus();
                                     }
                                 }
-                                if (button(third)){
+                                if (button(third)==3){
                                     o_button();
                                     description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
                                     getterANDSetterFile.set_Dungeon(0);
@@ -174,62 +174,62 @@ public class THEME_SEVEN extends Quest{
                             }
                         }
                     }
-                    if (button(third)){
+                    if (button(third)==3){
                         o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
                         getterANDSetterFile.set_Dungeon(0);
                         start_plus();
                     }
                 }
-                if (button(third)){
+                if (button(third)==3){
                     d_button();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s4);
                     first.setText("Продолжить спуск");
                     second.setText("Спросить кто умер");
                     third.setText("Вернуться назад");
-                    if (button(first)){
+                    if (button(first)==1){
                         o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
                         o_button();
                         second.setText("Продолжить путь");
                         third.setText("Повернуть назад");
-                        if (button(second)){
+                        if (button(second)==2){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
                             second.setText("Продолжить спуск");
                             third.setText("Вернуться назад");
-                            if (button(second)){
+                            if (button(second)==2){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
-                            if (button(third)){
+                            if (button(third)==3){
                                 o_button();
                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                 getterANDSetterFile.set_Dungeon(0);
                                 start_plus();
                             }
                         }
-                        if (button(third)){
+                        if (button(third)==3){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
                             getterANDSetterFile.set_Dungeon(0);
                             start_plus();
                         }
                     }
-                    if (button(second)){
+                    if (button(second)==2){
                         o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
                         second.setText("2021");
                         third.setText("Молча продолжить спуск вниз");
-                        if (button(second)){
+                        if (button(second)==2){
                             o_button();
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
                             getterANDSetterFile.set_Dungeon(0);
                             start_plus();
                         }
-                        if (button(third)){
+                        if (button(third)==3){
                             o_button();
                             description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
@@ -237,7 +237,7 @@ public class THEME_SEVEN extends Quest{
                             start_plus();
                         }
                     }
-                    if (button(third)){
+                    if (button(third)==3){
                         o_button();
                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
                         getterANDSetterFile.set_Dungeon(0);
@@ -245,7 +245,7 @@ public class THEME_SEVEN extends Quest{
                     }
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 o_button();
                 description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
                 start_plus();
@@ -253,5 +253,4 @@ public class THEME_SEVEN extends Quest{
         }
         else random();
     }
-
 }

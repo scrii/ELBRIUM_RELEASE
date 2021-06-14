@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import android.util.Log;
 import android.widget.Toast;
 
 public class THEME_SIX extends Quest{
@@ -9,6 +10,7 @@ public class THEME_SIX extends Quest{
     public String w1_4 = "*Крупье даёт вам 2 карты с числами, на них: ";                          //WARNING
     public String w2_1 = "Хотите ли вы сыграть в кости?";
     public String w2_2 = "Сколько желаете поставить? Учтите максимальная ставка - 10 монет.";
+
 
     public void six(){
         vip++;
@@ -24,25 +26,26 @@ public class THEME_SIX extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_1);
             second.setText("Хочу");
             third.setText("Не интересует");
-            if (button(second)){
+            if (button(second)==2){
+                Log.e("WORK","TRUE");
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_2);
                 d_button();
                 first.setText("Монеты");
                 second.setText("elbrium");
                 third.setText("Я передумал");
-                if (button(first)){
+                if (button(first)==1){
                     v=1;
                 }
-                if (button(second)){
+                if (button(second)==2){
                     v=2;
                 }
-                if ((button(first) || button(second)) && v!=0){
+                if ((button(first)==1 || button(second)==2) && v!=0){
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
                     d_input();
                     o_button();
                     second.setText("*Отдать крупье*");
                     third.setText("Я передумал");
-                    if (button(second)){
+                    if (button(second)==2){
                         try {
                             stav();
                         }catch (Exception e){
@@ -50,15 +53,15 @@ public class THEME_SIX extends Quest{
                             e.printStackTrace();
                         }
                     }
-                    if (button(third)){
+                    if (button(third)==3){
                         start_plus();
                     }
                 }
-                if (button(third)){
+                if (button(third)==3){
                     start_plus();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 start_plus();
             }
         }
@@ -67,12 +70,12 @@ public class THEME_SIX extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_1);
             second.setText("Да");
             third.setText("Нет");
-            if (button(second)){
+            if (button(second)==2){
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_2);
                 d_input();
                 second.setText("Ввод");
                 third.setText("Я передумал");
-                if (button(second)){
+                if (button(second)==2){
                     try {
                         if (Integer.parseInt(input.getText().toString())<=0)Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();
                         if (Integer.parseInt(input.getText().toString())>0 && Integer.parseInt(input.getText().toString())<=10 && (getterANDSetterFile.get_Guardian_Money()-(double)Integer.parseInt(input.getText().toString()))>0.0){
@@ -103,11 +106,11 @@ public class THEME_SIX extends Quest{
                         e.printStackTrace();
                     }
                 }
-                if (button(third)){
+                if (button(third)==3){
                     start_plus();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 start_plus();
             }
         }
@@ -131,11 +134,11 @@ public class THEME_SIX extends Quest{
             first.setText("Повысить ставку и попросить ещё одну карту");
             second.setText("Повысить ставку");
             third.setText("Пас");
-            if (button(first)){
+            if (button(first)==1){
                 d_input();
                 stav();
             }
-            if (button(second)){
+            if (button(second)==2){
                 d_input();
                 int mn = 1 + (int)(Math.random()*10);
                 if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
@@ -147,7 +150,7 @@ public class THEME_SIX extends Quest{
                     else stav();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 player1 = r_random();
                 player2 = f_random();
                 for (int i = 0; i < 70; i++) {

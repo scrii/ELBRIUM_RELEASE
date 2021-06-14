@@ -22,11 +22,11 @@ public class THEME_EIGHT extends Quest{
                 npc_tv.setText(npc_tv.getText().toString() + "\n" +  theme_eight.e1);
                 second.setText("Посмотреть");
                 third.setText("Игнорировать");
-                if (button(second)){
+                if (button(second)==2){
                     description.setText(description.getText().toString() + "\n" + theme_eight.e1_c_1);
                     start_plus();
                 }
-                if (button(third)){
+                if (button(third)==3){
                     description.setText(description.getText().toString() +"\n"+ theme_eight.e1_c_2);
                     start_plus();
                 }
@@ -36,11 +36,11 @@ public class THEME_EIGHT extends Quest{
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e2);
                 second.setText("Проводите");
                 third.setText("Нет");
-                if (button(second)){
+                if (button(second)==2){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                     start_plus();
                 }
-                if (button(third)){
+                if (button(third)==3){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                     start_plus();
                 }
@@ -50,11 +50,11 @@ public class THEME_EIGHT extends Quest{
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e3);
                 second.setText("Стройте");
                 third.setText("Нет");
-                if (button(second)){
+                if (button(second)==2){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                     start_plus();
                 }
-                if (button(third)){
+                if (button(third)==3){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                     start_plus();
                 }
@@ -64,12 +64,12 @@ public class THEME_EIGHT extends Quest{
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e4);
                 second.setText("Да");
                 third.setText("Нет");
-                if (button(second)){
+                if (button(second)==2){
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-25.0);
                     getterANDSetterFile.set_HealthBase(getterANDSetterFile.get_HealthBase()+1);
                     start_plus();
                 }
-                if (button(third)){
+                if (button(third)==3){
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-2);
                     start_plus();
                 }

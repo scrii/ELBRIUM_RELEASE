@@ -27,12 +27,12 @@ public class THEME_FIVE extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r1);
             second.setText("Отдать долг");
             third.setText("Священник!");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Guardian_Money(0.0);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                 getterANDSetterFile.set_Guardian_Money(0.0);
                 description.setText(description.getText().toString() + "\n" +theme_five.r1_c);
@@ -44,12 +44,12 @@ public class THEME_FIVE extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r2);
             second.setText("Взять");
             third.setText("Отказаться");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                 description.setText(description.getText().toString() + "\n" +theme_five.r2_c);
                 start_plus();
@@ -61,11 +61,11 @@ public class THEME_FIVE extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r3);
             second.setText("Забирай");
             third.setText("Нет, только не моя душа!");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_five.r3_c);
                 start_plus();
             }
@@ -75,12 +75,12 @@ public class THEME_FIVE extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r4);
             second.setText("Отдать");
             third.setText("Оставить себе");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                 getterANDSetterFile.set_Dungeon(0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_five.r4);
                 start_plus();
             }
@@ -91,23 +91,23 @@ public class THEME_FIVE extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_1);
             second.setText("Согласиться");
             third.setText("Отказаться");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Block(1);
                 getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+500.0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_2);
                 second.setText("Согласиться");
                 third.setText("Отказаться");
-                if (button(second)){
+                if (button(second)==2){
                     getterANDSetterFile.set_Block(1);
                     getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+1000.0);
                     start_plus();
                 }
-                if (button(third)){
+                if (button(third)==3){
                     start_plus();
                 }
             }

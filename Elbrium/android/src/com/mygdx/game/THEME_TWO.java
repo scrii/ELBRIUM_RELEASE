@@ -50,15 +50,15 @@ public class THEME_TWO extends Quest{
             first.setText("Дать ограбленные деньги");
             second.setText("Заставить стражу расследовать это дело");
             third.setText("Что например?");
-            if (button(first)){
+            if (button(first)==1){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-5);
                 start_plus();
             }
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 start_plus();
             }
@@ -68,12 +68,12 @@ public class THEME_TWO extends Quest{
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Конечно!");
             third.setText("Проваливай");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
                 description.setText(description.getText().toString() + "\n" +theme_two.m2_c);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 start_plus();
             }
         }
@@ -82,12 +82,12 @@ public class THEME_TWO extends Quest{
             img.setImageResource(R.mipmap.base_avatar_1);
             second.setText("Хорошо");
             third.setText("Проваливай");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_two.m3_c);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+150.0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 start_plus();
             }
         }
@@ -97,7 +97,7 @@ public class THEME_TWO extends Quest{
             second.setText("Купить");
             third.setText("Отказаться");
             int ran = 1 + (int)(Math.random()*10);
-            if (button(second)){
+            if (button(second)==2){
                 if(ran<5) {
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 200.0);
                     description.setText(description.getText().toString() + "\n" +theme_two.m4_c_1);
@@ -109,7 +109,7 @@ public class THEME_TWO extends Quest{
                     start_plus();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 start_plus();
             }
         }
@@ -119,11 +119,11 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m5);
             second.setText("Хорошо");
             third.setText("Кто его впустил?");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Band(1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_two.m5_c);
                 start_plus();
             }
@@ -134,12 +134,12 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m6);
             second.setText("Постройте вышку");
             third.setText("Ничего страшного, с нами марсианский бог, выживем");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-(double)(getterANDSetterFile.get_Tower()*75+75));
                 getterANDSetterFile.set_Tower(getterANDSetterFile.get_Tower()+1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 int ran = 1 + (int)(Math.random()*10);
                 if (ran<5){
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
@@ -155,7 +155,7 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
             second.setText("Хорошо");
             third.setText("Звучит сомнительно, нет");
-            if (button(second)){
+            if (button(second)==2){
                 d_input();
                 try {
                     if (Integer.parseInt(input.getText().toString())>=0){
@@ -198,7 +198,7 @@ public class THEME_TWO extends Quest{
                     e.printStackTrace();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_two.m7_c_1);
             }
         }
@@ -207,12 +207,12 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m8);
             second.setText("Проверить");
             third.setText("Нет, она надежно защищена");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_two.m8_c_1);
                 getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_two.m8_c_2);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
                 start_plus();
@@ -224,11 +224,11 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
             second.setText("Купить");
             third.setText("Отказаться");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_two.m9_c_1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_two.m9_c_2);
                 start_plus();
             }
@@ -238,11 +238,11 @@ public class THEME_TWO extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
             second.setText("Согласиться");
             third.setText("Отказаться");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_two.m10_c_1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_two.m10_c_2);
                 start_plus();
             }

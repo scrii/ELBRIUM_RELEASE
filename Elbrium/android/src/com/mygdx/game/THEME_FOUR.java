@@ -54,14 +54,14 @@ public class THEME_FOUR extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d1);
             second.setText("Раз счастливыми, то можно");
             third.setText("Нет, слишком дорого");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(75 + (getterANDSetterFile.get_House()*75+75)));
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
                 getterANDSetterFile.set_House(getterANDSetterFile.get_House()+1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-2);
                 start_plus();
             }
@@ -73,12 +73,12 @@ public class THEME_FOUR extends Quest{
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d2);
             second.setText("Да, вы правы");
             third.setText("Обойдётся");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d2_c_1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-400.0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d2_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-4);
                 start_plus();
@@ -92,16 +92,16 @@ public class THEME_FOUR extends Quest{
             first.setText("Поздороваться");
             second.setText("Помолиться");
             third.setText("Забаррикадироваться");
-            if (button(first)){
+            if (button(first)==1){
                 description.setText(description.getText().toString() + "\n" +theme_four.d3_c_1);
                 start_plus();
             }
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d3_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d3_c_3);
                 start_plus();
             }
@@ -112,13 +112,13 @@ public class THEME_FOUR extends Quest{
             img.setImageResource(R.mipmap.chur);
             second.setText("Встретить");
             third.setText("*Закатить глаза*");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d4_c_1);
                 getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d4_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
                 start_plus();
@@ -130,12 +130,12 @@ public class THEME_FOUR extends Quest{
             img.setImageResource(R.mipmap.chur);
             second.setText("Взять");
             third.setText("И куда мне её поставить?");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d5_c_1);
                 getterANDSetterFile.set_Dungeon(1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d5_c_2);
                 start_plus();
             }
@@ -148,7 +148,7 @@ public class THEME_FOUR extends Quest{
             d_input();
             second.setText("Конечно");
             third.setText("Конечно, нет");
-            if (button(second)){
+            if (button(second)==2){
                 try {
                     if (Integer.parseInt(input.getText().toString())>0){
                         if (Integer.parseInt(input.getText().toString())<100 && getterANDSetterFile.get_Guardian_Money()>=Integer.parseInt(input.getText().toString())){
@@ -175,7 +175,7 @@ public class THEME_FOUR extends Quest{
                     e.printStackTrace();
                 }
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-7);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
                 start_plus();
@@ -187,11 +187,11 @@ public class THEME_FOUR extends Quest{
             img.setImageResource(R.mipmap.chur);
             second.setText("Почему нет?");
             third.setText("Нет, у меня есть дела");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d7_c_1);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d7_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
                 start_plus();
@@ -203,12 +203,12 @@ public class THEME_FOUR extends Quest{
             img.setImageResource(R.mipmap.chur);
             second.setText("Рассмеяться");
             third.setText("Промолчать");
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d8_c_1);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-100);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d8_c_2);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-50);
                 start_plus();
@@ -220,12 +220,12 @@ public class THEME_FOUR extends Quest{
             img.setImageResource(R.mipmap.chur);
             second.setText("Non");
             third.setText("Abnegant");
-            if (button(second)){
+            if (button(second)==2){
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 getterANDSetterFile.set_Church(1);
                 start_plus();
             }
@@ -238,7 +238,7 @@ public class THEME_FOUR extends Quest{
             first.setText("Да");
             second.setText("Не приходилось");
             third.setText("Не умею читать");
-            if (button(first)){
+            if (button(first)==1){
                 d_input();
                 description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_1);
                 if(input.getText().toString().contains("Дьявол")||input.getText().toString().contains("дьявол")||input.getText().toString().contains("devil")||input.getText().toString().contains("Devil")||input.getText().toString().contains("diabolus")||input.getText().toString().contains("Diabolus")){
@@ -256,13 +256,13 @@ public class THEME_FOUR extends Quest{
                     start_plus();
                 }
             }
-            if (button(second)){
+            if (button(second)==2){
                 description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_2);
                 description.setText(description.getText().toString()+"\n"+theme_four.d10_3);
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+2);
                 start_plus();
             }
-            if (button(third)){
+            if (button(third)==3){
                 description.setText(description.getText().toString() + "\n" +theme_four.d10_1_c_3);
                 start_plus();
             }

@@ -30,6 +30,7 @@ public class Quest extends AppCompatActivity{
     public static ImageView img;
     public boolean u;
     public float vip=2;
+    public int but=0;
 
     @Override
     protected void onStart(){
@@ -121,6 +122,24 @@ public class Quest extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Quest.this,ScrollingActivity.class));
+            }
+        });
+        first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                but=1;
+            }
+        });
+        second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                but=2;
+            }
+        });
+        third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                but=3;
             }
         });
     }
@@ -252,16 +271,19 @@ public class Quest extends AppCompatActivity{
         //ID2();
         input.setVisibility(View.INVISIBLE);
     }
-    public boolean button(Button b){
-        u = false;
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                u=true;
-            }
-        });
-        return u;
+    public int button(Button b){
+        return but;
     }
+//    public boolean button(Button b){
+//        u = false;
+//        b.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                u=true;
+//            }
+//        });
+//        return u;
+//    }
     public void comments(TextView textMessage){
         String s = textMessage.getText().toString();
         String comment = textMessage.getText().toString();
