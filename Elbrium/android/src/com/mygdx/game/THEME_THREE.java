@@ -1,5 +1,4 @@
 package com.mygdx.game;
-
 public class THEME_THREE extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String v1 = "@" + getterANDSetterFile.get_Nickname() + "! Мы узнали, что на месте, где стоит ваша база зарыт клад! Но по нашим данным он находится прямо под местом, где вы сейчас сидите. Если хотите, то мы прямо сейчас начнём здесь копать.";
@@ -29,6 +28,160 @@ public class THEME_THREE extends Quest{
     public String v7_c_2 = "Как кто, - *удивился главарь*, - Вы. *Услышав это, вы кинули в того бокалом, из которого пили. Бандит обиженно ушёл*";
     public String v7_c_3 = "Вы не понимаете, что теряете! – *завопил главарь*, - тогда я разбогатею в одиночку и с вами делиться не стану!";
 
-
-
+    public void three(){
+        vip++;
+        //ID2();
+        o_button();
+        o_input();
+        start();
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        THEME_THREE theme_three = new THEME_THREE();
+        ra3 = 1 + (int) (Math.random() * 7);
+        if (ra3==1){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v1);
+            second.setText("Согласиться");
+            third.setText("Отказаться");
+            if (button(second)==2){
+                double ran = 1 + (double) (Math.random() * 10);
+                if (ran<2.25){
+                    description.setText(description.getText().toString() + "\n" +theme_three.v1_c_1 + " " + theme_three.v1_c_2);
+                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 25.0);
+                }
+                else{
+                    description.setText(description.getText().toString() + "\n" +theme_three.v1_c_1 + " " + theme_three.v1_c_3);
+                }
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v1_c_4);
+            }
+        }
+        if (ra3==2){
+            pro_result=32;
+            img.setImageResource(R.mipmap.chur);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_1);
+            second.setText("Согласиться со священником");
+            third.setText("Отказаться");
+            if (button(second)==2){
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_2);
+                second.setText("Да, не желаю вас больше видеть");
+                third.setText("Это ложь");
+                if (button(second)==2){
+                    description.setText(description.getText().toString() + "\n" +theme_three.v2_2_c);
+                    getterANDSetterFile.set_Band(0);
+                    start_plus();
+                }
+                if (button(third)==3){
+                    getterANDSetterFile.set_Church(-3);
+                    start_plus();
+                }
+            }
+            if (button(third)==3){
+                img.setImageResource(R.mipmap.bandit);
+                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_3);
+                second.setText("Согласиться");
+                third.setText("Не стоит");
+                if (button(second)==2){
+                    getterANDSetterFile.set_Church(-1000);
+                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-15);
+                    start_plus();
+                }
+                if (button(third)==3){
+                    start_plus();
+                }
+            }
+        }
+        if (ra3==3 && getterANDSetterFile.get_Villagers()>=1 && getterANDSetterFile.get_Church()!=0){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v3);
+            second.setText("Помочь");
+            third.setText("Конкуренция – это хорошо");
+            if (button(second)==2){
+                description.setText(description.getText().toString() + "\n" +theme_three.v3_c_1);
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
+                getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-3);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-25.0);
+                getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
+                start_plus();
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v3_c_2);
+                start_plus();
+            }
+        }
+        else random();
+        if (ra3==4){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v4_1);
+            d_button();
+            first.setText("Подписать");
+            second.setText("Прочитать");
+            third.setText("Разорвать");
+            if (button(first)==1){
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_1_c_1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
+                start_plus();
+            }
+            if (button(second)==2){
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_2);
+                start_plus();
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v4_1_c_2);
+                start_plus();
+            }
+        }
+        if (ra3==5){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v5);
+            second.setText("Дать 200 монет");
+            third.setText("Бредовая идея");
+            if (button(second)==2){
+                description.setText(description.getText().toString() + "\n" +theme_three.v5_c_1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-400.0);
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+                start_plus();
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v5_c_2);
+                start_plus();
+            }
+        }
+        if (ra3==6){
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v6);
+            second.setText("Взять");
+            third.setText("Отказаться");
+            if (button(second)==2){
+                description.setText(description.getText().toString() + "\n" +theme_three.v6_c_1);
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+100.0);
+                start_plus();
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v6_c_2);
+                start_plus();
+            }
+        }
+        if (ra3==7){
+            d_button();
+            img.setImageResource(R.mipmap.bandit);
+            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v7);
+            first.setText("И сколько вам нужно?");
+            second.setText("И кто тот несчастный, чью базу вы хотите продать?");
+            third.setText("Ну уж нет, звучит глупо");
+            if (button(first)==1){
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_1);
+                start_plus();
+            }
+            if (button(second)==2){
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_2);
+                start_plus();
+            }
+            if (button(third)==3){
+                description.setText(description.getText().toString() + "\n" +theme_three.v7_c_3);
+                start_plus();
+            }
+        }
+    }
 }

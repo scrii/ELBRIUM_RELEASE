@@ -28,6 +28,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import Messages.Message;
 import FirebaseHelper.Online;
+
 public class ScrollingActivity extends AppCompatActivity{
     double money,plus_health,plus_attack,real_money;
     int real_level,experience,level,real_xp,seconds;
