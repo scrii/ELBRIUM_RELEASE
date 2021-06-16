@@ -25,7 +25,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public boolean parametr=true;
     public int pro_result=0;
     public static TextView npc_tv,description,crossbar;
-    public static Button btn_next,btn_exit,first,second,third;
+    public static Button btn_exit,first,second,third;
     public static EditText input;
     public static ImageView img;
     public int t=0;
@@ -85,7 +85,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         vip++;
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
-        btn_next = findViewById(R.id.btn_next);
         btn_exit = findViewById(R.id.btn_exit);
         first = findViewById(R.id.first);
         second = findViewById(R.id.second);
@@ -108,7 +107,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
                 comments(npc_tv);
                 comments(description);
-                Log.e("QQQQQ",t+"");
             }
             @Override
             public void onFinish() {
@@ -123,12 +121,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             countDownTimer.start();
         }
         random();
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //random();
-            }
-        });
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,18 +128,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-//    public void ID2(){
-//        npc_tv = findViewById(R.id.nps_tv);
-//        description = findViewById(R.id.description);
-//        btn_next = findViewById(R.id.btn_next);
-//        btn_exit = findViewById(R.id.btn_exit);
-//        first = findViewById(R.id.first);
-//        second = findViewById(R.id.second);
-//        third = findViewById(R.id.third);
-//        input = findViewById(R.id.input);
-//        img = findViewById(R.id.nps_img);
-//        crossbar = findViewById(R.id.crossbar);
-//    }
     public int h_random(){
         int h = 3;
         h = 1 + (int)(Math.random()*15);
@@ -187,40 +167,8 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void random(){
-        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
-        THEME_TWO theme_two = new THEME_TWO();
-        THEME_THREE theme_three = new THEME_THREE();
-        THEME_FOUR theme_four = new THEME_FOUR();
-        THEME_FIVE theme_five = new THEME_FIVE();
-        THEME_SIX theme_six = new THEME_SIX();
-        THEME_EIGHT theme_eight = new THEME_EIGHT();
-        THEME_SEVEN theme_seven = new THEME_SEVEN();
         theme_one.one();
-//            if (y==1)theme_one.one();
-//            if (y==2)theme_two.two();
-//            if (y==3 && getterANDSetterFile.get_Band()==1)theme_three.three();
-//            else{
-//                y++;
-//                theme_one.one();
-//            }
-//            if (y==4 && getterANDSetterFile.get_Church()!=0)theme_four.four();
-//            else {
-//                y++;
-//                theme_one.one();
-//            }
-//            if (y==5 && getterANDSetterFile.get_Devil()!=0)theme_five.five();
-//            else{
-//                y++;
-//                theme_two.two();
-//            }
-//            if (y==6)theme_six.six();
-//            if (y==7 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
-//            else{
-//                y++;
-//                theme_two.two();
-//            }
-//            if (y==8)theme_eight.eight();
     }
     public void start(){
         //ID2();
@@ -231,7 +179,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         third.setVisibility(View.VISIBLE);
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
-        btn_next.setVisibility(View.INVISIBLE);
         btn_exit.setVisibility(View.INVISIBLE);
     }
     public void start_plus(){
@@ -243,38 +190,21 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         third.setVisibility(View.INVISIBLE);
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
-        btn_next.setVisibility(View.VISIBLE);
         btn_exit.setVisibility(View.VISIBLE);
     }
-//    public void hide(){
-//        ID2();
-//        npc_tv.setVisibility(View.INVISIBLE);
-//        description.setVisibility(View.INVISIBLE);
-//        first.setVisibility(View.INVISIBLE);
-//        second.setVisibility(View.INVISIBLE);
-//        third.setVisibility(View.INVISIBLE);
-//        input.setVisibility(View.INVISIBLE);
-//        img.setVisibility(View.INVISIBLE);
-//        btn_next.setVisibility(View.VISIBLE);
-//        btn_exit.setVisibility(View.VISIBLE);
-//    }
     public int button(Button b){
         return t;
     }
     public void d_button(){
-        //ID2();
         first.setVisibility(View.VISIBLE);
     }
     public void d_input(){
-        //ID2();
         input.setVisibility(View.VISIBLE);
     }
     public void o_button(){
-        //ID2();
         first.setVisibility(View.INVISIBLE);
     }
     public void o_input(){
-        //ID2();
         input.setVisibility(View.INVISIBLE);
     }
 
@@ -301,5 +231,4 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
-
 }
