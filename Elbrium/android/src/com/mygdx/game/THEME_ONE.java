@@ -91,13 +91,18 @@ public class THEME_ONE extends Quest{
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText(npc_tv.getText().toString() + "\n" + "Но я не просил столько!");
-                if(Integer.parseInt(input.getText().toString())>50 || Integer.parseInt(input.getText().toString())<300){
-                    getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
-                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-Integer.parseInt(input.getText().toString()));
-                    input.setText("");
-                    o_input();
-                    RA4();
+                try {
+                    if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText(npc_tv.getText().toString() + "\n" + "Но я не просил столько!");
+                    else if(Integer.parseInt(input.getText().toString())>50 || Integer.parseInt(input.getText().toString())<300){
+                        getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
+                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-Integer.parseInt(input.getText().toString()));
+                        input.setText("");
+                        o_input();
+                        RA4();
+                    }
+                    else RA4();
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
             }
         });

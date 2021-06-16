@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -29,8 +30,10 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public static EditText input;
     public static ImageView img;
     public int t=0;
+    public static NestedScrollView nestedScrollView_npc,nestedScrollView_des;
     public float vip=2;
     public int y=1;
+    String npc="",des="";
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -82,6 +85,8 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         getSupportActionBar().hide();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         vip++;
+        nestedScrollView_npc = findViewById(R.id.nes_npc_tv);
+        nestedScrollView_des = findViewById(R.id.nes_des);
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
         btn_exit = findViewById(R.id.btn_exit);
@@ -106,6 +111,14 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
                 comments(npc_tv);
                 comments(description);
+//                if (npc!=npc_tv.getText().toString()){
+//                    npc = npc_tv.getText().toString();
+//                    nestedScrollView_npc.fullScroll(100000);
+//                }
+//                if (des!=description.getText().toString()){
+//                    des = description.getText().toString();
+//                    nestedScrollView_des.fullScroll(100000);
+//                }
             }
             @Override
             public void onFinish() {

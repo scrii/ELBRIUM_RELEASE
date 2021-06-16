@@ -113,12 +113,14 @@ public GetterANDSetterFile getterANDSetterFile;
     @Override
     protected void onStart(){
         getterANDSetterFile = new GetterANDSetterFile();
+        bm = MediaPlayer.create(this,R.raw.basemusic);
         if (mediaPlayer.isPlaying())mediaPlayer.pause();
         if (getterANDSetterFile.get_SoundMusic()==1)bm.start();
         super.onStart();
     }
     @Override
     protected void onPause(){
+        bm = MediaPlayer.create(this,R.raw.basemusic);
         if(bm.isPlaying())bm.pause();
         super.onPause();
     }
