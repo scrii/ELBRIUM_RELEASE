@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import android.os.CountDownTimer;
+import android.view.View;
+
 public class THEME_SEVEN extends Quest{
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String s1 = "*В один из дней вы вспоминаете про ключ, который был передан священником. Покопавшись в груде вещей, вы находите заветную вещь и радостный спускаетесь по ступенькам вниз, веля охране не следовать за собой. Через некоторое время, спускаясь всё глубже и глубже, вы натыкаетесь на старую дубовую дверь, в руках у вас лежит ключ от неё, а в голове мысль: открыть или всё же…*";
@@ -44,213 +47,319 @@ public class THEME_SEVEN extends Quest{
             img.setImageResource(R.color.black);
             second.setText("Открыть");
             third.setText("Уйти");
-            if (button(second)==2){
-                o_button();
-                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
-                second.setText("Прислушаться");
-                third.setText("Игнорировать");
-                if (button(second)==2){
+            second.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     o_button();
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
-                    second.setText("Ускорить шаг");
-                    third.setText("Подняться наверх и вызвать стражу");
-                    if (button(second)==2){
-                        d_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s5);
-                        first.setText("Представиться" + getterANDSetterFile.get_Nickname());
-                        second.setText("Представиться священником");
-                        third.setText("Представиться главарём банды");
-                        if (button(first)==1){
+                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
+                    second.setText("Прислушаться");
+                    third.setText("Игнорировать");
+                    second.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
                             o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
-                            second.setText("Отдать ключ");
-                            third.setText("Броситься наверх");
-                            if (button(second)==2){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
-                                second.setText("Толкнуть");
-                                third.setText("Побежать наверх");
-                                if (button(second)==2){
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
+                            second.setText("Ускорить шаг");
+                            third.setText("Подняться наверх и вызвать стражу");
+                            second.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    d_button();
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s5);
+                                    first.setText("Представиться" + getterANDSetterFile.get_Nickname());
+                                    second.setText("Представиться священником");
+                                    third.setText("Представиться главарём банды");
+                                    first.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
+                                            second.setText("Отдать ключ");
+                                            third.setText("Броситься наверх");
+                                            second.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
+                                                    second.setText("Толкнуть");
+                                                    third.setText("Побежать наверх");
+                                                    second.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                                            getterANDSetterFile.set_Dungeon(0);
+                                                            start_plus();
+                                                        }
+                                                    });
+                                                    third.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                            getterANDSetterFile.set_Dungeon(0);
+                                                            start_plus();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                            third.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                    getterANDSetterFile.set_Dungeon(0);
+                                                    start_plus();
+                                                }
+                                            });
+                                        }
+                                    });
+                                    second.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
+                                            second.setText("Благословить");
+                                            third.setText("Проклясть");
+                                            second.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
+                                                    second.setText("Отдать ключ");
+                                                    third.setText("Броситься наверх");
+                                                    second.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            second.setText("Толкнуть");
+                                                            third.setText("Побежать наверх");
+                                                            second.setOnClickListener(new View.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(View v) {
+                                                                    o_button();
+                                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                                                    getterANDSetterFile.set_Dungeon(0);
+                                                                    start_plus();
+                                                                }
+                                                            });
+                                                            third.setOnClickListener(new View.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(View v) {
+                                                                    o_button();
+                                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                                    getterANDSetterFile.set_Dungeon(0);
+                                                                    start_plus();
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                    third.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                            getterANDSetterFile.set_Dungeon(0);
+                                                            start_plus();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                            third.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
+                                                    getterANDSetterFile.set_Dungeon(0);
+                                                    start_plus();
+                                                }
+                                            });
+                                        }
+                                    });
+                                    third.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
+                                            second.setText(getterANDSetterFile.get_Nickname());
+                                            third.setText("Г.Б.");
+                                            second.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
+                                                    getterANDSetterFile.set_Dungeon(0);
+                                                    start_plus();
+                                                }
+                                            });
+                                            third.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
+                                                    second.setText("Пойти дальше");
+                                                    third.setText("Вернуться назад");
+                                                    second.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                                                            second.setText("Продолжить спуск");
+                                                            third.setText("Вернуться назад");
+                                                            second.setOnClickListener(new View.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(View v) {
+                                                                    o_button();
+                                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                                                    getterANDSetterFile.set_Dungeon(0);
+                                                                    start_plus();
+                                                                }
+                                                            });
+                                                            third.setOnClickListener(new View.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(View v) {
+                                                                    o_button();
+                                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                                                    getterANDSetterFile.set_Dungeon(0);
+                                                                    start_plus();
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                    third.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            o_button();
+                                                            description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
+                                                            getterANDSetterFile.set_Dungeon(0);
+                                                            start_plus();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                            third.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
                                     o_button();
-                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
                                     getterANDSetterFile.set_Dungeon(0);
                                     start_plus();
                                 }
-                                if (button(third)==3){
-                                    o_button();
-                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
-                                    getterANDSetterFile.set_Dungeon(0);
-                                    start_plus();
-                                }
-                            }
-                            if (button(third)==3){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
-                                getterANDSetterFile.set_Dungeon(0);
-                                start_plus();
-                            }
+                            });
                         }
-                        if (button(second)==2){
-                            o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
-                            second.setText("Благословить");
-                            third.setText("Проклясть");
-                            if (button(second)==2){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
-                                second.setText("Отдать ключ");
-                                third.setText("Броситься наверх");
-                                if (button(second)==2){
-                                    o_button();
-                                    second.setText("Толкнуть");
-                                    third.setText("Побежать наверх");
-                                    if (button(second)==2){
-                                        o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
-                                        getterANDSetterFile.set_Dungeon(0);
-                                        start_plus();
-                                    }
-                                    if (button(third)==3){
-                                        o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
-                                        getterANDSetterFile.set_Dungeon(0);
-                                        start_plus();
-                                    }
-                                }
-                                if (button(third)==3){
-                                    o_button();
-                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
-                                    getterANDSetterFile.set_Dungeon(0);
-                                    start_plus();
-                                }
-                            }
-                            if (button(third)==3){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
-                                getterANDSetterFile.set_Dungeon(0);
-                                start_plus();
-                            }
-                        }
-                        if (button(third)==3){
-                            o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
-                            second.setText(getterANDSetterFile.get_Nickname());
-                            third.setText("Г.Б.");
-                            if (button(second)==2){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
-                                getterANDSetterFile.set_Dungeon(0);
-                                start_plus();
-                            }
-                            if (button(third)==3){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
-                                second.setText("Пойти дальше");
-                                third.setText("Вернуться назад");
-                                if (button(second)==2){
-                                    o_button();
-                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
-                                    second.setText("Продолжить спуск");
-                                    third.setText("Вернуться назад");
-                                    if (button(second)==2){
-                                        o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
-                                        getterANDSetterFile.set_Dungeon(0);
-                                        start_plus();
-                                    }
-                                    if (button(third)==3){
-                                        o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
-                                        getterANDSetterFile.set_Dungeon(0);
-                                        start_plus();
-                                    }
-                                }
-                                if (button(third)==3){
-                                    o_button();
-                                    description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
-                                    getterANDSetterFile.set_Dungeon(0);
-                                    start_plus();
-                                }
-                            }
-                        }
-                    }
-                    if (button(third)==3){
-                        o_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
-                        getterANDSetterFile.set_Dungeon(0);
-                        start_plus();
-                    }
-                }
-                if (button(third)==3){
-                    d_button();
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s4);
-                    first.setText("Продолжить спуск");
-                    second.setText("Спросить кто умер");
-                    third.setText("Вернуться назад");
-                    if (button(first)==1){
-                        o_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
-                        o_button();
-                        second.setText("Продолжить путь");
-                        third.setText("Повернуть назад");
-                        if (button(second)==2){
-                            o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
-                            second.setText("Продолжить спуск");
+                    });
+                    third.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            d_button();
+                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s4);
+                            first.setText("Продолжить спуск");
+                            second.setText("Спросить кто умер");
                             third.setText("Вернуться назад");
-                            if (button(second)==2){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
-                                getterANDSetterFile.set_Dungeon(0);
-                                start_plus();
-                            }
-                            if (button(third)==3){
-                                o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
-                                getterANDSetterFile.set_Dungeon(0);
-                                start_plus();
-                            }
+                            first.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    o_button();
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
+                                    o_button();
+                                    second.setText("Продолжить путь");
+                                    third.setText("Повернуть назад");
+                                    second.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                                            second.setText("Продолжить спуск");
+                                            third.setText("Вернуться назад");
+                                            second.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                                    getterANDSetterFile.set_Dungeon(0);
+                                                    start_plus();
+                                                }
+                                            });
+                                            third.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    o_button();
+                                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                                    getterANDSetterFile.set_Dungeon(0);
+                                                    start_plus();
+                                                }
+                                            });
+                                        }
+                                    });
+                                    third.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
+                                            getterANDSetterFile.set_Dungeon(0);
+                                            start_plus();
+                                        }
+                                    });
+                                }
+                            });
+                            second.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    o_button();
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
+                                    second.setText("2021");
+                                    third.setText("Молча продолжить спуск вниз");
+                                    second.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
+                                            getterANDSetterFile.set_Dungeon(0);
+                                            start_plus();
+                                        }
+                                    });
+                                    third.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            o_button();
+                                            description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
+                                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
+                                            getterANDSetterFile.set_Dungeon(0);
+                                            start_plus();
+                                        }
+                                    });
+                                }
+                            });
+                            third.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    o_button();
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
+                                    getterANDSetterFile.set_Dungeon(0);
+                                    start_plus();
+                                }
+                            });
                         }
-                        if (button(third)==3){
-                            o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
-                            getterANDSetterFile.set_Dungeon(0);
-                            start_plus();
-                        }
-                    }
-                    if (button(second)==2){
-                        o_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
-                        second.setText("2021");
-                        third.setText("Молча продолжить спуск вниз");
-                        if (button(second)==2){
-                            o_button();
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
-                            getterANDSetterFile.set_Dungeon(0);
-                            start_plus();
-                        }
-                        if (button(third)==3){
-                            o_button();
-                            description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
-                            getterANDSetterFile.set_Dungeon(0);
-                            start_plus();
-                        }
-                    }
-                    if (button(third)==3){
-                        o_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
-                        getterANDSetterFile.set_Dungeon(0);
-                        start_plus();
-                    }
+                    });
+
                 }
-            }
-            if (button(third)==3){
-                o_button();
-                description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
-                start_plus();
-            }
+            });
+            third.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    o_button();
+                    description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
+                    start_plus();
+                }
+            });
         }
-        else random();
+        else {
+            THEME_EIGHT theme_eight = new THEME_EIGHT();
+            theme_eight.eight();
+        }
     }
 }

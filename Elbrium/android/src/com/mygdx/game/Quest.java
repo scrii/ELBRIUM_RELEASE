@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import static com.mygdx.game.UserBase.bm;
 
-public class Quest extends AppCompatActivity{
-    public int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
+public class Quest extends AppCompatActivity implements View.OnClickListener {
+    public int kolvo_symbols = 0,k1,k2,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
     public int[]k = new int[70];
     public CountDownTimer countDownTimer;
     public boolean parametr=true;
@@ -28,10 +28,17 @@ public class Quest extends AppCompatActivity{
     public static Button btn_next,btn_exit,first,second,third;
     public static EditText input;
     public static ImageView img;
-    public boolean u;
+    public int t=0;
     public float vip=2;
-    public int but=0;
-
+    public int y=1;
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.first: t=1;break;
+            case R.id.second: t=2;break;
+            case R.id.third: t=3;break;
+        }
+    }
     @Override
     protected void onStart(){
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -86,6 +93,9 @@ public class Quest extends AppCompatActivity{
         input = findViewById(R.id.input);
         img = findViewById(R.id.nps_img);
         crossbar = findViewById(R.id.crossbar);
+        first.setOnClickListener(this);
+        second.setOnClickListener(this);
+        third.setOnClickListener(this);
         start();
         exit(true);
         for (int i = 0; i < 70; i++) {
@@ -98,6 +108,7 @@ public class Quest extends AppCompatActivity{
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
                 comments(npc_tv);
                 comments(description);
+                Log.e("QQQQQ",t+"");
             }
             @Override
             public void onFinish() {
@@ -115,31 +126,13 @@ public class Quest extends AppCompatActivity{
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                random();
+                //random();
             }
         });
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Quest.this,ScrollingActivity.class));
-            }
-        });
-        first.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=1;
-            }
-        });
-        second.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=2;
-            }
-        });
-        third.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=3;
             }
         });
     }
@@ -194,8 +187,6 @@ public class Quest extends AppCompatActivity{
     }
 
     public void random(){
-        vip = 2+(float)(Math.random()*9);
-        Log.d("VIP",vip+"");
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
         THEME_TWO theme_two = new THEME_TWO();
@@ -205,19 +196,31 @@ public class Quest extends AppCompatActivity{
         THEME_SIX theme_six = new THEME_SIX();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         THEME_SEVEN theme_seven = new THEME_SEVEN();
-        //if(vip%4.5==0 && getterANDSetterFile.get_Band()==1)theme_three.three();
-        //else random();
-        //if(vip%5==0 && getterANDSetterFile.get_Church()!=0)theme_four.four();
-        //else random();
-        //if(vip%6==0 && getterANDSetterFile.get_Devil()!=0)theme_five.five();
-        //else random();
-        //if(vip%7==0)theme_six.six();
-        //if(vip%8.5==0 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
-        //else random();
-        //if(vip%9.5==0)theme_eight.eight();
-        //if(vip%2==0)theme_one.one();
-        //if(vip%3==0)theme_two.two();
-        theme_six.six();
+        theme_one.one();
+//            if (y==1)theme_one.one();
+//            if (y==2)theme_two.two();
+//            if (y==3 && getterANDSetterFile.get_Band()==1)theme_three.three();
+//            else{
+//                y++;
+//                theme_one.one();
+//            }
+//            if (y==4 && getterANDSetterFile.get_Church()!=0)theme_four.four();
+//            else {
+//                y++;
+//                theme_one.one();
+//            }
+//            if (y==5 && getterANDSetterFile.get_Devil()!=0)theme_five.five();
+//            else{
+//                y++;
+//                theme_two.two();
+//            }
+//            if (y==6)theme_six.six();
+//            if (y==7 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
+//            else{
+//                y++;
+//                theme_two.two();
+//            }
+//            if (y==8)theme_eight.eight();
     }
     public void start(){
         //ID2();
@@ -255,6 +258,9 @@ public class Quest extends AppCompatActivity{
 //        btn_next.setVisibility(View.VISIBLE);
 //        btn_exit.setVisibility(View.VISIBLE);
 //    }
+    public int button(Button b){
+        return t;
+    }
     public void d_button(){
         //ID2();
         first.setVisibility(View.VISIBLE);
@@ -271,19 +277,7 @@ public class Quest extends AppCompatActivity{
         //ID2();
         input.setVisibility(View.INVISIBLE);
     }
-    public int button(Button b){
-        return but;
-    }
-//    public boolean button(Button b){
-//        u = false;
-//        b.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                u=true;
-//            }
-//        });
-//        return u;
-//    }
+
     public void comments(TextView textMessage){
         String s = textMessage.getText().toString();
         String comment = textMessage.getText().toString();
@@ -307,4 +301,5 @@ public class Quest extends AppCompatActivity{
             }
         }
     }
+
 }
