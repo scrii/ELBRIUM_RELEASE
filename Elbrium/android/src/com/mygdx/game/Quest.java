@@ -111,14 +111,14 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
                 comments(npc_tv);
                 comments(description);
-//                if (npc!=npc_tv.getText().toString()){
-//                    npc = npc_tv.getText().toString();
-//                    nestedScrollView_npc.fullScroll(100000);
-//                }
-//                if (des!=description.getText().toString()){
-//                    des = description.getText().toString();
-//                    nestedScrollView_des.fullScroll(100000);
-//                }
+                if (npc!=npc_tv.getText().toString()){
+                    npc = npc_tv.getText().toString();
+                    nestedScrollView_npc.scrollTo(0,2140000000);
+                }
+                if (des!=description.getText().toString()){
+                    des = description.getText().toString();
+                    nestedScrollView_des.scrollTo(0,2140000000);
+                }
             }
             @Override
             public void onFinish() {
