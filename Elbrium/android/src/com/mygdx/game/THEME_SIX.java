@@ -29,7 +29,7 @@ public class THEME_SIX extends Quest{
             third.setText("Не интересует");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_2);
                     d_button();
                     first.setText("Монеты");
@@ -37,7 +37,7 @@ public class THEME_SIX extends Quest{
                     third.setText("Я передумал");
                     first.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             v22=1;
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
                             d_input();
@@ -46,7 +46,7 @@ public class THEME_SIX extends Quest{
                             third.setText("Я передумал");
                             second.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick(View v) {pr();
                                     try {
                                         stav();
                                     }catch (Exception e){
@@ -57,7 +57,7 @@ public class THEME_SIX extends Quest{
                             });
                             third.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick(View v) {pr();
                                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                                     theme_seven.seven();
                                 }
@@ -66,7 +66,7 @@ public class THEME_SIX extends Quest{
                     });
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             v22=2;
                             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
                             d_input();
@@ -75,7 +75,7 @@ public class THEME_SIX extends Quest{
                             third.setText("Я передумал");
                             second.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick(View v) {pr();
                                     try {
                                         stav();
                                     }catch (Exception e){
@@ -86,7 +86,7 @@ public class THEME_SIX extends Quest{
                             });
                             third.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick(View v) {pr();
                                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                                     theme_seven.seven();
                                 }
@@ -95,7 +95,7 @@ public class THEME_SIX extends Quest{
                     });
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             THEME_SEVEN theme_seven = new THEME_SEVEN();
                             theme_seven.seven();
                         }
@@ -104,7 +104,7 @@ public class THEME_SIX extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                     theme_seven.seven();
                 }
@@ -117,14 +117,14 @@ public class THEME_SIX extends Quest{
             third.setText("Нет");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_2);
                     d_input();
                     second.setText("Ввод");
                     third.setText("Я передумал");
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             try {
                                 if (Integer.parseInt(input.getText().toString())<=0)Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();
                                 if (Integer.parseInt(input.getText().toString())>0 && Integer.parseInt(input.getText().toString())<=10 && (getterANDSetterFile.get_Guardian_Money()-(double)Integer.parseInt(input.getText().toString()))>0.0){
@@ -161,7 +161,7 @@ public class THEME_SIX extends Quest{
                     });
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             THEME_SEVEN theme_seven = new THEME_SEVEN();
                             theme_seven.seven();
                         }
@@ -170,7 +170,7 @@ public class THEME_SIX extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                     theme_seven.seven();
                 }
@@ -198,14 +198,14 @@ public class THEME_SIX extends Quest{
             third.setText("Пас");
             first.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     d_input();
                     stav();
                 }
             });
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     d_input();
                     int mn = 1 + (int)(Math.random()*10);
                     if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
@@ -221,7 +221,7 @@ public class THEME_SIX extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     player1 = r_random();
                     player2 = f_random();
                     for (int i = 0; i < 70; i++) {

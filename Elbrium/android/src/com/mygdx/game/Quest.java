@@ -5,12 +5,14 @@ import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,13 +28,14 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public boolean parametr=true;
     public int pro_result=0;
     public static TextView npc_tv,description,crossbar;
-    public static Button btn_exit,first,second,third;
+    public static Button first,second,third;
     public static EditText input;
     public static ImageView img;
     public int t=0;
     public static NestedScrollView nestedScrollView_npc,nestedScrollView_des;
     public float vip=2;
     public int y=1;
+    boolean xyz=true;
     String npc="",des="";
     @Override
     public void onClick(View v){
@@ -89,7 +92,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         nestedScrollView_des = findViewById(R.id.nes_des);
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
-        btn_exit = findViewById(R.id.btn_exit);
         first = findViewById(R.id.first);
         second = findViewById(R.id.second);
         third = findViewById(R.id.third);
@@ -104,6 +106,12 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         for (int i = 0; i < 70; i++) {
             k[i] = 0;
         }
+//        Display display = getWindowManager().getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        int width = size.x;
+//        int height = size.y;
+//        nestedScrollView_npc.setLayoutParams(height%3);
         countDownTimer = new CountDownTimer(c*100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -111,14 +119,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
                 comments(npc_tv);
                 comments(description);
-                if (npc!=npc_tv.getText().toString()){
-                    npc = npc_tv.getText().toString();
-                    nestedScrollView_npc.scrollTo(0,2140000000);
-                }
-                if (des!=description.getText().toString()){
-                    des = description.getText().toString();
-                    nestedScrollView_des.scrollTo(0,2140000000);
-                }
             }
             @Override
             public void onFinish() {
@@ -133,12 +133,10 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             countDownTimer.start();
         }
         random();
-        btn_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Quest.this,ScrollingActivity.class));
-            }
-        });
+    }
+    public void pr(){
+        nestedScrollView_npc.smoothScrollTo(0,2140000000);
+        nestedScrollView_des.smoothScrollTo(0,2140000000);
     }
     public int h_random(){
         int h = 3;
@@ -190,10 +188,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         third.setVisibility(View.VISIBLE);
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
-        btn_exit.setVisibility(View.INVISIBLE);
-    }
-    public int button(Button b){
-        return t;
     }
     public void d_button(){
         first.setVisibility(View.VISIBLE);

@@ -63,7 +63,7 @@ public class THEME_FOUR extends Quest{
                 third.setText("Нет, слишком дорого");
                 second.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) {pr();
                         getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() + 1);
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double) (75 + (getterANDSetterFile.get_House() * 75 + 75)));
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 1);
@@ -73,7 +73,7 @@ public class THEME_FOUR extends Quest{
                 });
                 third.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) {pr();
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 2);
                         S2();
                     }
@@ -96,7 +96,7 @@ public class THEME_FOUR extends Quest{
             third.setText("Обойдётся");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d2_c_1);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - 400.0);
                     S3();
@@ -104,7 +104,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d2_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 4);
                     S3();
@@ -124,14 +124,14 @@ public class THEME_FOUR extends Quest{
             third.setText("Забаррикадироваться");
             first.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d3_c_1);
                     S4();
                 }
             });
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d3_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 1);
                     S4();
@@ -139,7 +139,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d3_c_3);
                     S4();
                 }
@@ -156,7 +156,7 @@ public class THEME_FOUR extends Quest{
             third.setText("*Закатить глаза*");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d4_c_1);
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers() + 3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 2);
@@ -165,7 +165,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d4_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 3);
                     S5();
@@ -183,7 +183,7 @@ public class THEME_FOUR extends Quest{
             third.setText("И куда мне её поставить?");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d5_c_1);
                     getterANDSetterFile.set_Dungeon(1);
                     S6();
@@ -191,7 +191,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d5_c_2);
                     S6();
                 }
@@ -209,7 +209,7 @@ public class THEME_FOUR extends Quest{
         third.setText("Конечно, нет");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {pr();
                 try {
                     if (Integer.parseInt(input.getText().toString()) > 0) {
                         if (Integer.parseInt(input.getText().toString()) < 100 && getterANDSetterFile.get_Guardian_Money() >= Integer.parseInt(input.getText().toString())) {
@@ -239,7 +239,7 @@ public class THEME_FOUR extends Quest{
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {pr();
                 getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 7);
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() - 3);
                 S7();
@@ -256,14 +256,14 @@ public class THEME_FOUR extends Quest{
             third.setText("Нет, у меня есть дела");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d7_c_1);
                     S8();
                 }
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d7_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 3);
                     S8();
@@ -281,7 +281,7 @@ public class THEME_FOUR extends Quest{
             third.setText("Промолчать");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d8_c_1);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 100);
                     S9();
@@ -289,7 +289,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d8_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 50);
                     S9();
@@ -307,7 +307,7 @@ public class THEME_FOUR extends Quest{
             third.setText("Abnegant");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 1000);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 250.0);
                     S10();
@@ -315,7 +315,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d9_c_1);
                     getterANDSetterFile.set_Church(1);
                     S10();
@@ -335,7 +335,7 @@ public class THEME_FOUR extends Quest{
             third.setText("Не умею читать");
             first.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     d_input();
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_1);
                     if (input.getText().toString().contains("Дьявол") || input.getText().toString().contains("дьявол") || input.getText().toString().contains("devil") || input.getText().toString().contains("Devil") || input.getText().toString().contains("diabolus") || input.getText().toString().contains("Diabolus")) {
@@ -363,7 +363,7 @@ public class THEME_FOUR extends Quest{
             });
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_2);
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 2);
@@ -375,7 +375,7 @@ public class THEME_FOUR extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_3);
                     y++;
                     THEME_FIVE theme_five = new THEME_FIVE();

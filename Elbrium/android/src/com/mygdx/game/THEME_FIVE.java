@@ -33,7 +33,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Священник!");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Guardian_Money(0.0);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                     Q1();
@@ -41,7 +41,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                     getterANDSetterFile.set_Guardian_Money(0.0);
                     description.setText(description.getText().toString() + "\n" +theme_five.r1_c);
@@ -64,7 +64,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                     Q2();
@@ -72,7 +72,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                     description.setText(description.getText().toString() + "\n" +theme_five.r2_c);
                     Q2();
@@ -92,14 +92,14 @@ public class THEME_FIVE extends Quest{
         third.setText("Нет, только не моя душа!");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {pr();
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                 Q3();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_five.r3_c);
                 Q3();
             }
@@ -115,7 +115,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Оставить себе");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" +theme_five.r4);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                     getterANDSetterFile.set_Dungeon(0);
@@ -124,7 +124,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_five.r4_c);
                     Q4();
                 }
@@ -144,7 +144,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     getterANDSetterFile.set_Block(1);
                     getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+500.0);
@@ -154,13 +154,11 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) {pr();
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_2);
-                    second.setText("Согласиться");
-                    third.setText("Отказаться");
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             getterANDSetterFile.set_Block(1);
                             getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+1000.0);
@@ -170,7 +168,7 @@ public class THEME_FIVE extends Quest{
                     });
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {
+                        public void onClick(View v) {pr();
                             THEME_SIX theme_six = new THEME_SIX();
                             theme_six.six();
                         }
