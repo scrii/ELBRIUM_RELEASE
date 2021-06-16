@@ -34,30 +34,28 @@ public class THEME_ONE extends Quest{
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
-        ra1 = 1;
-                if(ra1==1) {
-                    pro_result = 1;
-                    img.setImageResource(R.mipmap.base_avatar_1);
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q1);
-                    second.setText("Да");
-                    third.setText("Нет");
-                    second.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() + 1);
-                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - 50.0);
-                            RA2();
-                        }
-                    });
-                    third.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() - 3);
-                            RA2();
-                        }
-                    });
-                    exit(true);
-                }
+
+        pro_result = 1;
+        img.setImageResource(R.mipmap.base_avatar_1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q1);
+        second.setText("Да");
+        third.setText("Нет");
+        second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() + 1);
+                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - 50.0);
+                RA2();
+            }
+        });
+        third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() - 3);
+                RA2();
+            }
+        });
+        exit(true);
     }
     public void RA2(){
         THEME_ONE theme_one = new THEME_ONE();

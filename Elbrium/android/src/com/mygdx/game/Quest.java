@@ -81,7 +81,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_quest);
         getSupportActionBar().hide();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        //ID2();
         vip++;
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
@@ -171,7 +170,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         theme_one.one();
     }
     public void start(){
-        //ID2();
         npc_tv.setVisibility(View.VISIBLE);
         description.setVisibility(View.VISIBLE);
         first.setVisibility(View.INVISIBLE);
@@ -180,17 +178,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
         btn_exit.setVisibility(View.INVISIBLE);
-    }
-    public void start_plus(){
-        //ID2();
-        npc_tv.setVisibility(View.VISIBLE);
-        description.setVisibility(View.VISIBLE);
-        first.setVisibility(View.INVISIBLE);
-        second.setVisibility(View.INVISIBLE);
-        third.setVisibility(View.INVISIBLE);
-        input.setVisibility(View.INVISIBLE);
-        img.setVisibility(View.VISIBLE);
-        btn_exit.setVisibility(View.VISIBLE);
     }
     public int button(Button b){
         return t;

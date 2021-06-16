@@ -16,7 +16,6 @@ public class THEME_SIX extends Quest{
 
     public void six(){
         vip++;
-        //ID2();
         o_button();
         o_input();
         start();
@@ -31,7 +30,6 @@ public class THEME_SIX extends Quest{
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e("WORK","TRUE");
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_2);
                     d_button();
                     first.setText("Монеты");
@@ -62,7 +60,6 @@ public class THEME_SIX extends Quest{
                                 public void onClick(View v) {
                                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                                     theme_seven.seven();
-                                    start_plus();
                                 }
                             });
                         }
@@ -92,7 +89,6 @@ public class THEME_SIX extends Quest{
                                 public void onClick(View v) {
                                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                                     theme_seven.seven();
-                                    start_plus();
                                 }
                             });
                         }
@@ -102,7 +98,6 @@ public class THEME_SIX extends Quest{
                         public void onClick(View v) {
                             THEME_SEVEN theme_seven = new THEME_SEVEN();
                             theme_seven.seven();
-                            start_plus();
                         }
                     });
                 }
@@ -112,7 +107,6 @@ public class THEME_SIX extends Quest{
                 public void onClick(View v) {
                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                     theme_seven.seven();
-                    start_plus();
                 }
             });
         }
@@ -139,14 +133,12 @@ public class THEME_SIX extends Quest{
                                     pl1 = h_random();
                                     pl2 = g_random();
                                     if (pl<pl1 && pl<pl2){
-                                        start_plus();
                                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + Integer.parseInt(input.getText().toString()) + "",Toast.LENGTH_SHORT).show();
                                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(Integer.parseInt(input.getText().toString())));
                                         THEME_SEVEN theme_seven = new THEME_SEVEN();
                                         theme_seven.seven();
                                     }
                                     else{
-                                        start_plus();
                                         double m=0,y=0;
                                         m = (Math.random());
                                         String res = "";
@@ -163,7 +155,6 @@ public class THEME_SIX extends Quest{
                                 Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
                                 THEME_SEVEN theme_seven = new THEME_SEVEN();
                                 theme_seven.seven();
-                                start_plus();
                                 e.printStackTrace();
                             }
                         }
@@ -173,7 +164,6 @@ public class THEME_SIX extends Quest{
                         public void onClick(View v) {
                             THEME_SEVEN theme_seven = new THEME_SEVEN();
                             theme_seven.seven();
-                            start_plus();
                         }
                     });
                 }
@@ -183,7 +173,6 @@ public class THEME_SIX extends Quest{
                 public void onClick(View v) {
                     THEME_SEVEN theme_seven = new THEME_SEVEN();
                     theme_seven.seven();
-                    start_plus();
                 }
             });
         }
@@ -221,7 +210,6 @@ public class THEME_SIX extends Quest{
                     int mn = 1 + (int)(Math.random()*10);
                     if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
                         if(mn==1){
-                            start_plus();
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(Integer.parseInt(input.getText().toString())*1.5));
                             Toast.makeText(getApplicationContext(),"Ваш выигрыш: " + ((double)(Integer.parseInt(input.getText().toString())*1.5))+"",Toast.LENGTH_SHORT).show();
                             THEME_SEVEN theme_seven = new THEME_SEVEN();
@@ -240,21 +228,18 @@ public class THEME_SIX extends Quest{
                         z = z + k[i];
                     }
                     if(z>21){
-                        start_plus();
                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
                         THEME_SEVEN theme_seven = new THEME_SEVEN();
                         theme_seven.seven();
                     }
                     if (player1>z && player2>z){
-                        start_plus();
                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
                         THEME_SEVEN theme_seven = new THEME_SEVEN();
                         theme_seven.seven();
                     }
                     else{
-                        start_plus();
                         double m=0,y=0;
                         m = (Math.random());
                         String res = "";
