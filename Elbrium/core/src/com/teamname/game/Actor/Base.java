@@ -24,5 +24,10 @@ public class Base extends Actor {
         bounds.pos.setPoint(position);
     }
 
+    public void setBounds(float x, float y){
+        bounds.pos.setX(x);
+        bounds.pos.setY(y);
+    }
+
 
 }

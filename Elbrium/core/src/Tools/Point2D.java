@@ -1,5 +1,8 @@
 package Tools;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.teamname.game.Main;
+
 public class Point2D {
     private float x,y;
     private String author;
@@ -49,5 +52,13 @@ public class Point2D {
     public void reverse(){
         x=-x;
         y=-y;
+    }
+
+    public Point2D clone(){
+        return new Point2D(this);
+    }
+
+    public void debug(SpriteBatch batch){
+        batch.draw(Main.bullet,x-Main.HEIGHT/20f/2,y-Main.HEIGHT/20f/2,Main.HEIGHT/20f,Main.HEIGHT/20f);
     }
 }

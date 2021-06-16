@@ -22,7 +22,9 @@ import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
 
 public class Main extends Game {
-	public static SpriteBatch batch,frontBatch,playerBatch,hudBatch,baseBatch,baseBatchBackground;
+	public static SpriteBatch batch,frontBatch,
+			playerBatch, hudBatch,
+			baseBatch,baseBatchBackground;
 	public Texture img;
 	public static int WIDTH,HEIGHT;
 	public static Texture circle,stickImg,background,actor,damaged_txr,deathSc,elbrium,elbriumCrash;
@@ -35,6 +37,7 @@ public class Main extends Game {
 	public static Texture bullet,base;
 	public static Texture back_button_un, back_button;
 	public static Texture square1,square2;
+	public static Texture debugBG;
 
 
 	public static int BACKGROUND_WIDTH;
@@ -66,10 +69,8 @@ public class Main extends Game {
 //		GdxFIRDatabase.instance().inReference("coords_"+GameSc.player.nickname).push().setValue("none ahaha");
 		//getter=new Getter();
 		//getter.sendToFirebase(new Message("234","43"));
-		batch = new SpriteBatch();
-		frontBatch=new SpriteBatch();
-		playerBatch=new SpriteBatch();
-		hudBatch=new SpriteBatch();
+		//batch = new SpriteBatch();
+		loadBatches();
 		WIDTH= Gdx.graphics.getWidth();
 		HEIGHT=Gdx.graphics.getHeight();
 
@@ -82,6 +83,7 @@ public class Main extends Game {
 		square1 = new Texture("square1.png");
 		square2 = new Texture("square2.png");
 
+		debugBG=new Texture("dbg.png");
 		circle=new Texture("circle.png");
 		stickImg=new Texture("stick.png");
 		actor=new Texture("actor.png");
@@ -100,6 +102,7 @@ public class Main extends Game {
 		loadPlayerTextures();
 		loadButtonTextures();
 		loadCometTextures();
+		getter_setter.set_Guardian_Money(10000);
 
 		gameSc=new GameSc(this);
 
@@ -114,9 +117,9 @@ public class Main extends Game {
 
 	@Override
 	public void dispose () {
-		batch.dispose();
+		//batch.dispose();
 		frontBatch.dispose();
-		playerBatch.dispose();
+		//playerBatch.dispose();
 		circle.dispose();
 		stickImg.dispose();
 		actor.dispose();
@@ -145,6 +148,13 @@ public class Main extends Game {
 				Gdx.app.error("Main","dispose");
 			}
 		});
+	}
+
+	private void loadBatches(){
+		batch=new SpriteBatch();
+		frontBatch=new SpriteBatch();
+		playerBatch=new SpriteBatch();
+		hudBatch=new SpriteBatch();
 	}
 
 	private void loadElbriumTextures(){

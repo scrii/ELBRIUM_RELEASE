@@ -23,7 +23,8 @@ public class Bullet extends Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(img,position.getX(),position.getY(),R*2,R*2);
+        batch.draw(img,position.getX()-R,position.getY()-R,R*2,R*2);
+        bounds.debug(batch,R);
     }
 
     @Override

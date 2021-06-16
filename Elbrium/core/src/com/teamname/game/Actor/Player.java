@@ -12,8 +12,6 @@ import java.util.TimerTask;
 import FirebaseHelper.DatabaseHelper;
 //import Online.DatabaseHelper;
 import Messages.Message;
-import FirebaseHelper.PlayerDataCollect;
-import FirebaseHelper.PlayerDataCreator;
 import Tools.GetterANDSetterFile;
 import Tools.Point2D;
 
@@ -24,6 +22,7 @@ public class Player extends Actor {
     private float realSpeed=0;
     public float X;
     public float Y;
+    public Point2D cameraPoint;
 
     public float getRealSpeed() {
         return realSpeed;
@@ -31,16 +30,16 @@ public class Player extends Actor {
 
     public Point2D send_in_ONLINE;
     public boolean isMove;
-    public PlayerDataCreator playerData;
-    public PlayerDataCollect playerCollectData;
+
     private Message player_data;
     public GetterANDSetterFile getter_setter;
     private Timer timer;
     private static final int logOutSec=180;
-    private static final float SIZE_COEF=GameSc.SIZE_COEF;
+
     public int counter=logOutSec;
     public float damage;
-    private boolean leftC, rightC, upC, downC;
+
+
 
 
 
@@ -49,21 +48,23 @@ public class Player extends Actor {
     public Player(Texture img, Point2D position, float Speed, float R, float health) {
         super(img, position, Speed, R);
         this.health=health;
-
+        cameraPoint=new Point2D(position);
         databaseHelper=new DatabaseHelper();
-        playerData=new PlayerDataCreator();
-        playerCollectData=new PlayerDataCollect();
+
         getter_setter=new GetterANDSetterFile();
 
         this.health+=getter_setter.get_Health();
-
+        send_in_ONLINE = new Point2D(position.getX()+R,position.getY()+R);
         damage= (float) (getter_setter.get_Attack());
-        player_data=new Message(getter_setter.get_Appearance()+"",GameSc.player_x,GameSc.player_y,
+        player_data=new Message(getter_setter.get_Appearance()+"",send_in_ONLINE.getX(),send_in_ONLINE.getY(),
                 getter_setter.get_Attack(),getter_setter.get_Health(),
                 getter_setter.get_Protection(),getter_setter.get_Nickname());
         databaseHelper.sendToFirebase(getter_setter.get_Nickname(), player_data.toString());
+
         timeCheck();
     }
+
+
 
     // метод оповещения о движении
 
@@ -73,28 +74,33 @@ public class Player extends Actor {
 
     @Override
     public void draw(SpriteBatch batch) {
-        // !!! поставить значение ширины и высоты в константы
-        //batch.draw(img, position.getX()-R,position.getY()-R,50,50);
+        batch.draw(Main.getPlayer(),position.getX()-R*2,position.getY()-R*2,R*2,R*2);
+    }
 
-        GameSc.camera.position.set(send_in_ONLINE.getX()-R,send_in_ONLINE.getY()-R,0);
+    public void cameraPointUpdate(){
+        cameraPoint.setPoint(bounds.pos.getX(),bounds.pos.getY());
+        if(bounds.pos.getY()+Main.HEIGHT/2f>Main.BACKGROUND_HEIGHT)cameraPoint.setY(Main.BACKGROUND_HEIGHT-Main.HEIGHT/2f);
+        if(bounds.pos.getX()-Main.WIDTH/2f<0)cameraPoint.setX(Main.WIDTH/2f);
+        if(bounds.pos.getX()+Main.WIDTH/2f>Main.BACKGROUND_WIDTH)cameraPoint.setX(Main.BACKGROUND_WIDTH-Main.WIDTH/2f);
+        if(bounds.pos.getY()-Main.HEIGHT/2f<0)cameraPoint.setY(Main.HEIGHT/2f);
+        GameSc.camera.position.set(cameraPoint.getX(),cameraPoint.getY(),0);
     }
 
     @Override
     public void update() {
-        realSpeed=Float.parseFloat(String.format("%.1f",realSpeed).replace(",","."));
         X=direction.getX()*realSpeed;
         Y=direction.getY()*realSpeed;
         position.add(X,Y);
         send_in_ONLINE=position;
-        bounds.pos.setPoint(position);
-        cameraCheck();
+        bounds.pos.setPoint(send_in_ONLINE.getX()-R,send_in_ONLINE.getY()-R);
+        cameraPointUpdate();
         playerCheck();
         if(isMove){
             counter=logOutSec;
             player_data.x=send_in_ONLINE.getX();
             player_data.y=send_in_ONLINE.getY();
             databaseHelper.sendToFirebase(getter_setter.get_Nickname(),player_data.toString());
-            Gdx.app.log("pos",send_in_ONLINE.getX()+"");
+            //Gdx.app.log("pos",send_in_ONLINE.getX()+"");
         }
 
     }
@@ -123,46 +129,16 @@ public class Player extends Actor {
         return send_in_ONLINE;
     }
 
-    public void motion(){
-        GameSc.camera.position.set(send_in_ONLINE.getX()-R,send_in_ONLINE.getY()-R,0);
-    }
 
-    public void motion(float final_float, int case_){
-        switch (case_){
-            case 0: GameSc.camera.position.set(final_float-R,send_in_ONLINE.getY()-R,0);break;
-            case 1: GameSc.camera.position.set(send_in_ONLINE.getX()-R,final_float-R,0);break;
-        }
-    }
 
-    public void motion(float final_x, float final_y){
-        GameSc.camera.position.set(final_x-R,final_y-R,0);
-    }
 
-    private void cameraCheck(){
-        leftC=send_in_ONLINE.getX()-R<=Main.WIDTH/2/SIZE_COEF;
-        rightC=send_in_ONLINE.getX()+R>=Main.BACKGROUND_WIDTH-Main.WIDTH/2/SIZE_COEF;
-        upC=send_in_ONLINE.getY()+R>=Main.BACKGROUND_HEIGHT-Main.HEIGHT/2/SIZE_COEF;
-        downC=send_in_ONLINE.getY()-R<=Main.HEIGHT/2/SIZE_COEF;
-
-        if(leftC){motion(Main.WIDTH/2+R, 0);GameSc.batchDraw=false;}
-        if(upC){motion(Main.BACKGROUND_HEIGHT-Main.HEIGHT/2+R,1);GameSc.batchDraw=false;}
-        if(downC){motion(Main.HEIGHT/2+R,1);GameSc.batchDraw=false;}
-        if(rightC){motion(Main.BACKGROUND_WIDTH- Main.WIDTH/2+R,0);GameSc.batchDraw=false;}
-
-        if(leftC&&upC){motion(Main.WIDTH/2+R,Main.BACKGROUND_HEIGHT-Main.HEIGHT/2-R);GameSc.batchDraw=false;}
-        if(leftC&&downC){motion(Main.WIDTH/2+R,Main.HEIGHT/2+R);GameSc.batchDraw=false;}
-        if(rightC&&upC){motion(Main.BACKGROUND_WIDTH- Main.WIDTH/2-R,Main.BACKGROUND_HEIGHT-Main.HEIGHT/2-R);GameSc.batchDraw=false;}
-        if(rightC&&downC){motion(Main.BACKGROUND_WIDTH- Main.WIDTH/2-R,Main.HEIGHT/2+R);GameSc.batchDraw=false;}
-
-        if(!leftC&&!upC&&!rightC&&!downC){motion();GameSc.batchDraw=true;}
-    }
 
     public void playerCheck(){
         // не зашел ли игрок за границу
-        if(position.getX()+R>= Main.BACKGROUND_WIDTH){send_in_ONLINE.setX(Main.BACKGROUND_WIDTH-R);}
-        if(position.getX()-3*R<=0){send_in_ONLINE.setX(3*R);}
-        if(position.getY()+2*R>=Main.BACKGROUND_HEIGHT){send_in_ONLINE.setY(Main.BACKGROUND_HEIGHT-2*R);}
-        if(position.getY()-2*R<=0){send_in_ONLINE.setY(2*R);}
+        if(bounds.pos.getY()+R>Main.BACKGROUND_HEIGHT)send_in_ONLINE.setY(Main.BACKGROUND_HEIGHT);
+        if(bounds.pos.getX()-R<0)send_in_ONLINE.setX(2*R);
+        if(bounds.pos.getY()-R<0)send_in_ONLINE.setY(2*R);
+        if(bounds.pos.getX()+R>Main.BACKGROUND_WIDTH)send_in_ONLINE.setX(Main.BACKGROUND_WIDTH);
 
     }
 

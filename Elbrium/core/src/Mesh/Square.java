@@ -13,7 +13,7 @@ public class Square {
     public int a;
     public Point2D pos;
     public int textureCount; // от 1 до 2 //
-    public int thickness;
+    public float thickness;
     private Timer timer;
     private TimerTask task;
     private int counter;
@@ -23,7 +23,14 @@ public class Square {
         this.a = a;
         pos = new Point2D(0,0);
         img = Main.square1;
-        thickness=a/coefficientStrokeThickness;
+        thickness=(float) a/coefficientStrokeThickness;
+    }
+
+    public Square(Square sq) {
+        this.a = sq.a;
+        pos = sq.pos.clone();
+        img = Main.square1;
+        thickness=sq.thickness;
     }
 
     public Point2D getCenter(){
@@ -76,5 +83,9 @@ public class Square {
             }
         };
         timer.scheduleAtFixedRate(task,0,(long)1000*seconds);
+    }
+
+    public Square clone(){
+        return new Square(this);
     }
 }
