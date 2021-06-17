@@ -210,7 +210,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 if (s.charAt(i) == '*' && s.contains("*")) {
                     kolvo_symbols++;
                     if (kolvo_symbols == 2 && s.contains("*")) {
-                        k1 = comment.indexOf("*");
+                        k1 = comment.indexOf("*")+1;
                         k2 = comment.lastIndexOf("*");
                         SpannableStringBuilder builder = new SpannableStringBuilder();
                         SpannableString colorSpannable= new SpannableString(s);
