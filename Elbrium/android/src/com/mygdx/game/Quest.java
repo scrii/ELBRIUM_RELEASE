@@ -40,6 +40,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public float vip=2;
     public int y=1;
     String b="",s="";
+    UserBase userBase;
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -109,12 +110,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         for (int i = 0; i < 70; i++) {
             k[i] = 0;
         }
-//        Display display = getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int width = size.x;
-//        int height = size.y;
-//        nestedScrollView_npc.setLayoutParams(height%3);
+        userBase = new UserBase();
         countDownTimer = new CountDownTimer(c*100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -128,14 +124,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                     nestedScrollView_npc.smoothScrollTo(0,2100000000);
                     nestedScrollView_des.smoothScrollTo(0,2100000000);
                 }
-//                if ((first.performClick() || second.performClick() || third.performClick())){
-//                    nestedScrollView_npc.smoothScrollTo(0,2140000000);
-//                    nestedScrollView_des.smoothScrollTo(0,2140000000);
-//                }
-//                else{
-//                    nestedScrollView_npc.stopNestedScroll();
-//                    nestedScrollView_des.stopNestedScroll();
-//                }
+                ins();
             }
             @Override
             public void onFinish() {
@@ -242,5 +231,34 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 }
             }
         }
+    }
+    public void ins(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        if(getterANDSetterFile.get_Happiness()<10)ruin();
+        if(getterANDSetterFile.get_Happiness()>55)ruin();
+    }
+    public void ruin(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        npc_tv.setVisibility(View.INVISIBLE);
+        description.setVisibility(View.VISIBLE);
+        first.setVisibility(View.INVISIBLE);
+        second.setVisibility(View.INVISIBLE);
+        third.setVisibility(View.INVISIBLE);
+        input.setVisibility(View.INVISIBLE);
+        img.setVisibility(View.INVISIBLE);
+        description.setText("Уровень счастья слишком низкий. Люди восстали против вашей диктатуры. Вы теряете всё!");
+        getterANDSetterFile.set_BaseLevel(0);
+        getterANDSetterFile.set_House(0);
+        getterANDSetterFile.set_Happiness(25);
+        getterANDSetterFile.set_Villagers(3);
+        getterANDSetterFile.set_Kitchen(0);
+        getterANDSetterFile.set_WorkShop(0);
+        getterANDSetterFile.set_TownHall(1);
+        getterANDSetterFile.set_Factory(0);
+        getterANDSetterFile.set_NameBase("");
+        getterANDSetterFile.set_School(0);
+        getterANDSetterFile.set_Tower(0);
+        getterANDSetterFile.set_Park(0);
+        getterANDSetterFile.set_Mill(0);
     }
 }
