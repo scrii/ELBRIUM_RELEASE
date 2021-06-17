@@ -5,6 +5,7 @@ import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,10 +20,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import static com.mygdx.game.UserBase.bm;
 
 public class Quest extends AppCompatActivity implements View.OnClickListener {
-    public int kolvo_symbols = 0,k1,k2,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
+    public int kolvo_symbols = 0,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,k1,k2;
     public int[]k = new int[70];
     public CountDownTimer countDownTimer;
     public boolean parametr=true;
@@ -35,8 +39,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public static NestedScrollView nestedScrollView_npc,nestedScrollView_des;
     public float vip=2;
     public int y=1;
-    boolean xyz=true;
-    String npc="",des="";
+    String b="",s="";
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -116,9 +119,23 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onTick(long millisUntilFinished) {
                 c--;
-                crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
+                crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium() + " " + "Счастье: " + getterANDSetterFile.get_Happiness());
                 comments(npc_tv);
                 comments(description);
+                s = npc_tv.getText().toString();
+                if (!b.contains(s)){
+                    b = s;
+                    nestedScrollView_npc.smoothScrollTo(0,2100000000);
+                    nestedScrollView_des.smoothScrollTo(0,2100000000);
+                }
+//                if ((first.performClick() || second.performClick() || third.performClick())){
+//                    nestedScrollView_npc.smoothScrollTo(0,2140000000);
+//                    nestedScrollView_des.smoothScrollTo(0,2140000000);
+//                }
+//                else{
+//                    nestedScrollView_npc.stopNestedScroll();
+//                    nestedScrollView_des.stopNestedScroll();
+//                }
             }
             @Override
             public void onFinish() {
@@ -210,17 +227,18 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 if (s.charAt(i) == '*' && s.contains("*")) {
                     kolvo_symbols++;
                     if (kolvo_symbols == 2 && s.contains("*")) {
-                        k1 = comment.indexOf("*")+1;
-                        k2 = comment.lastIndexOf("*");
+                        k1 = (comment.indexOf("*"));
+                        k2 = (comment.lastIndexOf("*"));
                         SpannableStringBuilder builder = new SpannableStringBuilder();
                         SpannableString colorSpannable= new SpannableString(s);
-                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k1,k2+1,0);
+                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k1,k1+1,0);
+                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k2,k2+1,0);
                         builder.append(colorSpannable);
                         textMessage.setText(builder, TextView.BufferType.SPANNABLE);
                         kolvo_symbols = 0;
                         s = "";
                     }
-                    else textMessage.setTextColor(getResources().getColor(R.color.white));
+                    else textMessage.setTextColor(Color.GRAY);
                 }
             }
         }

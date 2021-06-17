@@ -48,6 +48,7 @@ public class THEME_ONE extends Quest{
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() + 1);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - 50.0);
                 RA2();
+                pr();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +57,7 @@ public class THEME_ONE extends Quest{
                 pr();
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness() - 3);
                 RA2();
+                pr();
             }
         });
         exit(true);
@@ -75,6 +77,7 @@ public class THEME_ONE extends Quest{
                 pr();
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-100.0);
                 RA3();
+                pr();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +86,7 @@ public class THEME_ONE extends Quest{
                 pr();
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                 RA3();
+                pr();
             }
         });
         exit(true);
@@ -110,8 +114,12 @@ public class THEME_ONE extends Quest{
                         o_input();
                         pr();
                         RA4();
+                        pr();
                     }
-                    else RA4();
+                    else {
+                        RA4();
+                        pr();
+                    }
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -125,6 +133,7 @@ public class THEME_ONE extends Quest{
                 input.setText("");
                 o_input();
                 RA4();
+                pr();
             }
         });
         exit(true);
@@ -159,6 +168,7 @@ public class THEME_ONE extends Quest{
                             getterANDSetterFile.set_Band(1);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                             RA5();
+                            pr();
                         }
                     });
                     third.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +177,7 @@ public class THEME_ONE extends Quest{
                             pr();
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
                             RA5();
+                            pr();
                         }
                     });
                 }
@@ -182,6 +193,7 @@ public class THEME_ONE extends Quest{
                     getterANDSetterFile.set_Band(1);
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
                     RA5();
+                    pr();
                 }
             });
         }
@@ -220,6 +232,7 @@ public class THEME_ONE extends Quest{
                             public void onClick(View v) {
                                 pr();
                                 RA6();
+                                pr();
                             }
                         });
                         third.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +241,7 @@ public class THEME_ONE extends Quest{
                                 pr();
                                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                                 RA6();
+                                pr();
                             }
                         });
                     }
@@ -238,6 +252,7 @@ public class THEME_ONE extends Quest{
                         pr();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-5.0);
                         RA6();
+                        pr();
                     }
                 });
                 third.setOnClickListener(new View.OnClickListener() {
@@ -245,6 +260,7 @@ public class THEME_ONE extends Quest{
                     public void onClick(View v) {
                         pr();
                         RA6();
+                        pr();
                     }
                 });
             }
@@ -254,6 +270,7 @@ public class THEME_ONE extends Quest{
             public void onClick(View v) {
                 pr();
                 RA6();
+                pr();
             }
         });
     }
@@ -276,6 +293,7 @@ public class THEME_ONE extends Quest{
                     description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
                     pr();
                     RA7();
+                    pr();
                 }
             });
             third.setOnClickListener(new View.OnClickListener() {
@@ -287,6 +305,7 @@ public class THEME_ONE extends Quest{
                     description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
                     pr();
                     RA7();
+                    pr();
                 }
             });
         }
@@ -308,6 +327,7 @@ public class THEME_ONE extends Quest{
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
                 RA8();
+                pr();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
@@ -316,6 +336,7 @@ public class THEME_ONE extends Quest{
                 pr();
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
                 RA8();
+                pr();
             }
         });
     }
@@ -338,6 +359,7 @@ public class THEME_ONE extends Quest{
                 else getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 pr();
                 RA9();
+                pr();
             }
         });
         second.setOnClickListener(new View.OnClickListener() {
@@ -346,6 +368,7 @@ public class THEME_ONE extends Quest{
                 pr();
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 RA9();
+                pr();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
@@ -355,6 +378,7 @@ public class THEME_ONE extends Quest{
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)(getterANDSetterFile.get_School()*75+75)));
                 getterANDSetterFile.set_School(getterANDSetterFile.get_School()+1);
                 RA9();
+                pr();
             }
         });
     }
