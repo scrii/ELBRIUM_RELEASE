@@ -160,10 +160,6 @@ public class ScrollingActivity extends AppCompatActivity{
                     info_money.setText(getterANDSetterFile.get_Guardian_Money() + "");
                     info_level.setText(getterANDSetterFile.get_Guardian_Level()+"");
                     toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
-//                    if(getterANDSetterFile.get_StartChat()==1){
-//                        getterANDSetterFile.set_StartChat(0);
-//                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                    }
                     if(getterANDSetterFile.get_SoundMusic()==0 && mediaPlayer.isPlaying())mediaPlayer.pause();
                 }
                 @Override
@@ -232,8 +228,6 @@ public class ScrollingActivity extends AppCompatActivity{
         SpannableString s2 = new SpannableString("Выход");
         s2.setSpan(new ForegroundColorSpan(Color.RED), 0, s2.length(), 0);
         item3.setTitle(s2);
-
-
 
         return true;
     }
