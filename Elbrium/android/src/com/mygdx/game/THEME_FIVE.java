@@ -55,6 +55,8 @@ public class THEME_FIVE extends Quest{
         }
     }
     public void Q1(){
+        o_button();
+        o_input();
         THEME_FIVE theme_five = new THEME_FIVE();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Villagers()<=3){
@@ -84,6 +86,8 @@ public class THEME_FIVE extends Quest{
         }
     }
     public void Q2(){
+        o_button();
+        o_input();
         THEME_FIVE theme_five = new THEME_FIVE();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.devil);
@@ -106,6 +110,8 @@ public class THEME_FIVE extends Quest{
         });
     }
     public void Q3(){
+        o_button();
+        o_input();
         THEME_FIVE theme_five = new THEME_FIVE();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Dungeon()==1){
@@ -135,6 +141,8 @@ public class THEME_FIVE extends Quest{
         }
     }
     public void Q4(){
+        o_button();
+        o_input();
         THEME_FIVE theme_five = new THEME_FIVE();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Block()!=1){

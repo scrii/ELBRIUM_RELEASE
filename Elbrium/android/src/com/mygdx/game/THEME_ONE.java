@@ -63,6 +63,8 @@ public class THEME_ONE extends Quest{
         exit(true);
     }
     public void RA2(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=2;
@@ -92,6 +94,8 @@ public class THEME_ONE extends Quest{
         exit(true);
     }
     public void RA3(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=3;
@@ -139,6 +143,8 @@ public class THEME_ONE extends Quest{
         exit(true);
     }
     public void RA4(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         if (getterANDSetterFile.get_Band()!=1){
@@ -200,6 +206,8 @@ public class THEME_ONE extends Quest{
         else RA5();
     }
     public void RA5(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=5;
@@ -275,6 +283,8 @@ public class THEME_ONE extends Quest{
         });
     }
     public void RA6(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         if (getterANDSetterFile.get_Church()==0){
@@ -312,6 +322,8 @@ public class THEME_ONE extends Quest{
         else RA7();
     }
     public void RA7(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=7;
@@ -341,6 +353,8 @@ public class THEME_ONE extends Quest{
         });
     }
     public void RA8(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=8;
@@ -383,6 +397,8 @@ public class THEME_ONE extends Quest{
         });
     }
     public void RA9(){
+        o_button();
+        o_input();
         pr();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=9;
@@ -432,6 +448,8 @@ public class THEME_ONE extends Quest{
         });
     }
     public void RA10(){
+        o_button();
+        o_input();
         pr();
         o_button();
         THEME_ONE theme_one = new THEME_ONE();

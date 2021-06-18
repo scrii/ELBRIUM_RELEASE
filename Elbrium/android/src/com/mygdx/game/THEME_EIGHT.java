@@ -41,6 +41,8 @@ public class THEME_EIGHT extends Quest{
         });
     }
     public void D1(){
+        o_button();
+        o_input();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
@@ -63,6 +65,8 @@ public class THEME_EIGHT extends Quest{
         });
     }
     public void D2(){
+        o_button();
+        o_input();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
@@ -85,6 +89,8 @@ public class THEME_EIGHT extends Quest{
         });
     }
     public void D3(){
+        o_button();
+        o_input();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);

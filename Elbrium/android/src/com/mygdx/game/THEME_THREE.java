@@ -75,6 +75,8 @@ public class THEME_THREE extends Quest{
         }
     }
     public void B2(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         pro_result=32;
@@ -85,6 +87,7 @@ public class THEME_THREE extends Quest{
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
+                img.setImageResource(R.mipmap.bandit);
                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_three.v2_2);
                 second.setText("Да, не желаю вас больше видеть");
                 third.setText("Это ложь");
@@ -130,6 +133,8 @@ public class THEME_THREE extends Quest{
         });
     }
     public void B3(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         if (getterANDSetterFile.get_Villagers()>=1 && getterANDSetterFile.get_Church()!=0){
@@ -159,6 +164,8 @@ public class THEME_THREE extends Quest{
         else B4();
     }
     public void B4(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         img.setImageResource(R.mipmap.bandit);
@@ -191,6 +198,8 @@ public class THEME_THREE extends Quest{
         });
     }
     public void B5(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         img.setImageResource(R.mipmap.bandit);
@@ -215,6 +224,8 @@ public class THEME_THREE extends Quest{
         });
     }
     public void B6(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         img.setImageResource(R.mipmap.bandit);
@@ -239,6 +250,8 @@ public class THEME_THREE extends Quest{
         });
     }
     public void B7(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_THREE theme_three = new THEME_THREE();
         d_button();

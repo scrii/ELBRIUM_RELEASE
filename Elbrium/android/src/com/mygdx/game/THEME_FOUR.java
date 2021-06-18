@@ -87,6 +87,8 @@ public class THEME_FOUR extends Quest{
         }
     }
     public void S2(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() > 0){
             img.setImageResource(R.mipmap.chur);
@@ -114,6 +116,8 @@ public class THEME_FOUR extends Quest{
         else S3();
     }
     public void S3(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -10 && getterANDSetterFile.get_Church() > -1000){
             d_button();
@@ -148,6 +152,8 @@ public class THEME_FOUR extends Quest{
         else S4();
     }
     public void S4(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() >= 10){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d4);
@@ -175,6 +181,8 @@ public class THEME_FOUR extends Quest{
         else S5();
     }
     public void S5(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() >= 25 && getterANDSetterFile.get_Dungeon() != 1){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d5);
@@ -200,6 +208,8 @@ public class THEME_FOUR extends Quest{
         else S6();
     }
     public void S6(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d6);
         img.setImageResource(R.mipmap.chur);
@@ -247,6 +257,8 @@ public class THEME_FOUR extends Quest{
         });
     }
     public void S7(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if(getterANDSetterFile.get_Church() > 0){
             pro_result = 47;
@@ -273,6 +285,8 @@ public class THEME_FOUR extends Quest{
         else S8();
     }
     public void S8(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -1000){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d8);
@@ -299,6 +313,8 @@ public class THEME_FOUR extends Quest{
         else S9();
     }
     public void S9(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -1100){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d9);
@@ -325,6 +341,8 @@ public class THEME_FOUR extends Quest{
         else S10();
     }
     public void S10(){
+        o_button();
+        o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() > 0){
             npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d10_1);

@@ -16,7 +16,7 @@ public class THEME_TWO extends Quest {
     public String m3 = "Банковское дело! Вот, что я хочу построить, на ваши деньги, конечно же, но поверьте мне: я в долгу не останусь.";
     public String m3_c = "Следующей ночью кто-то оставляет у вас под дверью чемодан с деньгами";
     public String m4 = "Здравствуйте, я занимаюсь продажей матрасов, не желаете ли приобрести 1? Это будет стоить 1000 монет, но уверяю вы не пожалеете.";
-    public String m4_c_1 = "Внутри оказалось 200 монет";
+    public String m4_c_1 = "Внутри оказалось 1200 монет";
     public String m4_c_2 = "Сколько бы вы не рвали матрас, но кажется, внутрь ничего не положили…";
     public String m5 = "Здравствуйте, буду честен я – вожак банды у меня к вам дело. Не желаете ли вы заняться продажей матрасов? Не лично вы, конечно, просто выделите нам точку в центре, в долгу не останемся.";
     public String m5_c = "Пока вы задавались этим не хитрым вопросом от говорящего уже след простыл";
@@ -82,6 +82,7 @@ public class THEME_TWO extends Quest {
     }
     public void F2(){
         o_button();
+        o_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m2);
@@ -104,6 +105,8 @@ public class THEME_TWO extends Quest {
         });
     }
     public void F3(){
+        o_button();
+        o_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m3);
@@ -126,6 +129,8 @@ public class THEME_TWO extends Quest {
         });
     }
     public void F4(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Band()==1){
@@ -159,6 +164,8 @@ public class THEME_TWO extends Quest {
         else F5();
     }
     public void F5(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Band()!=1){
@@ -184,6 +191,8 @@ public class THEME_TWO extends Quest {
         else F6();
     }
     public void F6(){
+        o_button();
+        o_input();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Villagers()>0){
@@ -215,54 +224,56 @@ public class THEME_TWO extends Quest {
         else F7();
     }
     public void F7(){
+        o_button();
+        o_input();
+        d_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
         second.setText("Хорошо");
         third.setText("Звучит сомнительно, нет");
+        input.setText("0");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                d_input();
                 try {
                     if (Integer.parseInt(input.getText().toString())>=0){
                         if (Integer.parseInt(input.getText().toString())==0)description.setText(description.getText().toString() + "\n" +"Но вы же ничего мне не дали!");
-                        if (Integer.parseInt(input.getText().toString())<=10 && Integer.parseInt(input.getText().toString())>0){
+                        else if (Integer.parseInt(input.getText().toString())<=10 && Integer.parseInt(input.getText().toString())>0){
                             description.setText(description.getText().toString() + "\n" +theme_two.m7_c_2);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
-                        if (Integer.parseInt(input.getText().toString())>10 && Integer.parseInt(input.getText().toString())<=50){
+                        else if (Integer.parseInt(input.getText().toString())>10 && Integer.parseInt(input.getText().toString())<=50){
                             description.setText(description.getText().toString() + "\n" +theme_two.m7_c_3);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+2);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
-                        if (Integer.parseInt(input.getText().toString())>50 && Integer.parseInt(input.getText().toString())<=200){
+                        else if (Integer.parseInt(input.getText().toString())>50 && Integer.parseInt(input.getText().toString())<=200){
                             description.setText(description.getText().toString() + "\n" + theme_two.m7_c_4);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
-                        if (Integer.parseInt(input.getText().toString())>200 && Integer.parseInt(input.getText().toString())!=666){
+                        else if (Integer.parseInt(input.getText().toString())>200 && Integer.parseInt(input.getText().toString())!=666){
                             description.setText(description.getText().toString() + "\n" +theme_two.m7_c_5);
                             F8();
                         }
-                        if (Integer.parseInt(input.getText().toString())==666){
+                        else if (Integer.parseInt(input.getText().toString())==666){
                             description.setText(description.getText().toString() + "\n" +theme_two.m7_c_6);
                             getterANDSetterFile.set_Devil(1);
                             getterANDSetterFile.set_Church(-666);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
+                        else F8();
                     }
-                    else {
-                        Toast.makeText(getApplicationContext(),"Сумма не может быть отрицательной!",Toast.LENGTH_SHORT).show();
-                    }
+                    else F8();
                 }catch (Exception e){
-                    Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -276,6 +287,7 @@ public class THEME_TWO extends Quest {
         });
     }
     public void F8(){
+        o_button();
         o_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -304,6 +316,8 @@ public class THEME_TWO extends Quest {
         else F9();
     }
     public void F9(){
+        o_button();
+        o_input();
         THEME_TWO theme_two = new THEME_TWO();
         img.setImageResource(R.mipmap.base_avatar_1);
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
@@ -325,6 +339,8 @@ public class THEME_TWO extends Quest {
         });
     }
     public void F10(){
+        o_button();
+        o_input();
         THEME_TWO theme_two = new THEME_TWO();
         img.setImageResource(R.mipmap.devil);
         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
