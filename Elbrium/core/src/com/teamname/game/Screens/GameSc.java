@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -18,12 +19,14 @@ import com.teamname.game.Main;
 //import com.
 
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import Messages.BulletMessage;
 import FirebaseHelper.DatabaseHelper;
 //import Online.Getter;
+import Messages.ElbriumMessage;
 import Messages.Message;
 import FirebaseHelper.Multiplayer;
 import Tools.BulletGenerator;
@@ -50,7 +53,7 @@ public class GameSc implements Screen {
     public static Array<Bullet> bullets;
     public static Array<Elbrium> ore;
     private static Spawner spawner;
-    private final Gson gson;
+    private static Gson gson;
     public static final float SIZE_COEF=1;
     private final Multiplayer multiplayer;
     public static boolean batchDraw;
@@ -59,6 +62,8 @@ public class GameSc implements Screen {
     private float cometPosX=100;
     private float cometPosY=1000;
     public static boolean playerIsSpawner;
+    private static ArrayList<Elbrium> snifferOre;
+
 
     Buttons chat_button,back_button;
     BulletGenerator bullgen;
@@ -177,6 +182,8 @@ public class GameSc implements Screen {
         //player_player_collision();
 
         ore_player_collision();
+
+
     }
 
     public void frontRender(SpriteBatch frontBatch){
@@ -338,10 +345,24 @@ public class GameSc implements Screen {
         }
     }
 
-    public static void startElbriumSpawner(){
+    public static void spawnerLogic(){
+        // вызывается если playerIsSpawner
+        Gdx.app.log("spawnerLogic()","Вызван");
         spawner.start();
-        playerIsSpawner=true;
-        GdxFIRDatabase.inst().inReference("Spawner").setValue(getter_setter.get_Nickname());
+    }
+
+    public static void spawnerSniffer(){
+        spawner.cancel();
+        ore.clear();
+        for(int i=0;i<15;i++){
+            GdxFIRDatabase.inst().inReference("ore"+i).onDataChange(String.class).thenListener(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    if(s!=null)
+                        ore.add(new Elbrium(Main.actor,gson.fromJson("{"+s,ElbriumMessage.class)));
+                }
+            });
+        }
     }
 
     @Override

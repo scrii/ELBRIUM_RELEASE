@@ -17,12 +17,13 @@ public class Spawner extends TimerTask {
     private int rank;
     private ElbriumMessage message;
     public Spawner(){
-        message=new ElbriumMessage(0,0,0);
+        //message=new ElbriumMessage(0,0,0);
     }
 
     @Override
     public void run() {
-        spawnOre();
+        if(GameSc.ore.size<15)spawnOre();
+        else Gdx.app.log("Spawner","Overflow");
     }
 
     public void start(){
@@ -33,12 +34,15 @@ public class Spawner extends TimerTask {
     }
 
     private void spawnOre() {
-        rank= +(int) (Math.random() * 3);
-        Elbrium elbrium = new Elbrium(Main.actor,new Point2D((float)Math.random()*Main.BACKGROUND_WIDTH/1.3f,
-                (float)Math.random()*Main.BACKGROUND_HEIGHT/1.3f),rank);
-        GameSc.ore.add(elbrium);
 
-        Gdx.app.log("TIMER","ore spawned");
+            rank = +(int) (Math.random() * 3);
+            Elbrium elbrium = new Elbrium(Main.actor, new Point2D((float) Math.random() * Main.BACKGROUND_WIDTH / 1.3f,
+                    (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f), rank);
+            GameSc.ore.add(elbrium);
+
+            Gdx.app.log("TIMER", "ore spawned");
+
+        Gdx.app.log("ESpawner","Overflow");
     }
 
     public void setRank(int rank){

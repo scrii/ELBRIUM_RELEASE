@@ -36,7 +36,7 @@ public class Elbrium extends Actor {
     private TextureRegion damageRegion,region;
     private final Animation animation;
     private int textureCase;
-    private final ElbriumMessage message;
+    private ElbriumMessage message;
 
     public float getDamage() {
         return damage;
@@ -79,15 +79,16 @@ public class Elbrium extends Actor {
             //GameSc.ore.removeIndex(count);
             GdxFIRDatabase.inst().inReference("ore"+count).removeValue();
 
-            Gdx.app.log("Elbrium #"+count, "i died :(");
+            Gdx.app.debug("Elbrium #"+count, "dead");
         }
 
     }
 
     public Elbrium(Texture img, Point2D position, int rank) {
+        // конструктор для игрока-спавнера
         super(img, position);
+        message=new ElbriumMessage(0,0,0,0,0,rank);
         counter=-1;
-        message=new ElbriumMessage(-1,-1,-1);
         textureCase=1;
         player_damage=GameSc.player.damage;
         //region=new TextureRegion(Main.elbrium,);
@@ -105,15 +106,47 @@ public class Elbrium extends Actor {
         startHealth=health;
         bounds = new Circle(position,R);
 
-        Gdx.app.log("ORECOUNT",GameSc.ore.size+1+"");
-        GdxFIRDatabase.inst().inReference("oreCount").setValue(GameSc.ore.size+1);
+        //Gdx.app.log("ORECOUNT",GameSc.ore.size+1+"");
+       // GdxFIRDatabase.inst().inReference("oreCount").setValue(GameSc.ore.size+1);
         setPosition();
+        //timeCheck();
+        Gdx.app.log("Elbrium","created");
+    }
+
+    public Elbrium(Texture img, ElbriumMessage em) {
+        super(img, new Point2D(em.x, em.y));
+        this.direction=new Point2D(em.dir_x, em.dir_y);
+        counter=-1;
+        this.rank=em.rank;
+        message=new ElbriumMessage(em);
+
+        textureCase=1;
+        player_damage=GameSc.player.damage;
+        //region=new TextureRegion(Main.elbrium,);
+        animation=new Animation(new TextureRegion(Main.elbriumCrash),4,4,1);
+
+        switch (rank){
+            case -1: health=10;score=100;R=Main.WIDTH/50f;Speed=0.8f;deltaSpeed=0.001f;damage=50;break;
+            case 0: health=100;score=5;R= Main.WIDTH/50f;Speed=0.1f;deltaSpeed=0.01f;damage=5;break;
+            case 1: health=30;score=5;R=Main.WIDTH/50f;Speed=0.5f;deltaSpeed=0.01f;damage=5;break;
+            case 2: health=50;score=8;R= Main.WIDTH/35f;Speed=0.3f;deltaSpeed=0.0015f;damage=20;break;
+            case 3: health=120;score=15;R= Main.WIDTH/25f;Speed=0.015f;deltaSpeed=0.001f;damage=35;break;
+        }
+
+
+        startHealth=health;
+        bounds = new Circle(position,R);
+
+        //Gdx.app.log("ORECOUNT",GameSc.ore.size+1+"");
+        // GdxFIRDatabase.inst().inReference("oreCount").setValue(GameSc.ore.size+1);
         //timeCheck();
     }
 
     public void setPosition(){
         direction.setX((float) Math.cos(Math.toRadians(Math.random()*360)));
         direction.setY((float) Math.sin(Math.toRadians(Math.random()*360)));
+        message.dir_x=direction.getX();
+        message.dir_y=direction.getY();
     }
 
     @Override
@@ -137,18 +170,21 @@ public class Elbrium extends Actor {
         //GdxFIRDatabase.instance().inReference("Elbrium_"+count).setValue(position.toString());
         isOut = (position.getX()+R<0 || position.getY()-R>Main.BACKGROUND_HEIGHT
                 || position.getX()-R>Main.BACKGROUND_WIDTH || position.getY()+R<0);
-        message.x=position.getX();
-        message.y=position.getY();
-        message.hp=getHealth();
         //if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore").push().setValue(message.toString());
-        if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
-        if(isOut)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).removeValue();
+        //if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
+       // if(isOut)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).removeValue();
        /* GdxFIRDatabase.promise().then(GdxFIRDatabase.inst().inReference("ore").onChildChange(String.class, ChildEventType.CHANGED).then(new Consumer<String>() {
             @Override
             public void accept(String s) {
 
             }
         }));*/
+        if(GameSc.playerIsSpawner) {
+            message.x=position.getX();
+            message.y=position.getY();
+            message.hp=getHealth();
+            GdxFIRDatabase.inst().inReference("ore"+count).setValue(message.toString());
+        }
 
     }
 
