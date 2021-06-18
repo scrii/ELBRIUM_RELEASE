@@ -38,6 +38,7 @@ public class ScrollingActivity extends AppCompatActivity{
     FrameLayout frameLayout;
     public static MediaPlayer mediaPlayer;
     public Message player_data;
+    TextView nick;
     Online online;
     int sec=10;
     String onl="";
@@ -102,6 +103,7 @@ public class ScrollingActivity extends AppCompatActivity{
         }
         setContentView(R.layout.activity_scrolling);
         frameLayout = findViewById(R.id.gg);
+        nick = findViewById(R.id.nick);
         mediaPlayer = MediaPlayer.create(this,R.raw.startsound);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -161,7 +163,8 @@ public class ScrollingActivity extends AppCompatActivity{
                     seconds--;
                     info_money.setText(getterANDSetterFile.get_Guardian_Money() + "");
                     info_level.setText(getterANDSetterFile.get_Guardian_Level()+"");
-                    toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
+                    nick.setText(getterANDSetterFile.get_Nickname()+"");
+                    //toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
                     if(getterANDSetterFile.get_SoundMusic()==0 && mediaPlayer.isPlaying())mediaPlayer.pause();
                 }
                 @Override

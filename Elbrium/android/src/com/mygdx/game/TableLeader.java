@@ -49,6 +49,7 @@ public class TableLeader extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_leader);
+        getSupportActionBar().hide();
         listView = findViewById(R.id.leaderView);
         numbers = new ArrayList<>();
         leaderBoard = new LeaderBoard();

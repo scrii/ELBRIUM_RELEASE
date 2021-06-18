@@ -23,7 +23,7 @@ import android.widget.Toast;
 import static com.mygdx.game.ScrollingActivity.mediaPlayer;
 
 public class UserBase extends AppCompatActivity {
-public Button newBase,confirm;
+public Button newBase,confirm,missions;
 public TextView whatAboutLevel,infohealth,realhealth,villagers,int_villagers,happiness,int_happiness,TownHall,int_TownHall,WorkShop,int_WorkShop,Kitchen,int_Kitchen,House,int_House,School,int_School,Factory,int_Factory,Tower,int_Tower,Park,int_Park,Mill,int_Mill;
 public EditText namebase;
 public ImageButton but_TownHall,but_Kitchen,but_WorkShop,but_House,but_School,but_Factory,but_Tower,but_Park,but_Mill;
@@ -39,7 +39,15 @@ public GetterANDSetterFile getterANDSetterFile;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_base);
+        getSupportActionBar().hide();
         getterANDSetterFile = new GetterANDSetterFile();
+        missions = findViewById(R.id.missions);
+        missions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getterANDSetterFile.get_BaseLevel()>0)startActivity(new Intent(UserBase.this,Quest.class));
+            }
+        });
         bm = MediaPlayer.create(this,R.raw.basemusic);
         bm.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -158,6 +166,7 @@ public GetterANDSetterFile getterANDSetterFile;
             whatAboutLevel.setVisibility(View.VISIBLE);
             //===============================
             namebase.setVisibility(View.INVISIBLE);
+            missions.setVisibility(View.INVISIBLE);
             confirm.setVisibility(View.INVISIBLE);
             infohealth.setVisibility(View.INVISIBLE);
             realhealth.setVisibility(View.INVISIBLE);
@@ -200,6 +209,7 @@ public GetterANDSetterFile getterANDSetterFile;
             namebase.setVisibility(View.VISIBLE);
             confirm.setVisibility(View.VISIBLE);
             infohealth.setVisibility(View.VISIBLE);
+            missions.setVisibility(View.VISIBLE);
             realhealth.setVisibility(View.VISIBLE);
             villagers.setVisibility(View.VISIBLE);
             int_villagers.setVisibility(View.VISIBLE);
@@ -236,6 +246,7 @@ public GetterANDSetterFile getterANDSetterFile;
     }
     public void ID1(){
         TownHall     = findViewById(R.id.TownHall);
+        missions     = findViewById(R.id.missions);
         int_TownHall = findViewById(R.id.int_TownHall);
         WorkShop     = findViewById(R.id.WorkShop);
         int_WorkShop = findViewById(R.id.int_WorkShop);
@@ -374,20 +385,10 @@ public GetterANDSetterFile getterANDSetterFile;
         }
     }
     public void RedColor(TextView textView){
-        textView.setBackgroundColor(Color.RED);
+        textView.setTextColor(Color.RED);
     }
     public void BaseColor(TextView textView){
-        try {
-            if(Build.VERSION_CODES.P>=28){
-                if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)==Configuration.UI_MODE_NIGHT_YES){
-                    textView.setBackgroundColor(getResources().getColor(R.color.base));
-                }
-                else textView.setBackgroundColor(Color.WHITE);
-            }
-            else textView.setBackgroundColor(Color.WHITE);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        textView.setTextColor(Color.WHITE);
     }
 
     public void chance_Mill(){

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/shop"
+    android:background="@mipmap/shop"
     tools:context=".ShopActivity"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/shop_activity">
@@ -31,6 +32,7 @@
                 android:text="@string/money"
                 android:textSize="20dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_gravity="left"
                 android:layout_marginLeft="16dp"/>
             <TextView
@@ -38,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/real_money_characteristic"
                 android:text="@string/int_start_ore"
+                android:textColor="@color/black"
                 android:layout_gravity="right"
                 android:textSize="20dp"
                 android:textStyle="bold"/>
@@ -50,6 +53,7 @@
             <TextView
                 android:id="@+id/info_health"
                 android:layout_width="150dp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:text="@string/string_health"
@@ -62,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="@string/int_start_health"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -76,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:text="@string/string_damage"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -85,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="@string/int_start_damage"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -99,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:text="@string/string_protection"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -108,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="@string/int_start_damage"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -122,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:text="@string/string_speed"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold" />
@@ -131,6 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="@string/int_start_damage"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -145,6 +156,7 @@
                 android:id="@+id/info_ore"
                 android:layout_gravity="left"
                 android:text="@string/ore"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:layout_marginLeft="16dp"
                 android:textStyle="bold"/>
@@ -154,6 +166,7 @@
                 android:layout_gravity="right"
                 android:id="@+id/real_ore_characteristic"
                 android:text="@string/int_start_ore"
+                android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -187,25 +200,27 @@
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:text="@string/string_maneuverability"
+                        android:textColor="@color/black"
                         android:id="@+id/info_maneuverability"
                         android:layout_marginRight="48dp"
                         android:layout_marginLeft="16dp"
                         android:textSize="20dp"
                         android:layout_gravity="center_vertical"
                         android:layout_weight="1"
-                        android:textStyle="normal"/>
+                        android:textStyle="bold"/>
                     <TextView
                         android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/maneuverability_price"
                         android:text="@string/int_start_health"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:layout_marginRight="16dp"
                         android:layout_gravity="center_vertical"
@@ -229,16 +244,18 @@
                         android:text="@string/string_attack"
                         android:id="@+id/info_attack"
                         android:layout_marginRight="48dp"
+                        android:textColor="@color/black"
                         android:layout_marginLeft="16dp"
                         android:textSize="20dp"
                         android:layout_weight="2"
                         android:layout_gravity="center_vertical"
-                        android:textStyle="normal"/>
+                        android:textStyle="bold"/>
                     <TextView
                         android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/attack_price"
                         android:text="@string/int_start_health"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:layout_marginRight="16dp"
                         android:layout_gravity="center_vertical"
@@ -260,18 +277,20 @@
                         android:layout_width="155dp"
                         android:layout_height="wrap_content"
                         android:text="@string/string_protection"
+                        android:textColor="@color/black"
                         android:id="@+id/info_protection"
                         android:layout_marginRight="48dp"
                         android:layout_marginLeft="16dp"
                         android:layout_weight="3"
                         android:textSize="20dp"
                         android:layout_gravity="center_vertical"
-                        android:textStyle="normal"/>
+                        android:textStyle="bold"/>
                     <TextView
                         android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/protection_price"
                         android:text="@string/int_start_protection"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:layout_marginRight="16dp"
                         android:layout_gravity="center_vertical"
@@ -294,17 +313,19 @@
                         android:layout_height="wrap_content"
                         android:text="@string/string_speed"
                         android:id="@+id/info_speed_plus_one"
+                        android:textColor="@color/black"
                         android:layout_marginRight="48dp"
                         android:layout_marginLeft="16dp"
                         android:textSize="20dp"
                         android:layout_weight="4"
                         android:layout_gravity="center_vertical"
-                        android:textStyle="normal"/>
+                        android:textStyle="bold"/>
                     <TextView
                         android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/speed_price"
                         android:text="@string/int_start_protection"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:layout_marginRight="16dp"
                         android:layout_gravity="center_vertical"

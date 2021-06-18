@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/AUB"
+    android:background="@mipmap/userbase"
     tools:context=".UserBase">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -360,6 +361,14 @@
                     android:src="@drawable/ic_baseline_local_hospital_24"
                     android:layout_marginLeft="25dp"/>
             </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:id="@+id/missions"
+                android:layout_marginTop="20dp"
+                android:textSize="12dp"
+                android:text="@string/missions"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
