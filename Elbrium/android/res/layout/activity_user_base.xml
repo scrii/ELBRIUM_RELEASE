@@ -31,17 +31,20 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:text="@string/newbase"
+                    android:textSize="12dp"
                     android:visibility="visible" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1.1">
 
                 <EditText
                     android:id="@+id/infobase"
-                    android:layout_width="285dp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:hint="@string/infobase" />
 
@@ -50,16 +53,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.1"
+                    android:textSize="12dp"
                     android:text="@string/accept" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1.5">
                 <TextView
-                    android:layout_width="320dp"
+                    android:layout_width="wrap_content"
                     android:textSize="17dp"
+                    android:layout_weight="1"
                     android:textStyle="bold"
                     android:id="@+id/infohealth"
                     android:layout_height="wrap_content"
@@ -68,19 +75,24 @@
                     android:layout_width="wrap_content"
                     android:textSize="17dp"
                     android:textStyle="bold"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
                     android:id="@+id/realhealth"
+                    android:gravity="right"
+                    android:layout_marginRight="15dp"
                     android:text="@string/one"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1.5">
                 <TextView
-                    android:layout_width="320dp"
+                    android:layout_width="wrap_content"
                     android:textSize="17dp"
                     android:textStyle="bold"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:id="@+id/villagers"
                     android:text="@string/villagers"/>
@@ -88,28 +100,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17dp"
+                    android:layout_weight="0.5"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:id="@+id/int_villagers"
+                    android:layout_marginRight="15dp"
                     android:text="@string/three"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1.5">
                 <TextView
-                    android:layout_width="320dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17dp"
+                    android:layout_weight="1"
                     android:textStyle="bold"
                     android:id="@+id/happiness"
                     android:text="@string/happiness"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:textSize="17dp"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:id="@+id/int_happiness"
+                    android:layout_marginRight="15dp"
                     android:text="@string/int_happiness"/>
             </LinearLayout>
 

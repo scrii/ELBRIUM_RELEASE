@@ -140,7 +140,7 @@ public GetterANDSetterFile getterANDSetterFile;
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         int id = item.getItemId();
         if(id==R.id.quest && getterANDSetterFile.get_BaseLevel()>0)startActivity(new Intent(UserBase.this,Quest.class));
-        else Toast.makeText(getApplicationContext(),"Сначало купите базу!",Toast.LENGTH_SHORT).show();
+        else if (getterANDSetterFile.get_BaseLevel()<=0) Toast.makeText(getApplicationContext(),"Сначало купите базу!",Toast.LENGTH_SHORT).show();
         if(id==R.id.map)Log.d("Map","TRUE");
         switch (item.getItemId()) {
             case android.R.id.home:

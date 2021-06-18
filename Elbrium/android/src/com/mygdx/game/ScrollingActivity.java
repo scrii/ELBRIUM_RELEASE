@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -91,7 +92,6 @@ public class ScrollingActivity extends AppCompatActivity{
 
 
         // //
-
         if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
         if(getterANDSetterFile.get_Sign()==0){
             try {
@@ -116,9 +116,11 @@ public class ScrollingActivity extends AppCompatActivity{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = findViewById(R.id.toolbar_layout);
+        toolBarLayout.setBackgroundResource(R.mipmap.none);
+        toolbar.setBackgroundResource(R.mipmap.none);
         TextView info_level = findViewById(R.id.level);
         TextView info_money = findViewById(R.id.money);
-        Button room1  = findViewById(R.id.room_one_button);
+        FloatingActionButton room1  = findViewById(R.id.room_one_button);
         seconds = 60;
         experience = 0;
         money = 0;
