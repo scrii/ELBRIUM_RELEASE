@@ -6,7 +6,8 @@
     android:id="@+id/person"
     android:orientation="vertical"
     tools:context=".PersonActivity"
-    tools:showIn="@layout/activity_person">
+    tools:showIn="@layout/activity_person"
+    android:background="@mipmap/settings">
 
         <TextView
             android:layout_width="wrap_content"

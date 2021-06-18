@@ -1,37 +1,54 @@
 package com.mygdx.game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import static com.mygdx.game.UserBase.bm;
 
-public class Quest extends AppCompatActivity{
-    public int kolvo_symbols = 0,k1,k2,m=0,ra1=0,ra2=0,ra3=0,ra4=0,ra5=0,ra6=0,v=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,ra8=0;
+public class Quest extends AppCompatActivity implements View.OnClickListener {
+    public int kolvo_symbols = 0,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,k1,k2;
     public int[]k = new int[70];
     public CountDownTimer countDownTimer;
     public boolean parametr=true;
     public int pro_result=0;
     public static TextView npc_tv,description,crossbar;
-    public static Button btn_next,btn_exit,first,second,third;
+    public static Button first,second,third;
     public static EditText input;
     public static ImageView img;
-    public boolean u;
+    public int t=0;
+    public static NestedScrollView nestedScrollView_npc,nestedScrollView_des;
     public float vip=2;
-    public int but=0;
-
+    public int y=1;
+    String b="",s="";
+    UserBase userBase;
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.first: t=1;break;
+            case R.id.second: t=2;break;
+            case R.id.third: t=3;break;
+        }
+    }
     @Override
     protected void onStart(){
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -74,30 +91,40 @@ public class Quest extends AppCompatActivity{
         setContentView(R.layout.activity_quest);
         getSupportActionBar().hide();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        //ID2();
         vip++;
+        nestedScrollView_npc = findViewById(R.id.nes_npc_tv);
+        nestedScrollView_des = findViewById(R.id.nes_des);
         npc_tv = findViewById(R.id.nps_tv);
         description = findViewById(R.id.description);
-        btn_next = findViewById(R.id.btn_next);
-        btn_exit = findViewById(R.id.btn_exit);
         first = findViewById(R.id.first);
         second = findViewById(R.id.second);
         third = findViewById(R.id.third);
         input = findViewById(R.id.input);
         img = findViewById(R.id.nps_img);
         crossbar = findViewById(R.id.crossbar);
+        first.setOnClickListener(this);
+        second.setOnClickListener(this);
+        third.setOnClickListener(this);
         start();
         exit(true);
         for (int i = 0; i < 70; i++) {
             k[i] = 0;
         }
+        userBase = new UserBase();
         countDownTimer = new CountDownTimer(c*100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 c--;
-                crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium());
+                crossbar.setText("Монеты: " + getterANDSetterFile.get_Guardian_Money() + " " + "Руда: " + getterANDSetterFile.get_Ore_Elbrium() + " " + "Счастье: " + getterANDSetterFile.get_Happiness());
                 comments(npc_tv);
                 comments(description);
+                s = npc_tv.getText().toString();
+                if (!b.contains(s)){
+                    b = s;
+                    nestedScrollView_npc.smoothScrollTo(0,2100000000);
+                    nestedScrollView_des.smoothScrollTo(0,2100000000);
+                }
+                ins();
             }
             @Override
             public void onFinish() {
@@ -112,49 +139,11 @@ public class Quest extends AppCompatActivity{
             countDownTimer.start();
         }
         random();
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                random();
-            }
-        });
-        btn_exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Quest.this,ScrollingActivity.class));
-            }
-        });
-        first.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=1;
-            }
-        });
-        second.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=2;
-            }
-        });
-        third.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                but=3;
-            }
-        });
     }
-//    public void ID2(){
-//        npc_tv = findViewById(R.id.nps_tv);
-//        description = findViewById(R.id.description);
-//        btn_next = findViewById(R.id.btn_next);
-//        btn_exit = findViewById(R.id.btn_exit);
-//        first = findViewById(R.id.first);
-//        second = findViewById(R.id.second);
-//        third = findViewById(R.id.third);
-//        input = findViewById(R.id.input);
-//        img = findViewById(R.id.nps_img);
-//        crossbar = findViewById(R.id.crossbar);
-//    }
+    public void pr(){
+        nestedScrollView_npc.smoothScrollTo(0,2140000000);
+        nestedScrollView_des.smoothScrollTo(0,2140000000);
+    }
     public int h_random(){
         int h = 3;
         h = 1 + (int)(Math.random()*15);
@@ -194,33 +183,10 @@ public class Quest extends AppCompatActivity{
     }
 
     public void random(){
-        vip = 2+(float)(Math.random()*9);
-        Log.d("VIP",vip+"");
-        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_ONE theme_one = new THEME_ONE();
-        THEME_TWO theme_two = new THEME_TWO();
-        THEME_THREE theme_three = new THEME_THREE();
-        THEME_FOUR theme_four = new THEME_FOUR();
-        THEME_FIVE theme_five = new THEME_FIVE();
-        THEME_SIX theme_six = new THEME_SIX();
-        THEME_EIGHT theme_eight = new THEME_EIGHT();
-        THEME_SEVEN theme_seven = new THEME_SEVEN();
-        //if(vip%4.5==0 && getterANDSetterFile.get_Band()==1)theme_three.three();
-        //else random();
-        //if(vip%5==0 && getterANDSetterFile.get_Church()!=0)theme_four.four();
-        //else random();
-        //if(vip%6==0 && getterANDSetterFile.get_Devil()!=0)theme_five.five();
-        //else random();
-        //if(vip%7==0)theme_six.six();
-        //if(vip%8.5==0 && getterANDSetterFile.get_Dungeon()==1)theme_seven.seven();
-        //else random();
-        //if(vip%9.5==0)theme_eight.eight();
-        //if(vip%2==0)theme_one.one();
-        //if(vip%3==0)theme_two.two();
-        theme_six.six();
+        theme_one.one();
     }
     public void start(){
-        //ID2();
         npc_tv.setVisibility(View.VISIBLE);
         description.setVisibility(View.VISIBLE);
         first.setVisibility(View.INVISIBLE);
@@ -228,62 +194,20 @@ public class Quest extends AppCompatActivity{
         third.setVisibility(View.VISIBLE);
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
-        btn_next.setVisibility(View.INVISIBLE);
-        btn_exit.setVisibility(View.INVISIBLE);
     }
-    public void start_plus(){
-        //ID2();
-        npc_tv.setVisibility(View.VISIBLE);
-        description.setVisibility(View.VISIBLE);
-        first.setVisibility(View.INVISIBLE);
-        second.setVisibility(View.INVISIBLE);
-        third.setVisibility(View.INVISIBLE);
-        input.setVisibility(View.INVISIBLE);
-        img.setVisibility(View.VISIBLE);
-        btn_next.setVisibility(View.VISIBLE);
-        btn_exit.setVisibility(View.VISIBLE);
-    }
-//    public void hide(){
-//        ID2();
-//        npc_tv.setVisibility(View.INVISIBLE);
-//        description.setVisibility(View.INVISIBLE);
-//        first.setVisibility(View.INVISIBLE);
-//        second.setVisibility(View.INVISIBLE);
-//        third.setVisibility(View.INVISIBLE);
-//        input.setVisibility(View.INVISIBLE);
-//        img.setVisibility(View.INVISIBLE);
-//        btn_next.setVisibility(View.VISIBLE);
-//        btn_exit.setVisibility(View.VISIBLE);
-//    }
     public void d_button(){
-        //ID2();
         first.setVisibility(View.VISIBLE);
     }
     public void d_input(){
-        //ID2();
         input.setVisibility(View.VISIBLE);
     }
     public void o_button(){
-        //ID2();
         first.setVisibility(View.INVISIBLE);
     }
     public void o_input(){
-        //ID2();
         input.setVisibility(View.INVISIBLE);
     }
-    public int button(Button b){
-        return but;
-    }
-//    public boolean button(Button b){
-//        u = false;
-//        b.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                u=true;
-//            }
-//        });
-//        return u;
-//    }
+
     public void comments(TextView textMessage){
         String s = textMessage.getText().toString();
         String comment = textMessage.getText().toString();
@@ -292,19 +216,49 @@ public class Quest extends AppCompatActivity{
                 if (s.charAt(i) == '*' && s.contains("*")) {
                     kolvo_symbols++;
                     if (kolvo_symbols == 2 && s.contains("*")) {
-                        k1 = comment.indexOf("*");
-                        k2 = comment.lastIndexOf("*");
+                        k1 = (comment.indexOf("*"));
+                        k2 = (comment.lastIndexOf("*"));
                         SpannableStringBuilder builder = new SpannableStringBuilder();
                         SpannableString colorSpannable= new SpannableString(s);
-                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k1,k2+1,0);
+                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k1,k1+1,0);
+                        colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k2,k2+1,0);
                         builder.append(colorSpannable);
                         textMessage.setText(builder, TextView.BufferType.SPANNABLE);
                         kolvo_symbols = 0;
                         s = "";
                     }
-                    else textMessage.setTextColor(getResources().getColor(R.color.white));
+                    else textMessage.setTextColor(Color.GRAY);
                 }
             }
         }
+    }
+    public void ins(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        if(getterANDSetterFile.get_Happiness()<10)ruin();
+        if(getterANDSetterFile.get_Happiness()>55)ruin();
+    }
+    public void ruin(){
+        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
+        npc_tv.setVisibility(View.INVISIBLE);
+        description.setVisibility(View.VISIBLE);
+        first.setVisibility(View.INVISIBLE);
+        second.setVisibility(View.INVISIBLE);
+        third.setVisibility(View.INVISIBLE);
+        input.setVisibility(View.INVISIBLE);
+        img.setVisibility(View.INVISIBLE);
+        description.setText("Уровень счастья слишком низкий. Люди восстали против вашей диктатуры. Вы теряете всё!");
+        getterANDSetterFile.set_BaseLevel(0);
+        getterANDSetterFile.set_House(0);
+        getterANDSetterFile.set_Happiness(25);
+        getterANDSetterFile.set_Villagers(3);
+        getterANDSetterFile.set_Kitchen(0);
+        getterANDSetterFile.set_WorkShop(0);
+        getterANDSetterFile.set_TownHall(1);
+        getterANDSetterFile.set_Factory(0);
+        getterANDSetterFile.set_NameBase("");
+        getterANDSetterFile.set_School(0);
+        getterANDSetterFile.set_Tower(0);
+        getterANDSetterFile.set_Park(0);
+        getterANDSetterFile.set_Mill(0);
     }
 }

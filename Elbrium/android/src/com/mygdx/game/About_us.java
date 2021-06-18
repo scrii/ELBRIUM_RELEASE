@@ -25,6 +25,7 @@ String prehistory,prehistory_txt,commands,join,join_txt,leave,leave_txt,an_nickn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+        getSupportActionBar().hide();
         pr = findViewById(R.id.prehistory);
         vk = findViewById(R.id.vk);
         vk_text = findViewById(R.id.vk_text);

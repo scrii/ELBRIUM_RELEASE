@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,7 @@ public class ScrollingActivity extends AppCompatActivity{
     FrameLayout frameLayout;
     public static MediaPlayer mediaPlayer;
     public Message player_data;
+    TextView nick;
     Online online;
     int sec=10;
     String onl="";
@@ -79,7 +81,6 @@ public class ScrollingActivity extends AppCompatActivity{
         else for(int i=0;i<15;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect();
 
         // //
-
         if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
         if(getterANDSetterFile.get_Sign()==0){
             try {
@@ -90,6 +91,7 @@ public class ScrollingActivity extends AppCompatActivity{
         }
         setContentView(R.layout.activity_scrolling);
         frameLayout = findViewById(R.id.gg);
+        nick = findViewById(R.id.nick);
         mediaPlayer = MediaPlayer.create(this,R.raw.startsound);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -103,9 +105,11 @@ public class ScrollingActivity extends AppCompatActivity{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = findViewById(R.id.toolbar_layout);
+        toolBarLayout.setBackgroundResource(R.mipmap.none);
+        toolbar.setBackgroundResource(R.mipmap.none);
         TextView info_level = findViewById(R.id.level);
         TextView info_money = findViewById(R.id.money);
-        Button room1  = findViewById(R.id.room_one_button);
+        FloatingActionButton room1  = findViewById(R.id.room_one_button);
         seconds = 60;
         experience = 0;
         money = 0;
@@ -146,11 +150,8 @@ public class ScrollingActivity extends AppCompatActivity{
                     seconds--;
                     info_money.setText(getterANDSetterFile.get_Guardian_Money() + "");
                     info_level.setText(getterANDSetterFile.get_Guardian_Level()+"");
-                    toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
-//                    if(getterANDSetterFile.get_StartChat()==1){
-//                        getterANDSetterFile.set_StartChat(0);
-//                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                    }
+                    nick.setText(getterANDSetterFile.get_Nickname()+"");
+                    //toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
                     if(getterANDSetterFile.get_SoundMusic()==0 && mediaPlayer.isPlaying())mediaPlayer.pause();
                 }
                 @Override
@@ -220,8 +221,6 @@ public class ScrollingActivity extends AppCompatActivity{
         s2.setSpan(new ForegroundColorSpan(Color.RED), 0, s2.length(), 0);
         item3.setTitle(s2);
 
-
-
         return true;
     }
     @Override
@@ -258,6 +257,19 @@ public class ScrollingActivity extends AppCompatActivity{
             getterANDSetterFile.set_Protection(3.0);
             getterANDSetterFile.set_Speed(3.0);
             getterANDSetterFile.set_Message("");
+            getterANDSetterFile.set_BaseLevel(0);
+            getterANDSetterFile.set_House(0);
+            getterANDSetterFile.set_Happiness(25);
+            getterANDSetterFile.set_Villagers(3);
+            getterANDSetterFile.set_Kitchen(0);
+            getterANDSetterFile.set_WorkShop(0);
+            getterANDSetterFile.set_TownHall(1);
+            getterANDSetterFile.set_Factory(0);
+            getterANDSetterFile.set_NameBase("");
+            getterANDSetterFile.set_School(0);
+            getterANDSetterFile.set_Tower(0);
+            getterANDSetterFile.set_Park(0);
+            getterANDSetterFile.set_Mill(0);
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this,ScrollingActivity.class));
             return true;

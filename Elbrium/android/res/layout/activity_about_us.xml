@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".About_us"
     android:orientation="vertical"
+    android:background="@mipmap/about"
     android:id="@+id/aboutUs">
 
     <androidx.core.widget.NestedScrollView

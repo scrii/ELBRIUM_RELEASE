@@ -45,6 +45,7 @@ public class ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shop_activity);
+        getSupportActionBar().hide();
         getter_setter=new GetterANDSetterFile();
         player_data=new Message(getter_setter.getTexture(),-1,-1,(float)getter_setter.get_Attack(),
                 (float)getter_setter.get_Health(),(float)getter_setter.get_Protection(),"bb");

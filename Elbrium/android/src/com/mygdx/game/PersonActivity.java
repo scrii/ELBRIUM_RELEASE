@@ -43,6 +43,7 @@ public class PersonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
+        getSupportActionBar().hide();
         name_person = findViewById(R.id.name_person);
         s = name_person.getText().toString();
         confirm = findViewById(R.id.confirm);
