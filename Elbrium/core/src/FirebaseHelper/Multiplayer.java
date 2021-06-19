@@ -75,7 +75,7 @@ public class Multiplayer {
             //Gdx.app.log("MP",m.x+"");
 
             bounds.pos.setPoint(m.x-GameSc.player.R,m.y-GameSc.player.R);
-            batch.draw(Main.getPlayer(m.texture),m.x-GameSc.player.R*2,m.y-GameSc.player.R*2, GameSc.player.R*2,2*GameSc.player.R);
+            batch.draw(Main.getPlayer(m.texture),bounds.pos.getX()-GameSc.player.R,bounds.pos.getY()-GameSc.player.R, GameSc.player.R*2,2*GameSc.player.R);
             //bounds.debug(batch,GameSc.player.R);
 
             if(GameSc.player.bounds.Overlaps(bounds)){
@@ -90,7 +90,7 @@ public class Multiplayer {
             }
         }
         for(BulletMessage bm : bullets){
-            bulletBounds.pos.setPoint(bm.x-GameSc.player.R/5,bm.y-GameSc.player.R/5);
+            bulletBounds.pos.setPoint(bm.x,bm.y);
             batch.draw(Main.bullet,bm.x-GameSc.player.R/5,bm.y-GameSc.player.R/5,GameSc.player.R/5*2,GameSc.player.R/5*2);
             bulletBounds.debug(batch,GameSc.player.R/5);
         }
@@ -195,7 +195,7 @@ public class Multiplayer {
             GdxFIRDatabase.inst().inReference("bullet_"+ref+i).onDataChange(String.class).thenListener(new Consumer<String>() {
                 @Override
                 public void accept(String s) {
-                    tmp3(ref,s);
+                    if(s!=null)tmp3(ref,s);
                 }
             });
         }
@@ -207,8 +207,8 @@ public class Multiplayer {
             //Gdx.app.error("bullets",bullets.toString());
             if (bm.nick.equals(ref)) {
                 flag = true;
-               // bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
-               // bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
+               bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
+               bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
                 break;
             }
         }
