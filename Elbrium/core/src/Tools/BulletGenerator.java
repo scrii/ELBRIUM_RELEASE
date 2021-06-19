@@ -34,7 +34,7 @@ public class BulletGenerator {
     public void update(Joystick joy){
         isFire= joy.getDir().getX() != 0 || joy.getDir().getY() != 0;
         if(isFire && isTime) {
-            GameSc.bullets.add(new Bullet(Main.bullet, new Point2D(GameSc.player.bounds.pos), 1, GameSc.player.R/5, joy.getDir()));
+            GameSc.bullets.add(new Bullet(Main.bullet, new Point2D(GameSc.player.bounds.pos), 18, GameSc.player.R/5, joy.getDir()));
             isTime=false;
             counter=Sec;
             //Gdx.app.error("isTime",isTime+"");

@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.github.library.bubbleview.BubbleTextView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -102,13 +103,13 @@ public class MainActivity extends AppCompatActivity { // Активность, �
                 else lucky = " [Неуспешно]";       // Требуется для комманды #try
                 if(nickname != null && !s1.equals("") && !s1.contains("\n\n\n\n") && s1.length()!=spaces && !s1.contains("#try")){ // Отправка НЕ пустых сообщений
                     if(s1.length()<=550){
-                        FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString(), nickname));
+                        FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString(), nickname, FirebaseAuth.getInstance().getCurrentUser().getEmail()+""));
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Сообщение слишком большое!",Toast.LENGTH_SHORT).show();
                     }
                 }
-                else if(s1.contains("#try"))FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString()+lucky, nickname));
+                else if(s1.contains("#try"))FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString()+lucky, nickname,FirebaseAuth.getInstance().getCurrentUser()+""));
                 else Toast.makeText(getApplicationContext(),"Сообщение не может быть пустым",Toast.LENGTH_SHORT).show();
                 lucky = "";
                 luck=0;

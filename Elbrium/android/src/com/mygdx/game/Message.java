@@ -6,8 +6,10 @@ public class Message { // Класс-конструктор для MainActivity
     private String textMessage;
     private String author;
     private long messageTime;
-    public Message(String textMessage, String author) {
+    private String email;
+    public Message(String textMessage, String author, String email) {
         this.textMessage = textMessage;
+        this.email = email;
         this.author = author;
         messageTime = new Date().getTime();
     }
@@ -15,6 +17,10 @@ public class Message { // Класс-конструктор для MainActivity
     public String getTextMessage() {
         return textMessage;
     }
+    public String getEmail(){
+        return email;
+    }
+
     public void setTextMessage(String textMessage) {
         this.textMessage = textMessage;
     }
@@ -29,5 +35,8 @@ public class Message { // Класс-конструктор для MainActivity
     }
     public void setMessageTime(long messageTime) {
         this.messageTime = messageTime;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
 }
