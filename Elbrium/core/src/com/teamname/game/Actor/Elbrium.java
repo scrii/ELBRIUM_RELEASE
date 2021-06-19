@@ -94,13 +94,13 @@ public class Elbrium extends Actor {
         switch (rank){
             case -1: health=10;score=100;R=Main.WIDTH/50f;
                 speed =0.8f;deltaSpeed=0.001f;damage=50;break;
-            case 0: health=100;score=5;R= Main.WIDTH/50f;
+            case 0: health=100;score=50;R= Main.WIDTH/50f;
                 speed =0.1f;deltaSpeed=0.01f;damage=5;break;
-            case 1: health=30;score=5;R=Main.WIDTH/50f;
+            case 1: health=30;score=50;R=Main.WIDTH/50f;
                 speed =0.5f;deltaSpeed=0.01f;damage=5;break;
-            case 2: health=50;score=8;R= Main.WIDTH/35f;
+            case 2: health=50;score=80;R= Main.WIDTH/35f;
                 speed =0.3f;deltaSpeed=0.0015f;damage=20;break;
-            case 3: health=120;score=15;R= Main.WIDTH/25f;
+            case 3: health=120;score=150;R= Main.WIDTH/25f;
                 speed =0.015f;deltaSpeed=0.001f;damage=35;break;
         }
 
