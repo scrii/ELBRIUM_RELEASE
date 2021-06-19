@@ -9,26 +9,27 @@ import android.widget.TextView;
 import static com.mygdx.game.ScrollingActivity.mediaPlayer;
 public class About_us extends AppCompatActivity {
     @Override
-    protected void onStart(){
+    protected void onStart() {
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
+        if (getterANDSetterFile.get_SoundMusic() == 1) mediaPlayer.start();
         super.onStart();
     }
+
     @Override
-    protected void onPause(){
-        if(mediaPlayer.isPlaying())mediaPlayer.pause();
+    protected void onPause() {
+        if (mediaPlayer.isPlaying()) mediaPlayer.pause();
         super.onPause();
     }
-TextView pr,pr_text,com,j,j_text,l,l_text,an,an_text,e,e_text,bags_tv,vk,vk_text,try_tv,try_text;
-String prehistory,prehistory_txt,commands,join,join_txt,leave,leave_txt,an_nickname,an_nickname_txt,example,example_text,bags,copy_txt,vkon,vkon_txt,try_string_tv,try_string;
+
+    TextView pr, pr_text, com, j, j_text, l, l_text, an, an_text, e, e_text, bags_tv, try_tv, try_text;
+    String prehistory, prehistory_txt, commands, join, join_txt, leave, leave_txt, an_nickname, an_nickname_txt, example, example_text, bags, copy_txt, vkon, vkon_txt, try_string_tv, try_string;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
         getSupportActionBar().hide();
         pr = findViewById(R.id.prehistory);
-        vk = findViewById(R.id.vk);
-        vk_text = findViewById(R.id.vk_text);
         pr_text = findViewById(R.id.prehistory_text);
         com = findViewById(R.id.commands);
         j = findViewById(R.id.join);
@@ -44,8 +45,6 @@ String prehistory,prehistory_txt,commands,join,join_txt,leave,leave_txt,an_nickn
         try_text = findViewById(R.id.Try_text);
         try_string_tv = "#try ";
         try_string = "- Возвращает случайное значение: [Успешно] или [Неуспешно].";
-        vkon = "Музыка - ";
-        vkon_txt = "https://vk.com/ssssadsubmarine";
         prehistory = "Предыстория";
         prehistory_txt = "Давным-давно человечество погрузилось во тьму. Ядерные катастрофы, войны и бесконечные катаклизмы (ответная реакция природы на действия человека). В итоге, заключив шаткое перемирие, человечество отправилось в бескрайний космос.\n" +
                 "Через много лет и появляетесь вы. Пилот, цель которого добыть как можно больше Elbrium'а. Он - главный ресурс новой современности: топливо, благодаря которому человечество, живущее на пяти планетах, может вновь и вновь подниматься в воздух и исследовать ближайший и далёкий космос.\n" +
@@ -66,36 +65,19 @@ String prehistory,prehistory_txt,commands,join,join_txt,leave,leave_txt,an_nickn
         com.setText(commands);
         j.setText(join);
         j.setTextColor(getResources().getColor(R.color.command1));
-        j_text.setText(join_txt+"\n");
+        j_text.setText(join_txt + "\n");
         l.setText(leave);
         l.setTextColor(getResources().getColor(R.color.command1));
-        l_text.setText(leave_txt+"\n");
+        l_text.setText(leave_txt + "\n");
         an.setText(an_nickname);
         an.setTextColor(getResources().getColor(R.color.ping2));
-        an_text.setText(an_nickname_txt+"\n");
+        an_text.setText(an_nickname_txt + "\n");
         e.setText(example);
         e.setTextColor(getResources().getColor(R.color.comment));
-        e_text.setText(example_text+"\n");
+        e_text.setText(example_text + "\n");
         try_tv.setText(try_string_tv);
         try_tv.setTextColor(getResources().getColor(R.color.Try));
-        try_text.setText(try_string+"\n\n");
-        bags_tv.setText(bags + copy_txt+"\n");
-        vk.setText(vkon);
-        vk_text.setText(vkon_txt+"\n");
-        if (savedInstanceState == null)getSupportFragmentManager().beginTransaction().replace(R.id.aboutUs, new About_us.SettingsFragment()).commit();
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null)actionBar.setDisplayHomeAsUpEnabled(true);
+        try_text.setText(try_string + "\n\n");
+        bags_tv.setText(bags + copy_txt + "\n");
     }
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            //setPreferencesFromResource(R.xml.root_preferences, rootKey);
-            }}
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);}}}
+}

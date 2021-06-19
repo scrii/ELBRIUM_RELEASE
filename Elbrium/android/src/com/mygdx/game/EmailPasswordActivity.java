@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EmailPasswordActivity extends AppCompatActivity implements View.OnClickListener{
+public class EmailPasswordActivity extends AppCompatActivity implements View.OnClickListener{ // Класс регистрации
     EditText registration_nickname;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -26,7 +26,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
     int number=0;
     String s;
     public void signin (String email, String password)
-    {
+    { // Метод входа, используется Firebase
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -49,7 +49,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
-    public void registration (String email, String password){
+    public void registration (String email, String password){ // Метод регистрации, используется Firebase
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -96,7 +96,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_email_password);
         getSupportActionBar().hide();
         CreatorFiles sd = new CreatorFiles();
-        sd.create();
+        sd.create();  // Создание всех файлов
         registration_nickname = findViewById(R.id.registration_nickname);
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         number = getterANDSetterFile.get_Sign();

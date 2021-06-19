@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-public class GetterANDSetterFile {
+public class GetterANDSetterFile { // get и set всех файлов
     double real_attack=0,real_health=0,real_protection=0,real_speed=0,real_money=0,real_ore_elbrium=0,real_maneuverability=0;
     int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0,real_startChat=0,TrueOrFalse=0,real_music=0,real_appearance=0,real_base_level=0,real_healthBase=0,real_villagers=0,real_happiness=0,real_band=0,real_church=0,real_devil=0,real_block=0,real_dungeon=0;
     String real_message="",real_nickname="",myData = "",strLine,real_leaders="",nameBase="";

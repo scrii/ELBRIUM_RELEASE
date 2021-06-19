@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class CreatorFiles {
+public class CreatorFiles { //Класс, создающий все файлы
     CreatorFiles(){}
     File file4,file5,file6,file7,file8,file9,file10,file11,file12,file13,file14,file15,file16,file17,file18,file19,file20,file21,file22,file23,file24,fileX1,fileX2,fileX3,fileX4,fileX5,fileX6,fileX7,fileX8,fileX9,fileY1,fileY2,fileY3,fileY4,fileY5;
     PrintWriter printWriter4,printWriter5,printWriter6,printWriter7,printWriter8,printWriter9,printWriter11,printWriter12,printWriter13,printWriter14,printWriter15,printWriter16,printWriter17,printWriter18,printWriterY1,printWriterY2,printWriterY3,printWriterY4,printWriterY5,printWriter19,printWriter20,printWriter21,printWriter22,printWriter23,printWriter24,printWriterX1,printWriterX2,printWriterX3,printWriterX4,printWriterX5,printWriterX6,printWriterX7,printWriterX8;
