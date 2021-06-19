@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity { // Активность, �
                         Toast.makeText(getApplicationContext(),"Сообщение слишком большое!",Toast.LENGTH_SHORT).show();
                     }
                 }
-                else if(s1.contains("#try"))FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString()+lucky, nickname,FirebaseAuth.getInstance().getCurrentUser()+""));
+                else if(s1.contains("#try"))FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString()+lucky, nickname,FirebaseAuth.getInstance().getCurrentUser().getEmail()+""));
                 else Toast.makeText(getApplicationContext(),"Сообщение не может быть пустым",Toast.LENGTH_SHORT).show();
                 lucky = "";
                 luck=0;
