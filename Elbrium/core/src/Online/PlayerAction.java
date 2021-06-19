@@ -8,7 +8,8 @@ public class PlayerAction {
     массив GameSc.ore (GameSc.spawnerLogic()) */
     // 2 - player - игрок не является первым, принимает координаты и передает объекты в массив GameSc.ore (GameSc.spawnerSniffer())
     public boolean first_in_list;
-    private boolean point_of_no_return = false;
+    private boolean point_of_no_return;
+    private boolean sniffer_called;
 
     public PlayerAction() {
     }
@@ -19,9 +20,10 @@ public class PlayerAction {
             // точка невозврата - условие выполняется до выхода из игры
             point_of_no_return = true;
             GameSc.spawnerLogic();
-        } else {
+        } else if (!sniffer_called){
             // player
             // может перейти в first_in_list
+            sniffer_called=true;
             GameSc.spawnerSniffer();
         }
     }

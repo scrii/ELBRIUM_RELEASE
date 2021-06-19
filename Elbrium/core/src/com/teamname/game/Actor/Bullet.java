@@ -14,11 +14,13 @@ public class Bullet extends Actor {
 
     public boolean isOut;
     int count; // индекс объекта
+    private BulletMessage message;
 
 
     public Bullet(Texture img, Point2D position, float Speed, float R, Point2D direction) {
         super(img, position, Speed, R);
         this.direction=new Point2D(direction);
+        message = new BulletMessage(Main.getter_setter.get_Attack(),0,0,Main.getter_setter.get_Nickname());
     }
 
     @Override
@@ -32,12 +34,13 @@ public class Bullet extends Actor {
         position.add(direction.getX()* speed,direction.getY()* speed);
         bounds.pos.setPoint(position);
         //Gdx.app.log("bullet_position", position.toString());
-
-        GdxFIRDatabase.instance().inReference("Bullet"+count).setValue(new BulletMessage(Main.getter_setter.attack,position.getX(),position.getY()));
+        message.x=position.getX();
+        message.y=position.getY();
+        //GdxFIRDatabase.instance().inReference("Bullet"+count).setValue(new BulletMessage(Main.getter_setter.attack,position.getX(),position.getY()));
         isOut = (position.getX()+R<0 || position.getY()-R> Main.BACKGROUND_HEIGHT
                 || position.getX()-R>Main.BACKGROUND_WIDTH || position.getY()+R<0);
-
-        if(isOut)GdxFIRDatabase.inst().inReference("Bullet"+count).removeValue();
+        GdxFIRDatabase.inst().inReference("bullet_"+Main.getter_setter.get_Nickname()+count).setValue(message.toString());
+        if(isOut)GdxFIRDatabase.inst().inReference("bullet_"+Main.getter_setter.get_Nickname()+count).removeValue();
 
     }
 
@@ -49,10 +52,6 @@ public class Bullet extends Actor {
         return count;
     }
 
-    public void removeBullet(int count){
-        Gdx.app.log("BULLET",count+"");
-        GdxFIRDatabase.instance().inReference("Bullet"+count).removeValue();
-        GameSc.bullets.removeIndex(count);
-    }
+
 
 }

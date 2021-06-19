@@ -30,7 +30,7 @@ public class Spawner extends TimerTask {
     public void start() {
         TimerTask timerTask = new Spawner();
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 30 * 1000);
+        timer.scheduleAtFixedRate(timerTask, 0, 5 * 1000);
     }
 
     private void spawnOre() {
