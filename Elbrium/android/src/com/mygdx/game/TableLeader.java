@@ -58,6 +58,7 @@ public class TableLeader extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         userUid = user.getUid();
+        if (user.getUid()==null && getterANDSetterFile.get_Ore_Elbrium()>0.0)FirebaseDatabase.getInstance().getReference("LeaderBoard").push().setValue(new LeaderBoard(getterANDSetterFile.get_Nickname(),getterANDSetterFile.get_Ore_Elbrium()));
         databaseReference = FirebaseDatabase.getInstance().getReference("LeaderBoard");                                                                                         // Внизу сортировка по elbrium
         adapter = new FirebaseListAdapter<LeaderBoard>(TableLeader.this,LeaderBoard.class,R.layout.leader_list, FirebaseDatabase.getInstance().getReference("LeaderBoard").orderByChild("elbrium").limitToLast(2147000000)){
             @Override
@@ -86,6 +87,7 @@ public class TableLeader extends AppCompatActivity {
                     databaseReference.child(user.getUid()).setValue(new LeaderBoard(getterANDSetterFile.get_Nickname(),getterANDSetterFile.get_Ore_Elbrium()));
                     getterANDSetterFile.set_TrueOrFalse(0);
                 }
+
                 LayoutInflater mInflater = (LayoutInflater) getApplicationContext().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
                 v = mInflater.inflate(R.layout.leader_list, null);
                 number.setText(position+" ");
@@ -108,6 +110,5 @@ public class TableLeader extends AppCompatActivity {
             }
         };
         listView.setAdapter(adapter);
-
     }
 }
