@@ -3,6 +3,7 @@ package FirebaseHelper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.google.gson.Gson;
+import com.teamname.game.Actor.Elbrium;
 import com.teamname.game.Actor.Player;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
@@ -21,10 +22,11 @@ public class Multiplayer {
     public ArrayList<Message> players;
     DatabaseHelper databaseHelper;
     String valueOf_online;
-    GetterANDSetterFile gs;
-    public ArrayList<String> meta_players;
+    static GetterANDSetterFile gs;
+    public static ArrayList<String> meta_players;
     public static ArrayList<Player> real_players;
     public Circle bounds;
+    static ArrayList<Elbrium> ore;
     Gson gson;
 
     public Multiplayer(){
@@ -34,6 +36,7 @@ public class Multiplayer {
         players=new ArrayList<>();
         gs=new GetterANDSetterFile();
         gson=new Gson();
+        ore=new ArrayList<>();
         bounds = new Circle(new Point2D(0,0),GameSc.player.R);
         startListener();
     }
@@ -46,7 +49,7 @@ public class Multiplayer {
 
     public Point2D getCoords(String ref){
         if(meta_players.contains(ref)){
-            Gdx.app.debug("MP","index of "+ref+": "+players.get(meta_players.indexOf(ref)));
+            //Gdx.app.debug("MP","index of "+ref+": "+players.get(meta_players.indexOf(ref)));
             return new Point2D(players.get(meta_players.indexOf(ref)).x,players.get(meta_players.indexOf(ref)).y);}
         return new Point2D(-300,-300);
     }
@@ -67,11 +70,14 @@ public class Multiplayer {
             batch.draw(Main.getPlayer(m.texture),m.x-GameSc.player.R*2,m.y-GameSc.player.R*2, GameSc.player.R*2,2*GameSc.player.R);
             bounds.debug(batch,GameSc.player.R);
             if(GameSc.player.bounds.Overlaps(bounds)){
-                float dx = GameSc.player.send_in_ONLINE.getX()-bounds.pos.getX()-2*GameSc.player.R;
+                /*float dx = GameSc.player.send_in_ONLINE.getX()-bounds.pos.getX()-2*GameSc.player.R;
                 float dy = GameSc.player.send_in_ONLINE.getY()-bounds.pos.getY()-2*GameSc.player.R;
                 float length=(float)Math.sqrt(dx*dx+dy*dy);
-                GameSc.player.send_in_ONLINE.setPoint(GameSc.player.R/length*dx+bounds.pos.getX(),GameSc.player.R/length*dy+bounds.pos.getY());
+                GameSc.player.send_in_ONLINE.setPoint(GameSc.player.R/length*dx+bounds.pos.getX(),GameSc.player.R/length*dy+bounds.pos.getY());*/
                 //GameSc.player.send_in_ONLINE.setPoint(GameSc.player.send_in_ONLINE.getX()-dx,GameSc.player.send_in_ONLINE.getY()-dy);
+                /*float setY = bounds.pos.getY()+(float)Math.sqrt(GameSc.player.R*GameSc.player.R-
+                        (GameSc.player.send_in_ONLINE.getX()-GameSc.player.R-bounds.pos.getX())*(GameSc.player.send_in_ONLINE.getX()-GameSc.player.R-bounds.pos.getX()));
+                GameSc.player.send_in_ONLINE.setY(setY);*/
             }
         }
     }
@@ -95,11 +101,24 @@ public class Multiplayer {
         meta_players.clear();
         players.clear();
         meta_players.addAll(Arrays.asList(valueOf_online.split(";")));
+
+        GdxFIRDatabase.inst().inReference("Spawner").setValue(meta_players.get(0));
+        GameSc.playerIsSpawner= meta_players.get(0).equals(gs.get_Nickname());
+        if(GameSc.playerIsSpawner)GameSc.spawnerLogic();
+        else GameSc.spawnerSniffer();
+
+
         meta_players.remove(gs.get_Nickname());
-        //Gdx.app.error("MP",meta_players.toString()+"");
+        Gdx.app.debug("MP",meta_players.toString()+"");
+
+        //if(meta_players.isEmpty())GdxFIRDatabase.inst().inReference("Spawner").setValue(gs.get_Nickname());
+
         for(String ref : meta_players)createPlayers(ref);
-        Gdx.app.log("MP",players.toString());}
-        else GameSc.startElbriumSpawner();
+        //Gdx.app.log("MP",players.toString());
+
+        }
+        Gdx.app.error("spawner",GameSc.playerIsSpawner+"");
+
     }
 
     private void createPlayers(String ref){
@@ -127,6 +146,25 @@ public class Multiplayer {
 
         Gdx.app.log("MP",ref);
     }
+
+    /*public void oreMonitoring(){
+        for(int i=0;i<Integer.MAX_VALUE;i++){
+            GdxFIRDatabase.inst().inReference("ore"+i).onDataChange(String.class).thenListener(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    if(!s.equals("")||s!=null)ore.add();
+                }
+            });
+        }
+    }*/
+
+
+    public static boolean condition_spawnerOnDisconnect(){
+        if(Main.gameSc!=null)
+            return meta_players.isEmpty();
+        else return false;
+    }
+
 
 
 

@@ -27,6 +27,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import FirebaseHelper.Multiplayer;
 import Messages.Message;
 import FirebaseHelper.Online;
 
@@ -42,7 +44,6 @@ public class ScrollingActivity extends AppCompatActivity{
     Online online;
     int sec=10;
     String onl="";
-    int oreCount=10;
     @Override
     protected void onStart(){
         if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
@@ -65,32 +66,19 @@ public class ScrollingActivity extends AppCompatActivity{
                 if(snapshot.getValue()!=null)onl=snapshot.getValue().toString();
                 //Log.e("online",onl);
                 FirebaseDatabase.getInstance().getReference("online").onDisconnect().setValue(onl.replace(getterANDSetterFile.get_Nickname()+";",""));
-
-
-                Log.e("oreC",oreCount+"");
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+        //FirebaseDatabase.getInstance().getReference("Spawner").onDisconnect().setValue(Multiplayer.getFirstPlayer());
         // <!-- >
-        FirebaseDatabase.getInstance().getReference("oreCount").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //if(snapshot.getValue()!=null)oreCount=Integer.parseInt(snapshot.getValue().toString());
 
-                //Log.e("orecout",snapshot.getValue().toString());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        for(int i=0;i<oreCount;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect().removeValue();
-
+        if(Multiplayer.condition_spawnerOnDisconnect())for(int i=0;i<15;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect().removeValue();
+        else for(int i=0;i<15;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect();
 
         // //
         if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
@@ -111,9 +99,8 @@ public class ScrollingActivity extends AppCompatActivity{
                 if(getterANDSetterFile.get_SoundMusic()==1)mediaPlayer.start();
             }
         });
-        player_data=new Message(getterANDSetterFile.getTexture(),-1,-1,(float)getterANDSetterFile.get_Attack(),
-                (float)getterANDSetterFile.get_Health(),(float)getterANDSetterFile.get_Protection(),getterANDSetterFile.get_Nickname());
-        FirebaseDatabase.getInstance().getReference("LONGDATA").push().setValue(player_data.toString());
+        //player_data=new Message(getterANDSetterFile.getTexture(),0,0,getterANDSetterFile.geta);
+        //FirebaseDatabase.getInstance().getReference("LONGDATA").push().setValue(player_data.toString());
         online=new Online();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
