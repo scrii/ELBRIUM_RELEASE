@@ -195,7 +195,7 @@ public class Multiplayer {
             GdxFIRDatabase.inst().inReference("bullet_"+ref+i).onDataChange(String.class).thenListener(new Consumer<String>() {
                 @Override
                 public void accept(String s) {
-                    if(s!=null)tmp3(ref,s);
+                    //if(s!=null)tmp3(ref,s);
                 }
             });
         }
@@ -207,12 +207,12 @@ public class Multiplayer {
             //Gdx.app.error("bullets",bullets.toString());
             if (bm.nick.equals(ref)) {
                 flag = true;
-               bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
-               bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
+               //bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
+               //bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
                 break;
             }
         }
-        if(!flag)bullets.add(gson.fromJson("{"+s,BulletMessage.class));
+        //if(!flag)bullets.add(gson.fromJson("{"+s,BulletMessage.class));
     }
 
 

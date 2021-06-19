@@ -88,10 +88,7 @@ public class GameSc implements Screen {
     String online_players;
     static GetterANDSetterFile getter_setter;
 
-/*    private static final float leftSide = ;
-    private static final float rightSide;
-    private static final float upSide;
-    private static final float downSide = ;*/
+
     // ресурсы подгружаются с класса Main
 
     Main main;
