@@ -39,7 +39,6 @@ public class ScrollingActivity extends AppCompatActivity{
     GetterANDSetterFile getterANDSetterFile;
     FrameLayout frameLayout;
     public static MediaPlayer mediaPlayer;
-    public Message player_data;
     TextView nick;
     Online online;
     int sec=10;
@@ -81,7 +80,7 @@ public class ScrollingActivity extends AppCompatActivity{
         else for(int i=0;i<15;i++)FirebaseDatabase.getInstance().getReference("ore"+i).onDisconnect();
 
         // //
-        if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class));
+        if(getterANDSetterFile.get_Sign()==0)startActivity(new Intent(ScrollingActivity.this,EmailPasswordActivity.class)); // Проверка регистрации
         if(getterANDSetterFile.get_Sign()==0){
             try {
                 Thread.sleep(300);
@@ -128,19 +127,19 @@ public class ScrollingActivity extends AppCompatActivity{
                 sec--;
                 if(getterANDSetterFile.get_StartChat()==1){
                     getterANDSetterFile.set_StartChat(0);
-                    if(getterANDSetterFile.get_StartChat()==0)startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    if(getterANDSetterFile.get_StartChat()==0)startActivity(new Intent(getApplicationContext(),MainActivity.class)); // Открытие чата из LibGDX
                 }
             }
 
             @Override
             public void onFinish() {
-                if (count != null){
+                if (count != null){ // Перезапуск таймера
                     sec = 1;
                     count.start();
                 }
             }
         };
-        if (count != null){
+        if (count != null){ // Перезапуск таймера
             sec = 1;
             count.start();
         }
@@ -148,7 +147,7 @@ public class ScrollingActivity extends AppCompatActivity{
                 @Override
                 public void onTick(long millisUntilFinished) {
                     seconds--;
-                    info_money.setText(getterANDSetterFile.get_Guardian_Money() + "");
+                    info_money.setText(getterANDSetterFile.get_Guardian_Money() + ""); // Обновление данных
                     info_level.setText(getterANDSetterFile.get_Guardian_Level()+"");
                     nick.setText(getterANDSetterFile.get_Nickname()+"");
                     //toolBarLayout.setTitle(getterANDSetterFile.get_Nickname());
@@ -160,7 +159,7 @@ public class ScrollingActivity extends AppCompatActivity{
                     experience = experience + 1;
                     money = getterANDSetterFile.get_Guardian_Money() + 1;
                     info_money.setText(money + "");
-                    if (experience % 50 == 0) {
+                    if (experience % 50 == 0) { // За новых lvl даётся подарок
                         level = level + 1;
                         info_level.setText(level+"");
                         plus_health = getterANDSetterFile.get_Health();
@@ -187,7 +186,7 @@ public class ScrollingActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(getterANDSetterFile.get_SoundMusic()==1 && mediaPlayer.isPlaying())mediaPlayer.pause();
-                startActivity(new Intent(ScrollingActivity.this,AndroidLauncher.class));
+                startActivity(new Intent(ScrollingActivity.this,AndroidLauncher.class)); // Запуск LibGDX
             }
         });
     }

@@ -4,7 +4,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
-public class THEME_FOUR extends Quest{
+public class THEME_FOUR extends Quest{ // Класс для Миссий
     public int ra4=0;
     CountDownTimer countDownTimer4;
     int s4=1;
@@ -360,21 +360,18 @@ public class THEME_FOUR extends Quest{
                         description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_1);
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 6);
                         y++;
-                        THEME_FIVE theme_five = new THEME_FIVE();
-                        theme_five.five();
+                        random();
                         o_input();
                     } else if (input.getText().toString().contains("Бог") || input.getText().toString().contains("бог") || input.getText().toString().contains("God") || input.getText().toString().contains("god") || input.getText().toString().contains("Deus") || input.getText().toString().contains("deus")) {
                         description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_2);
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 5);
                         y++;
-                        THEME_FIVE theme_five = new THEME_FIVE();
-                        theme_five.five();
+                        random();
                         o_input();
                     } else {
                         description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_3);
                         y++;
-                        THEME_FIVE theme_five = new THEME_FIVE();
-                        theme_five.five();
+                        random();
                         o_input();
                     }
                 }
@@ -386,8 +383,7 @@ public class THEME_FOUR extends Quest{
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 2);
                     y++;
-                    THEME_FIVE theme_five = new THEME_FIVE();
-                    theme_five.five();
+                    random();
                     o_input();
                 }
             });
@@ -396,16 +392,14 @@ public class THEME_FOUR extends Quest{
                 public void onClick(View v) {pr();
                     description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_3);
                     y++;
-                    THEME_FIVE theme_five = new THEME_FIVE();
-                    theme_five.five();
+                    random();
                     o_input();
                 }
             });
         }
         else{
             y++;
-            THEME_FIVE theme_five = new THEME_FIVE();
-            theme_five.five();
+            random();
             o_input();
         }
     }

@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
-public class LeaderBoard {
+public class LeaderBoard { // Класс-конструктор для TableLeader
     public String nickname;
     public double elbrium;
 

@@ -3,7 +3,7 @@ package com.mygdx.game;
 import android.os.CountDownTimer;
 import android.view.View;
 
-public class THEME_THREE extends Quest{
+public class THEME_THREE extends Quest{  // Класс для Миссий
     int ra3=0;
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String v1 = "@" + getterANDSetterFile.get_Nickname() + "! Мы узнали, что на месте, где стоит ваша база зарыт клад! Но по нашим данным он находится прямо под местом, где вы сейчас сидите. Если хотите, то мы прямо сейчас начнём здесь копать.";
@@ -264,24 +264,21 @@ public class THEME_THREE extends Quest{
             @Override
             public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_three.v7_c_1);
-                THEME_FOUR theme_four = new THEME_FOUR();
-                theme_four.four();
+                random();
             }
         });
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_three.v7_c_2);
-                THEME_FOUR theme_four = new THEME_FOUR();
-                theme_four.four();
+                random();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_three.v7_c_3);
-                THEME_FOUR theme_four = new THEME_FOUR();
-                theme_four.four();
+                random();
             }
         });
     }

@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 import static com.mygdx.game.ScrollingActivity.mediaPlayer;
 
-public class PersonActivity extends AppCompatActivity {
+public class PersonActivity extends AppCompatActivity { // Класс настроек
     EditText name_person;
     Button confirm;
     String s;
@@ -54,7 +54,7 @@ public class PersonActivity extends AppCompatActivity {
             confirm.setVisibility(View.VISIBLE);
             confirm.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v) { // Подтверждение ника
                     s = name_person.getText().toString();
                     if(!s.equals("")){
                         if(!s.contains(" ")){
@@ -79,7 +79,7 @@ public class PersonActivity extends AppCompatActivity {
 
         if(getterANDSetterFile.get_SoundMusic()==1)soundMusic.setChecked(true);
         else soundMusic.setChecked(false);
-        soundMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        soundMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() { // Включение / Выключение музыки
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(!soundMusic.isChecked()){
@@ -96,6 +96,7 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 seconds--;
+                // Применение внешнего вида
                 if(getterANDSetterFile.get_Appearance()==1)imageView.setImageResource(R.mipmap.original);
                 if(getterANDSetterFile.get_Appearance()==2)imageView.setImageResource(R.mipmap.original2);
                 if(getterANDSetterFile.get_Appearance()==3)imageView.setImageResource(R.mipmap.original3);
@@ -117,7 +118,7 @@ public class PersonActivity extends AppCompatActivity {
         appearance = findViewById(R.id.appearance_spinner);
         final String[] s2 = {""};
 
-        appearance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        appearance.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // Выбор внешнего вида
             public void onItemSelected(AdapterView<?> parent,View itemSelected, int selectedItemPosition, long selectedId) {
                 s2[0] = String.valueOf(appearance.getSelectedItem());
                 if(appearance.getSelectedItemId()==1)getterANDSetterFile.set_Appearance(1);
@@ -130,32 +131,6 @@ public class PersonActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.person, new SettingsFragment())
-                    .commit();
-        }
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
 
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            //setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }

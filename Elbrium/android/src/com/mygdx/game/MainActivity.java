@@ -32,9 +32,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity { // Активность, создающая чат
 
-    private static int SIGN_IN_REQUEST_CODE = 1;
     public FirebaseListAdapter<Message> adapter;
     RelativeLayout activity_main;
     ImageButton button;
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     CountDownTimer countDownTimer;
     public static MediaPlayer mediaPlayer2;
     GetterANDSetterFile getterANDSetterFile;
-    private static String CHANNEL_ID = "Elbrium channel";
+    private static String CHANNEL_ID = "Elbrium channel"; // Используется для уведомлений
     @Override
     protected void onPause() {
         if(mediaPlayer2.isPlaying())mediaPlayer2.pause();
@@ -93,15 +92,15 @@ public class MainActivity extends AppCompatActivity {
         nickname = getterANDSetterFile.get_Nickname();
         activity_main = findViewById(R.id.activity_main);
         button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() { // Кнопка, отправляющая сообщение в чат
             @Override
             public void onClick(View view) {
                 s1 = input.getText().toString();
                 spaces = s1.length() - s1.replace(" ", "").length();
                 luck = (int) (Math.random()*1000);
-                if(luck%2==0)lucky = " [Успешно]";
-                else lucky = " [Неуспешно]";
-                if(nickname != null && !s1.equals("") && !s1.contains("\n\n\n\n") && s1.length()!=spaces && !s1.contains("#try")){
+                if(luck%2==0)lucky = " [Успешно]"; // Требуется для комманды #try
+                else lucky = " [Неуспешно]";       // Требуется для комманды #try
+                if(nickname != null && !s1.equals("") && !s1.contains("\n\n\n\n") && s1.length()!=spaces && !s1.contains("#try")){ // Отправка НЕ пустых сообщений
                     if(s1.length()<=550){
                         FirebaseDatabase.getInstance().getReference("Message").push().setValue(new Message(input.getText().toString(), nickname));
                     }
@@ -115,11 +114,11 @@ public class MainActivity extends AppCompatActivity {
                 luck=0;
                 getterANDSetterFile.set_Message(s1);
                 Intent playActivity = new Intent(MainActivity.this, AndroidLauncher.class);
-                if(s1.contains("#join"))startActivity(playActivity);
-                if(s1.contains("#leave"))startActivity(new Intent(MainActivity.this,ScrollingActivity.class));
+                if(s1.contains("#join"))startActivity(playActivity); // Обработка комманды #join
+                if(s1.contains("#leave"))startActivity(new Intent(MainActivity.this,ScrollingActivity.class)); // Обработка комманды #leave
                 input.setText("");
                 s1 = input.getText().toString();
-                xy = true;
+                xy = true; // При отправке сообщения спец. параметр ставится на true и сообщения прокручиваются вниз
             }
         });
         final Toast toast = Toast.makeText(getApplicationContext(),"Вы превысили ограничение!",Toast.LENGTH_SHORT);
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 sec--;
                 count = input.getText().toString().length();
                 word.setText(count+"");
-                if(count>550){
+                if(count>550){ // Более быстрый таймер для проверки количества букв в сообщении, они не должны превышать 550 символов
                     word.setTextColor(Color.RED);
                     n=1;
                     toast.show();
@@ -144,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 count = input.getText().toString().length();
                 word.setText(count+"");
-                if (countDownTimer != null){
+                if (countDownTimer != null){ // Перезапуск таймера
                     sec = 1;
                     countDownTimer.start();
                 }
             }
         };
-        if (countDownTimer!=null){
+        if (countDownTimer!=null){ // Перезапуск таймера
             sec = 1;
             countDownTimer.start();
         }
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    private void displayChat() {
+    private void displayChat() { // Метод отображения сообщений в чате (FirebaseListAdapter)
         ListView listMessages = findViewById(R.id.listView);
         adapter = new FirebaseListAdapter<Message>(MainActivity.this, Message.class, R.layout.list_item, FirebaseDatabase.getInstance().getReference("Message")) {
             @Override
@@ -198,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                 author = v.findViewById(R.id.tvUser);
                 textMessage.setText(model.getTextMessage());
                 author.setText(model.getAuthor());
-                if(nickname == author.getText().toString()){
+                if(nickname == author.getText().toString()){ // Первая прокрутка вниз до последних сообщений
                     author.setTextColor(getResources().getColor(R.color.user));
                     myListView.smoothScrollToPosition(2000000000);
                 }
@@ -206,13 +205,13 @@ public class MainActivity extends AppCompatActivity {
                 int kolvo_symbols = 0;
                 s = textMessage.getText().toString();
                 comment = textMessage.getText().toString();
-                if(s.contains("*") && textMessage.getText().toString().contains("*") && !s.contains("#")) {
+                if(s.contains("*") && textMessage.getText().toString().contains("*") && !s.contains("#")) { // Выделение комментариев
                     for (int i = 0; i < s.length(); i++) {
                         if (s.charAt(i) == '*' && s.contains("*")) {
                             kolvo_symbols++;
                             if (kolvo_symbols == 2 && s.contains("*")) {
-                                k1 = comment.indexOf("*");
-                                k2 = comment.lastIndexOf("*");
+                                k1 = comment.indexOf("*"); // Находится первая позиция *
+                                k2 = comment.lastIndexOf("*");  // Вторая позиция *
                                 SpannableStringBuilder builder = new SpannableStringBuilder();
                                 SpannableString colorSpannable= new SpannableString(s);
                                 colorSpannable.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.comment)),k1,k2+1,0);
@@ -227,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else textMessage.setTextColor(getResources().getColor(R.color.white));
                 words = s.split(" ");
-                if(!s.contains("*")&&!textMessage.getText().toString().contains("*") && s.contains("@"+nickname)){
+                if(!s.contains("*")&&!textMessage.getText().toString().contains("*") && s.contains("@"+nickname)){ // Упоминание пользователя
                     g1 = s.indexOf("@");
                     g2 = nickname.length()+g1;
                     SpannableStringBuilder builder1 = new SpannableStringBuilder();
@@ -241,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                             PendingIntent.FLAG_CANCEL_CURRENT);
                     NotificationCompat.Builder builder =
                             new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
-                                    .setSmallIcon(R.drawable.ic_launcher_background)
+                                    .setSmallIcon(R.mipmap.ic)
                                     .setContentTitle("Напоминание")
                                     .setContentText("Вас упоминули!")
                                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -254,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(!s.contains("*")&&!textMessage.getText().toString().contains("*"))textMessage.setTextColor(getResources().getColor(R.color.white));
                 if(s.contains("@") && !s.contains("@"+nickname))textMessage.setTextColor(getResources().getColor(R.color.ping2));
                 if((s.contains("#join") || s.contains("#leave")))textMessage.setTextColor(getResources().getColor(R.color.command1));
-                if(s.contains("[Успешно]") && s.contains("#try")){
+                if(s.contains("[Успешно]") && s.contains("#try")){ // Выделение сообщений
                     d1 = s.indexOf("#");
                     d2 = s.lastIndexOf("y");
                     z1 = s.indexOf("[");
@@ -271,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
                     builder1.append(colorSpannable1);
                     textMessage.setText(builder1, TextView.BufferType.SPANNABLE);
                 }
-                if(s.contains("[Неуспешно]") && s.contains("#try")){
+                if(s.contains("[Неуспешно]") && s.contains("#try")){ // Выделение сообщений
                     m1 = s.indexOf("#");
                     m2 = s.lastIndexOf("y");
                     r1 = s.indexOf("[");

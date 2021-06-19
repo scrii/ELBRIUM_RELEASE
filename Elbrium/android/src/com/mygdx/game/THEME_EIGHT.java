@@ -3,7 +3,7 @@ package com.mygdx.game;
 import android.os.CountDownTimer;
 import android.view.View;
 
-public class THEME_EIGHT extends Quest{
+public class THEME_EIGHT extends Quest{ // Класс для Миссий
     int ra8=0,s8=1;
     CountDownTimer countDownTimer8;
     public String e1 = "К нам прилетели пришельцы!";
@@ -27,14 +27,14 @@ public class THEME_EIGHT extends Quest{
         third.setText("Игнорировать");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 description.setText(description.getText().toString() + "\n" + theme_eight.e1_c_1);
                 D1();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 description.setText(description.getText().toString() +"\n"+ theme_eight.e1_c_2);
                 D1();
             }
@@ -51,14 +51,14 @@ public class THEME_EIGHT extends Quest{
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                 D2();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 D2();
             }
@@ -75,14 +75,14 @@ public class THEME_EIGHT extends Quest{
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                 D3();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 D3();
             }
@@ -99,19 +99,17 @@ public class THEME_EIGHT extends Quest{
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-25.0);
                 getterANDSetterFile.set_HealthBase(getterANDSetterFile.get_HealthBase()+1);
-                THEME_ONE theme_one = new THEME_ONE();
-                theme_one.one();
+                random();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-2);
-                THEME_ONE theme_one = new THEME_ONE();
-                theme_one.one();
+                random();
             }
         });
     }

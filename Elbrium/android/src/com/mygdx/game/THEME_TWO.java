@@ -4,7 +4,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
-public class THEME_TWO extends Quest {
+public class THEME_TWO extends Quest {  // Класс для Миссий
     int ra2=0;
     int s2=1;
     CountDownTimer countDownTimer2;
@@ -350,16 +350,14 @@ public class THEME_TWO extends Quest {
             @Override
             public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_two.m10_c_1);
-                THEME_THREE theme_three = new THEME_THREE();
-                theme_three.three();
+                random();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
                 description.setText(description.getText().toString() + "\n" +theme_two.m10_c_2);
-                THEME_THREE theme_three = new THEME_THREE();
-                theme_three.three();
+                random();
             }
         });
     }

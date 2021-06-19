@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class THEME_ONE extends Quest{
+public class THEME_ONE extends Quest{ // Класс для Миссий
     public int ra1=0;
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String q1 = "Люди недовольны большим количеством предприятий, загрязняющих атмосферу. Не могли бы вы провести референдум?";
@@ -472,8 +472,7 @@ public class THEME_ONE extends Quest{
                     public void onClick(View v) {
                         pr();
                         getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
-                        THEME_TWO theme_two = new THEME_TWO();
-                        theme_two.two();
+                        random();
                     }
                 });
                 third.setOnClickListener(new View.OnClickListener() {
@@ -481,8 +480,7 @@ public class THEME_ONE extends Quest{
                     public void onClick(View v) {
                         pr();
                         getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
-                        THEME_TWO theme_two = new THEME_TWO();
-                        theme_two.two();
+                        random();
                     }
                 });
             }
@@ -492,8 +490,7 @@ public class THEME_ONE extends Quest{
             public void onClick(View v) {
                 pr();
                 getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
-                THEME_TWO theme_two = new THEME_TWO();
-                theme_two.two();
+                random();
             }
         });
     }

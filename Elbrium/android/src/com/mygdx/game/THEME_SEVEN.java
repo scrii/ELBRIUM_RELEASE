@@ -3,7 +3,7 @@ package com.mygdx.game;
 import android.os.CountDownTimer;
 import android.view.View;
 
-public class THEME_SEVEN extends Quest{
+public class THEME_SEVEN extends Quest{ // Класс для Миссий
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String s1 = "*В один из дней вы вспоминаете про ключ, который был передан священником. Покопавшись в груде вещей, вы находите заветную вещь и радостный спускаетесь по ступенькам вниз, веля охране не следовать за собой. Через некоторое время, спускаясь всё глубже и глубже, вы натыкаетесь на старую дубовую дверь, в руках у вас лежит ключ от неё, а в голове мысль: открыть или всё же…*";
     public String s1_c = "*Или всё же… уйти? Именно это решение приходит вам в голову и недолго думая, вы, развернувшись на каблуках уходите обратно в свою комнату, а через время снова забываете про ключ*";
@@ -89,8 +89,7 @@ public class THEME_SEVEN extends Quest{
                                                                 o_button();
                                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                                                 getterANDSetterFile.set_Dungeon(0);
-                                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                theme_eight.eight();
+                                                                random();
                                                             }
                                                         });
                                                         third.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +98,7 @@ public class THEME_SEVEN extends Quest{
                                                                 o_button();
                                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                                                 getterANDSetterFile.set_Dungeon(0);
-                                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                theme_eight.eight();
+                                                                random();
                                                             }
                                                         });
                                                     }
@@ -111,8 +109,7 @@ public class THEME_SEVEN extends Quest{
                                                         o_button();
                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                                         getterANDSetterFile.set_Dungeon(0);
-                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                        theme_eight.eight();
+                                                        random();
                                                     }
                                                 });
                                             }
@@ -143,8 +140,7 @@ public class THEME_SEVEN extends Quest{
                                                                         o_button();
                                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
                                                                         getterANDSetterFile.set_Dungeon(0);
-                                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                        theme_eight.eight();
+                                                                        random();
                                                                     }
                                                                 });
                                                                 third.setOnClickListener(new View.OnClickListener() {
@@ -153,8 +149,7 @@ public class THEME_SEVEN extends Quest{
                                                                         o_button();
                                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                                                         getterANDSetterFile.set_Dungeon(0);
-                                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                        theme_eight.eight();
+                                                                        random();
                                                                     }
                                                                 });
                                                             }
@@ -165,8 +160,7 @@ public class THEME_SEVEN extends Quest{
                                                                 o_button();
                                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
                                                                 getterANDSetterFile.set_Dungeon(0);
-                                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                theme_eight.eight();
+                                                                random();
                                                             }
                                                         });
                                                     }
@@ -177,8 +171,7 @@ public class THEME_SEVEN extends Quest{
                                                         o_button();
                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
                                                         getterANDSetterFile.set_Dungeon(0);
-                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                        theme_eight.eight();
+                                                        random();
                                                     }
                                                 });
                                             }
@@ -196,8 +189,7 @@ public class THEME_SEVEN extends Quest{
                                                         o_button();
                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
                                                         getterANDSetterFile.set_Dungeon(0);
-                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                        theme_eight.eight();
+                                                        random();
                                                     }
                                                 });
                                                 third.setOnClickListener(new View.OnClickListener() {
@@ -220,8 +212,7 @@ public class THEME_SEVEN extends Quest{
                                                                         o_button();
                                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                                                         getterANDSetterFile.set_Dungeon(0);
-                                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                        theme_eight.eight();
+                                                                        random();
                                                                     }
                                                                 });
                                                                 third.setOnClickListener(new View.OnClickListener() {
@@ -230,8 +221,7 @@ public class THEME_SEVEN extends Quest{
                                                                         o_button();
                                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                                                         getterANDSetterFile.set_Dungeon(0);
-                                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                        theme_eight.eight();
+                                                                        random();
                                                                     }
                                                                 });
                                                             }
@@ -242,8 +232,7 @@ public class THEME_SEVEN extends Quest{
                                                                 o_button();
                                                                 description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
                                                                 getterANDSetterFile.set_Dungeon(0);
-                                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                                theme_eight.eight();
+                                                                random();
                                                             }
                                                         });
                                                     }
@@ -258,8 +247,7 @@ public class THEME_SEVEN extends Quest{
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
                                         getterANDSetterFile.set_Dungeon(0);
-                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                        theme_eight.eight();
+                                        random();
                                     }
                                 });
                             }
@@ -293,8 +281,7 @@ public class THEME_SEVEN extends Quest{
                                                         o_button();
                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
                                                         getterANDSetterFile.set_Dungeon(0);
-                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                        theme_eight.eight();
+                                                        random();
                                                     }
                                                 });
                                                 third.setOnClickListener(new View.OnClickListener() {
@@ -303,8 +290,7 @@ public class THEME_SEVEN extends Quest{
                                                         o_button();
                                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
                                                         getterANDSetterFile.set_Dungeon(0);
-                                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                        theme_eight.eight();
+                                                        random();
                                                     }
                                                 });
                                             }
@@ -315,8 +301,7 @@ public class THEME_SEVEN extends Quest{
                                                 o_button();
                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
                                                 getterANDSetterFile.set_Dungeon(0);
-                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                theme_eight.eight();
+                                                random();
                                             }
                                         });
                                     }
@@ -334,8 +319,7 @@ public class THEME_SEVEN extends Quest{
                                                 o_button();
                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
                                                 getterANDSetterFile.set_Dungeon(0);
-                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                theme_eight.eight();
+                                                random();
                                             }
                                         });
                                         third.setOnClickListener(new View.OnClickListener() {
@@ -345,8 +329,7 @@ public class THEME_SEVEN extends Quest{
                                                 description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
                                                 npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
                                                 getterANDSetterFile.set_Dungeon(0);
-                                                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                                theme_eight.eight();
+                                                random();
                                             }
                                         });
                                     }
@@ -357,8 +340,7 @@ public class THEME_SEVEN extends Quest{
                                         o_button();
                                         npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
                                         getterANDSetterFile.set_Dungeon(0);
-                                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                                        theme_eight.eight();
+                                        random();
                                     }
                                 });
                             }
@@ -371,19 +353,16 @@ public class THEME_SEVEN extends Quest{
                     public void onClick(View v) {pr();
                         o_button();
                         description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
-                        THEME_EIGHT theme_eight = new THEME_EIGHT();
-                        theme_eight.eight();
+                        random();
                     }
                 });
             }
             else {
-                THEME_EIGHT theme_eight = new THEME_EIGHT();
-                theme_eight.eight();
+                random();
             }
         }
         else{
-            THEME_EIGHT theme_eight = new THEME_EIGHT();
-            theme_eight.eight();
+            random();
         }
     }
 }

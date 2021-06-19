@@ -2,7 +2,7 @@ package com.mygdx.game;
 
 import java.util.Date;
 
-public class Message {
+public class Message { // Класс-конструктор для MainActivity
     private String textMessage;
     private String author;
     private long messageTime;

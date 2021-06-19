@@ -3,7 +3,7 @@ package com.mygdx.game;
 import android.os.CountDownTimer;
 import android.view.View;
 
-public class THEME_FIVE extends Quest{
+public class THEME_FIVE extends Quest{ // Класс для Миссий
     int ra5=0;
     int s5=1;
     CountDownTimer countDownTimer5;
@@ -33,7 +33,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Священник!");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     getterANDSetterFile.set_Guardian_Money(0.0);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                     Q1();
@@ -41,7 +41,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                     getterANDSetterFile.set_Guardian_Money(0.0);
                     description.setText(description.getText().toString() + "\n" +theme_five.r1_c);
@@ -66,7 +66,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()+3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1000);
                     Q2();
@@ -74,7 +74,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                     description.setText(description.getText().toString() + "\n" +theme_five.r2_c);
                     Q2();
@@ -96,14 +96,14 @@ public class THEME_FIVE extends Quest{
         third.setText("Нет, только не моя душа!");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                 Q3();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {pr();
+            public void onClick(View v) {
                 description.setText(description.getText().toString() + "\n" +theme_five.r3_c);
                 Q3();
             }
@@ -121,7 +121,7 @@ public class THEME_FIVE extends Quest{
             third.setText("Оставить себе");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     description.setText(description.getText().toString() + "\n" +theme_five.r4);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                     getterANDSetterFile.set_Dungeon(0);
@@ -130,7 +130,7 @@ public class THEME_FIVE extends Quest{
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     description.setText(description.getText().toString() + "\n" + theme_five.r4_c);
                     Q4();
                 }
@@ -152,41 +152,37 @@ public class THEME_FIVE extends Quest{
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     getterANDSetterFile.set_Block(1);
                     getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+500.0);
-                    THEME_SIX theme_six = new THEME_SIX();
-                    theme_six.six();
+                    random();
                 }
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {pr();
+                public void onClick(View v) {
                     npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_2);
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {pr();
+                        public void onClick(View v) {
                             getterANDSetterFile.set_Block(1);
                             getterANDSetterFile.set_Nickname(getterANDSetterFile.get_Nickname()+"_Marked_of_curse");
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+1000.0);
-                            THEME_SIX theme_six = new THEME_SIX();
-                            theme_six.six();
+                            random();
                         }
                     });
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v) {pr();
-                            THEME_SIX theme_six = new THEME_SIX();
-                            theme_six.six();
+                        public void onClick(View v) {
+                            random();
                         }
                     });
                 }
             });
         }
         else{
-            THEME_SIX theme_six = new THEME_SIX();
-            theme_six.six();
+            random();
         }
     }
 }

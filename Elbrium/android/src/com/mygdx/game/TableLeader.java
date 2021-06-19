@@ -58,7 +58,7 @@ public class TableLeader extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         userUid = user.getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference("LeaderBoard");
+        databaseReference = FirebaseDatabase.getInstance().getReference("LeaderBoard");                                                                                         // Внизу сортировка по elbrium
         adapter = new FirebaseListAdapter<LeaderBoard>(TableLeader.this,LeaderBoard.class,R.layout.leader_list, FirebaseDatabase.getInstance().getReference("LeaderBoard").orderByChild("elbrium").limitToLast(2147000000)){
             @Override
             protected void populateView(View v, LeaderBoard model, int position) {
@@ -70,7 +70,7 @@ public class TableLeader extends AppCompatActivity {
                 n = numbers.size()-1;
                 for(int u=0;u<n+1;u++){
                     if((name.get(u)!=getterANDSetterFile.get_Nickname())){
-                        getterANDSetterFile.set_TrueOrFalse(1);
+                        getterANDSetterFile.set_TrueOrFalse(1); // Параметр для отправки на сервер
                     }
                     else {
                         getterANDSetterFile.set_TrueOrFalse(-1);
@@ -108,26 +108,6 @@ public class TableLeader extends AppCompatActivity {
             }
         };
         listView.setAdapter(adapter);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            //setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        }
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 }
