@@ -204,10 +204,11 @@ public class Multiplayer {
     private void tmp3(String ref, String s){
         boolean flag=false;
         for(BulletMessage bm : bullets){
+            //Gdx.app.error("bullets",bullets.toString());
             if (bm.nick.equals(ref)) {
                 flag = true;
-                bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
-                bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
+               // bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
+               // bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
                 break;
             }
         }
