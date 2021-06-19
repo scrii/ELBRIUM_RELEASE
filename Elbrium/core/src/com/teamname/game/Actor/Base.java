@@ -2,11 +2,13 @@ package com.teamname.game.Actor;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.teamname.game.Screens.BaseLocationSc;
 
 import Tools.Point2D;
 
 public class Base extends Actor {
+
+    // объект "база". присутствует на экране выбора ее местоположения (BaseLocationSc)
+
     public Base(Texture img, Point2D position, float Speed, float R) {
         super(img, position, Speed, R);
     }
@@ -18,9 +20,7 @@ public class Base extends Actor {
 
     @Override
     public void update() {
-        // границы
-        // камера в том числе
-        position.add(direction.getX()*Speed,direction.getY()*Speed);
+        position.add(direction.getX()* speed,direction.getY()* speed);
         bounds.pos.setPoint(position);
     }
 

@@ -175,15 +175,12 @@ public class GameSc implements Screen {
         player.update();
         bullgen.update(fireJoy);
         for(Bullet b : bullets){b.update();b.setCount(bullets.indexOf(b,true));if(b.isOut)bullets.removeValue(b,true);}
-        //for(int i=0;i<bullets.size;i++){bullets.get(i).update();bullets.get(i).setCount(i);if(bullets.get(i).isOut){bullets.get(i).removeBullet(i);}}
-        for(Elbrium e : ore){e.update();e.setCount(ore.indexOf(e,true));if(e.isOut)ore.removeValue(e,true);}
-        //for(int i=0;i<ore.size;i++){ore.get(i).update();ore.get(i).setCount(i);if(ore.get(i).isOut){ore.get(i).removeElbrium(i);}}
+
+        if(!playerIsSpawner)snifferUpdate();
+        else for(Elbrium e : ore){e.update();e.setCount(ore.indexOf(e,true));if(e.isOut)ore.removeValue(e,true);}
+
         collision();
-        //player_player_collision();
-
         ore_player_collision();
-
-
     }
 
     public void frontRender(SpriteBatch frontBatch){
@@ -352,17 +349,47 @@ public class GameSc implements Screen {
     }
 
     public static void spawnerSniffer(){
-        spawner.cancel();
-        ore.clear();
+        Gdx.app.log("spawnerSniffer()","Вызван");
         for(int i=0;i<15;i++){
+            GdxFIRDatabase.inst().inReference("ore"+i).readValue(String.class).then(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    if(s!=null){
+                        Elbrium elb = new Elbrium(Main.actor,gson.fromJson("{"+s,ElbriumMessage.class));
+                        //if(elb.getCount()>=ore.size)ore.add(elb);
+                        ore.add(elb);
+                        Gdx.app.error("ore",ore.toString());
+                    }
+                }
+
+            });
+
+            final int temp=i;
             GdxFIRDatabase.inst().inReference("ore"+i).onDataChange(String.class).thenListener(new Consumer<String>() {
                 @Override
                 public void accept(String s) {
-                    if(s!=null)
-                        ore.add(new Elbrium(Main.actor,gson.fromJson("{"+s,ElbriumMessage.class)));
+
+                    if(s!=null) {
+                        Gdx.app.error("err",s+"");
+                        ElbriumMessage tmp = gson.fromJson("{" + s, ElbriumMessage.class);
+                        ore.get(ore.size-1).snifferUpdate(tmp);
+                    }
                 }
             });
         }
+
+        // объявление //
+
+
+
+
+        // мониторинг //
+    }
+
+    public void snifferUpdate(){
+        for(Elbrium e : ore){
+            e.animationUpdate();
+            e.setCount(ore.indexOf(e,true));}
     }
 
     @Override

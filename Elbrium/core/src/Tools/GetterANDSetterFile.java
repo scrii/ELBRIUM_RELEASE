@@ -12,6 +12,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 public class GetterANDSetterFile {
+
+    // "урезанный" класс, взятый из модуля android. см описание в нем
+
     float real_attack=0,real_health=0,real_protection=0,real_speed=0,real_money=0,real_ore_elbrium=0,real_maneuverability=0;
     int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0;
     String real_message="",real_nickname="";

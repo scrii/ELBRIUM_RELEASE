@@ -25,10 +25,13 @@ public class Main extends Game {
 	public static SpriteBatch batch,frontBatch,
 			playerBatch, hudBatch,
 			baseBatch,baseBatchBackground;
-	public Texture img;
-	public static int WIDTH,HEIGHT;
-	public static Texture circle,stickImg,background,actor,damaged_txr,deathSc,elbrium,elbriumCrash;
 
+	public static int WIDTH,HEIGHT;
+	public static int BACKGROUND_WIDTH;
+	public static int BACKGROUND_HEIGHT;
+
+	public static Texture circle,stickImg,background,actor,damaged_txr,deathSc,elbrium,elbriumCrash;
+	public static Texture img;
 	public static Texture err;
 	public static Texture ore1,ore2,ore3,ore4,ore5;
 	public static Texture player1, player2, player3, player4, player5;
@@ -38,38 +41,17 @@ public class Main extends Game {
 	public static Texture back_button_un, back_button;
 	public static Texture square1,square2;
 	public static Texture debugBG;
-
-
-	public static int BACKGROUND_WIDTH;
-	public static int BACKGROUND_HEIGHT;
 	public static Texture un_testButtonTX,p_testButtonTX;
 	public static Texture bLeft,bUp,bRight,bDown;
 	public static Texture bLeft_un,bUp_un,bRight_un,bDown_un;
 
 	public static GameSc gameSc;
-
 	public static GetterANDSetterFile getter_setter;
-	DatabaseHelper db;
-
 	Multiplayer mp;
-
-
-
-
-
-	public Main() {
-	}
-
-
-
 
 	@Override
 	public void create () {
 		GdxFIRApp.inst().configure();
-//		GdxFIRDatabase.instance().inReference("coords_"+GameSc.player.nickname).push().setValue("none ahaha");
-		//getter=new Getter();
-		//getter.sendToFirebase(new Message("234","43"));
-		//batch = new SpriteBatch();
 		loadBatches();
 		WIDTH= Gdx.graphics.getWidth();
 		HEIGHT=Gdx.graphics.getHeight();
@@ -87,11 +69,12 @@ public class Main extends Game {
 		circle=new Texture("circle.png");
 		stickImg=new Texture("stick.png");
 		actor=new Texture("actor.png");
-		//GdxFIRDatabase.instance().inReference("heading").setValue("msg");
 		background=new Texture("testlocation.png");
+
+		// 5000x5000
 		BACKGROUND_WIDTH=background.getWidth();
 		BACKGROUND_HEIGHT=background.getHeight();
-		db=new DatabaseHelper();
+
 		damaged_txr=new Texture("dameged_txr_elbrium.png");
 		un_testButtonTX=new Texture("test_button_un_pressed.png");
 		p_testButtonTX=new Texture("test_button_pressed.png");
@@ -102,15 +85,9 @@ public class Main extends Game {
 		loadPlayerTextures();
 		loadButtonTextures();
 		loadCometTextures();
-		getter_setter.set_Guardian_Money(10000);
 
 		gameSc=new GameSc(this);
-
-		//mp=new Multiplayer();
-		//mp.getPlayers();
-
 		monitoring();
-
 		setScreen(gameSc);
 	}
 
@@ -127,6 +104,8 @@ public class Main extends Game {
 		un_testButtonTX.dispose();
 		p_testButtonTX.dispose();
 	}
+
+	// monitoring() - для удобства
 
 	public void monitoring(){
 		Gdx.app.addLifecycleListener(new LifecycleListener() {

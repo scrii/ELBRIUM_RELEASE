@@ -13,7 +13,7 @@ import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 public class Bullet extends Actor {
 
     public boolean isOut;
-    int count;
+    int count; // индекс объекта
 
 
     public Bullet(Texture img, Point2D position, float Speed, float R, Point2D direction) {
@@ -29,13 +29,14 @@ public class Bullet extends Actor {
 
     @Override
     public void update() {
-        position.add(direction.getX()*Speed,direction.getY()*Speed);
+        position.add(direction.getX()* speed,direction.getY()* speed);
         bounds.pos.setPoint(position);
         //Gdx.app.log("bullet_position", position.toString());
 
         GdxFIRDatabase.instance().inReference("Bullet"+count).setValue(new BulletMessage(Main.getter_setter.attack,position.getX(),position.getY()));
         isOut = (position.getX()+R<0 || position.getY()-R> Main.BACKGROUND_HEIGHT
                 || position.getX()-R>Main.BACKGROUND_WIDTH || position.getY()+R<0);
+
         if(isOut)GdxFIRDatabase.inst().inReference("Bullet"+count).removeValue();
 
     }
@@ -49,13 +50,9 @@ public class Bullet extends Actor {
     }
 
     public void removeBullet(int count){
-        //GdxFIRDatabase.instance().inReference("Elbrium_"+count).removeValue();
         Gdx.app.log("BULLET",count+"");
         GdxFIRDatabase.instance().inReference("Bullet"+count).removeValue();
         GameSc.bullets.removeIndex(count);
-
-
-        //Gdx.app.log("ORE","ORE REMOVED");
     }
 
 }

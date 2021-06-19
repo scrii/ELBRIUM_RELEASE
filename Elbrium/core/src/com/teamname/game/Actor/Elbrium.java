@@ -8,17 +8,10 @@ import com.teamname.game.GraphicsObj.Animation;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import Messages.ElbriumMessage;
-import Messages.Message;
 import Tools.Circle;
-import Tools.GetterANDSetterFile;
 import Tools.Point2D;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
-import pl.mk5.gdx.fireapp.database.ChildEventType;
-import pl.mk5.gdx.fireapp.functional.Consumer;
 
 public class Elbrium extends Actor {
     private final int startHealth;
@@ -48,6 +41,7 @@ public class Elbrium extends Actor {
 
     public void setCount(int count) {
         this.count = count;
+        message.count=count;
     }
 
     public int getHealth() {
@@ -71,7 +65,8 @@ public class Elbrium extends Actor {
         else if(health>startHealth*3/5&&health<=startHealth*4/5)textureCase=2;
         else textureCase=1;
 
-        Speed+=deltaSpeed;
+        speed +=deltaSpeed;
+        // //
         direction.setPoint(b.direction.getX(),b.direction.getY());
         if(health<=0){
             //textureCase=0;
@@ -87,7 +82,7 @@ public class Elbrium extends Actor {
     public Elbrium(Texture img, Point2D position, int rank) {
         // конструктор для игрока-спавнера
         super(img, position);
-        message=new ElbriumMessage(0,0,0,0,0,rank);
+        message=new ElbriumMessage(0,0,0,0,0,rank,GameSc.ore.indexOf(this,true));
         counter=-1;
         textureCase=1;
         player_damage=GameSc.player.damage;
@@ -95,11 +90,16 @@ public class Elbrium extends Actor {
         animation=new Animation(new TextureRegion(Main.elbriumCrash),4,4,1);
 
         switch (rank){
-            case -1: health=10;score=100;R=Main.WIDTH/50f;Speed=0.8f;deltaSpeed=0.001f;damage=50;break;
-            case 0: health=100;score=5;R= Main.WIDTH/50f;Speed=0.1f;deltaSpeed=0.01f;damage=5;break;
-            case 1: health=30;score=5;R=Main.WIDTH/50f;Speed=0.5f;deltaSpeed=0.01f;damage=5;break;
-            case 2: health=50;score=8;R= Main.WIDTH/35f;Speed=0.3f;deltaSpeed=0.0015f;damage=20;break;
-            case 3: health=120;score=15;R= Main.WIDTH/25f;Speed=0.015f;deltaSpeed=0.001f;damage=35;break;
+            case -1: health=10;score=100;R=Main.WIDTH/50f;
+                speed =0.8f;deltaSpeed=0.001f;damage=50;break;
+            case 0: health=100;score=5;R= Main.WIDTH/50f;
+                speed =0.1f;deltaSpeed=0.01f;damage=5;break;
+            case 1: health=30;score=5;R=Main.WIDTH/50f;
+                speed =0.5f;deltaSpeed=0.01f;damage=5;break;
+            case 2: health=50;score=8;R= Main.WIDTH/35f;
+                speed =0.3f;deltaSpeed=0.0015f;damage=20;break;
+            case 3: health=120;score=15;R= Main.WIDTH/25f;
+                speed =0.015f;deltaSpeed=0.001f;damage=35;break;
         }
 
 
@@ -119,18 +119,23 @@ public class Elbrium extends Actor {
         counter=-1;
         this.rank=em.rank;
         message=new ElbriumMessage(em);
-
+        health= message.hp;
         textureCase=1;
         player_damage=GameSc.player.damage;
         //region=new TextureRegion(Main.elbrium,);
         animation=new Animation(new TextureRegion(Main.elbriumCrash),4,4,1);
 
         switch (rank){
-            case -1: health=10;score=100;R=Main.WIDTH/50f;Speed=0.8f;deltaSpeed=0.001f;damage=50;break;
-            case 0: health=100;score=5;R= Main.WIDTH/50f;Speed=0.1f;deltaSpeed=0.01f;damage=5;break;
-            case 1: health=30;score=5;R=Main.WIDTH/50f;Speed=0.5f;deltaSpeed=0.01f;damage=5;break;
-            case 2: health=50;score=8;R= Main.WIDTH/35f;Speed=0.3f;deltaSpeed=0.0015f;damage=20;break;
-            case 3: health=120;score=15;R= Main.WIDTH/25f;Speed=0.015f;deltaSpeed=0.001f;damage=35;break;
+            case -1: score=100;R=Main.WIDTH/50f;
+                speed =0.8f;deltaSpeed=0.001f;damage=50;break;
+            case 0: score=5;R= Main.WIDTH/50f;
+                speed =0.1f;deltaSpeed=0.01f;damage=5;break;
+            case 1: score=5;R=Main.WIDTH/50f;
+                speed =0.5f;deltaSpeed=0.01f;damage=5;break;
+            case 2: score=8;R= Main.WIDTH/35f;
+                speed =0.3f;deltaSpeed=0.0015f;damage=20;break;
+            case 3: score=15;R= Main.WIDTH/25f;
+                speed =0.015f;deltaSpeed=0.001f;damage=35;break;
         }
 
 
@@ -162,37 +167,40 @@ public class Elbrium extends Actor {
     public void update() {
         // вылетел за карту? удаляем
 
-
-        if(health<=0)animation.update(0.1f);
-        if(animation.isDone())GameSc.ore.removeValue(this,true);
-        position.add(direction.getX()*Speed,direction.getY()*Speed);
-        bounds.pos.setPoint(position);
-        //GdxFIRDatabase.instance().inReference("Elbrium_"+count).setValue(position.toString());
-        isOut = (position.getX()+R<0 || position.getY()-R>Main.BACKGROUND_HEIGHT
-                || position.getX()-R>Main.BACKGROUND_WIDTH || position.getY()+R<0);
-        //if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore").push().setValue(message.toString());
-        //if(GameSc.ore.indexOf(this,true)!=-1)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
-       // if(isOut)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).removeValue();
-       /* GdxFIRDatabase.promise().then(GdxFIRDatabase.inst().inReference("ore").onChildChange(String.class, ChildEventType.CHANGED).then(new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-
+        // 0 - spawner
+        // 1 - player
+        if (GameSc.playerIsSpawner)
+        {
+            animationUpdate();
+            position.add(direction.getX() * speed, direction.getY() * speed);
+            bounds.pos.setPoint(position);
+            isOut = (position.getX() + R < 0 || position.getY() - R > Main.BACKGROUND_HEIGHT
+                    || position.getX() - R > Main.BACKGROUND_WIDTH || position.getY() + R < 0);
+            if (GameSc.playerIsSpawner) {
+                message.x = position.getX();
+                message.y = position.getY();
+                message.hp = getHealth();
+                GdxFIRDatabase.inst().inReference("ore" + count).setValue(message.toString());
             }
-        }));*/
-        if(GameSc.playerIsSpawner) {
-            message.x=position.getX();
-            message.y=position.getY();
-            message.hp=getHealth();
-            GdxFIRDatabase.inst().inReference("ore"+count).setValue(message.toString());
+        }
+        else {
+            if (health <= 0) animation.update(0.1f);
+            if (animation.isDone()) GameSc.ore.removeValue(this, true);
         }
 
     }
 
-    public void removeElbrium(int count){
-        GdxFIRDatabase.instance().inReference("Elbrium_"+count).removeValue();
-        GameSc.ore.removeIndex(count);
-        Gdx.app.log("ORE","ORE REMOVED");
+    public void snifferUpdate(ElbriumMessage em){
+        position.setPoint(em.x,em.y);
+        health=em.hp;
     }
+
+    public void animationUpdate(){
+        if (health <= 0) animation.update(0.1f);
+        if (animation.isDone()) GameSc.ore.removeValue(this, true);
+    }
+
+
 
    /* public void timeCheck(){
         final Timer timer=new Timer();

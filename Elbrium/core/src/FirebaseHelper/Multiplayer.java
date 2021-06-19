@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Messages.Message;
+import Online.PlayerAction;
 import Tools.Circle;
 import Tools.GetterANDSetterFile;
 import Tools.Point2D;
@@ -27,6 +28,7 @@ public class Multiplayer {
     public static ArrayList<Player> real_players;
     public Circle bounds;
     static ArrayList<Elbrium> ore;
+    private PlayerAction playerAction;
     Gson gson;
 
     public Multiplayer(){
@@ -37,6 +39,7 @@ public class Multiplayer {
         gs=new GetterANDSetterFile();
         gson=new Gson();
         ore=new ArrayList<>();
+        playerAction=new PlayerAction();
         bounds = new Circle(new Point2D(0,0),GameSc.player.R);
         startListener();
     }
@@ -103,11 +106,11 @@ public class Multiplayer {
         meta_players.addAll(Arrays.asList(valueOf_online.split(";")));
 
         GdxFIRDatabase.inst().inReference("Spawner").setValue(meta_players.get(0));
-        GameSc.playerIsSpawner= meta_players.get(0).equals(gs.get_Nickname());
+        /*GameSc.playerIsSpawner= meta_players.get(0).equals(gs.get_Nickname());
         if(GameSc.playerIsSpawner)GameSc.spawnerLogic();
-        else GameSc.spawnerSniffer();
+        else GameSc.spawnerSniffer();*/
 
-
+        playerAction.update(meta_players.get(0).equals(gs.get_Nickname()));
         meta_players.remove(gs.get_Nickname());
         Gdx.app.debug("MP",meta_players.toString()+"");
 
