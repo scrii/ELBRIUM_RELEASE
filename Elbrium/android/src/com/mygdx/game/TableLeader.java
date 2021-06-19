@@ -6,6 +6,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +28,7 @@ public class TableLeader extends AppCompatActivity {
     ArrayList<Double> numbers;
     LeaderBoard leaderBoard;
     TextView leader_nickname,leader_elbrium,number;
-    int n;
+    int n,m11=0;
     public int b=1;
     String userUid;
     FirebaseAuth firebaseAuth;
@@ -50,15 +51,14 @@ public class TableLeader extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_leader);
         getSupportActionBar().hide();
+        getterANDSetterFile = new GetterANDSetterFile();
         listView = findViewById(R.id.leaderView);
         numbers = new ArrayList<>();
         leaderBoard = new LeaderBoard();
-        getterANDSetterFile = new GetterANDSetterFile();
         getterANDSetterFile.set_TrueOrFalse(0);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         userUid = user.getUid();
-        if ((FirebaseDatabase.getInstance().getReference("LeaderBoard").child(getterANDSetterFile.get_Nickname()).toString().contains("") ) && getterANDSetterFile.get_Ore_Elbrium()>0.0)FirebaseDatabase.getInstance().getReference("LeaderBoard").push().setValue(new LeaderBoard(getterANDSetterFile.get_Nickname(),getterANDSetterFile.get_Ore_Elbrium()));
         databaseReference = FirebaseDatabase.getInstance().getReference("LeaderBoard");                                                                                         // Внизу сортировка по elbrium
         adapter = new FirebaseListAdapter<LeaderBoard>(TableLeader.this,LeaderBoard.class,R.layout.leader_list, FirebaseDatabase.getInstance().getReference("LeaderBoard").orderByChild("elbrium").limitToLast(2147000000)){
             @Override

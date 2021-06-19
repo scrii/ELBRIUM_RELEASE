@@ -212,7 +212,7 @@ public class Multiplayer {
                 break;
             }
         }
-        if(!flag)bullets.add(gson.fromJson("{"+s,BulletMessage.class));
+        //if(!flag)bullets.add(gson.fromJson("{"+s,BulletMessage.class));
     }
 
 

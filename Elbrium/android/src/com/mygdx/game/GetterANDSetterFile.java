@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 
 public class GetterANDSetterFile { // get и set всех файлов
     double real_attack=0,real_health=0,real_protection=0,real_speed=0,real_money=0,real_ore_elbrium=0,real_maneuverability=0;
-    int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0,real_startChat=0,TrueOrFalse=0,real_music=0,real_appearance=0,real_base_level=0,real_healthBase=0,real_villagers=0,real_happiness=0,real_band=0,real_church=0,real_devil=0,real_block=0,real_dungeon=0;
+    int  real_sign=0,real_xp=0,real_level=0,coefficient_attack=0,coefficient_protection=0,coefficient_speed=0,real_parametr=0,real_startChat=0,TrueOrFalse=0,real_music=0,real_appearance=0,real_base_level=0,real_healthBase=0,real_villagers=0,real_happiness=0,real_band=0,real_church=0,real_devil=0,real_block=0,real_dungeon=0;
     String real_message="",real_nickname="",myData = "",strLine,real_leaders="",nameBase="";
     int x1=0,x2=0,x3=0,x4=0,x5=0,x6=0,x7=0,x8=0,x9=0;
     File myExternalFile;
@@ -21,6 +21,25 @@ public class GetterANDSetterFile { // get и set всех файлов
     File file;
     PrintWriter printWriter;
     public GetterANDSetterFile(){}
+    public int get_Parametr(){
+        myData = "";
+        myExternalFile = new File("/data/data/com.mygdx.game/parametr.txt");
+        try {
+            fis = new FileInputStream(myExternalFile);
+            in = new DataInputStream(fis);
+            br = new BufferedReader(new InputStreamReader(in));
+            while ((strLine = br.readLine()) != null) {
+                myData = myData + strLine;
+                real_parametr = Integer.parseInt(myData);
+            }
+            br.close();
+            in.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return real_parametr;
+    }
     public int get_Dungeon(){
         myData = "";
         myExternalFile = new File("/data/data/com.mygdx.game/Dungeon.txt");
@@ -74,6 +93,16 @@ public class GetterANDSetterFile { // get и set всех файлов
         try {
             printWriter = new PrintWriter(file);
             printWriter.write(String.valueOf(r_block));
+            printWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void set_Parametr(int r_parametr){
+        file = new File("/data/data/com.mygdx.game/parametr.txt");
+        try {
+            printWriter = new PrintWriter(file);
+            printWriter.write(String.valueOf(r_parametr));
             printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
