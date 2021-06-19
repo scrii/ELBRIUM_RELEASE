@@ -66,7 +66,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
             @Override
             public void onClick(View v) {
                 pr();
-                description.setText(description.getText().toString() + "\n" + theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
+                description.setText(description.getText().toString() + "\n\n" + theme_two.m1_c_1 + "\n" + theme_two.m1_c_2);
                 o_button();
                 F2();
             }
@@ -85,7 +85,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         o_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m2);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m2);
         img.setImageResource(R.mipmap.base_avatar_1);
         second.setText("Конечно!");
         third.setText("Проваливай");
@@ -93,7 +93,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
             @Override
             public void onClick(View v) {pr();
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-150.0);
-                description.setText(description.getText().toString() + "\n" +theme_two.m2_c);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m2_c);
                 F3();
             }
         });
@@ -109,14 +109,14 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         o_input();
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m3);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m3);
         img.setImageResource(R.mipmap.base_avatar_1);
         second.setText("Хорошо");
         third.setText("Проваливай");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m3_c);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m3_c);
                 getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+150.0);
                 F4();
             }
@@ -134,7 +134,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Band()==1){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m4);
             img.setImageResource(R.mipmap.bandit);
             second.setText("Купить");
             third.setText("Отказаться");
@@ -144,12 +144,12 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
                 public void onClick(View v) {pr();
                     if(ran<5) {
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + 200.0);
-                        description.setText(description.getText().toString() + "\n" +theme_two.m4_c_1);
+                        description.setText(description.getText().toString() + "\n\n" +theme_two.m4_c_1);
                         F5();
                     }
                     else{
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-1000.0);
-                        description.setText(description.getText().toString() + "\n" +theme_two.m4_c_2);
+                        description.setText(description.getText().toString() + "\n\n" +theme_two.m4_c_2);
                         F5();
                     }
                 }
@@ -170,7 +170,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Band()!=1){
             img.setImageResource(R.mipmap.bandit);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m5);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m5);
             second.setText("Хорошо");
             third.setText("Кто его впустил?");
             second.setOnClickListener(new View.OnClickListener() {
@@ -183,7 +183,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" +theme_two.m5_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_two.m5_c);
                     F6();
                 }
             });
@@ -197,7 +197,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         THEME_TWO theme_two = new THEME_TWO();
         if (getterANDSetterFile.get_Villagers()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m6);
             second.setText("Постройте вышку");
             third.setText("Ничего страшного, с нами марсианский бог, выживем");
             second.setOnClickListener(new View.OnClickListener() {
@@ -230,7 +230,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         THEME_TWO theme_two = new THEME_TWO();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m7);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m7);
         second.setText("Хорошо");
         third.setText("Звучит сомнительно, нет");
         input.setText("0");
@@ -239,31 +239,31 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
             public void onClick(View v) {pr();
                 try {
                     if (Integer.parseInt(input.getText().toString())>=0){
-                        if (Integer.parseInt(input.getText().toString())==0)description.setText(description.getText().toString() + "\n" +"Но вы же ничего мне не дали!");
+                        if (Integer.parseInt(input.getText().toString())==0)description.setText(description.getText().toString() + "\n\n" +"Но вы же ничего мне не дали!");
                         else if (Integer.parseInt(input.getText().toString())<=10 && Integer.parseInt(input.getText().toString())>0){
-                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_2);
+                            description.setText(description.getText().toString() + "\n\n" +theme_two.m7_c_2);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
                         else if (Integer.parseInt(input.getText().toString())>10 && Integer.parseInt(input.getText().toString())<=50){
-                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_3);
+                            description.setText(description.getText().toString() + "\n\n" +theme_two.m7_c_3);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+2);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
                         else if (Integer.parseInt(input.getText().toString())>50 && Integer.parseInt(input.getText().toString())<=200){
-                            description.setText(description.getText().toString() + "\n" + theme_two.m7_c_4);
+                            description.setText(description.getText().toString() + "\n\n" + theme_two.m7_c_4);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+3);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
                             F8();
                         }
                         else if (Integer.parseInt(input.getText().toString())>200 && Integer.parseInt(input.getText().toString())!=666){
-                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_5);
+                            description.setText(description.getText().toString() + "\n\n" +theme_two.m7_c_5);
                             F8();
                         }
                         else if (Integer.parseInt(input.getText().toString())==666){
-                            description.setText(description.getText().toString() + "\n" +theme_two.m7_c_6);
+                            description.setText(description.getText().toString() + "\n\n" +theme_two.m7_c_6);
                             getterANDSetterFile.set_Devil(1);
                             getterANDSetterFile.set_Church(-666);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-((double)Integer.parseInt(input.getText().toString())));
@@ -281,7 +281,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m7_c_1);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m7_c_1);
                 F8();
             }
         });
@@ -293,13 +293,13 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Villagers()>0){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m8);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m8);
             second.setText("Проверить");
             third.setText("Нет, она надежно защищена");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" +theme_two.m8_c_1);
+                    description.setText(description.getText().toString() + "\n\n" +theme_two.m8_c_1);
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers()-1);
                     F9();
                 }
@@ -307,7 +307,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" +theme_two.m8_c_2);
+                    description.setText(description.getText().toString() + "\n\n" +theme_two.m8_c_2);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-50.0);
                     F9();
                 }
@@ -320,20 +320,20 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         o_input();
         THEME_TWO theme_two = new THEME_TWO();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m9);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m9);
         second.setText("Купить");
         third.setText("Отказаться");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_1);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m9_c_1);
                 F10();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m9_c_2);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m9_c_2);
                 F10();
             }
         });
@@ -343,20 +343,20 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         o_input();
         THEME_TWO theme_two = new THEME_TWO();
         img.setImageResource(R.mipmap.devil);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m10);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m10);
         second.setText("Согласиться");
         third.setText("Отказаться");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_1);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m10_c_1);
                 random();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
-                description.setText(description.getText().toString() + "\n" +theme_two.m10_c_2);
+                description.setText(description.getText().toString() + "\n\n" +theme_two.m10_c_2);
                 random();
             }
         });

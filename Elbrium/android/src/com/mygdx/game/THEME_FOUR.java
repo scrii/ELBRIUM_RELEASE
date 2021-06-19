@@ -58,7 +58,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             if (ra4 == 1 && getterANDSetterFile.get_Church() > 0) {
                 pro_result = 41;
                 img.setImageResource(R.mipmap.chur);
-                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d1);
+                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d1);
                 second.setText("Раз счастливыми, то можно");
                 third.setText("Нет, слишком дорого");
                 second.setOnClickListener(new View.OnClickListener() {
@@ -93,13 +93,13 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         if (getterANDSetterFile.get_Church() > 0){
             img.setImageResource(R.mipmap.chur);
             pro_result = 42;
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d2);
             second.setText("Да, вы правы");
             third.setText("Обойдётся");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d2_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d2_c_1);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - 400.0);
                     S3();
                 }
@@ -107,7 +107,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d2_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d2_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 4);
                     S3();
                 }
@@ -121,7 +121,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -10 && getterANDSetterFile.get_Church() > -1000){
             d_button();
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d3);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d3);
             img.setImageResource(R.mipmap.chur);
             first.setText("Поздороваться");
             second.setText("Помолиться");
@@ -129,14 +129,14 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             first.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d3_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d3_c_1);
                     S4();
                 }
             });
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d3_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d3_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 1);
                     S4();
                 }
@@ -144,7 +144,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d3_c_3);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d3_c_3);
                     S4();
                 }
             });
@@ -156,14 +156,14 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() >= 10){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d4);
             img.setImageResource(R.mipmap.chur);
             second.setText("Встретить");
             third.setText("*Закатить глаза*");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d4_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d4_c_1);
                     getterANDSetterFile.set_Villagers(getterANDSetterFile.get_Villagers() + 3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 2);
                     S5();
@@ -172,7 +172,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d4_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d4_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 3);
                     S5();
                 }
@@ -185,14 +185,14 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() >= 25 && getterANDSetterFile.get_Dungeon() != 1){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d5);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d5);
             img.setImageResource(R.mipmap.chur);
             second.setText("Взять");
             third.setText("И куда мне её поставить?");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d5_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d5_c_1);
                     getterANDSetterFile.set_Dungeon(1);
                     S6();
                 }
@@ -200,7 +200,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d5_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d5_c_2);
                     S6();
                 }
             });
@@ -211,7 +211,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_button();
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d6);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d6);
         img.setImageResource(R.mipmap.chur);
         pro_result = 46;
         d_input();
@@ -223,19 +223,19 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
                 try {
                     if (Integer.parseInt(input.getText().toString()) > 0) {
                         if (Integer.parseInt(input.getText().toString()) < 100 && getterANDSetterFile.get_Guardian_Money() >= Integer.parseInt(input.getText().toString())) {
-                            description.setText(description.getText().toString() + "\n" + theme_four.d6_c_1);
+                            description.setText(description.getText().toString() + "\n\n" + theme_four.d6_c_1);
                             getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 1);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double) (Integer.parseInt(input.getText().toString())));
                             S7();
                         }
                         if (Integer.parseInt(input.getText().toString()) >= 100 && Integer.parseInt(input.getText().toString()) != 666) {
-                            description.setText(description.getText().toString() + "\n" + theme_four.d6_c_2);
+                            description.setText(description.getText().toString() + "\n\n" + theme_four.d6_c_2);
                             getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 3);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double) (Integer.parseInt(input.getText().toString())));
                             S7();
                         }
                         if (Integer.parseInt(input.getText().toString()) == 666) {
-                            description.setText(description.getText().toString() + "\n" + theme_four.d6_c_3);
+                            description.setText(description.getText().toString() + "\n\n" + theme_four.d6_c_3);
                             S7();
                         }
                     } else
@@ -262,21 +262,21 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         THEME_FOUR theme_four = new THEME_FOUR();
         if(getterANDSetterFile.get_Church() > 0){
             pro_result = 47;
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d7);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d7);
             img.setImageResource(R.mipmap.chur);
             second.setText("Почему нет?");
             third.setText("Нет, у меня есть дела");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d7_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d7_c_1);
                     S8();
                 }
             });
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d7_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d7_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 3);
                     S8();
                 }
@@ -289,14 +289,14 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -1000){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d8);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d8);
             img.setImageResource(R.mipmap.chur);
             second.setText("Рассмеяться");
             third.setText("Промолчать");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d8_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d8_c_1);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 100);
                     S9();
                 }
@@ -304,7 +304,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d8_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d8_c_2);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 50);
                     S9();
                 }
@@ -317,7 +317,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() < -1100){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d9);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d9);
             img.setImageResource(R.mipmap.chur);
             second.setText("Non");
             third.setText("Abnegant");
@@ -332,7 +332,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d9_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d9_c_1);
                     getterANDSetterFile.set_Church(1);
                     S10();
                 }
@@ -345,7 +345,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         o_input();
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() > 0){
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_four.d10_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d10_1);
             img.setImageResource(R.mipmap.chur);
             d_button();
             first.setText("Да");
@@ -355,21 +355,21 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
                 @Override
                 public void onClick(View v) {pr();
                     d_input();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_1);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d10_1_c_1);
                     if (input.getText().toString().contains("Дьявол") || input.getText().toString().contains("дьявол") || input.getText().toString().contains("devil") || input.getText().toString().contains("Devil") || input.getText().toString().contains("diabolus") || input.getText().toString().contains("Diabolus")) {
-                        description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_1);
+                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_1);
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 6);
                         y++;
                         random();
                         o_input();
                     } else if (input.getText().toString().contains("Бог") || input.getText().toString().contains("бог") || input.getText().toString().contains("God") || input.getText().toString().contains("god") || input.getText().toString().contains("Deus") || input.getText().toString().contains("deus")) {
-                        description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_2);
+                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_2);
                         getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 5);
                         y++;
                         random();
                         o_input();
                     } else {
-                        description.setText(description.getText().toString() + "\n" + theme_four.d10_2_c_3);
+                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_3);
                         y++;
                         random();
                         o_input();
@@ -379,8 +379,8 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_2);
-                    description.setText(description.getText().toString() + "\n" + theme_four.d10_3);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d10_1_c_2);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d10_3);
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 2);
                     y++;
                     random();
@@ -390,7 +390,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    description.setText(description.getText().toString() + "\n" + theme_four.d10_1_c_3);
+                    description.setText(description.getText().toString() + "\n\n" + theme_four.d10_1_c_3);
                     y++;
                     random();
                     o_input();

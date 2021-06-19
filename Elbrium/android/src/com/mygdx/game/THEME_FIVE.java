@@ -28,7 +28,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         if (getterANDSetterFile.get_Devil()!=0){
             img.setImageResource(R.mipmap.devil);
             pro_result=51;
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r1);
             second.setText("Отдать долг");
             third.setText("Священник!");
             second.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +44,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
                 public void onClick(View v) {
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
                     getterANDSetterFile.set_Guardian_Money(0.0);
-                    description.setText(description.getText().toString() + "\n" +theme_five.r1_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_five.r1_c);
                     Q1();
                 }
             });
@@ -61,7 +61,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Villagers()<=3){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r2);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r2);
             second.setText("Взять");
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +76,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
                 @Override
                 public void onClick(View v) {
                     getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()+100);
-                    description.setText(description.getText().toString() + "\n" +theme_five.r2_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_five.r2_c);
                     Q2();
                 }
             });
@@ -91,7 +91,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         THEME_FIVE theme_five = new THEME_FIVE();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.devil);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r3);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r3);
         second.setText("Забирай");
         third.setText("Нет, только не моя душа!");
         second.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                description.setText(description.getText().toString() + "\n" +theme_five.r3_c);
+                description.setText(description.getText().toString() + "\n\n" +theme_five.r3_c);
                 Q3();
             }
         });
@@ -116,13 +116,13 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Dungeon()==1){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r4);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r4);
             second.setText("Отдать");
             third.setText("Оставить себе");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    description.setText(description.getText().toString() + "\n" +theme_five.r4);
+                    description.setText(description.getText().toString() + "\n\n" +theme_five.r4);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+250.0);
                     getterANDSetterFile.set_Dungeon(0);
                     Q4();
@@ -131,7 +131,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    description.setText(description.getText().toString() + "\n" + theme_five.r4_c);
+                    description.setText(description.getText().toString() + "\n\n" + theme_five.r4_c);
                     Q4();
                 }
             });
@@ -147,7 +147,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if (getterANDSetterFile.get_Block()!=1){
             img.setImageResource(R.mipmap.devil);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r5_1);
             second.setText("Согласиться");
             third.setText("Отказаться");
             second.setOnClickListener(new View.OnClickListener() {
@@ -162,7 +162,7 @@ public class THEME_FIVE extends Quest{ // Класс для Миссий
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_five.r5_2);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_five.r5_2);
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

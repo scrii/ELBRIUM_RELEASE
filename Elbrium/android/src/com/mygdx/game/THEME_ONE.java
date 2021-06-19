@@ -37,7 +37,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         THEME_ONE theme_one = new THEME_ONE();
         pro_result = 1;
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q1);
         pr();
         second.setText("Да");
         third.setText("Нет");
@@ -69,7 +69,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=2;
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q2);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q2);
         pr();
         second.setText("Оставить всё как есть");
         third.setText("Уничтожить");
@@ -100,7 +100,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=3;
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q3);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q3);
         pr();
         second.setText("Выдать");
         third.setText("Отказать");
@@ -151,7 +151,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             o_input();
             pro_result=4;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q4_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q4_1);
             pr();
             second.setText("Уничтожить");
             third.setText("Оставить");
@@ -160,7 +160,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                 public void onClick(View v) {
                     pr();
                     img.setImageResource(R.mipmap.bandit);
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q4_2);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q4_2);
                     second.setText("Оставить");
                     third.setText("Убирайтесь");
                     second.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +169,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                             pr();
                             int a = 1 + (int) (Math.random() * 100);
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
-                            description.setText(description.getText().toString() + "\n" + theme_one.q4_12_c);
+                            description.setText(description.getText().toString() + "\n\n" + theme_one.q4_12_c);
                             pr();
                             getterANDSetterFile.set_Band(1);
                             getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
@@ -194,7 +194,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                     pr();
                     int a = 1 + (int) (Math.random() * 100);
                     getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()+((double)a));
-                    description.setText(description.getText().toString() + "\n" +theme_one.q4_12_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_one.q4_12_c);
                     pr();
                     getterANDSetterFile.set_Band(1);
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
@@ -213,7 +213,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         pro_result=5;
         img.setImageResource(R.mipmap.base_avatar_1);
         second.setText("Да");
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q5_1);
         pr();
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
@@ -221,7 +221,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             public void onClick(View v) {
                 pr();
                 d_button();
-                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q5_2);
                 pr();
                 first.setText("Отругать");
                 second.setText("Будь осторожнее *дать 5 монет*");
@@ -230,7 +230,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                     @Override
                     public void onClick(View v) {
                         pr();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q5_3);
+                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q5_3);
                         pr();
                         o_button();
                         second.setText("Промолчать");
@@ -290,7 +290,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         if (getterANDSetterFile.get_Church()==0){
             pro_result=6;
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q6);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q6);
             pr();
             second.setText("Прогнать");
             third.setText("Радушно встретить");
@@ -300,7 +300,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                     pr();
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-4);
                     getterANDSetterFile.set_Church(-1);
-                    description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_one.q6_c);
                     pr();
                     RA7();
                     pr();
@@ -312,7 +312,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
                     pr();
                     getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+4);
                     getterANDSetterFile.set_Church(1);
-                    description.setText(description.getText().toString() + "\n" +theme_one.q6_c);
+                    description.setText(description.getText().toString() + "\n\n" +theme_one.q6_c);
                     pr();
                     RA7();
                     pr();
@@ -328,7 +328,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=7;
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q7);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q7);
         pr();
         second.setText("Можно");
         third.setText("Нет");
@@ -359,7 +359,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=8;
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q8);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q8);
         pr();
         d_button();
         first.setText("Вообще-то их достаточно");
@@ -369,7 +369,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             @Override
             public void onClick(View v) {
                 pr();
-                if(getterANDSetterFile.get_Villagers()<getterANDSetterFile.get_School())description.setText(description.getText().toString() + "\n" +theme_one.q8_c);
+                if(getterANDSetterFile.get_Villagers()<getterANDSetterFile.get_School())description.setText(description.getText().toString() + "\n\n" +theme_one.q8_c);
                 else getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-1);
                 pr();
                 RA9();
@@ -404,7 +404,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         pro_result=9;
         img.setImageResource(R.mipmap.base_avatar_1);
         d_button();
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q9);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q9);
         pr();
         first.setText("Но я только в прошлом месяце построил новый!");
         second.setText("Нет");
@@ -414,7 +414,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             public void onClick(View v) {
                 pr();
                 if (getterANDSetterFile.get_Park()>getterANDSetterFile.get_Villagers()){
-                    description.setText(description.getText().toString() + "\n" + theme_one.q9_c);
+                    description.setText(description.getText().toString() + "\n\n" + theme_one.q9_c);
                     pr();
                     o_button();
                     RA10();
@@ -454,7 +454,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         o_button();
         THEME_ONE theme_one = new THEME_ONE();
         pro_result=10;
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q10_1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q10_1);
         pr();
         img.setImageResource(R.mipmap.base_avatar_1);
         second.setText("Давай");
@@ -463,7 +463,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             @Override
             public void onClick(View v) {
                 pr();
-                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_one.q10_2);
+                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_one.q10_2);
                 pr();
                 second.setText("Шедевр, можешь не продолжать");
                 third.setText("Ты что пьян?");
