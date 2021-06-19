@@ -146,8 +146,6 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                                 }
                                 else Toast.makeText(getApplicationContext(),"Вы сделали что-то не так!",Toast.LENGTH_SHORT).show();
                             }catch (Exception e){
-                                Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
-                                random();
                                 e.printStackTrace();
                             }
                         }
