@@ -43,7 +43,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
         THEME_SEVEN theme_seven = new THEME_SEVEN();
         if (getterANDSetterFile.get_Dungeon()==1){
             if (getterANDSetterFile.get_Dungeon()==1 && getterANDSetterFile.get_Church()>0){
-                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s1);
+                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s1);
                 img.setImageResource(R.color.black);
                 second.setText("Открыть");
                 third.setText("Уйти");
@@ -51,21 +51,21 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                     @Override
                     public void onClick(View v) {pr();
                         o_button();
-                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s2);
+                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s2);
                         second.setText("Прислушаться");
                         third.setText("Игнорировать");
                         second.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {pr();
                                 o_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s3);
+                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s3);
                                 second.setText("Ускорить шаг");
                                 third.setText("Подняться наверх и вызвать стражу");
                                 second.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {pr();
                                         d_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s5);
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s5);
                                         first.setText("Представиться" + getterANDSetterFile.get_Nickname());
                                         second.setText("Представиться священником");
                                         third.setText("Представиться главарём банды");
@@ -73,21 +73,21 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s9);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s9);
                                                 second.setText("Отдать ключ");
                                                 third.setText("Броситься наверх");
                                                 second.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s15);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s15);
                                                         second.setText("Толкнуть");
                                                         third.setText("Побежать наверх");
                                                         second.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {pr();
                                                                 o_button();
-                                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s27);
                                                                 getterANDSetterFile.set_Dungeon(0);
                                                                 random();
                                                             }
@@ -96,7 +96,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                             @Override
                                                             public void onClick(View v) {pr();
                                                                 o_button();
-                                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s17);
                                                                 getterANDSetterFile.set_Dungeon(0);
                                                                 random();
                                                             }
@@ -107,7 +107,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s17);
                                                         getterANDSetterFile.set_Dungeon(0);
                                                         random();
                                                     }
@@ -118,14 +118,14 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s11);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s11);
                                                 second.setText("Благословить");
                                                 third.setText("Проклясть");
                                                 second.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s19);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s19);
                                                         second.setText("Отдать ключ");
                                                         third.setText("Броситься наверх");
                                                         second.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +138,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                                     @Override
                                                                     public void onClick(View v) {pr();
                                                                         o_button();
-                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s27);
+                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s27);
                                                                         getterANDSetterFile.set_Dungeon(0);
                                                                         random();
                                                                     }
@@ -147,7 +147,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                                     @Override
                                                                     public void onClick(View v) {pr();
                                                                         o_button();
-                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s17);
                                                                         getterANDSetterFile.set_Dungeon(0);
                                                                         random();
                                                                     }
@@ -158,7 +158,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                             @Override
                                                             public void onClick(View v) {pr();
                                                                 o_button();
-                                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s17);
+                                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s17);
                                                                 getterANDSetterFile.set_Dungeon(0);
                                                                 random();
                                                             }
@@ -169,7 +169,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s21);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s21);
                                                         getterANDSetterFile.set_Dungeon(0);
                                                         random();
                                                     }
@@ -180,14 +180,14 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s13);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s13);
                                                 second.setText(getterANDSetterFile.get_Nickname());
                                                 third.setText("Г.Б.");
                                                 second.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s23);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s23);
                                                         getterANDSetterFile.set_Dungeon(0);
                                                         random();
                                                     }
@@ -196,21 +196,21 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s25);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s25);
                                                         second.setText("Пойти дальше");
                                                         third.setText("Вернуться назад");
                                                         second.setOnClickListener(new View.OnClickListener() {
                                                             @Override
                                                             public void onClick(View v) {pr();
                                                                 o_button();
-                                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s12);
                                                                 second.setText("Продолжить спуск");
                                                                 third.setText("Вернуться назад");
                                                                 second.setOnClickListener(new View.OnClickListener() {
                                                                     @Override
                                                                     public void onClick(View v) {pr();
                                                                         o_button();
-                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s20);
                                                                         getterANDSetterFile.set_Dungeon(0);
                                                                         random();
                                                                     }
@@ -219,7 +219,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                                     @Override
                                                                     public void onClick(View v) {pr();
                                                                         o_button();
-                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s22);
                                                                         getterANDSetterFile.set_Dungeon(0);
                                                                         random();
                                                                     }
@@ -230,7 +230,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                             @Override
                                                             public void onClick(View v) {pr();
                                                                 o_button();
-                                                                description.setText(description.getText().toString() + "\n" + theme_seven.s25_c);
+                                                                description.setText(description.getText().toString() + "\n\n" + theme_seven.s25_c);
                                                                 getterANDSetterFile.set_Dungeon(0);
                                                                 random();
                                                             }
@@ -245,7 +245,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                     @Override
                                     public void onClick(View v) {pr();
                                         o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s7);
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s7);
                                         getterANDSetterFile.set_Dungeon(0);
                                         random();
                                     }
@@ -256,7 +256,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                             @Override
                             public void onClick(View v) {pr();
                                 d_button();
-                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s4);
+                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s4);
                                 first.setText("Продолжить спуск");
                                 second.setText("Спросить кто умер");
                                 third.setText("Вернуться назад");
@@ -264,7 +264,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                     @Override
                                     public void onClick(View v) {pr();
                                         o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s6);
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s6);
                                         o_button();
                                         second.setText("Продолжить путь");
                                         third.setText("Повернуть назад");
@@ -272,14 +272,14 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s12);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s12);
                                                 second.setText("Продолжить спуск");
                                                 third.setText("Вернуться назад");
                                                 second.setOnClickListener(new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s20);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s20);
                                                         getterANDSetterFile.set_Dungeon(0);
                                                         random();
                                                     }
@@ -288,7 +288,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                                     @Override
                                                     public void onClick(View v) {pr();
                                                         o_button();
-                                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s22);
+                                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s22);
                                                         getterANDSetterFile.set_Dungeon(0);
                                                         random();
                                                     }
@@ -299,7 +299,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s14);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s14);
                                                 getterANDSetterFile.set_Dungeon(0);
                                                 random();
                                             }
@@ -310,14 +310,14 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                     @Override
                                     public void onClick(View v) {pr();
                                         o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s8);
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s8);
                                         second.setText("2021");
                                         third.setText("Молча продолжить спуск вниз");
                                         second.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s16);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s16);
                                                 getterANDSetterFile.set_Dungeon(0);
                                                 random();
                                             }
@@ -326,8 +326,8 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                             @Override
                                             public void onClick(View v) {pr();
                                                 o_button();
-                                                description.setText(description.getText().toString() + "\n" + theme_seven.s8_c);
-                                                npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s18);
+                                                description.setText(description.getText().toString() + "\n\n" + theme_seven.s8_c);
+                                                npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s18);
                                                 getterANDSetterFile.set_Dungeon(0);
                                                 random();
                                             }
@@ -338,7 +338,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                                     @Override
                                     public void onClick(View v) {pr();
                                         o_button();
-                                        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_seven.s10);
+                                        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_seven.s10);
                                         getterANDSetterFile.set_Dungeon(0);
                                         random();
                                     }
@@ -352,7 +352,7 @@ public class THEME_SEVEN extends Quest{ // Класс для Миссий
                     @Override
                     public void onClick(View v) {pr();
                         o_button();
-                        description.setText(description.getText().toString() + "\n" + theme_seven.s1_c);
+                        description.setText(description.getText().toString() + "\n\n" + theme_seven.s1_c);
                         random();
                     }
                 });

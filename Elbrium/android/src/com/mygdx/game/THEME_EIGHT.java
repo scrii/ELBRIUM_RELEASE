@@ -22,20 +22,20 @@ public class THEME_EIGHT extends Quest{ // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" +  theme_eight.e1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" +  theme_eight.e1);
         second.setText("Посмотреть");
         third.setText("Игнорировать");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                description.setText(description.getText().toString() + "\n" + theme_eight.e1_c_1);
+                description.setText(description.getText().toString() + "\n\n" + theme_eight.e1_c_1);
                 D1();
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                description.setText(description.getText().toString() +"\n"+ theme_eight.e1_c_2);
+                description.setText(description.getText().toString() +"\n\n"+ theme_eight.e1_c_2);
                 D1();
             }
         });
@@ -46,7 +46,7 @@ public class THEME_EIGHT extends Quest{ // Класс для Миссий
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e2);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_eight.e2);
         second.setText("Проводите");
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +70,7 @@ public class THEME_EIGHT extends Quest{ // Класс для Миссий
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e3);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_eight.e3);
         second.setText("Стройте");
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,7 @@ public class THEME_EIGHT extends Quest{ // Класс для Миссий
         THEME_EIGHT theme_eight = new THEME_EIGHT();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         img.setImageResource(R.mipmap.base_avatar_1);
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_eight.e4);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_eight.e4);
         second.setText("Да");
         third.setText("Нет");
         second.setOnClickListener(new View.OnClickListener() {

@@ -24,13 +24,13 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
         ra6 = 1 + (int) (Math.random() * 10);
         if (ra6<5){
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_1);
             second.setText("Хочу");
             third.setText("Не интересует");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_2);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_2);
                     d_button();
                     first.setText("Монеты");
                     second.setText("elbrium");
@@ -39,7 +39,7 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                         @Override
                         public void onClick(View v) {pr();
                             v22=1;
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
+                            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_3);
                             d_input();
                             o_button();
                             second.setText("*Отдать крупье*");
@@ -67,7 +67,7 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                         @Override
                         public void onClick(View v) {pr();
                             v22=2;
-                            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w1_3);
+                            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_3);
                             d_input();
                             o_button();
                             second.setText("*Отдать крупье*");
@@ -108,13 +108,13 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
         }
         else{
             img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_1);
+            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w2_1);
             second.setText("Да");
             third.setText("Нет");
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_six.w2_2);
+                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w2_2);
                     d_input();
                     second.setText("Ввод");
                     third.setText("Я передумал");
@@ -146,8 +146,6 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                                 }
                                 else Toast.makeText(getApplicationContext(),"Вы сделали что-то не так!",Toast.LENGTH_SHORT).show();
                             }catch (Exception e){
-                                Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
-                                random();
                                 e.printStackTrace();
                             }
                         }
@@ -182,7 +180,7 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
             crossbar.setText(crossbar.getText().toString() + k[n] + " ");
             n++;
             crossbar.setText(crossbar.getText().toString() + "sum: " + (k[n]+k[n]) +"");
-            description.setText(description.getText().toString() + "\n" +theme_six.w1_4);
+            description.setText(description.getText().toString() + "\n\n" +theme_six.w1_4);
             d_button();
             first.setText("Повысить ставку и попросить ещё одну карту");
             second.setText("Повысить ставку");
