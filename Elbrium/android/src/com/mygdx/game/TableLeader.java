@@ -58,7 +58,7 @@ public class TableLeader extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         userUid = user.getUid();
-        if (user.getUid()==null && getterANDSetterFile.get_Ore_Elbrium()>0.0)FirebaseDatabase.getInstance().getReference("LeaderBoard").push().setValue(new LeaderBoard(getterANDSetterFile.get_Nickname(),getterANDSetterFile.get_Ore_Elbrium()));
+        if ((FirebaseDatabase.getInstance().getReference("LeaderBoard").child(getterANDSetterFile.get_Nickname()).toString().contains("") ) && getterANDSetterFile.get_Ore_Elbrium()>0.0)FirebaseDatabase.getInstance().getReference("LeaderBoard").push().setValue(new LeaderBoard(getterANDSetterFile.get_Nickname(),getterANDSetterFile.get_Ore_Elbrium()));
         databaseReference = FirebaseDatabase.getInstance().getReference("LeaderBoard");                                                                                         // Внизу сортировка по elbrium
         adapter = new FirebaseListAdapter<LeaderBoard>(TableLeader.this,LeaderBoard.class,R.layout.leader_list, FirebaseDatabase.getInstance().getReference("LeaderBoard").orderByChild("elbrium").limitToLast(2147000000)){
             @Override
