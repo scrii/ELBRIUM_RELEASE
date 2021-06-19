@@ -44,13 +44,13 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                             o_button();
                             second.setText("*Отдать крупье*");
                             third.setText("Я передумал");
+                            input.setText("0");
                             second.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {pr();
                                     try {
                                         stav();
                                     }catch (Exception e){
-                                        Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
                                         e.printStackTrace();
                                     }
                                 }
@@ -72,13 +72,13 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                             o_button();
                             second.setText("*Отдать крупье*");
                             third.setText("Я передумал");
+                            input.setText("0");
                             second.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {pr();
                                     try {
                                         stav();
                                     }catch (Exception e){
-                                        Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
                                         e.printStackTrace();
                                     }
                                 }
@@ -118,6 +118,7 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                     d_input();
                     second.setText("Ввод");
                     third.setText("Я передумал");
+                    input.setText("0");
                     second.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {pr();
@@ -197,13 +198,17 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                 public void onClick(View v) {pr();
                     d_input();
                     int mn = 1 + (int)(Math.random()*10);
-                    if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
-                        if(mn==1){
-                            getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(Integer.parseInt(input.getText().toString())*1.5));
-                            Toast.makeText(getApplicationContext(),"Ваш выигрыш: " + ((double)(Integer.parseInt(input.getText().toString())*1.5))+"",Toast.LENGTH_SHORT).show();
-                            random();
+                    try {
+                        if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
+                            if(mn==1){
+                                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(Integer.parseInt(input.getText().toString())*1.5));
+                                Toast.makeText(getApplicationContext(),"Ваш выигрыш: " + ((double)(Integer.parseInt(input.getText().toString())*1.5))+"",Toast.LENGTH_SHORT).show();
+                                random();
+                            }
+                            else stav();
                         }
-                        else stav();
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
                 }
             });

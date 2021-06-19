@@ -217,6 +217,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
         d_input();
         second.setText("Конечно");
         third.setText("Конечно, нет");
+        input.setText("0");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {pr();
@@ -241,8 +242,6 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
                     } else
                         Toast.makeText(getApplicationContext(), "Деньги не могут быть отрицательными", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    S7();
-                    Toast.makeText(getApplicationContext(), "Введено не число!", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
