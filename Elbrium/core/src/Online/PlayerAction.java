@@ -24,7 +24,8 @@ public class PlayerAction {
             // player
             // может перейти в first_in_list
             sniffer_called=true;
-            GameSc.spawnerSniffer();
+           //GameSc.spawnerSniffer();
+            GameSc.spawnerLogic();
         }
     }
 
