@@ -1,6 +1,5 @@
 package Tools.Joysticks;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.teamname.game.Actor.Player;
 import com.teamname.game.Screens.GameSc;
@@ -33,8 +32,8 @@ public class MotionJoystick extends Joystick {
     // услговие ускорения
 
     public void updateSpeed(){
-        if(circleBounds.isContains(stickBounds.pos))player.setRealSpeed(player.Speed*dist/rcircle);
-        else player.setRealSpeed(player.Speed);
+        if(circleBounds.isContains(stickBounds.pos))player.setRealSpeed(player.speed *dist/rcircle);
+        else player.setRealSpeed(player.speed);
         ///Gdx.app.error("player realSpeed",player.getRealSpeed()+"");
     }
 }

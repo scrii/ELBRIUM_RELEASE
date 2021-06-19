@@ -1,6 +1,9 @@
 package Messages;
 
 public class BulletMessage {
+
+    // см Message
+
     public float damage;
     public float x;
     public float y;

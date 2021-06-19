@@ -2,21 +2,22 @@ package com.teamname.game.Actor;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.teamname.game.GraphicsObj.GraphicsObj;
-
 import Tools.Circle;
 import Tools.Point2D;
 
 public abstract class Actor extends GraphicsObj {
 
+    // объекты игры имеют форму круга, пояснять поля, думаю, не стоит
+
     public Point2D position;
-    public float Speed,R;
-    public Circle bounds; // границы
+    public float speed,R;
+    public Circle bounds;
     public Point2D direction;
 
-    public Actor(Texture img, Point2D position, float Speed, float R) {
+    public Actor(Texture img, Point2D position, float speed, float R) {
         super(img);
         this.position=new Point2D(position);
-        this.Speed=Speed;
+        this.speed =speed;
         this.R=R;
         bounds = new Circle(position,R);
         direction=new Point2D(0,0);

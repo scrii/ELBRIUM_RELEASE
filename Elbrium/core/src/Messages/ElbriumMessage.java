@@ -1,21 +1,26 @@
 package Messages;
 
 public class ElbriumMessage {
+
+    // см Message
+
     public float x;
     public float y;
     public float dir_x;
     public float dir_y;
-    public float hp;
+    public int hp;
     public int rank;
+    public int count;
 
 
-    public ElbriumMessage(float x, float y, float dir_x, float dir_y, float hp, int rank) {
+    public ElbriumMessage(float x, float y, float dir_x, float dir_y, int hp, int rank, int count) {
         this.x = x;
         this.y = y;
         this.dir_x = dir_x;
         this.dir_y = dir_y;
         this.hp = hp;
         this.rank = rank;
+        this.count=count;
     }
 
     public ElbriumMessage(ElbriumMessage em){
@@ -25,6 +30,7 @@ public class ElbriumMessage {
         dir_y=em.dir_y;
         hp=em.hp;
         rank=em.rank;
+        count=em.count;
     }
 
 
@@ -36,6 +42,7 @@ public class ElbriumMessage {
                 "\"dir_x\":\"" + dir_x + "\"," +
                 "\"dir_y\":" + dir_y  + "," +
                 "\"hp\":" + hp  + "," +
-                "\"rank\":" + rank  + "}";
+                "\"rank\":" + rank  + "," +
+                "\"count\":" + count + "}";
     }
 }
