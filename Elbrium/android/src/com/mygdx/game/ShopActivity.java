@@ -69,6 +69,7 @@ public class ShopActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 seconds--;
+                // Обновление данных
                 real_ore_characteristic.setText(Math.round(getterANDSetterFile.get_Ore_Elbrium()*100.0)/100.0+"");
                 real_health_characteristic.setText(Math.round(getterANDSetterFile.get_Health()*100.0)/100.0+"");
                 real_damage_characteristic.setText(Math.round(getterANDSetterFile.get_Attack()*100.0)/100.0+"");
@@ -93,6 +94,7 @@ public class ShopActivity extends AppCompatActivity {
             seconds = 1;
             countDownTimer.start();
         }
+        // Обновление данных
         real_ore_characteristic.setText(Math.round(getterANDSetterFile.get_Ore_Elbrium()*100.0)/100.0+"");
         real_health_characteristic.setText(Math.round(getterANDSetterFile.get_Health()*100.0)/100.0+"");
         real_damage_characteristic.setText(Math.round(getterANDSetterFile.get_Attack()*100.0)/100.0+"");
@@ -103,6 +105,8 @@ public class ShopActivity extends AppCompatActivity {
         speed_price.setText(Math.round((30 + price_speed*getterANDSetterFile.get_Coefficient_Speed())*100.0)/100.0+"");
         protection_price.setText(Math.round((30 + price_protection*getterANDSetterFile.get_Coefficient_Protection())*100.0)/100.0+"");
         maneuverability_price.setText(Math.round((10 + price_maneuverability*getterANDSetterFile.get_Maneuverability())*100.0)/100.0+"");
+
+        // Далее обработка транзакций
         maneuverability_plus_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,33 +224,6 @@ public class ShopActivity extends AppCompatActivity {
                 else Toast.makeText(getApplicationContext(),"Elbrium не найден",Toast.LENGTH_SHORT).show();
             }
         });
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.shop, new SettingsFragment())
-                    .commit();
-        }
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            //setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
     public void update_values(){
         FirebaseDatabase.getInstance().getReference("LONGDATA_"+getter_setter.get_Nickname()).setValue(player_data.toString());

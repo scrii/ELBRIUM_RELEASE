@@ -45,7 +45,7 @@ public GetterANDSetterFile getterANDSetterFile;
         missions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getterANDSetterFile.get_BaseLevel()>0)startActivity(new Intent(UserBase.this,Quest.class));
+                if(getterANDSetterFile.get_BaseLevel()>0)startActivity(new Intent(UserBase.this,Quest.class)); // Проверка для открытия миссий
             }
         });
         bm = MediaPlayer.create(this,R.raw.basemusic);
@@ -107,22 +107,12 @@ public GetterANDSetterFile getterANDSetterFile;
         r_Mill();
         chance_Mill();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.AUB, new ShopActivity.SettingsFragment()) //++++++
-                    .commit();
-        }
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
     }
     @Override
     protected void onStart(){
         getterANDSetterFile = new GetterANDSetterFile();
         bm = MediaPlayer.create(this,R.raw.basemusic);
-        if (mediaPlayer.isPlaying())mediaPlayer.pause();
+        //if (mediaPlayer.isPlaying())mediaPlayer.pause();
         if (getterANDSetterFile.get_SoundMusic()==1)bm.start();
         super.onStart();
     }
@@ -132,32 +122,7 @@ public GetterANDSetterFile getterANDSetterFile;
         if(bm.isPlaying())bm.pause();
         super.onPause();
     }
-    public static class SettingsFragment extends PreferenceFragmentCompat {
-        @Override
-        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            //setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        }
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.userbase, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        int id = item.getItemId();
-        if(id==R.id.quest && getterANDSetterFile.get_BaseLevel()>0)startActivity(new Intent(UserBase.this,Quest.class));
-        else if (getterANDSetterFile.get_BaseLevel()<=0) Toast.makeText(getApplicationContext(),"Сначало купите базу!",Toast.LENGTH_SHORT).show();
-        if(id==R.id.map)Log.d("Map","TRUE");
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
     public void visible(){
         ID1();
         getterANDSetterFile = new GetterANDSetterFile();
@@ -284,7 +249,7 @@ public GetterANDSetterFile getterANDSetterFile;
         newBase = findViewById(R.id.newbase);
         whatAboutLevel = findViewById(R.id.whataboutlevel);
     }
-    public void updateValues(){
+    public void updateValues(){ // Обновление данных
         getterANDSetterFile = new GetterANDSetterFile();
         ID1();
         realhealth.setText(getterANDSetterFile.get_HealthBase()+"");
@@ -300,7 +265,7 @@ public GetterANDSetterFile getterANDSetterFile;
         int_Mill.setText(getterANDSetterFile.get_Mill()+"");
         int_Tower.setText(getterANDSetterFile.get_Tower()+"");
     }
-    public void colors(){
+    public void colors(){ // Выделение текста, если транзакция возможна
         ID1();
         getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Guardian_Money()<=(150.0*getterANDSetterFile.get_TownHall())){
@@ -417,6 +382,7 @@ public GetterANDSetterFile getterANDSetterFile;
             }
         }
     }
+    // Обработка транзакций
     public void r_Mill(){
         ID1();
         getterANDSetterFile = new GetterANDSetterFile();

@@ -60,7 +60,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         if (bm.isPlaying())bm.pause();
         exit(false);
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        if(!parametr){
+        if(!parametr){ // Наказание за выход из миссий
             if(pro_result==1)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
             if(pro_result==2)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-7);
             if(pro_result==3)getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()-3);
@@ -110,6 +110,8 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         for (int i = 0; i < 70; i++) {
             k[i] = 0;
         }
+        npc_tv.setTextColor(Color.GRAY);
+        description.setTextColor(Color.GRAY);
         userBase = new UserBase();
         countDownTimer = new CountDownTimer(c*100,1000) {
             @Override
@@ -119,30 +121,26 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
                 comments(npc_tv);
                 comments(description);
                 s = npc_tv.getText().toString();
-                if (!b.contains(s)){
+                if (!b.contains(s)){ // Скроллинг вниз при обновлении сообщений
                     b = s;
                     nestedScrollView_npc.smoothScrollTo(0,2100000000);
                     nestedScrollView_des.smoothScrollTo(0,2100000000);
                 }
-                ins();
+                ins(); // Проверка на счастье
             }
             @Override
             public void onFinish() {
-                if (countDownTimer != null){
+                if (countDownTimer != null){ // Перезапуск таймера
                     c = 1;
                     countDownTimer.start();
                 }
             }
         };
-        if (countDownTimer != null){
+        if (countDownTimer != null){ // Перезапуск таймера
             c = 1;
             countDownTimer.start();
         }
         random();
-    }
-    public void pr(){
-        nestedScrollView_npc.smoothScrollTo(0,2140000000);
-        nestedScrollView_des.smoothScrollTo(0,2140000000);
     }
     public int h_random(){
         int h = 3;
@@ -182,9 +180,44 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         parametr = tf;
     }
 
-    public void random(){
-        THEME_ONE theme_one = new THEME_ONE();
-        theme_one.one();
+    public void random(){ // Случайный выбор тематики
+        int random  = 1 + (int)(Math.random()*8);
+        if (random == 1){
+            THEME_ONE theme_one = new THEME_ONE();
+            theme_one.one();
+        }
+        else if (random ==2){
+            THEME_TWO theme_two = new THEME_TWO();
+            theme_two.two();
+        }
+        else if (random == 3){
+            THEME_THREE  theme_three = new THEME_THREE();
+            theme_three.three();
+        }
+        else if (random == 4){
+            THEME_FOUR theme_four = new THEME_FOUR();
+            theme_four.four();
+        }
+        else if (random ==5){
+            THEME_FIVE theme_five = new THEME_FIVE();
+            theme_five.five();
+        }
+        else if (random == 6){
+            THEME_SIX theme_six = new THEME_SIX();
+            theme_six.six();
+        }
+        else if (random == 7){
+            THEME_SEVEN theme_seven = new THEME_SEVEN();
+            theme_seven.seven();
+        }
+        else if (random == 8){
+            THEME_EIGHT theme_eight = new THEME_EIGHT();
+            theme_eight.eight();
+        }
+        else{
+            THEME_ONE theme_one = new THEME_ONE();
+            theme_one.one();
+        }
     }
     public void start(){
         npc_tv.setVisibility(View.VISIBLE);
@@ -195,23 +228,23 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         input.setVisibility(View.INVISIBLE);
         img.setVisibility(View.VISIBLE);
     }
-    public void d_button(){
+    public void d_button(){ // Добавление кнопки
         first.setVisibility(View.VISIBLE);
     }
-    public void d_input(){
+    public void d_input(){ // Добавление ввода
         input.setVisibility(View.VISIBLE);
     }
-    public void o_button(){
+    public void o_button(){ // Скрыть кнопку
         first.setVisibility(View.INVISIBLE);
     }
-    public void o_input(){
+    public void o_input(){ // Скрыть ввод
         input.setVisibility(View.INVISIBLE);
     }
 
-    public void comments(TextView textMessage){
+    public void comments(TextView textMessage){ // Комментирование
         String s = textMessage.getText().toString();
         String comment = textMessage.getText().toString();
-        if(s.contains("*") && textMessage.getText().toString().contains("*") && !s.contains("#")) {
+        if(s.contains("*") && textMessage.getText().toString().contains("*")) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '*' && s.contains("*")) {
                     kolvo_symbols++;
@@ -232,12 +265,16 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
             }
         }
     }
-    public void ins(){
+    public void pr(){
+        nestedScrollView_npc.smoothScrollTo(0,2100000000);
+        nestedScrollView_des.smoothScrollTo(0,2100000000);
+    }
+    public void ins(){ // Проверка на счастье
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         if(getterANDSetterFile.get_Happiness()<10)ruin();
         if(getterANDSetterFile.get_Happiness()>55)ruin();
     }
-    public void ruin(){
+    public void ruin(){ // Смотрим метод ins()
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         npc_tv.setVisibility(View.INVISIBLE);
         description.setVisibility(View.VISIBLE);

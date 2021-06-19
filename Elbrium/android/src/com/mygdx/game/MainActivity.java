@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity { // Активность, �
                 else if(!s.contains("*")&&!textMessage.getText().toString().contains("*"))textMessage.setTextColor(getResources().getColor(R.color.white));
                 if(s.contains("@") && !s.contains("@"+nickname))textMessage.setTextColor(getResources().getColor(R.color.ping2));
                 if((s.contains("#join") || s.contains("#leave")))textMessage.setTextColor(getResources().getColor(R.color.command1));
-                if(s.contains("[Успешно]") && s.contains("#try")){
+                if(s.contains("[Успешно]") && s.contains("#try")){ // Выделение сообщений
                     d1 = s.indexOf("#");
                     d2 = s.lastIndexOf("y");
                     z1 = s.indexOf("[");
@@ -270,7 +270,7 @@ public class MainActivity extends AppCompatActivity { // Активность, �
                     builder1.append(colorSpannable1);
                     textMessage.setText(builder1, TextView.BufferType.SPANNABLE);
                 }
-                if(s.contains("[Неуспешно]") && s.contains("#try")){
+                if(s.contains("[Неуспешно]") && s.contains("#try")){ // Выделение сообщений
                     m1 = s.indexOf("#");
                     m2 = s.lastIndexOf("y");
                     r1 = s.indexOf("[");

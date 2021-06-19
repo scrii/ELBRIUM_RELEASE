@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class THEME_SIX extends Quest{
+public class THEME_SIX extends Quest{  // Класс для Миссий
     int ra6=0;
     public String w1_1 = "Не желаете ли вы сыграть в 21?";
     public String w1_2 = "Желаете поставить монеты или elbrium?";
     public String w1_3 = "Хорошо, делайте свою первоначальную ставку.";
-    public String w1_4 = "*Крупье даёт вам 2 карты с числами, на них: ";                          //WARNING
+    public String w1_4 = "*Крупье даёт вам 2 карты с числами, на них: ";
     public String w2_1 = "Хотите ли вы сыграть в кости?";
     public String w2_2 = "Сколько желаете поставить? Учтите максимальная ставка - 10 монет.";
 
@@ -58,8 +58,7 @@ public class THEME_SIX extends Quest{
                             third.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {pr();
-                                    THEME_SEVEN theme_seven = new THEME_SEVEN();
-                                    theme_seven.seven();
+                                    random();
                                 }
                             });
                         }
@@ -87,8 +86,7 @@ public class THEME_SIX extends Quest{
                             third.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {pr();
-                                    THEME_SEVEN theme_seven = new THEME_SEVEN();
-                                    theme_seven.seven();
+                                    random();
                                 }
                             });
                         }
@@ -96,8 +94,7 @@ public class THEME_SIX extends Quest{
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {pr();
-                            THEME_SEVEN theme_seven = new THEME_SEVEN();
-                            theme_seven.seven();
+                            random();
                         }
                     });
                 }
@@ -105,8 +102,7 @@ public class THEME_SIX extends Quest{
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    THEME_SEVEN theme_seven = new THEME_SEVEN();
-                    theme_seven.seven();
+                    random();
                 }
             });
         }
@@ -135,8 +131,7 @@ public class THEME_SIX extends Quest{
                                     if (pl<pl1 && pl<pl2){
                                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + Integer.parseInt(input.getText().toString()) + "",Toast.LENGTH_SHORT).show();
                                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(Integer.parseInt(input.getText().toString())));
-                                        THEME_SEVEN theme_seven = new THEME_SEVEN();
-                                        theme_seven.seven();
+                                        random();
                                     }
                                     else{
                                         double m=0,y=0;
@@ -146,15 +141,13 @@ public class THEME_SIX extends Quest{
                                         y = Double.parseDouble(res.replace(',','.'));
                                         Toast.makeText(getApplicationContext(),"Вы выиграли: " + (money + money*y) + "",Toast.LENGTH_SHORT).show();
                                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(money + money*y));
-                                        THEME_SEVEN theme_seven = new THEME_SEVEN();
-                                        theme_seven.seven();
+                                        random();
                                     }
                                 }
                                 else Toast.makeText(getApplicationContext(),"Вы сделали что-то не так!",Toast.LENGTH_SHORT).show();
                             }catch (Exception e){
                                 Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
-                                THEME_SEVEN theme_seven = new THEME_SEVEN();
-                                theme_seven.seven();
+                                random();
                                 e.printStackTrace();
                             }
                         }
@@ -162,8 +155,7 @@ public class THEME_SIX extends Quest{
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {pr();
-                            THEME_SEVEN theme_seven = new THEME_SEVEN();
-                            theme_seven.seven();
+                            random();
                         }
                     });
                 }
@@ -171,8 +163,7 @@ public class THEME_SIX extends Quest{
             third.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();
-                    THEME_SEVEN theme_seven = new THEME_SEVEN();
-                    theme_seven.seven();
+                    random();
                 }
             });
         }
@@ -212,8 +203,7 @@ public class THEME_SIX extends Quest{
                         if(mn==1){
                             getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(Integer.parseInt(input.getText().toString())*1.5));
                             Toast.makeText(getApplicationContext(),"Ваш выигрыш: " + ((double)(Integer.parseInt(input.getText().toString())*1.5))+"",Toast.LENGTH_SHORT).show();
-                            THEME_SEVEN theme_seven = new THEME_SEVEN();
-                            theme_seven.seven();
+                            random();
                         }
                         else stav();
                     }
@@ -230,14 +220,12 @@ public class THEME_SIX extends Quest{
                     if(z>21){
                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
-                        THEME_SEVEN theme_seven = new THEME_SEVEN();
-                        theme_seven.seven();
+                        random();
                     }
                     if (player1>z && player2>z){
                         Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
-                        THEME_SEVEN theme_seven = new THEME_SEVEN();
-                        theme_seven.seven();
+                        random();
                     }
                     else{
                         double m=0,y=0;
@@ -247,8 +235,7 @@ public class THEME_SIX extends Quest{
                         y = Double.parseDouble(res.replace(',','.'));
                         Toast.makeText(getApplicationContext(),"Вы выиграли: " + st*y + "",Toast.LENGTH_SHORT).show();
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(st*y));
-                        THEME_SEVEN theme_seven = new THEME_SEVEN();
-                        theme_seven.seven();
+                        random();
                     }
                 }
             });
