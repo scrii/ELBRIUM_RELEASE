@@ -323,24 +323,8 @@ public class GameSc implements Screen {
         return new TextureRegion(Main.err);
     }
 
-    private void multiplayerRENDER(){
-        for(Message msg : multiplayer.getPlayers()){
-            Main.batch.draw(Main.player1,msg.x,msg.y,entityRad*2,entityRad*2);
-        }
-    }
 
 
-    public void bulletsMonitoring(final SpriteBatch batch){
-        for(int i=0;i<Integer.MAX_VALUE;i++){
-            GdxFIRDatabase.inst().inReference("bullet"+i).readValue(BulletMessage.class).then(new Consumer<BulletMessage>() {
-                @Override
-                public void accept(BulletMessage bmsg) {
-                    batch.draw(Main.bullet,bmsg.x,bmsg.y);
-
-                }
-            });
-        }
-    }
 
     public static void spawnerLogic(){
         // вызывается если playerIsSpawner
@@ -358,31 +342,27 @@ public class GameSc implements Screen {
                         Elbrium elb = new Elbrium(Main.actor,gson.fromJson("{"+s,ElbriumMessage.class));
                         //if(elb.getCount()>=ore.size)ore.add(elb);
                         ore.add(elb);
-                        Gdx.app.error("ore",ore.toString());
+                        ore.get(ore.size-1).setCount(ore.size-1);
+                        Gdx.app.error("ore",ore.get(ore.size-1).position.getX()+"");
                     }
                 }
 
             });
 
-            final int temp=i;
+
             GdxFIRDatabase.inst().inReference("ore"+i).onDataChange(String.class).thenListener(new Consumer<String>() {
                 @Override
                 public void accept(String s) {
 
                     if(s!=null) {
-                        Gdx.app.error("err",s+"");
                         ElbriumMessage tmp = gson.fromJson("{" + s, ElbriumMessage.class);
-                        ore.get(ore.size-1).snifferUpdate(tmp);
+                        if(ore.size-1>-1)ore.get(ore.size-1).snifferUpdate(tmp);
                     }
                 }
             });
         }
 
         // объявление //
-
-
-
-
         // мониторинг //
     }
 

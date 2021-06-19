@@ -11,6 +11,7 @@ import com.teamname.game.Screens.GameSc;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Messages.BulletMessage;
 import Messages.Message;
 import Online.PlayerAction;
 import Tools.Circle;
@@ -26,21 +27,25 @@ public class Multiplayer {
     static GetterANDSetterFile gs;
     public static ArrayList<String> meta_players;
     public static ArrayList<Player> real_players;
-    public Circle bounds;
+    public Circle bounds, bulletBounds;
     static ArrayList<Elbrium> ore;
     private PlayerAction playerAction;
+    private ArrayList<BulletMessage> bullets;
     Gson gson;
+
 
     public Multiplayer(){
         meta_players=new ArrayList<>();
         real_players=new ArrayList<>();
         databaseHelper=new DatabaseHelper();
         players=new ArrayList<>();
+        bullets=new ArrayList<>();
         gs=new GetterANDSetterFile();
         gson=new Gson();
         ore=new ArrayList<>();
         playerAction=new PlayerAction();
         bounds = new Circle(new Point2D(0,0),GameSc.player.R);
+        bulletBounds=new Circle(new Point2D(0,0),GameSc.player.R/5);
         startListener();
     }
 
@@ -71,7 +76,8 @@ public class Multiplayer {
 
             bounds.pos.setPoint(m.x-GameSc.player.R,m.y-GameSc.player.R);
             batch.draw(Main.getPlayer(m.texture),m.x-GameSc.player.R*2,m.y-GameSc.player.R*2, GameSc.player.R*2,2*GameSc.player.R);
-            bounds.debug(batch,GameSc.player.R);
+            //bounds.debug(batch,GameSc.player.R);
+
             if(GameSc.player.bounds.Overlaps(bounds)){
                 /*float dx = GameSc.player.send_in_ONLINE.getX()-bounds.pos.getX()-2*GameSc.player.R;
                 float dy = GameSc.player.send_in_ONLINE.getY()-bounds.pos.getY()-2*GameSc.player.R;
@@ -82,6 +88,11 @@ public class Multiplayer {
                         (GameSc.player.send_in_ONLINE.getX()-GameSc.player.R-bounds.pos.getX())*(GameSc.player.send_in_ONLINE.getX()-GameSc.player.R-bounds.pos.getX()));
                 GameSc.player.send_in_ONLINE.setY(setY);*/
             }
+        }
+        for(BulletMessage bm : bullets){
+            bulletBounds.pos.setPoint(bm.x-GameSc.player.R/5,bm.y-GameSc.player.R/5);
+            batch.draw(Main.bullet,bm.x-GameSc.player.R/5,bm.y-GameSc.player.R/5,GameSc.player.R/5*2,GameSc.player.R/5*2);
+            bulletBounds.debug(batch,GameSc.player.R/5);
         }
     }
 
@@ -116,7 +127,7 @@ public class Multiplayer {
 
         //if(meta_players.isEmpty())GdxFIRDatabase.inst().inReference("Spawner").setValue(gs.get_Nickname());
 
-        for(String ref : meta_players)createPlayers(ref);
+        for(String ref : meta_players){createPlayers(ref);createBullets(ref);}
         //Gdx.app.log("MP",players.toString());
 
         }
@@ -124,12 +135,11 @@ public class Multiplayer {
 
     }
 
-    private void createPlayers(String ref){
-        final String r = ref;
+    private void createPlayers(final String ref){
         GdxFIRDatabase.instance().inReference(ref).onDataChange(String.class).thenListener(new Consumer<String>() {
             @Override
             public void accept(String s) {
-                  tmp2(r,s);
+                  tmp2(ref,s);
             }
         });
     }
@@ -168,6 +178,41 @@ public class Multiplayer {
         else return false;
     }
 
+    public static void getBullets(){
+        for(String s : meta_players)
+            for(int i=0;i<30;i++) {
+                GdxFIRDatabase.inst().inReference("bullet_" + s).onDataChange(String.class).thenListener(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) {
+
+                    }
+                });
+            }
+    }
+
+    private void createBullets(final String ref){
+        for(int i=0;i<25;i++){
+            GdxFIRDatabase.inst().inReference("bullet_"+ref+i).onDataChange(String.class).thenListener(new Consumer<String>() {
+                @Override
+                public void accept(String s) {
+                    tmp3(ref,s);
+                }
+            });
+        }
+    }
+
+    private void tmp3(String ref, String s){
+        boolean flag=false;
+        for(BulletMessage bm : bullets){
+            if (bm.nick.equals(ref)) {
+                flag = true;
+                bm.x=gson.fromJson("{"+s,BulletMessage.class).x;
+                bm.y=gson.fromJson("{"+s,BulletMessage.class).y;
+                break;
+            }
+        }
+        if(!flag)bullets.add(gson.fromJson("{"+s,BulletMessage.class));
+    }
 
 
 

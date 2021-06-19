@@ -30,6 +30,7 @@ public class Elbrium extends Actor {
     private final Animation animation;
     private int textureCase;
     private ElbriumMessage message;
+    public static boolean sniffer = !GameSc.playerIsSpawner;
 
     public float getDamage() {
         return damage;
@@ -73,9 +74,10 @@ public class Elbrium extends Actor {
             GameSc.player.getter_setter.add_elbrium(score);
             //GameSc.ore.removeIndex(count);
             GdxFIRDatabase.inst().inReference("ore"+count).removeValue();
-
             Gdx.app.debug("Elbrium #"+count, "dead");
         }
+        if(sniffer){message.hp=health;message.dir_x=direction.getX();message.dir_y=direction.getY();}
+        if(sniffer)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
 
     }
 
@@ -192,6 +194,7 @@ public class Elbrium extends Actor {
 
     public void snifferUpdate(ElbriumMessage em){
         position.setPoint(em.x,em.y);
+        bounds.pos.setPoint(position);
         health=em.hp;
     }
 
