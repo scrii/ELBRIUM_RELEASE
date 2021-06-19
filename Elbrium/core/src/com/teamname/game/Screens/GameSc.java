@@ -140,9 +140,9 @@ public class GameSc implements Screen {
         backRender(Main.batch);
         player.draw(Main.batch);
 
-        player.send_in_ONLINE.debug(Main.batch);
-        player.bounds.debug(Main.batch,player.R);
-        player.bounds.pos.debug(Main.batch);
+        //player.send_in_ONLINE.debug(Main.batch);
+        //player.bounds.debug(Main.batch,player.R);
+        //player.bounds.pos.debug(Main.batch);
         // сплюсовать радиусы для отображения игрока ровно в центре
         // руда - batch
 

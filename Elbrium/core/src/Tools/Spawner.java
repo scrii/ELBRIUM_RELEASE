@@ -30,7 +30,7 @@ public class Spawner extends TimerTask {
     public void start() {
         TimerTask timerTask = new Spawner();
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 5 * 1000);
+        timer.scheduleAtFixedRate(timerTask, 0, 30 * 1000); // переодичность спавна Эльбриума - 30 секунд
     }
 
     private void spawnOre() {
@@ -41,8 +41,6 @@ public class Spawner extends TimerTask {
         GameSc.ore.add(elbrium);
 
         Gdx.app.log("TIMER", "ore spawned");
-
-
     }
 
     public void setRank(int rank) {

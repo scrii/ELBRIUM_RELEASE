@@ -92,7 +92,7 @@ public class Multiplayer {
         for(BulletMessage bm : bullets){
             bulletBounds.pos.setPoint(bm.x,bm.y);
             batch.draw(Main.bullet,bm.x-GameSc.player.R/5,bm.y-GameSc.player.R/5,GameSc.player.R/5*2,GameSc.player.R/5*2);
-            bulletBounds.debug(batch,GameSc.player.R/5);
+            //bulletBounds.debug(batch,GameSc.player.R/5);
         }
     }
 
@@ -123,7 +123,7 @@ public class Multiplayer {
 
         playerAction.update(meta_players.get(0).equals(gs.get_Nickname()));
         meta_players.remove(gs.get_Nickname());
-        Gdx.app.debug("MP",meta_players.toString()+"");
+        //Gdx.app.debug("MP",meta_players.toString()+"");
 
         //if(meta_players.isEmpty())GdxFIRDatabase.inst().inReference("Spawner").setValue(gs.get_Nickname());
 

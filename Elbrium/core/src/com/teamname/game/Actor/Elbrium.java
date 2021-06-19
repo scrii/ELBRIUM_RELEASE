@@ -74,7 +74,7 @@ public class Elbrium extends Actor {
             GameSc.player.getter_setter.add_elbrium(score);
             //GameSc.ore.removeIndex(count);
             GdxFIRDatabase.inst().inReference("ore"+count).removeValue();
-            Gdx.app.debug("Elbrium #"+count, "dead");
+            //Gdx.app.debug("Elbrium #"+count, "dead");
         }
         if(sniffer){message.hp=health;message.dir_x=direction.getX();message.dir_y=direction.getY();}
         if(sniffer)GdxFIRDatabase.inst().inReference("ore"+GameSc.ore.indexOf(this,true)).setValue(message.toString());
@@ -160,7 +160,7 @@ public class Elbrium extends Actor {
     public void draw(SpriteBatch batch) {
         if(health>0)batch.draw(thisTexture(),position.getX()-R,position.getY()-R,R*2,R*2);
         else batch.draw(animation.getFrame(),position.getX()-R,position.getY()-R,R*2,R*2);
-        bounds.debug(batch,R);
+        //bounds.debug(batch,R);
         //batch.draw(thisTexture(),position.getX()-R,position.getY()-R,R*2,R*2);
         //batch.draw(region);
     }
