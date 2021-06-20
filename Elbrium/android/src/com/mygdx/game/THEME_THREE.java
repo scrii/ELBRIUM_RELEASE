@@ -204,7 +204,7 @@ public class THEME_THREE extends Quest{  // Класс для Миссий
         THEME_THREE theme_three = new THEME_THREE();
         img.setImageResource(R.mipmap.bandit);
         npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_three.v5);
-        second.setText("Дать 200 монет");
+        second.setText("Дать 400 монет");
         third.setText("Бредовая идея");
         second.setOnClickListener(new View.OnClickListener() {
             @Override

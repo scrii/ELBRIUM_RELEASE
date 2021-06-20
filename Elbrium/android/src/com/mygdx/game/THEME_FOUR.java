@@ -7,7 +7,7 @@ import android.widget.Toast;
 public class THEME_FOUR extends Quest{ // Класс для Миссий
     public int ra4=0;
     CountDownTimer countDownTimer4;
-    int s4=1;
+    int s4=60;
     GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
     public String d1 = "Нужно построить церковь! Люди становятся счастливыми, когда ходят туда. А нужно всего лишь " + (75 + getterANDSetterFile.get_House()*75) + " монет, что скажите?";
     public String d2 = "Через неделю к нам прилетает патриарх марсианской церкви. Нужно встретить его подобающе!";
@@ -342,6 +342,7 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
     public void S10(){
         o_button();
         o_input();
+        input.setText("");
         THEME_FOUR theme_four = new THEME_FOUR();
         if (getterANDSetterFile.get_Church() > 0){
             npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_four.d10_1);
@@ -350,31 +351,55 @@ public class THEME_FOUR extends Quest{ // Класс для Миссий
             first.setText("Да");
             second.setText("Не приходилось");
             third.setText("Не умею читать");
-            first.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    d_input();
-                    description.setText(description.getText().toString() + "\n\n" + theme_four.d10_1_c_1);
-                    if (input.getText().toString().contains("Дьявол") || input.getText().toString().contains("дьявол") || input.getText().toString().contains("devil") || input.getText().toString().contains("Devil") || input.getText().toString().contains("diabolus") || input.getText().toString().contains("Diabolus")) {
-                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_1);
-                        getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 6);
-                        y++;
-                        random();
-                        o_input();
-                    } else if (input.getText().toString().contains("Бог") || input.getText().toString().contains("бог") || input.getText().toString().contains("God") || input.getText().toString().contains("god") || input.getText().toString().contains("Deus") || input.getText().toString().contains("deus")) {
-                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_2);
-                        getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 5);
-                        y++;
-                        random();
-                        o_input();
-                    } else {
-                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_3);
-                        y++;
-                        random();
-                        o_input();
-                    }
-                }
-            });
+                    first.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {pr();
+                            description.setText(description.getText().toString() + "\n\n" + theme_four.d10_1_c_1);
+                            d_input();
+                            o_button();
+                            second.setText("*Сказать*");
+                            third.setText("Извините...");
+                            second.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (input.getText().toString().contains("Дьявол") || input.getText().toString().contains("дьявол") || input.getText().toString().contains("devil") || input.getText().toString().contains("Devil") || input.getText().toString().contains("diabolus") || input.getText().toString().contains("Diabolus")) {
+                                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_1);
+                                        getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() - 6);
+                                        y++;
+                                        o_input();
+                                        random();
+                                    } else if (input.getText().toString().contains("Бог") || input.getText().toString().contains("бог") || input.getText().toString().contains("God") || input.getText().toString().contains("god") || input.getText().toString().contains("Deus") || input.getText().toString().contains("deus")) {
+                                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_2);
+                                        getterANDSetterFile.set_Church(getterANDSetterFile.get_Church() + 5);
+                                        y++;
+                                        o_input();
+                                        random();
+                                    }
+                                    else if (!input.getText().toString().contains("") && !input.getText().toString().contains(" ") && !input.getText().toString().contains("Дьявол") && !input.getText().toString().contains("дьявол") && !input.getText().toString().contains("devil") && !input.getText().toString().contains("Devil") && !input.getText().toString().contains("diabolus") && !input.getText().toString().contains("Diabolus") && !input.getText().toString().contains("Бог") && !input.getText().toString().contains("бог") && !input.getText().toString().contains("God") && !input.getText().toString().contains("god") && !input.getText().toString().contains("Deus") && !input.getText().toString().contains("deus")){
+                                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_3);
+                                        y++;
+                                        o_input();
+                                        random();
+                                    }
+                                    else {
+                                        description.setText(description.getText().toString() + "\n\n" + theme_four.d10_2_c_3);
+                                        y++;
+                                        o_input();
+                                        random();
+                                    }
+                                }
+                            });
+                            third.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + "Да как вы можете!");
+                                    getterANDSetterFile.set_Church(getterANDSetterFile.get_Church()-1);
+                                    o_input();
+                                    random();
+                                }
+                            });
+                        }
+                    });
             second.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {pr();

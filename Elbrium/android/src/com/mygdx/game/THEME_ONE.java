@@ -111,7 +111,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
             public void onClick(View v) {
                 pr();
                 try {
-                    if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText(npc_tv.getText().toString() + "\n" + "Но я не просил столько!");
+                    if(Integer.parseInt(input.getText().toString())<50 || Integer.parseInt(input.getText().toString())>300)npc_tv.setText(npc_tv.getText().toString() + "\n\n" + "Но я не просил столько!");
                     else if(Integer.parseInt(input.getText().toString())>50 || Integer.parseInt(input.getText().toString())<300){
                         getterANDSetterFile.set_Happiness(getterANDSetterFile.get_Happiness()+1);
                         getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money()-Integer.parseInt(input.getText().toString()));

@@ -47,7 +47,7 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_TWO theme_two = new THEME_TWO();
         pro_result = 11;
-        npc_tv.setText(npc_tv.getText().toString() + "\n" + theme_two.m1);
+        npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_two.m1);
         img.setImageResource(R.mipmap.base_avatar_1);
         d_button();
         first.setText("Дать ограбленные деньги");

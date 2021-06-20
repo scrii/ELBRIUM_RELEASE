@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,12 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
     public String w1_4 = "*Крупье даёт вам 2 карты с числами, на них: ";
     public String w2_1 = "Хотите ли вы сыграть в кости?";
     public String w2_2 = "Сколько желаете поставить? Учтите максимальная ставка - 10 монет.";
-
+    CountDownTimer countDownTimer6;
+    int sec6=60;
+    int par=0;
+    int money6;
+    double m=0,y=0;
+    int pl1=0,pl2=0,pl=0;
     public void six(){
         vip++;
         o_button();
@@ -21,92 +27,6 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
         start();
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
         THEME_SIX theme_six = new THEME_SIX();
-        ra6 = 1 + (int) (Math.random() * 10);
-        if (ra6<5){
-            img.setImageResource(R.mipmap.base_avatar_1);
-            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_1);
-            second.setText("Хочу");
-            third.setText("Не интересует");
-            second.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_2);
-                    d_button();
-                    first.setText("Монеты");
-                    second.setText("elbrium");
-                    third.setText("Я передумал");
-                    first.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {pr();
-                            v22=1;
-                            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_3);
-                            d_input();
-                            o_button();
-                            second.setText("*Отдать крупье*");
-                            third.setText("Я передумал");
-                            input.setText("0");
-                            second.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {pr();
-                                    try {
-                                        stav();
-                                    }catch (Exception e){
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                            third.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {pr();
-                                    random();
-                                }
-                            });
-                        }
-                    });
-                    second.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {pr();
-                            v22=2;
-                            npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w1_3);
-                            d_input();
-                            o_button();
-                            second.setText("*Отдать крупье*");
-                            third.setText("Я передумал");
-                            input.setText("0");
-                            second.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {pr();
-                                    try {
-                                        stav();
-                                    }catch (Exception e){
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                            third.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {pr();
-                                    random();
-                                }
-                            });
-                        }
-                    });
-                    third.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {pr();
-                            random();
-                        }
-                    });
-                }
-            });
-            third.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    random();
-                }
-            });
-        }
-        else{
             img.setImageResource(R.mipmap.base_avatar_1);
             npc_tv.setText(npc_tv.getText().toString() + "\n\n" + theme_six.w2_1);
             second.setText("Да");
@@ -118,39 +38,41 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                     d_input();
                     second.setText("Ввод");
                     third.setText("Я передумал");
-                    input.setText("0");
-                    second.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {pr();
-                            try {
-                                if (Integer.parseInt(input.getText().toString())<=0)Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();
-                                if (Integer.parseInt(input.getText().toString())>0 && Integer.parseInt(input.getText().toString())<=10 && (getterANDSetterFile.get_Guardian_Money()-(double)Integer.parseInt(input.getText().toString()))>0.0){
-                                    money = Integer.parseInt(input.getText().toString());
-                                    pl = g_random();
-                                    pl1 = h_random();
-                                    pl2 = g_random();
-                                    if (pl<pl1 && pl<pl2){
-                                        Toast.makeText(getApplicationContext(),"Вы проиграли: " + Integer.parseInt(input.getText().toString()) + "",Toast.LENGTH_SHORT).show();
-                                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(Integer.parseInt(input.getText().toString())));
-                                        random();
+                                second.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {pr();
+                                        try {
+                                            if (Integer.parseInt(input.getText().toString())<=0){
+                                                Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();
+                                                THEME_ONE theme_one = new THEME_ONE();
+                                                theme_one.one();
+                                            }
+                                            if (Integer.parseInt(input.getText().toString())>0 && Integer.parseInt(input.getText().toString())<=10){
+                                                money6 = Integer.parseInt(input.getText().toString());
+                                                pl = g_random();
+                                                pl1 = h_random();
+                                                pl2 = g_random();
+                                                if (pl<pl1 && pl<pl2){
+                                                    description.setText(description.getText().toString() + "\n\n" + "Вы проиграли: " + Integer.parseInt(input.getText().toString()) + "");
+                                                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(Integer.parseInt(input.getText().toString())));
+                                                    random();
+                                                }
+                                                else{
+                                                    m = (Math.random());
+                                                    String res = "";
+                                                    res = String.format("%.1f",m);
+                                                    y = Double.parseDouble(res.replace(',','.'));
+                                                    description.setText(description.getText().toString() + "\n\n" + "Вы выиграли: " + (money6 + money6*y) + "");
+                                                    getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(money6 + money6*y));
+                                                    random();
+                                                }
+                                            }
+                                            else Toast.makeText(getApplicationContext(),"Вы даёте слишком много!",Toast.LENGTH_SHORT).show();
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                        }
                                     }
-                                    else{
-                                        double m=0,y=0;
-                                        m = (Math.random());
-                                        String res = "";
-                                        res = String.format("%.1f",m);
-                                        y = Double.parseDouble(res.replace(',','.'));
-                                        Toast.makeText(getApplicationContext(),"Вы выиграли: " + (money + money*y) + "",Toast.LENGTH_SHORT).show();
-                                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(money + money*y));
-                                        random();
-                                    }
-                                }
-                                else Toast.makeText(getApplicationContext(),"Вы сделали что-то не так!",Toast.LENGTH_SHORT).show();
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                                });
                     third.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {pr();
@@ -165,84 +87,17 @@ public class THEME_SIX extends Quest{  // Класс для Миссий
                     random();
                 }
             });
-        }
     }
-    public void stav(){
-        //ID2();
-        GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
-        THEME_SIX theme_six = new THEME_SIX();
-        if (Integer.parseInt(input.getText().toString())<=0)Toast.makeText(getApplicationContext(),"Вы же всерьёз не думаете, что можете ставить отрицательные числа",Toast.LENGTH_SHORT).show();
-        if (Integer.parseInt(input.getText().toString())>0 && (getterANDSetterFile.get_Guardian_Money()-(double)Integer.parseInt(input.getText().toString()))>0.0){
-            st = st + Integer.parseInt(input.getText().toString());
-            k[n] = k_random();
-            crossbar.setText(crossbar.getText().toString() + k[n] + " ");
-            n++;
-            k[n] = k_random();
-            crossbar.setText(crossbar.getText().toString() + k[n] + " ");
-            n++;
-            crossbar.setText(crossbar.getText().toString() + "sum: " + (k[n]+k[n]) +"");
-            description.setText(description.getText().toString() + "\n\n" +theme_six.w1_4);
-            d_button();
-            first.setText("Повысить ставку и попросить ещё одну карту");
-            second.setText("Повысить ставку");
-            third.setText("Пас");
-            first.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    d_input();
-                    stav();
-                }
-            });
-            second.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    d_input();
-                    int mn = 1 + (int)(Math.random()*10);
-                    try {
-                        if ((((double)getterANDSetterFile.get_Guardian_Money()*80.0)/100.0)>=Integer.parseInt(input.getText().toString())){
-                            if(mn==1){
-                                getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(Integer.parseInt(input.getText().toString())*1.5));
-                                Toast.makeText(getApplicationContext(),"Ваш выигрыш: " + ((double)(Integer.parseInt(input.getText().toString())*1.5))+"",Toast.LENGTH_SHORT).show();
-                                random();
-                            }
-                            else stav();
-                        }
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-            third.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {pr();
-                    player1 = r_random();
-                    player2 = f_random();
-                    for (int i = 0; i < 70; i++) {
-                        z = z + k[i];
-                    }
-                    if(z>21){
-                        Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
-                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
-                        random();
-                    }
-                    if (player1>z && player2>z){
-                        Toast.makeText(getApplicationContext(),"Вы проиграли: " + st + "",Toast.LENGTH_SHORT).show();
-                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() - (double)(st));
-                        random();
-                    }
-                    else{
-                        double m=0,y=0;
-                        m = (Math.random());
-                        String res = "";
-                        res = String.format("%.1f",m);
-                        y = Double.parseDouble(res.replace(',','.'));
-                        Toast.makeText(getApplicationContext(),"Вы выиграли: " + st*y + "",Toast.LENGTH_SHORT).show();
-                        getterANDSetterFile.set_Guardian_Money(getterANDSetterFile.get_Guardian_Money() + (double)(st*y));
-                        random();
-                    }
-                }
-            });
-        }
-        else Toast.makeText(getApplicationContext(),"Недостаточно средств!",Toast.LENGTH_SHORT).show();
+    public int h_random(){
+        int h = 3;
+        h = 1 + (int)(Math.random()*15);
+        if (h<3 || h>15)h_random();
+        return h;
+    }
+    public int g_random(){
+        int f=3;
+        f = 1 + (int)(Math.random()*18);
+        if (f<3 || f>18)g_random();
+        return f;
     }
 }

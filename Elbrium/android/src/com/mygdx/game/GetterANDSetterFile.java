@@ -1115,7 +1115,7 @@ public class GetterANDSetterFile { // get и set всех файлов
         file = new File("/data/data/com.mygdx.game/HealthBase.txt");
         try {
             printWriter = new PrintWriter(file);
-            printWriter.write(r_healthBase);
+            printWriter.write(String.valueOf(r_healthBase));
             printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

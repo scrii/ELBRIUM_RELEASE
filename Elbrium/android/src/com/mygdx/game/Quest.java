@@ -25,9 +25,8 @@ import java.util.ArrayList;
 
 import static com.mygdx.game.UserBase.bm;
 
-public class Quest extends AppCompatActivity implements View.OnClickListener {
-    public int kolvo_symbols = 0,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,pl1=0,pl2=0,pl=0,k1,k2;
-    public int[]k = new int[70];
+public class Quest extends AppCompatActivity{
+    public int kolvo_symbols = 0,v22=0,st=0,n=0,c=1,player1=0,player2=0,z=0,money=0,k1,k2;
     public CountDownTimer countDownTimer;
     public boolean parametr=true;
     public int pro_result=0;
@@ -41,14 +40,6 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     public int y=1;
     String b="",s="";
     UserBase userBase;
-    @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.first: t=1;break;
-            case R.id.second: t=2;break;
-            case R.id.third: t=3;break;
-        }
-    }
     @Override
     protected void onStart(){
         GetterANDSetterFile getterANDSetterFile = new GetterANDSetterFile();
@@ -102,14 +93,8 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         input = findViewById(R.id.input);
         img = findViewById(R.id.nps_img);
         crossbar = findViewById(R.id.crossbar);
-        first.setOnClickListener(this);
-        second.setOnClickListener(this);
-        third.setOnClickListener(this);
         start();
         exit(true);
-        for (int i = 0; i < 70; i++) {
-            k[i] = 0;
-        }
         npc_tv.setTextColor(Color.GRAY);
         description.setTextColor(Color.GRAY);
         userBase = new UserBase();
@@ -142,40 +127,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
         }
         random();
     }
-    public int h_random(){
-        int h = 3;
-        h = 1 + (int)(Math.random()*15);
-        if (h<3 || h>15)h_random();
-        return h;
-    }
-    public int g_random(){
-        int f=3;
-        f = 1 + (int)(Math.random()*18);
-        if (f<3 || f>18)g_random();
-        return f;
-    }
-    public int f_random(){
-        int r = 13;
-        r = 1 + (int)(Math.random()*22);
-        if(r<13 || r>22){
-            r_random();
-        }
-        return r;
-    }
-    public int r_random(){
-        int r = 15;
-        r = 1 + (int)(Math.random()*24);
-        if(r<15 || r>24){
-            r_random();
-        }
-        return r;
-    }
-    public int k_random(){
-        int random=6;
-        random = 1 + (int) (Math.random() * 11);
-        if (random<6)k_random();
-        return random;
-    }
+
     public void exit(boolean tf){
         parametr = tf;
     }
@@ -239,6 +191,7 @@ public class Quest extends AppCompatActivity implements View.OnClickListener {
     }
     public void o_input(){ // Скрыть ввод
         input.setVisibility(View.INVISIBLE);
+        input.setText("");
     }
 
     public void comments(TextView textMessage){ // Комментирование
