@@ -273,7 +273,6 @@ public class THEME_TWO extends Quest {  // Класс для Миссий
                     }
                     else F8();
                 }catch (Exception e){
-                    //Toast.makeText(getApplicationContext(),"Введено не число!",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }

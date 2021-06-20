@@ -105,6 +105,7 @@ public class THEME_ONE extends Quest{ // Класс для Миссий
         second.setText("Выдать");
         third.setText("Отказать");
         d_input();
+        input.setText("0");
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
