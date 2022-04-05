@@ -19,7 +19,7 @@ public class Online {
 
     public void online(int case_){
         // 0 - удалить игрока из поля online
-
+// test change
         switch (case_){
             case -1:break;
             case 0: FirebaseDatabase.getInstance().getReference("online").addValueEventListener(new ValueEventListener() {
