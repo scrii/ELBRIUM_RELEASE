@@ -45,6 +45,12 @@ public class Main extends Game {
 	public static Texture bLeft,bUp,bRight,bDown;
 	public static Texture bLeft_un,bUp_un,bRight_un,bDown_un;
 
+	public static Texture enemy0;
+	public static Texture enemy1;
+	public static Texture enemy2;
+
+	public static Texture rectangle;
+
 	public static GameSc gameSc;
 	public static GetterANDSetterFile getter_setter;
 	Multiplayer mp;
@@ -66,6 +72,7 @@ public class Main extends Game {
 		square2 = new Texture("square2.png");
 
 		debugBG=new Texture("dbg.png");
+		rectangle = new Texture("rectangle.png");
 		circle=new Texture("circle.png");
 		stickImg=new Texture("stick.png");
 		actor=new Texture("actor.png");
@@ -152,6 +159,10 @@ public class Main extends Game {
 		player3=new Texture("players/player3.png");
 		player4=new Texture("players/player4.png");
 		player5=new Texture("players/player5.png");
+
+		enemy0= new Texture("enemies/enemy0.png");
+		enemy1= new Texture("enemies/enemy1.png");
+		enemy2= new Texture("enemies/enemy2.png");
 	}
 
 	private void loadButtonTextures(){

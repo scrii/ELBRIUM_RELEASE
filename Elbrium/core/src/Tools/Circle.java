@@ -44,4 +44,8 @@ public class Circle {
         batch.draw(Main.circle,pos.getX()-R,pos.getY()-R,2*R,2*R);
     }
 
+    public void debug(SpriteBatch batch){
+        batch.draw(Main.circle,pos.getX()-R,pos.getY()-R,2*R,2*R);
+    }
+
 }

@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import com.google.gson.Gson;
 import com.teamname.game.Actor.Bullet;
 import com.teamname.game.Actor.Elbrium;
+import com.teamname.game.Actor.Enemy;
 import com.teamname.game.Actor.Player;
 import com.teamname.game.GraphicsObj.Animation;
 import com.teamname.game.Main;
@@ -52,6 +53,8 @@ public class GameSc implements Screen {
 
     public static Array<Bullet> bullets;
     public static Array<Elbrium> ore;
+    public static Array<Enemy> enemies;
+
     private static Spawner spawner;
     private static Gson gson;
     public static final float SIZE_COEF=1;
@@ -75,7 +78,7 @@ public class GameSc implements Screen {
     private final int joyY=(Main.HEIGHT/3)/2+(Main.HEIGHT/3)/4;
     private final int joySize = Main.HEIGHT/3;
 
-    private static final int entityRad = Main.HEIGHT/15;
+    public static final int entityRad = Main.HEIGHT/15;
 
     private static final int entityX=Main.BACKGROUND_WIDTH/2;
     private static final int entityY=Main.BACKGROUND_HEIGHT/2;
@@ -100,7 +103,7 @@ public class GameSc implements Screen {
         spawner=new Spawner();
         gson=new Gson();
 
-
+        
 
         loadActors();
 
@@ -139,6 +142,7 @@ public class GameSc implements Screen {
         multiplayer.draw(Main.batch);
         backRender(Main.batch);
         player.draw(Main.batch);
+        player.bounds.debug(Main.batch);
 
         //player.send_in_ONLINE.debug(Main.batch);
         //player.bounds.debug(Main.batch,player.R);
@@ -170,6 +174,8 @@ public class GameSc implements Screen {
         //player.setDirection(joy.getDir());
 
         player.update();
+        for(Enemy enemy : enemies)enemy.update();
+
         bullgen.update(fireJoy);
         for(Bullet b : bullets){b.update();b.setCount(bullets.indexOf(b,true));if(b.isOut)bullets.removeValue(b,true);}
 
@@ -200,7 +206,8 @@ public class GameSc implements Screen {
 
     public void backRender(SpriteBatch batch){
         for(int i=0;i<bullets.size;i++)bullets.get(i).draw(batch);
-        for(int i=0;i<ore.size;i++)ore.get(i).draw(batch);
+        for(int i=0;i<ore.size;i++){ore.get(i).draw(batch);ore.get(i).bounds.debug(batch);}
+        for(int i=0;i<enemies.size;i++)enemies.get(i).draw(batch);
 //        multiplayer.draw(batch);
 
     }
@@ -212,11 +219,14 @@ public class GameSc implements Screen {
                 joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
 
 
-        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),5,entityRad,100);
+        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),6,entityRad,100);
         //getter.setPlayer(player);
         joy=new MotionJoystick(Main.circle,Main.stickImg,new Point2D(joyX,joyY),joySize,player);
 
         ore=new Array<>();
+
+        enemies = new Array<>();
+
         bullgen=new BulletGenerator();
 
         fireJoy=new Joystick(Main.circle,Main.stickImg,new Point2D(Main.WIDTH-joyX,joyY),joySize);

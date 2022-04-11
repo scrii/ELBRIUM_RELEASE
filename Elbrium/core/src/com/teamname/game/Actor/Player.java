@@ -91,6 +91,7 @@ public class Player extends Actor {
             databaseHelper.sendToFirebase(getter_setter.get_Nickname(),player_data.toString());
         }
 
+
     }
 
     public float getHealth() {
