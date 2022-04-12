@@ -2,6 +2,8 @@ package com.teamname.game.Actor;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.teamname.game.GraphicsObj.GraphicsObj;
+import com.teamname.game.Screens.GameSc;
+
 import Tools.Circle;
 import Tools.Point2D;
 
@@ -29,6 +31,27 @@ public abstract class Actor extends GraphicsObj {
         direction=new Point2D(0,0);
     }
 
+    public void collision(Actor other, float offset){
+        /*if(bounds.Overlaps(GameSc.player.bounds)){
+            //Gdx.app.log("new_tag", "overlaps");
+            position.setX(playerPos.getX()-GameSc.player.R - (R+GameSc.player.R) / length * dX);
+            position.setY(playerPos.getY()-GameSc.player.R - (R+GameSc.player.R) / length * dY);
+        }*/
+
+        float dX = other.position.getX() - position.getX() - other.R;
+        float dY = other.position.getY() - position.getY() - other.R;
+        float length = (float)Math.sqrt(dX* dX + dY*dY);
+        direction = new Point2D(dX / length, dY / length);
+
+        Circle dCircle = new Circle(other.bounds);
+        dCircle.addR(offset);
+
+        if(bounds.Overlaps(dCircle)){
+            position.setX(other.position.getX()-other.R-(R+ dCircle.R)/length*dX);
+            position.setY(other.position.getY()-other.R-(R+ dCircle.R)/length*dY);
+        }
+
+    }
 
     public void setDirection(Point2D dir){
         direction=dir;

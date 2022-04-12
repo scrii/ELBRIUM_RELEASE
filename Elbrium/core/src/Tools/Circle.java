@@ -4,13 +4,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Main;
 
 public class Circle {
-    // класс требует изменений
     public Circle(Point2D pos, float R){
         this.pos=new Point2D(pos);
         this.R=R;
     }
 
-    float R;
+    public Circle(Circle c){
+        this.pos = c.pos;
+        this.R = c.R;
+    }
+
+    public float R;
     public Point2D pos;
 
     //лежит ли что-то в круге
@@ -47,5 +51,12 @@ public class Circle {
     public void debug(SpriteBatch batch){
         batch.draw(Main.circle,pos.getX()-R,pos.getY()-R,2*R,2*R);
     }
+
+    public void addR(float R){
+        // для новых объектов
+        this.R+=R;
+    }
+
+
 
 }

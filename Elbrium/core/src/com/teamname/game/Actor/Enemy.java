@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Screens.GameSc;
 
+import Tools.Circle;
 import Tools.Point2D;
 
 public class Enemy extends Actor {
@@ -20,16 +21,17 @@ public class Enemy extends Actor {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(img, position.getX()-R,position.getY()-R,R*2,R*2);
+        bounds.debug(batch);
     }
 
     @Override
     public void update() {
         playerPos = GameSc.player.send_in_ONLINE;
 
-        float dX = playerPos.getX() - position.getX() - GameSc.player.R;
+        /*float dX = playerPos.getX() - position.getX() - GameSc.player.R;
         float dY = playerPos.getY() - position.getY() - GameSc.player.R;
         float length = (float)Math.sqrt(dX* dX + dY*dY);
-        direction = new Point2D(dX / length, dY / length);
+        direction = new Point2D(dX / length, dY / length);*/
 
         /*
         if(!circleBounds.isContains(stickBounds.pos)){
@@ -37,16 +39,16 @@ public class Enemy extends Actor {
             stickBounds.pos.setY(-rcircle/ length * dy +circleBounds.pos.getY());
         */
 
-        if(bounds.Overlaps(GameSc.player.bounds)){
-            position.setX(position.getX() + R / length *dX - GameSc.player.R);
-            position.setY(position.getY() + R / length *dY- GameSc.player.R);
-        }
+
+
+        collision(GameSc.player, 0);
+
 
         position.add(direction.getX()*speed,direction.getY()*speed);
-        bounds.pos.setPoint(position.getX()-R,position.getY()-R);
-        Gdx.app.log("enemy", position.getX()+" "+position.getY());
+        bounds.pos.setPoint(position.getX(),position.getY());
 
     }
+
 
 
 }

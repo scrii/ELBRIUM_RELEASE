@@ -171,6 +171,9 @@ public class Elbrium extends Actor {
 
         // 0 - spawner
         // 1 - player
+
+        //collision(GameSc.player, 0); // elbrium следует за игроком. переделать collision, сделать override в дочерних классах
+
         if (GameSc.playerIsSpawner)
         {
             animationUpdate();
@@ -189,6 +192,8 @@ public class Elbrium extends Actor {
             if (health <= 0) animation.update(0.1f);
             if (animation.isDone()) GameSc.ore.removeValue(this, true);
         }
+
+
 
     }
 

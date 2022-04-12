@@ -174,7 +174,16 @@ public class GameSc implements Screen {
         //player.setDirection(joy.getDir());
 
         player.update();
-        for(Enemy enemy : enemies)enemy.update();
+        for(Enemy enemy : enemies){;
+            enemy.update();
+
+        }
+
+        for(int i=0;i<enemies.size;i++){
+            for(int j=1;j<enemies.size;j++){
+                enemies.get(i).collision(enemies.get(j), 0);
+            }
+        }
 
         bullgen.update(fireJoy);
         for(Bullet b : bullets){b.update();b.setCount(bullets.indexOf(b,true));if(b.isOut)bullets.removeValue(b,true);}
@@ -183,7 +192,6 @@ public class GameSc implements Screen {
         else for(Elbrium e : ore){e.update();e.setCount(ore.indexOf(e,true));if(e.isOut)ore.removeValue(e,true);}
 
         collision();
-        ore_player_collision();
     }
 
     public void frontRender(SpriteBatch frontBatch){
@@ -269,11 +277,7 @@ public class GameSc implements Screen {
                 else elbrium.counter=elbrium.logOutSec;
     }
 
-    public void ore_player_collision(){
-        for(Elbrium elbrium : ore)
-            if(elbrium.bounds.Overlaps(player.bounds)){
-                Gdx.app.log("player","collision");
-            }
+
 
 
         // //
@@ -285,7 +289,7 @@ public class GameSc implements Screen {
         Gdx.app.error("player health",player.getHealth()+"");*/
         // //
         //else joy.oreOverlaps=false;
-    }
+
 
     public void player_player_collision(){
         for(Message m : multiplayer.players){
