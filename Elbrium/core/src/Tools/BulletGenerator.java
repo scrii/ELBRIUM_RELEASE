@@ -1,6 +1,7 @@
 package Tools;
 
 import com.teamname.game.Actor.Bullet;
+import com.teamname.game.Actor.Enemy;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
@@ -13,11 +14,11 @@ public class BulletGenerator {
     boolean isFire;
     boolean isTime=true;
     Timer timer;
-    private static final int Sec=1;
+    private static int Sec=1;
     private float counter=Sec;
     private TimerTask task;
 
-    public BulletGenerator(){
+    public BulletGenerator(int secInterval){
         timer=new Timer();
         task = new TimerTask() {
             @Override
@@ -29,15 +30,28 @@ public class BulletGenerator {
             }
         };
         timer.scheduleAtFixedRate(task,0,250);
+        Sec=secInterval;
     }
 
     public void update(Joystick joy){
         isFire= joy.getDir().getX() != 0 || joy.getDir().getY() != 0;
         if(isFire && isTime) {
-            GameSc.bullets.add(new Bullet(Main.bullet, new Point2D(GameSc.player.bounds.pos), 18, GameSc.player.R/5, joy.getDir()));
+            Point2D pos = new Point2D(GameSc.player.bounds.pos);
+            pos.add(GameSc.player.R*joy.getDir().getX(), GameSc.player.R*joy.getDir().getY());
+            GameSc.bullets.add(new Bullet(Main.bullet, pos, 18, GameSc.player.R/5, joy.getDir(),GameSc.player.damage,true));
             isTime=false;
             counter=Sec;
             //Gdx.app.error("isTime",isTime+"");
+        }
+    }
+
+    public void enemyUpdate(Enemy enemy){
+        if(enemy.isSeeingPlayer && isTime){
+            Point2D pos = new Point2D(enemy.position);
+            pos.add(enemy.R*enemy.direction.getX(), enemy.R*enemy.direction.getY());
+            GameSc.bullets.add(new Bullet(Main.bullet, pos, 18, GameSc.player.R/5, enemy.direction, enemy.damage,false));
+            isTime=false;
+            counter=Sec;
         }
     }
 }

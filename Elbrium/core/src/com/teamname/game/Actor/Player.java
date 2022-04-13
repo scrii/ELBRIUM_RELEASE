@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Main;
+import com.teamname.game.Screens.DeathSc;
+import com.teamname.game.Screens.Debug.DebugSc;
 import com.teamname.game.Screens.GameSc;
 
 import java.util.Timer;
@@ -18,7 +20,7 @@ import Tools.Point2D;
 public class Player extends Actor {
 
     private int Score;
-    private float health;
+    private int health;
     private float realSpeed=0; /* это поле является истинным значением скорости, которое зависит от удаленности
     стика от центра окружности. переменная speed - ее максимальное значение */
     public float X;
@@ -35,7 +37,7 @@ public class Player extends Actor {
     private static final int logOutSec=180;
 
     public int counter= logOutSec; // вспомогательная переменная
-    public float damage; // урон
+    public int damage; // урон
 
 
 
@@ -43,7 +45,7 @@ public class Player extends Actor {
 
     private DatabaseHelper databaseHelper;
 
-    public Player(Texture img, Point2D position, float Speed, float R, float health) {
+    public Player(Texture img, Point2D position, float Speed, float R, int health) {
         super(img, position, Speed, R);
         this.health=health;
         cameraPoint=new Point2D(position);
@@ -51,7 +53,7 @@ public class Player extends Actor {
         getter_setter=new GetterANDSetterFile();
         this.health+=getter_setter.get_Health();
         send_in_ONLINE = new Point2D(position.getX()+R,position.getY()+R);
-        damage= (float) (getter_setter.get_Attack());
+        damage= (int) (getter_setter.get_Attack());
         player_data=new Message(getter_setter.get_Appearance()+"",send_in_ONLINE.getX(),send_in_ONLINE.getY(),
                 getter_setter.get_Attack(),getter_setter.get_Health(),
                 getter_setter.get_Protection(),getter_setter.get_Nickname());
@@ -63,6 +65,7 @@ public class Player extends Actor {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(Main.getPlayer(),position.getX()-R*2,position.getY()-R*2,R*2,R*2);
+        send_in_ONLINE.debug(batch);
     }
 
     public void cameraPointUpdate(){
@@ -77,13 +80,15 @@ public class Player extends Actor {
 
     @Override
     public void update() {
+        playerCheck();
+        cameraPointUpdate();
         X=direction.getX()*realSpeed;
         Y=direction.getY()*realSpeed;
         position.add(X,Y);
         send_in_ONLINE=position; // ссылочная переменная, введенная для удобства
         bounds.pos.setPoint(send_in_ONLINE.getX()-R,send_in_ONLINE.getY()-R);
-        cameraPointUpdate();
-        playerCheck();
+
+
         if(isMove){
             counter=logOutSec;
             player_data.x=send_in_ONLINE.getX();
@@ -143,5 +148,14 @@ public class Player extends Actor {
         timer.cancel();
     }
 
+    public void damaged(Bullet b){
+        health-=b.damage;
+        if(health<=0){
+         //deathSc
+           // GameSc.main.setScreen(new DebugSc());
+        }
+        Gdx.app.log("player", "health: " + health);
+        GameSc.bullets.removeValue(b,true);
+    }
 
 }

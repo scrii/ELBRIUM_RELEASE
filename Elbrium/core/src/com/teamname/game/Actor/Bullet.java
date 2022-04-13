@@ -15,12 +15,16 @@ public class Bullet extends Actor {
     public boolean isOut;
     int count; // индекс объекта
     private BulletMessage message;
+    public int damage;
+    public boolean isBelongToPlayer;
 
 
-    public Bullet(Texture img, Point2D position, float Speed, float R, Point2D direction) {
+    public Bullet(Texture img, Point2D position, float Speed, float R, Point2D direction, int damage,boolean isBelongToPlayer) {
         super(img, position, Speed, R);
         this.direction=new Point2D(direction);
         message = new BulletMessage(Main.getter_setter.get_Attack(),0,0,Main.getter_setter.get_Nickname());
+        this.damage=damage;
+        this.isBelongToPlayer=isBelongToPlayer;
     }
 
     @Override

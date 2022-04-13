@@ -38,7 +38,7 @@ public class Spawner extends TimerTask {
     public void start() {
         TimerTask timerTask = new Spawner();
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 20 * 1000); // переодичность спавна Эльбриума - 30 секунд
+        timer.scheduleAtFixedRate(timerTask, 0, 5 * 1000); // переодичность спавна Эльбриума - 30 секунд
     }
 
     private void spawnOre() {
@@ -60,32 +60,35 @@ public class Spawner extends TimerTask {
             case 2: {selectedImg = Main.enemy2;break;}
         };
 
-        int characteristicsCase = (int)(Math.random() * 3);
+        int characteristicsCase = (int)(Math.random() * 3), health=100;
         float speed=2, r=2, damage = 20;
         int entityRad = GameSc.entityRad;
         switch(characteristicsCase){
             case 0: {
                 // player.speed = 6;
-                speed = 5;
+                speed = 4;
                 r = (float)(entityRad * 0.8);
                 damage = 5;
+                health=30;
                 break;
             }
             case 1: {
-                speed = 4;
+                speed = 4.5f;
                 r = (float)(entityRad * 1.2);
                 damage = 7;
+                health=28;
                 break;
             }
             case 2: {
-                speed = 6;
+                speed = 5;
                 r = (float)(entityRad * 0.7);
                 damage = 3;
+                health=25;
                 break;
             }
         }
         Enemy enemy = new Enemy(selectedImg, new Point2D((float) Math.random() * Main.BACKGROUND_WIDTH / 1.3f,
-                (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f), speed, r, (int)(damage));
+                (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f), speed, r, (int)(damage), health);
         /*GameSc.ore.add(elbrium);
 
         Gdx.app.log("TIMER", "ore spawned");*/

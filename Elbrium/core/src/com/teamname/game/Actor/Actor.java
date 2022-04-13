@@ -40,11 +40,11 @@ public abstract class Actor extends GraphicsObj {
 
         float dX = other.position.getX() - position.getX() - other.R;
         float dY = other.position.getY() - position.getY() - other.R;
-        float length = (float)Math.sqrt(dX* dX + dY*dY);
-        direction = new Point2D(dX / length, dY / length);
+
 
         Circle dCircle = new Circle(other.bounds);
         dCircle.addR(offset);
+        float length = (float)Math.sqrt(dX* dX + dY*dY);
 
         if(bounds.Overlaps(dCircle)){
             position.setX(other.position.getX()-other.R-(R+ dCircle.R)/length*dX);

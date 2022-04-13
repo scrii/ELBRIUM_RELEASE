@@ -57,13 +57,14 @@ public class Joystick {
     }
 
     public void atControl(float x, float y){
-        stickBounds.pos.setPoint(x,y);
+
         float dx = circleBounds.pos.getX() - x;
         float dy = circleBounds.pos.getY() - y;
         float dist = (float) Math.sqrt(dx * dx + dy * dy);
         this.dist=dist;
         // проекции - косинус и синус
         if(dist!=0)direction.setPoint(-(dx / dist), -(dy / dist));
+        stickBounds.pos.setPoint(x,y);
     }
 
     public void returnStick(){

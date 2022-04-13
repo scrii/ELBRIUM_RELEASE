@@ -94,7 +94,7 @@ public class GameSc implements Screen {
 
     // ресурсы подгружаются с класса Main
 
-    Main main;
+    public static Main main;
     public DatabaseHelper databaseHelper;
 
     public GameSc(Main main){
@@ -174,18 +174,23 @@ public class GameSc implements Screen {
         //player.setDirection(joy.getDir());
 
         player.update();
-        for(Enemy enemy : enemies){;
-            enemy.update();
-
-        }
-
         for(int i=0;i<enemies.size;i++){
-            for(int j=1;j<enemies.size;j++){
-                enemies.get(i).collision(enemies.get(j), 0);
-            }
+            enemies.get(i).collision(player, 4*enemies.get(i).R);
+
+            enemies.get(i).update();
+
+            enemies.get(i).bullgen.enemyUpdate(enemies.get(i));
+
+
+
+
         }
+
+
 
         bullgen.update(fireJoy);
+
+
         for(Bullet b : bullets){b.update();b.setCount(bullets.indexOf(b,true));if(b.isOut)bullets.removeValue(b,true);}
 
         if(!playerIsSpawner)snifferUpdate();
@@ -216,6 +221,7 @@ public class GameSc implements Screen {
         for(int i=0;i<bullets.size;i++)bullets.get(i).draw(batch);
         for(int i=0;i<ore.size;i++){ore.get(i).draw(batch);ore.get(i).bounds.debug(batch);}
         for(int i=0;i<enemies.size;i++)enemies.get(i).draw(batch);
+        //batch.draw(Main.rectangle, camera.position.x-Main.WIDTH/2f, camera.position.y-Main.HEIGHT/2f);
 //        multiplayer.draw(batch);
 
     }
@@ -235,7 +241,7 @@ public class GameSc implements Screen {
 
         enemies = new Array<>();
 
-        bullgen=new BulletGenerator();
+        bullgen=new BulletGenerator(2);
 
         fireJoy=new Joystick(Main.circle,Main.stickImg,new Point2D(Main.WIDTH-joyX,joyY),joySize);
 
@@ -267,14 +273,22 @@ public class GameSc implements Screen {
     }
 
     public void collision(){
-        for(Bullet bullet : bullets)
-            for(Elbrium elbrium : ore)
-                if(bullet.bounds.Overlaps(elbrium.bounds)){
-                    elbrium.damaged(bullet,ore.indexOf(elbrium,true));
-                    bullets.removeValue(bullet,true);
+        for(Bullet bullet : bullets) {
+            for (Elbrium elbrium : ore)
+                if (bullet.bounds.Overlaps(elbrium.bounds)) {
+                    elbrium.damaged(bullet, ore.indexOf(elbrium, true));
+                    bullets.removeValue(bullet, true);
                     //Gdx.app.log("collision",j+"");
+                } else elbrium.counter = elbrium.logOutSec;
+            for(Enemy enemy : enemies){
+                if(bullet.bounds.Overlaps(enemy.bounds)){
+                    enemy.damaged(bullet);
                 }
-                else elbrium.counter=elbrium.logOutSec;
+            }
+            if(player.bounds.Overlaps(bullet.bounds)){
+                player.damaged(bullet);
+            }
+        }
     }
 
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.LifecycleListener;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -215,6 +216,10 @@ public class Main extends Game {
 			case 5: return player5;
 		}
 		return player1;
+	}
+
+	public void setNewScreen(Screen screen){
+		setScreen(screen);
 	}
 
 }
