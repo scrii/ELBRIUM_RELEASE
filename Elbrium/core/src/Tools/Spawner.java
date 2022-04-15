@@ -1,5 +1,6 @@
 package Tools;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.teamname.game.Actor.Elbrium;
@@ -12,6 +13,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Buffs.Buff;
 import Messages.ElbriumMessage;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
@@ -19,6 +21,7 @@ public class Spawner extends TimerTask {
     private int rank;
     private ElbriumMessage message;
     private boolean enemyFlag = true;
+    private Timer timer;
 
     public Spawner() {
         // объект вызывается при условии spawner (см PlayerAction)
@@ -26,10 +29,15 @@ public class Spawner extends TimerTask {
 
     @Override
     public void run() {
-        if (GameSc.ore.size < 15) spawnOre();
-        else Gdx.app.log("Spawner", "Overflow");
+        if (GameSc.ore.size < 8) spawnOre();
+        else Gdx.app.log("Spawner", "ore[] Overflow");
+
+        if(GameSc.buffs.size < 5) spawnBuff();
+        else Gdx.app.log("Spawner", "buffs[] Overflow");
+
         if(enemyFlag){
-            spawnEnemy();
+            if(GameSc.enemies.size < 5)spawnEnemy();
+            else Gdx.app.debug("Spawner", "enemies[] Overflow");
             enemyFlag = false;
         }
         else enemyFlag = true;
@@ -37,8 +45,8 @@ public class Spawner extends TimerTask {
 
     public void start() {
         TimerTask timerTask = new Spawner();
-        Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 5 * 1000); // переодичность спавна Эльбриума - 30 секунд
+        timer = new Timer(true);
+        timer.scheduleAtFixedRate(timerTask, 0, 10 * 1000); // переодичность спавна Эльбриума - 30 секунд
     }
 
     private void spawnOre() {
@@ -48,7 +56,7 @@ public class Spawner extends TimerTask {
                 (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f), rank);
         GameSc.ore.add(elbrium);
 
-        Gdx.app.log("TIMER", "ore spawned");
+        Gdx.app.log("TIMER", GameSc.ore.size + " ore spawned");
     }
 
     private void spawnEnemy(){
@@ -93,13 +101,36 @@ public class Spawner extends TimerTask {
 
         Gdx.app.log("TIMER", "ore spawned");*/
         GameSc.enemies.add(enemy);
-        Gdx.app.log("TIMER", "enemy spawned");
-        Gdx.app.log("TIMER", GameSc.enemies.size+"");
+        Gdx.app.log("TIMER", GameSc.enemies.size+ " enemy spawned");
+        //Gdx.app.log("TIMER", GameSc.enemies.size+"");
     }
 
     public void setRank(int rank) {
         this.rank = rank;
     }
 
+    public void stop(){
+        timer.cancel();
+    }
+
+
+
+    private void spawnBuff(){
+        int choice = (int) (Math.random() * 3);
+
+        Buff buff;
+        switch (choice){
+            case 1: {buff = new Buff("speed_up", new Point2D((float) Math.random() * Main.BACKGROUND_WIDTH / 1.3f,
+                    (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f), Main.speedArrow);break;}
+            case 2: {buff = new Buff("damage_up",new Point2D((float) Math.random() * Main.BACKGROUND_WIDTH / 1.3f,
+                    (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f),Main.explosion);break;}
+            default: {buff = new Buff("aidkit",new Point2D((float) Math.random() * Main.BACKGROUND_WIDTH / 1.3f,
+                    (float) Math.random() * Main.BACKGROUND_HEIGHT / 1.3f),Main.aidkit);break;}
+        }
+
+
+        GameSc.buffs.add(buff);
+        Gdx.app.log("TIMER", GameSc.buffs.size + " buff spawned");
+    }
 
 }

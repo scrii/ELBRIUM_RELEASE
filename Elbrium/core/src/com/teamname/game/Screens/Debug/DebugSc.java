@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Main;
+import com.teamname.game.Screens.GameSc;
 
 import java.util.List;
 
@@ -15,6 +16,12 @@ import pl.mk5.gdx.fireapp.functional.Consumer;
 
 public class DebugSc implements Screen {
     Buttons button;
+    Main main;
+
+    public DebugSc(Main main){
+        this.main=main;
+    }
+
     @Override
     public void show() {
         Gdx.input.setInputProcessor(new InputProcessor() {

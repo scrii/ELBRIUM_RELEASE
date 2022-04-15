@@ -8,6 +8,7 @@ public abstract class GraphicsObj {
     public GraphicsObj(Texture img){
         this.img=img;
     }
+    public GraphicsObj(){}
 
     public Texture img;
 

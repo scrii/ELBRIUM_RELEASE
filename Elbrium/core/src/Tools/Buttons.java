@@ -17,6 +17,30 @@ public class Buttons {
     private int otherPointer=0;
     private boolean actionDone;
 
+    public float getStartX() {
+        return startX;
+    }
+
+    public float getStartY() {
+        return startY;
+    }
+
+    public float getEndX() {
+        return endX;
+    }
+
+    public float getEndY() {
+        return endY;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
     public boolean isTouch() {
         return isTouch;
     }

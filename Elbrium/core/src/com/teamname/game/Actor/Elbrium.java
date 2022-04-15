@@ -160,9 +160,15 @@ public class Elbrium extends Actor {
     public void draw(SpriteBatch batch) {
         if(health>0)batch.draw(thisTexture(),position.getX()-R,position.getY()-R,R*2,R*2);
         else batch.draw(animation.getFrame(),position.getX()-R,position.getY()-R,R*2,R*2);
-        //bounds.debug(batch,R);
+        position.debug(batch);
         //batch.draw(thisTexture(),position.getX()-R,position.getY()-R,R*2,R*2);
         //batch.draw(region);
+    }
+
+    @Override
+    public void collision(Actor other, float offset) {
+        super.collision(other, offset);
+        if(bounds.Overlaps(other.bounds))direction.setPoint(other.direction);
     }
 
     @Override

@@ -17,6 +17,7 @@ import com.teamname.game.Actor.Enemy;
 import com.teamname.game.Actor.Player;
 import com.teamname.game.GraphicsObj.Animation;
 import com.teamname.game.Main;
+import com.teamname.game.Screens.Debug.DebugSc;
 //import com.
 
 
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import Buffs.Buff;
+import Hud.HealthBar;
 import Messages.BulletMessage;
 import FirebaseHelper.DatabaseHelper;
 //import Online.Getter;
@@ -54,8 +57,9 @@ public class GameSc implements Screen {
     public static Array<Bullet> bullets;
     public static Array<Elbrium> ore;
     public static Array<Enemy> enemies;
+    public static Array<Buff> buffs;
 
-    private static Spawner spawner;
+    public static Spawner spawner;
     private static Gson gson;
     public static final float SIZE_COEF=1;
     private final Multiplayer multiplayer;
@@ -67,8 +71,12 @@ public class GameSc implements Screen {
     public static boolean playerIsSpawner;
     private static ArrayList<Elbrium> snifferOre;
 
+    private HealthBar healthBar;
 
-    Buttons chat_button,back_button;
+    
+
+
+    public static Buttons back_button;
     BulletGenerator bullgen;
     float deathScAlpha=0;
 
@@ -83,8 +91,8 @@ public class GameSc implements Screen {
     private static final int entityX=Main.BACKGROUND_WIDTH/2;
     private static final int entityY=Main.BACKGROUND_HEIGHT/2;
 
-    public static final float player_x=Main.WIDTH/2f-entityRad;
-    public static final float player_y=Main.HEIGHT/2f-entityRad;
+    //public static final float player_x=Main.WIDTH/2f-entityRad;
+    //public static final float player_y=Main.HEIGHT/2f-entityRad;
 
     //<!!! --->
 
@@ -94,7 +102,7 @@ public class GameSc implements Screen {
 
     // ресурсы подгружаются с класса Main
 
-    public static Main main;
+    public Main main;
     public DatabaseHelper databaseHelper;
 
     public GameSc(Main main){
@@ -161,8 +169,8 @@ public class GameSc implements Screen {
         Main.frontBatch.end();
 
 
-        if(player.getHealth()<=0)death();
-    }
+
+}
 
 
 
@@ -190,54 +198,88 @@ public class GameSc implements Screen {
 
         bullgen.update(fireJoy);
 
+        for(Buff buff : buffs){
+            buff.update();
+            if(player.bounds.Overlaps(buff.bounds)){buff.pickUp(player, buff);buffs.removeValue(buff, true);}
+            for(Enemy enemy : enemies){
+                if(buff.bounds.Overlaps(enemy.bounds)){
+                    buff.pickUp(enemy, buff);buffs.removeValue(buff, true);
+
+                }
+            }
+
+        }
 
         for(Bullet b : bullets){b.update();b.setCount(bullets.indexOf(b,true));if(b.isOut)bullets.removeValue(b,true);}
 
-        if(!playerIsSpawner)snifferUpdate();
-        else for(Elbrium e : ore){e.update();e.setCount(ore.indexOf(e,true));if(e.isOut)ore.removeValue(e,true);}
+        for(Elbrium e : ore){
+            e.collision(player,0);
+//            for(Enemy enemy : enemies){
+  //              e.collision(enemy, enemy.R);
+//            }
+            e.update();
+            e.setCount(ore.indexOf(e,true));
+            if(e.isOut)ore.removeValue(e,true);
+        }
 
         collision();
+
+        if(player.getHealth() <= 0){
+            main.setScreen(new DeathSc(main));
+            spawner.stop();
+            main.disposeGameSc();
+        }
+
+        healthBar.update();
+
     }
 
     public void frontRender(SpriteBatch frontBatch){
         joy.draw(frontBatch);
         fireJoy.draw(frontBatch);
+        healthBar.draw(frontBatch);
+
     }
 
-    public void playerRender(int case_){
-        switch(case_){
-            case 1:
-                Main.playerBatch.begin();
-                Main.playerBatch.draw(player.img, player_x, player_y, 100, 100);
-                Main.playerBatch.end();
-                break;
-            case 0:
-                Main.batch.draw(Main.getPlayer(), player_x, player_y, 100, 100);
-                break;
-        }
-    }
+//    public void playerRender(int case_){
+//        switch(case_){
+//            case 1:
+//                Main.playerBatch.begin();
+//                Main.playerBatch.draw(player.img, player_x, player_y, 100, 100);
+//                Main.playerBatch.end();
+//                break;
+//            case 0:
+//                Main.batch.draw(Main.getPlayer(), player_x, player_y, 100, 100);
+//                break;
+//        }
+//    }
 
     public void backRender(SpriteBatch batch){
+        for(int i=0;i<buffs.size;i++){buffs.get(i).draw(batch);buffs.get(i).bounds.debug(batch);}
         for(int i=0;i<bullets.size;i++)bullets.get(i).draw(batch);
         for(int i=0;i<ore.size;i++){ore.get(i).draw(batch);ore.get(i).bounds.debug(batch);}
         for(int i=0;i<enemies.size;i++)enemies.get(i).draw(batch);
+
         //batch.draw(Main.rectangle, camera.position.x-Main.WIDTH/2f, camera.position.y-Main.HEIGHT/2f);
 //        multiplayer.draw(batch);
 
     }
 
     public void loadActors(){
-        chat_button=new Buttons(true,Main.chat_button_un,Main.chat_button,joySize*1.1f,joySize*1.1f/2,
-                Main.WIDTH-joySize*1.1f-joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
+        //chat_button=new Buttons(true,Main.chat_button_un,Main.chat_button,joySize*1.1f,joySize*1.1f/2,
+          //      Main.WIDTH-joySize*1.1f-joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
         back_button = new Buttons(true,Main.back_button_un,Main.back_button,joySize*1.1f,joySize*1.1f/2,
                 joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
 
 
-        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),6,entityRad,100);
+        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),6,entityRad,120);
         //getter.setPlayer(player);
+        healthBar = new HealthBar();
         joy=new MotionJoystick(Main.circle,Main.stickImg,new Point2D(joyX,joyY),joySize,player);
 
         ore=new Array<>();
+
+        buffs = new Array<>();
 
         enemies = new Array<>();
 
@@ -247,6 +289,8 @@ public class GameSc implements Screen {
 
         bullets=new Array<>();
         //if(!multiplayer.isSomeoneIN()
+        
+        // buffs
 
     }
 
@@ -255,7 +299,7 @@ public class GameSc implements Screen {
         for(int i=0;i<5;i++){
             joy.update(x,y,isDownTouch,pointer);
             fireJoy.update(x,y,isDownTouch,pointer);
-            chat_button.action(x,y,isDownTouch,pointer);
+            //chat_button.action(x,y,isDownTouch,pointer);
             back_button.action(x,y,isDownTouch,pointer);
         }
     }
@@ -284,6 +328,7 @@ public class GameSc implements Screen {
                 if(bullet.bounds.Overlaps(enemy.bounds)){
                     enemy.damaged(bullet);
                 }
+
             }
             if(player.bounds.Overlaps(bullet.bounds)){
                 player.damaged(bullet);
@@ -311,29 +356,29 @@ public class GameSc implements Screen {
         }
     }
 
-    public void death(){
-        final Timer timer=new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                player.changeHealth(10000);
-                        /*if(deathScAlpha<1){deathScAlpha+=0.1f;
-                            Main.hudBatch.setColor(0,0,0,deathScAlpha);}*/
-                //else timer.cancel();
-                Main.hudBatch.begin();
-                Main.hudBatch.draw(Main.deathSc,Main.WIDTH/2f,Main.HEIGHT/2f);
-                Main.hudBatch.end();
-
-
-                //else sprite.getTexture().dispose();
-            }
-        };
-        timer.scheduleAtFixedRate(task,0,60);
-    }
+//    public void death(){
+//        final Timer timer=new Timer();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                player.changeHealth(10000);
+//                        /*if(deathScAlpha<1){deathScAlpha+=0.1f;
+//                            Main.hudBatch.setColor(0,0,0,deathScAlpha);}*/
+//                //else timer.cancel();
+//                Main.hudBatch.begin();
+//                Main.hudBatch.draw(Main.deathSc,Main.WIDTH/2f,Main.HEIGHT/2f);
+//                Main.hudBatch.end();
+//
+//
+//                //else sprite.getTexture().dispose();
+//            }
+//        };
+//        timer.scheduleAtFixedRate(task,0,60);
+//    }
 
     private void buttonsLogic(SpriteBatch btch){
-        chat_button.draw(btch);
-        if(chat_button.isTouch()){getter_setter.set_StartChat(1);databaseHelper.logOut();}
+        //chat_button.draw(btch);
+        //if(chat_button.isTouch()){getter_setter.set_StartChat(1);databaseHelper.logOut();}
         back_button.draw(btch);
         if(back_button.isTouch())databaseHelper.logOut();
     }

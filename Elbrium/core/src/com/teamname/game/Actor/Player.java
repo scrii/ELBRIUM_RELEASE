@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.teamname.game.Main;
-import com.teamname.game.Screens.DeathSc;
 import com.teamname.game.Screens.Debug.DebugSc;
 import com.teamname.game.Screens.GameSc;
 
@@ -21,12 +20,12 @@ public class Player extends Actor {
 
     private int Score;
     private int health;
+    private int primaryHealth;
     private float realSpeed=0; /* это поле является истинным значением скорости, которое зависит от удаленности
     стика от центра окружности. переменная speed - ее максимальное значение */
     public float X;
     public float Y;
     public Point2D cameraPoint; // позиция камеры, закрепленная за игроком. введена для проверки ее выхода за границы карты
-
 
     public Point2D send_in_ONLINE; // всомогательная переменная, ссылающаяся на поле position. введена для удобства
     public boolean isMove;
@@ -34,24 +33,27 @@ public class Player extends Actor {
     private Message player_data; // объект, поля которого обновляются. отправляется в бд
     public GetterANDSetterFile getter_setter;
     private Timer timer; // таймер, отправляющий игрока в меню при его бездействии в течении logOutSec секунд
-    private static final int logOutSec=180;
+    private static final int logOutSec=240;
 
     public int counter= logOutSec; // вспомогательная переменная
     public int damage; // урон
 
-
-
-
+    public int getPrimaryHealth() {
+        return primaryHealth;
+    }
 
     private DatabaseHelper databaseHelper;
 
     public Player(Texture img, Point2D position, float Speed, float R, int health) {
         super(img, position, Speed, R);
         this.health=health;
+        primaryHealth = health;
         cameraPoint=new Point2D(position);
         databaseHelper=new DatabaseHelper();
         getter_setter=new GetterANDSetterFile();
+
         this.health+=getter_setter.get_Health();
+
         send_in_ONLINE = new Point2D(position.getX()+R,position.getY()+R);
         damage= (int) (getter_setter.get_Attack());
         player_data=new Message(getter_setter.get_Appearance()+"",send_in_ONLINE.getX(),send_in_ONLINE.getY(),
@@ -65,7 +67,7 @@ public class Player extends Actor {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(Main.getPlayer(),position.getX()-R*2,position.getY()-R*2,R*2,R*2);
-        send_in_ONLINE.debug(batch);
+        position.debug(batch);
     }
 
     public void cameraPointUpdate(){
@@ -88,18 +90,15 @@ public class Player extends Actor {
         send_in_ONLINE=position; // ссылочная переменная, введенная для удобства
         bounds.pos.setPoint(send_in_ONLINE.getX()-R,send_in_ONLINE.getY()-R);
 
-
         if(isMove){
             counter=logOutSec;
             player_data.x=send_in_ONLINE.getX();
             player_data.y=send_in_ONLINE.getY();
             databaseHelper.sendToFirebase(getter_setter.get_Nickname(),player_data.toString());
         }
-
-
     }
 
-    public float getHealth() {
+    public int getHealth() {
         return health;
     }
 
@@ -109,7 +108,7 @@ public class Player extends Actor {
             @Override
             public void run() {
                 if(counter==0){
-                    Gdx.app.log("PLayer", "afk for "+logOutSec+" seconds");
+                    //Gdx.app.log("PLayer", "afk for "+logOutSec+" seconds");
                     databaseHelper.logOut();
                     timer.cancel();
                 }
@@ -122,10 +121,6 @@ public class Player extends Actor {
     public Point2D getPosition(){
         return send_in_ONLINE;
     }
-
-
-
-
 
     public void playerCheck(){
         // не зашел ли игрок за границу
@@ -150,12 +145,11 @@ public class Player extends Actor {
 
     public void damaged(Bullet b){
         health-=b.damage;
-        if(health<=0){
-         //deathSc
-           // GameSc.main.setScreen(new DebugSc());
-        }
-        Gdx.app.log("player", "health: " + health);
         GameSc.bullets.removeValue(b,true);
+    }
+
+    public void setHealth(int h){
+        health = h;
     }
 
 }

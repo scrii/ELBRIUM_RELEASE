@@ -18,6 +18,8 @@ import com.teamname.game.Screens.GameSc;
 import com.teamname.game.Screens.MenuSc;
 
 //import Online.Getter;
+import org.w3c.dom.Text;
+
 import pl.mk5.gdx.fireapp.GdxFIRApp;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
@@ -25,7 +27,8 @@ import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 public class Main extends Game {
 	public static SpriteBatch batch,frontBatch,
 			playerBatch, hudBatch,
-			baseBatch,baseBatchBackground;
+			baseBatch,baseBatchBackground,
+			deathBatch;
 
 	public static int WIDTH,HEIGHT;
 	public static int BACKGROUND_WIDTH;
@@ -45,11 +48,16 @@ public class Main extends Game {
 	public static Texture un_testButtonTX,p_testButtonTX;
 	public static Texture bLeft,bUp,bRight,bDown;
 	public static Texture bLeft_un,bUp_un,bRight_un,bDown_un;
+	public static Texture aidkit;
+	public static Texture speedArrow;
+	public static Texture explosion;
 
 	public static Texture enemy0;
 	public static Texture enemy1;
 	public static Texture enemy2;
 
+	public static Texture redCircle;
+	public static Texture greenCircle;
 	public static Texture rectangle;
 
 	public static GameSc gameSc;
@@ -93,6 +101,7 @@ public class Main extends Game {
 		loadPlayerTextures();
 		loadButtonTextures();
 		loadCometTextures();
+		loadBuffTextures();
 
 		gameSc=new GameSc(this);
 		monitoring();
@@ -142,6 +151,7 @@ public class Main extends Game {
 		frontBatch=new SpriteBatch();
 		playerBatch=new SpriteBatch();
 		hudBatch=new SpriteBatch();
+		deathBatch = new SpriteBatch();
 	}
 
 	private void loadElbriumTextures(){
@@ -190,6 +200,15 @@ public class Main extends Game {
 		comet_fr3=new Texture("cometa/frame3.png");
 	}
 
+	public void loadBuffTextures(){
+		aidkit = new Texture("aidkit.png");
+		speedArrow = new Texture("speedArrow.png");
+		explosion = new Texture("explosion.png");
+
+		greenCircle = new Texture("greenCircle.png");
+		redCircle = new Texture("redCircle.png");
+	}
+
 	public static Texture getPlayer(){
 		GetterANDSetterFile getter_setter = new GetterANDSetterFile();
 
@@ -218,8 +237,8 @@ public class Main extends Game {
 		return player1;
 	}
 
-	public void setNewScreen(Screen screen){
-		setScreen(screen);
+	public void disposeGameSc(){
+		gameSc = null;
 	}
 
 }

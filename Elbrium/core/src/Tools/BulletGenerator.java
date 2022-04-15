@@ -1,5 +1,6 @@
 package Tools;
 
+import com.badlogic.gdx.Gdx;
 import com.teamname.game.Actor.Bullet;
 import com.teamname.game.Actor.Enemy;
 import com.teamname.game.Main;
@@ -48,8 +49,9 @@ public class BulletGenerator {
     public void enemyUpdate(Enemy enemy){
         if(enemy.isSeeingPlayer && isTime){
             Point2D pos = new Point2D(enemy.position);
-            pos.add(enemy.R*enemy.direction.getX(), enemy.R*enemy.direction.getY());
-            GameSc.bullets.add(new Bullet(Main.bullet, pos, 18, GameSc.player.R/5, enemy.direction, enemy.damage,false));
+            pos.add(enemy.R*enemy.playerDirection.getX(), enemy.R*enemy.playerDirection.getY());
+            GameSc.bullets.add(new Bullet(Main.bullet, pos, 18, GameSc.player.R/5, enemy.playerDirection, enemy.damage,false));
+            //Gdx.app.log("playerdir ", enemy.playerDirection.getX() +" "+enemy.playerDirection.getY());
             isTime=false;
             counter=Sec;
         }
