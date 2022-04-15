@@ -73,6 +73,7 @@ public class GameSc implements Screen {
 
     private HealthBar healthBar;
 
+
     
 
 
@@ -97,6 +98,7 @@ public class GameSc implements Screen {
     //<!!! --->
 
     String online_players;
+    public static float enemyPLayerLength = 2.5f*entityRad;
     static GetterANDSetterFile getter_setter;
 
 
@@ -183,16 +185,24 @@ public class GameSc implements Screen {
 
         player.update();
         for(int i=0;i<enemies.size;i++){
-            enemies.get(i).collision(player, 4*enemies.get(i).R);
+            enemies.get(i).collision(player, enemyPLayerLength); // 4* enemies.get(i).R
 
             enemies.get(i).update();
 
             enemies.get(i).bullgen.enemyUpdate(enemies.get(i));
-
-
+            for(int j=0;j<enemies.size;j++){
+                if(i != j && enemies.get(i).bounds.Overlaps(enemies.get(j).bounds)){
+                    //enemies.removeValue(enemies.get(j),true);
+                    //enemies.set(i, new Enemy());
+                    Enemy ei = enemies.get(i), ej = enemies.get(j);
+                    if(ei.R > ej.R){ei.merge(ej);enemies.removeValue(ej,true);}
+                    else {ej.merge(ei);enemies.removeValue(ei,true);}
+                }
+            }
 
 
         }
+
 
 
 
@@ -214,9 +224,9 @@ public class GameSc implements Screen {
 
         for(Elbrium e : ore){
             e.collision(player,0);
-//            for(Enemy enemy : enemies){
-  //              e.collision(enemy, enemy.R);
-//            }
+            for(Enemy enemy : enemies){
+                if(e.bounds.Overlaps(enemy.bounds))e.setHealth(0);
+            }
             e.update();
             e.setCount(ore.indexOf(e,true));
             if(e.isOut)ore.removeValue(e,true);

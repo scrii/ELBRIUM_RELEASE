@@ -32,12 +32,6 @@ public abstract class Actor extends GraphicsObj {
     }
 
     public void collision(Actor other, float offset){
-        /*if(bounds.Overlaps(GameSc.player.bounds)){
-            //Gdx.app.log("new_tag", "overlaps");
-            position.setX(playerPos.getX()-GameSc.player.R - (R+GameSc.player.R) / length * dX);
-            position.setY(playerPos.getY()-GameSc.player.R - (R+GameSc.player.R) / length * dY);
-        }*/
-
         float dX = other.position.getX() - position.getX() - other.R;
         float dY = other.position.getY() - position.getY() - other.R;
 
@@ -50,8 +44,30 @@ public abstract class Actor extends GraphicsObj {
             position.setX(other.position.getX()-other.R-(R+ dCircle.R)/length*dX);
             position.setY(other.position.getY()-other.R-(R+ dCircle.R)/length*dY);
         }
-
     }
+
+    /*
+     public void collision(Actor other, float offset){
+        /*if(bounds.Overlaps(GameSc.player.bounds)){
+            //Gdx.app.log("new_tag", "overlaps");
+            position.setX(playerPos.getX()-GameSc.player.R - (R+GameSc.player.R) / length * dX);
+            position.setY(playerPos.getY()-GameSc.player.R - (R+GameSc.player.R) / length * dY);
+
+
+    float dX = other.position.getX() - position.getX() - other.R;
+    float dY = other.position.getY() - position.getY() - other.R;
+
+
+    Circle dCircle = new Circle(other.bounds);
+        dCircle.addR(offset);
+    float length = (float)Math.sqrt(dX* dX + dY*dY);
+
+        if(bounds.Overlaps(dCircle)){
+        position.setX(other.position.getX()-other.R-(R+ dCircle.R)/length*dX);
+        position.setY(other.position.getY()-other.R-(R+ dCircle.R)/length*dY);
+    }
+
+}*/
 
     public void setDirection(Point2D dir){
         direction=dir;

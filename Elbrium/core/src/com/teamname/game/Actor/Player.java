@@ -47,12 +47,13 @@ public class Player extends Actor {
     public Player(Texture img, Point2D position, float Speed, float R, int health) {
         super(img, position, Speed, R);
         this.health=health;
-        primaryHealth = health;
         cameraPoint=new Point2D(position);
         databaseHelper=new DatabaseHelper();
         getter_setter=new GetterANDSetterFile();
 
         this.health+=getter_setter.get_Health();
+
+        primaryHealth = this.health;
 
         send_in_ONLINE = new Point2D(position.getX()+R,position.getY()+R);
         damage= (int) (getter_setter.get_Attack());

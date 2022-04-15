@@ -165,6 +165,13 @@ public class Elbrium extends Actor {
         //batch.draw(region);
     }
 
+ /*   @Override
+    public void collision(Actor other, float offset) {
+        if(!(other.getClass() == Enemy.class))super.collision(other, offset);
+        else{
+        }
+        if(bounds.Overlaps(other.bounds))direction.setPoint(other.direction);
+    }*/
     @Override
     public void collision(Actor other, float offset) {
         super.collision(other, offset);

@@ -13,15 +13,16 @@ import Tools.Point2D;
 public class HealthBar extends GraphicsObj {
 
     // объект этого класса объявляется после создания игрока
+    // здоровье игрока растет за счет роста уровня
 
-    private int health = GameSc.player.getHealth();
+    private int health;
     private final int primaryHealth = GameSc.player.getPrimaryHealth();
     private ArrayList<Circle> slots;
     private ArrayList<Texture> slotsColor;
     private final Point2D firstSlotPosition;
     private final float slotR;
     private final int size = 7;
-    private final int heathPart = primaryHealth / size;
+    private final int healthPart = primaryHealth / size;
 
     public HealthBar() {
         slotR = GameSc.player.R/1.8f;
@@ -35,6 +36,8 @@ public class HealthBar extends GraphicsObj {
             slotsColor.add(Main.greenCircle);
 
         }
+        health = GameSc.player.getHealth();
+        Gdx.app.log("healthbar",healthPart+"");
     }
 
     @Override
@@ -50,7 +53,7 @@ public class HealthBar extends GraphicsObj {
     public void update() {
         health = GameSc.player.getHealth();
         for(int i=1;i<size+1;i++){
-            if(health >= primaryHealth - heathPart * (i+1) && health < primaryHealth - heathPart * i){
+            if(health >= primaryHealth - healthPart * (i+1) && health < primaryHealth - healthPart * i){
                 changeColor(i-1);
             }
         }

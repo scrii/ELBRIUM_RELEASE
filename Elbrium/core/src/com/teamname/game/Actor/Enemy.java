@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
@@ -11,7 +12,6 @@ import java.lang.reflect.Array;
 
 import Buffs.Buff;
 import Tools.BulletGenerator;
-import Tools.Circle;
 import Tools.Point2D;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
@@ -123,8 +123,17 @@ public class Enemy extends Actor {
         health+=h;
     }
 
-    @Override
+    /*@Override
     public void collision(Actor other, float offset) {
-
+        super.collision(other, offset);
+        if(bounds.Overlaps(other.bounds))direction = new Point2D(0,0);
+    }*/
+    public void merge(Enemy e){
+        damage+=e.damage;
+        health+=e.health;
+        speed=(speed+e.speed)/2f;
+        R+=e.R/2.5f;
+        bounds.R=R;
+        GameSc.enemyPLayerLength -= e.R/2.5f;
     }
 }
