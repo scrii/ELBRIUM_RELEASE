@@ -185,9 +185,10 @@ public class GameSc implements Screen {
 
         player.update();
         for(int i=0;i<enemies.size;i++){
+            enemies.get(i).update();
             enemies.get(i).collision(player, enemyPLayerLength); // 4* enemies.get(i).R
 
-            enemies.get(i).update();
+
 
             enemies.get(i).bullgen.enemyUpdate(enemies.get(i));
             for(int j=0;j<enemies.size;j++){
@@ -282,7 +283,7 @@ public class GameSc implements Screen {
                 joySize*1.1f/2*0.2f,Main.HEIGHT-joySize*1.1f/2*1.2f);
 
 
-        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),6,entityRad,120);
+        player =new Player(Main.getPlayer(),new Point2D(entityX,entityY),6,entityRad,120000);
         //getter.setPlayer(player);
         healthBar = new HealthBar();
         joy=new MotionJoystick(Main.circle,Main.stickImg,new Point2D(joyX,joyY),joySize,player);

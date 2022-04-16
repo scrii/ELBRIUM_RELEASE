@@ -4,7 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Circle;
 import com.teamname.game.Main;
 import com.teamname.game.Screens.GameSc;
 
@@ -12,6 +11,7 @@ import java.lang.reflect.Array;
 
 import Buffs.Buff;
 import Tools.BulletGenerator;
+import Tools.Circle;
 import Tools.Point2D;
 import pl.mk5.gdx.fireapp.GdxFIRDatabase;
 
@@ -30,6 +30,16 @@ public class Enemy extends Actor {
 
     public BulletGenerator bullgen;
     private int health;
+    private boolean stayingOnCircle;
+
+    @Override
+    public void collision(Actor other, float offset) {
+        super.collision(other, offset);
+        Tools.Circle dCircle = new Circle(other.bounds);
+        dCircle.addR(offset);
+        stayingOnCircle= bounds.Overlaps(dCircle) && other.direction.getY() == 0 && other.direction.getX() == 0;
+    }
+
     public Point2D playerDirection;
 
     public Enemy(Texture img, Point2D position, float speed, float R, int damage, int health) {
@@ -100,6 +110,7 @@ public class Enemy extends Actor {
        // for(Enemy enemy : GameSc.enemies){
            // if(enemy!=this)collision(enemy,-enemy.R+R);
         //}
+        Gdx.app.log("enemy",direction.getX()+" "+direction.getY());
 
     }
 
@@ -116,7 +127,8 @@ public class Enemy extends Actor {
             isGoingToBuff = true;
             direction = new Point2D(dx / lengthToBuff, dy / lengthToBuff);
         }
-        else direction = playerDirection;
+        else if (!stayingOnCircle)direction = playerDirection;
+        else direction = new Point2D(0,0);
     }
 
     public void changeHealth(float h){

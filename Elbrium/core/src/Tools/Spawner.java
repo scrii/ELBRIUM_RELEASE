@@ -46,7 +46,7 @@ public class Spawner extends TimerTask {
     public void start() {
         TimerTask timerTask = new Spawner();
         timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 10 * 1000); // переодичность спавна Эльбриума - 30 секунд
+        timer.scheduleAtFixedRate(timerTask, 0, 1000 * 1000); // переодичность спавна Эльбриума - 30 секунд
     }
 
     private void spawnOre() {
